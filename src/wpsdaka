@@ -1,6 +1,6 @@
 var axios = require('axios');
-var server = require('./server')
-var config = require('./config')
+var server = require('./lib/server')
+var config = require('./lib/config')
 let url = 'http://zt.wps.cn/2018/clock_in/api/get_question?member=wps'
 invite_sid = [
   'V02S2UBSfNlvEprMOn70qP3jHPDqiZU00a7ef4a800341c7c3b',
@@ -155,5 +155,5 @@ function invite() {
 
 
 
-
+task()
 module.exports = task
