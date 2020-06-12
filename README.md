@@ -4,3 +4,5 @@
 
 
 2 WPS每日自动打卡 邀请好友 ./lib/config里填写id 抄自@lepecoder/checkin
+
+3 时光相册签到
