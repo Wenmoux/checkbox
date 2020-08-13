@@ -103,7 +103,7 @@ async function task() {
         if (ress.option1) {
           let yxid = ress.expand.split("##")[1];
           let urll = `https://api.3839app.com/cdn/android/gameintro-home-1546-id-${yxid}-packag--level-2.htm`;
-          let resss = await $http.get(urll);
+          let resss = await axios.get(urll);
           let strr = JSON.stringify(resss.data);
           for (i = 1; i < 5; i++) {
             let strrr = ress["option" + i];
