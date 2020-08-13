@@ -1,7 +1,7 @@
 /*
  * @Author: Wenmoux
  * @Date: 2020-08-04 01:21:09
- * @LastEditTime: 2020-08-13 11:42:35
+ * @LastEditTime: 2020-08-13 17:41:35
  * @Description: bilibili夏日音乐季活动 手书嘉年华
  */
 
@@ -49,6 +49,7 @@ async function task() {
                         data = `aid=${i.id}&multiply=2&select_like=1&cross_domain=true&csrf=${crsf}`
                         let ress = await axios.post(url, data, header)
                         console.log(ress.data)
+                        await timeAsync(1000)
                     }
                 } catch (err) {
                     console.log(err)
