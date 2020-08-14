@@ -2,7 +2,7 @@ waterresult = "";
 const axios = require("axios");
 //照料id 我没加好友所以随机取得 第一个是我,不建议改ヽ(*´з｀*)ﾉ
 buid = [21039293, 21039271, 21039273, 21039274, 12661364];
-let scookie ="这里填你的scookie"; //打开好游快爆app，任务页面，随便一个post包，查看post数据里的scookie 
+let scookie = "这里填你的scookie"; //打开好游快爆app，任务页面，随便一个post包，查看post数据里的scookie
 function get(a, b, c) {
   return new Promise(async (resolve) => {
     try {
@@ -104,12 +104,17 @@ async function task() {
           let yxid = ress.expand.split("##")[1];
           let urll = `https://api.3839app.com/cdn/android/gameintro-home-1546-id-${yxid}-packag--level-2.htm`;
           let resss = await axios.get(urll);
-          let strr = JSON.stringify(resss.data);
-          for (i = 1; i < 5; i++) {
-            let strrr = ress["option" + i];
+          let strr = JSON.stringify(resss.data.result.data.downinfo.appinfo)
+            .replace(/&nbsp;/g, "")
+            .replace(/ /g, "");
+          for (i; i < 5; i++) {
+            let strrr = ress["option" + i].replace(/ /g, "");
             if (!strr.match(strrr)) {
-              console.log("本题答案：" + i);
-              await get("grow", `DailyDatiAnswer&option=${encodeURI(strr)}`, 4);
+              await get(
+                "grow",
+                `DailyDatiAnswer&option=${ress["option" + i]}`,
+                4
+              );
             }
           }
         }
