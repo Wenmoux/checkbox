@@ -68,6 +68,8 @@ function getid() {
   });
 }
 async function task() {
+  var mres =await axios.get("https://cdn.jsdelivr.net/gh/Wenmoux/checkbox@latest/src/haoyoukuaibao/miling.txt")
+  await get("fgb",`Secretorder&miling=${mres.data}`,"")   //填写密令        
   await get("grow", "GuanZhu", "21039293"); //关注我
   await getid();
   await get("grow", "Watering", "6");
