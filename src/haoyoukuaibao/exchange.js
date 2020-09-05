@@ -36,12 +36,12 @@ const scookie=""
 
     for (i=0;i<999;i++)  {
 
-     await    get("checkExchange","gid=4496") //检测         
+     await    get("checkExchange",`gid=${id}`) //检测         
 
-    await    get("exchange","goodsid=4496")   //兑换            
+    await    get("exchange",`goodsid=${id}`)   //兑换            
 
    } }
 
   
-
+//id自己抓包看 4496好像是玩偶吧
 exchange(4496)
