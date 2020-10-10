@@ -5,7 +5,7 @@ uid = "填你自己的u_id" //抓包看,比如签到的post包里就有u_id,如1
 function ssly(uid) {
     return new Promise(async resolve => {
         try {
-            let url = `https://www.ss-line1.cc/mz_pbl/app_con/add_sign.php`
+            let url = `https://www.sslyhome.cc/mz_pbl/app_con/add_sign.php`
             let data = `time=1600797047&mac=43f4923e7a18172b61128850c9079324&u_id=${uid}`
             let res = await axios.post(url, data)
             if (res.data.state == 0) {
