@@ -134,18 +134,17 @@ function info() {
             let data = `sandbox=0&${getc()}&withid=1`
             let res = await axios.post(url, data, header)
             list = res.data.data.award
-            info = []
+            infod = []
             number = 0
             list.map(list => {
                 number += list.coin
-                info.push({
+                infod.push({
                     "书豆": list.coin,
                     "到期时间": list.expire
                 })
             })
-            console.log(info)
+            console.log(infod)
             console.log("共"+number+"书豆")
-            $ui.toast("共"+number+"书豆")
         } catch (err) {
             console.log(err)
         }
@@ -192,6 +191,7 @@ console.log(a)
 
 
 async function task() {
+    await info()
     await sign()
     await getO()
     await drawing()
