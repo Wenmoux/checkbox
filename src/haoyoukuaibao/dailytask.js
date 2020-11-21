@@ -68,8 +68,9 @@ function getid() {
   });
 }
 async function task() {
-  var mres =await axios.get("https://cdn.jsdelivr.net/gh/Wenmoux/checkbox@latest/src/haoyoukuaibao/miling.txt")
-  await get("fgb",`Secretorder&miling=${mres.data}`,"")   //填写密令        
+  var mres =await $http.get("https://cdn.jsdelivr.net/gh/Wenmoux/checkbox/src/haoyoukuaibao/miling.txt")
+  await get("fgb",`Secretorder&miling=${mres.data.miling}`,"")//密令   
+  await get('wxsph',`send_egg&egg_data=${mres.data.egg}`,"")//视频彩蛋
   await get("grow", "GuanZhu", "21039293"); //关注我
   await getid();
   await get("grow", "Watering", "6");
@@ -97,6 +98,12 @@ async function task() {
         await get("grow", "DailyDouyinPlay", i[2]);
         await get("grow", "DailyDouyinLing", i[2]);
         break;
+      case 'DailyVideoLing':
+        await get('grow','DailyVideoGuanzhu',i[2])
+        await get('grow','DailyVideoShare',i[2])
+        await get('wxsph','share&mode=qq',"") //DailyVideoShare
+        await get('grow','DailyVideoLing',i[2])
+                 
       case "DailyJiaoHu":
         await get("grow", "DailyJiaoHu", i[2]);
         break;
