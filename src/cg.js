@@ -6,14 +6,10 @@
  * @Other：X-sign生成 https://my.oschina.net/2devil/blog/2395909
  */
 
-const axios = require('axios')
+const axios= require('axios')
 const md5 = require('md5')
-const token = "自己去app里抓"
-var ar = `pack_name=com.sixrpg.opalyer&sv=QKQ1.190825.002testkeys&android_cur_ver=2.25.268.1027&nt=4g&device_code=RedmiK30&channel=LYyingyongbao&skey=&device_unique_id=e6999ad43244c52f&token=${token}`
-//devicecode uniqueid这些建议换成自己设备的或者
-var str = ar.split("&").sort(function(a, b) {
-    return a.localeCompare(b)
-}).join('&')
+const token = "ed6957a083631416528d8e159b812985"
+
 function check() {
     return new Promise(async resolve => {
         try {
@@ -44,6 +40,10 @@ function check() {
 function loginreward() {
     return new Promise(async resolve => {
         try {
+            var ar = `pack_name=com.sixrpg.opalyer&sv=QKQ1.190825.002testkeys&android_cur_ver=2.25.268.1027&nt=4g&device_code=RedmiK30&channel=LYyingyongbao&skey=&device_unique_id=e6999ad43244c52f&token=${token}`
+            var str = ar.split("&").sort(function(a, b) {
+    return a.localeCompare(b)
+}).join('&')
             const url = `http://iapi.66rpg.com/user/v2/sso/launch_remind?${ar}`
             let data = `token=${token}&mobile_uid=&client=2&android_cur_ver=268`
             headers = {
