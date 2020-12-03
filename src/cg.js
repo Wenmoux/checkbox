@@ -8,7 +8,7 @@
 
 const axios= require('axios')
 const md5 = require('md5')
-const token = "ed6957a083631416528d8e159b812985"
+const token = "填你自己的"
 
 function check() {
     return new Promise(async resolve => {
