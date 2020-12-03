@@ -1,12 +1,12 @@
 /*
  * @Author: Wenmoux
  * @Date: 2020-12-03 08:48:00
- * @LastEditTime: 2020-12-03 08:48:00
+ * @LastEditTime: 2020-12-03 09:13:14
  * @Description: 橙光游戏app每日签到+登陆奖励领取
  * @Other：X-sign生成 https://my.oschina.net/2devil/blog/2395909
  */
 
-const axios require('axios')
+const axios = require('axios')
 const md5 = require('md5')
 const token = "自己去app里抓"
 var ar = `pack_name=com.sixrpg.opalyer&sv=QKQ1.190825.002testkeys&android_cur_ver=2.25.268.1027&nt=4g&device_code=RedmiK30&channel=LYyingyongbao&skey=&device_unique_id=e6999ad43244c52f&token=${token}`
