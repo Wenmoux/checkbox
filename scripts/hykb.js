@@ -1,3 +1,5 @@
+//好游快爆爆米花任务,可兑换激活码、实物周边等
+//我的邀请码 sdvf180uscf3
 waterresult = "";
 const axios = require("axios");
 //照料id 我没加好友所以随机取得 第一个是我,不建议改ヽ(*´з｀*)ﾉ
@@ -68,7 +70,7 @@ function getid() {
   });
 }
 async function task() {
-  var mres =await $http.get("https://cdn.jsdelivr.net/gh/Wenmoux/checkbox/src/haoyoukuaibao/miling.txt")
+  var mres =await $http.get("https://cdn.jsdelivr.net/gh/Wenmoux/checkbox/scripts/haoyoukuaibao/miling.txt")
   await get("fgb",`Secretorder&miling=${mres.data.miling}`,"")//密令   
   await get('wxsph',`send_egg&egg_data=${mres.data.egg}`,"")//视频彩蛋
   await get("grow", "GuanZhu", "21039293"); //关注我

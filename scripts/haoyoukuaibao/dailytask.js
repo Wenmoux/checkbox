@@ -68,7 +68,7 @@ function getid() {
   });
 }
 async function task() {
-  var mres =await $http.get("https://cdn.jsdelivr.net/gh/Wenmoux/checkbox/src/haoyoukuaibao/miling.txt")
+  var mres =await $http.get("https://cdn.jsdelivr.net/gh/Wenmoux/checkbox/scripts/haoyoukuaibao/miling.txt")
   await get("fgb",`Secretorder&miling=${mres.data.miling}`,"")//密令   
   await get('wxsph',`send_egg&egg_data=${mres.data.egg}`,"")//视频彩蛋
   await get("grow", "GuanZhu", "21039293"); //关注我

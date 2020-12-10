@@ -55,7 +55,7 @@ function loginreward() {
             let res = await axios.get(url, headers)
             if (res.data.status == 1) {
                 if (!res.data.data.integral.hidden) {
-                    console.log("登陆成功,获得："+res.data.data.integral.msg)
+                        console.log("    登陆成功,获得："+res.data.data.integral.msg+","+res.data.data.flower.msg)
                 } else {
                     console.log("今日已经领取过登陆奖励了")}
             } else {
