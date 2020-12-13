@@ -33,7 +33,7 @@ function invite(id) {
 
 
 async function wpsdaka() {
-wpsinviteid ="12345"//就是自己账号id
+wpsinviteid =require("../config.json").wps.uid//就是自己账号id
 num=0
   for (id of invite_sid){
   await invite(id)

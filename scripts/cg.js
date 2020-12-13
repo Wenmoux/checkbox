@@ -8,8 +8,8 @@
 
 const axios = require('axios')
 const md5 = require('md5')
-const token = "填你自己的"
-
+const token = require("../config.json").cg.token
+console.log(token)
 function check() {
     return new Promise(async resolve => {
         try {

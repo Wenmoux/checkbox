@@ -4,7 +4,7 @@ const axios = require("axios")
 function task() {
     return new Promise(async resolve => {
         try {
-            let token="cookie中的token值"
+            let token=require("../config.json").ucloud.token
             let url = 'https://uclub.ucloud.cn/index/signin/dosign'            
             let res = await $http.post(url, "",{headers:{"X-Requested-With":"XMLHttpRequest","cookie":`token=${token}`}})
          if(res.data.wait)

@@ -1,4 +1,4 @@
-rrtoken = $storage.get('rrsp')||""
+rrtoken = require("../config.json").rrsp.rrtoken
 
 const header = {
 

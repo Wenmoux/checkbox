@@ -1,6 +1,8 @@
-    const cg  = require('./scripts/66rpg')
-    const wpsdaka  = require('./scripts/wps_invite')
-    signList = [cg,wpsdaka] 
+ const cg  = require('./scripts/cg')
+ //   const wpsdaka  = require('./scripts/wps_invite')
+     //  const everphoto  = require('./scripts/everphoto')
+   
+     signList = [cg] 
     start(signList)
     async function start(task) {
     console.log('开始签到任务')          

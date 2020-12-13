@@ -7,7 +7,7 @@ const timeAsync = promisify(setTimeout)
 result = ""
 header = {
     headers: {
-        'cookie':  "device_id=wenmoux666666;666666;"
+        'cookie':  require("../config.json").duokan.cookie
     }}
 device = header.headers.cookie.match(/device_id=(.+?);/)
 did = device?device[1]: ""

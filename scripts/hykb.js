@@ -4,7 +4,7 @@ waterresult = "";
 const axios = require("axios");
 //照料id 我没加好友所以随机取得 第一个是我,不建议改ヽ(*´з｀*)ﾉ
 buid = [21039293, 12661364, 44191145, 44471412, 44440362,45562418,45236927,45045871,45507665,45263948,45249695,44042408,9169383,44761568,45466314];
-let scookie = "这里填你的scookie"; //打开好游快爆app，任务页面，随便一个post包，查看post数据里的scookie
+let scookie = require("../config.json").hykb.scookie; //打开好游快爆app，任务页面，随便一个post包，查看post数据里的scookie
 function get(a, b, c) {
   return new Promise(async (resolve) => {
     try {

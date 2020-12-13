@@ -1,6 +1,6 @@
 const axios = require("axios")
-phone = ""
-password = ""
+phone = require("../config.json").everphoto.phone
+password = require("../config.json").everphoto.password
 let header = {
     headers: {
         "User-Agent": "EverPhoto/2.7.0 (Android;2702;ONEPLUS A6000;28;oppo)",
@@ -16,7 +16,7 @@ function balance() {
     return new Promise(async resolve => {
         try {
             let url = 'https://web.everphoto.cn/api/auth'
-            data = `mobile=+86${phone}&password=${password}`
+            data = `mobile=${phone}&password=${password}`
             let res = await axios.post(url, data, header)
             token = res.data.data.token
         } catch (err) {

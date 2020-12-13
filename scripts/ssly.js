@@ -1,7 +1,7 @@
 const axios = require("axios")
 //绅士领域 注册时候推荐码填：2984317
 
-uid = "填你自己的u_id" //抓包看,比如签到的post包里就有u_id,如120487
+uid = require("../config.json").ssly.uid //抓包看,比如签到的post包里就有u_id,如120487
 function ssly() {
     return new Promise(async resolve => {
         try {
