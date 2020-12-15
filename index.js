@@ -1,6 +1,6 @@
- const cg  = require('./scripts/cg')
- //   const wpsdaka  = require('./scripts/wps_invite')
-     //  const everphoto  = require('./scripts/everphoto')
+      const cg  = require('./scripts/cg')
+    //const wpsdaka  = require('./scripts/wps_invite')
+    //const everphoto  = require('./scripts/everphoto')
    
      signList = [cg] 
     start(signList)
