@@ -22,4 +22,4 @@ function jjwxc() {
     })
 }
 
-module.exports=task
+module.exports=jjwxc
