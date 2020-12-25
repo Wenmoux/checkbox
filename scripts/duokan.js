@@ -22,11 +22,28 @@ function getc() {
     // console.log(a)
     return(a)
 }
+//增加大转盘次数
+function drawingadd() {
+    return new Promise(async resolve => {
+        try {
+            for (b= 0; b < 6; b++) {
+                let url = `https://www.duokan.com/store/v0/event/chances/add`
+                let data = `code=8ulcky4bknbe_f&count=1&${getc()}&withid=1`
+                let res = await axios.post(url, data, header)
+                console.log(res.data)
+
+            }
+        } catch (err) {
+            console.log(err)
+        }
+        resolve()
+    })
+}
 //大转盘
 function drawing() {
     return new Promise(async resolve => {
         try {
-            for (m = 0; m < 3; m++) {
+            for (m = 0; m < 6; m++) {
                 let urld = `https://www.duokan.com/store/v0/event/drawing`
                 let datad = `code=8ulcky4bknbe_f&${getc()}&withid=1`
                 let resd = await axios.post(urld, datad, header)
@@ -194,6 +211,7 @@ async function task() {
     await info()
     await sign()
     await getO()
+    await drawingadd()
     await drawing()
     await  download()
     await getids()
