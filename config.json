@@ -44,15 +44,19 @@
 	"notice":{
 	   "tgbot_token":"",
 	   "serverj":"",
-	   "coolpush"::
+	   "coolpush":""
 	},
 	"jd":{
-	"cookie":""},
+	"cookie":""
+},
 	"jjwxc":{
-	"cookie":""},
+	"cookie":""
+},
 	"smzdm":{
-	"cookie":""},
-	"cg163",{
-	"Authorization":""}
+	"cookie":""
+},
+	"cg163": {
+	"Authorization":""
+}
 
 }
