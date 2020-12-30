@@ -30,6 +30,7 @@
  - [x] [什么值得买](smzdm.com)网页端每日签到
  - [x] 橙光游戏app每日签到+登陆奖励领取
  - [x] [龙空](lkong.cn)每日签到
+ - [x] [经管之家](https://bbs.pinggu.org/?fromuid=11925701)每日签到
  - [ ] ~~哔哩哔哩每日白嫖硬币活动（夏日音乐季 手书嘉年华 14+）九月初结束~~
  - [x] [好游快爆](https://m.i3839.com/qd-huodong4.html)全任务(签到，分享/下载/体验游戏，抖音任务，邀请下载，照料好友),邀请码`sdvf180uscf3`
 
@@ -57,6 +58,7 @@
 <details>
 <summary>更新日志</summary>
 
+- 2020-12-30 新增[经管之家](https://bbs.pinggu.org/?fromuid=11925701)
 - 2020-12-29 新增[龙空](lkong.cn)每日签到
 - 2020-12-25 多看阅读增加获取大转盘次数
 - 2020-12-22 新增[网易云游戏平台](https://cloudgame.webapp.163.com/newer.html?invite_code=R6522U)每日签到

@@ -2,7 +2,7 @@ const axios = require("axios")
 function task() {
     return new Promise(async resolve => {
         try {
-            let cookie=require("./config.json").lkong.cookie
+            let cookie=require("../config.json").lkong.cookie
             let url = 'http://lkong.cn/index.php?mod=ajax&action=punch'            
             let res = await axios.get(url,{headers:{"cookie":cookie}} )       
              if(res.data.punchday)
