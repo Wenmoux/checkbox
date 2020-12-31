@@ -6,7 +6,7 @@
         "uid": "6666"
     },
     "cg": {
-        "token": "5aa3611302c7ad8a1nnnnnm7",
+        "token": "",
         "skey":""
     },
     "ssly": {
@@ -21,7 +21,7 @@
         "password": ""
     },
     "ucloud": {
-        "token": "nnnn"
+        "token": ""
     },
     "rrsp": {
         "rrtoken": ""
@@ -71,6 +71,13 @@
         "cookie":""
     },
     "pinggu":{
-    "cookie":""
+        "cookie":""
+    },
+    "nga":{
+        "uid": ,
+        "accesstoken":"" 
+    },
+    "csdn":{
+        "cookie":""
     }
 }

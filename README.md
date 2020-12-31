@@ -8,14 +8,14 @@
 </div>
 
 # 简介
-一些常用网站以及app的签到
+一些常用网站以及app的签到,有用的话点个star⭐️呗
 需要什么签到可以去提[issues](https://github.com/wenmoux/checkbox/issues),也欢迎PR
 
 # 签到列表
 <details>
 <summary>查看签到列表</summary>
 
-- [x] [人人视频(安卓端) ](https://mobile.rr.tv/fe/#/invite/phone)福利|签到|答题|开宝箱 抄[@chavyleung](https://github.com/chavyleung/scripts/tree/master/rrtv)
+ - [x] [人人视频(安卓端) ](https://mobile.rr.tv/fe/#/invite/phone)福利|签到|答题|开宝箱 抄[@chavyleung](https://github.com/chavyleung/scripts/tree/master/rrtv)
  - [x] [WPS](https://zt.wps.cn/2018/clock_in?csource=pc_clock_oldactivity) 邀请好友,需小程序手动打卡,抄自[@lepecoder/checkin](https://github.com/lepecoder/checkin)
  - [x] [时光相册](https://web.everphoto.cn/)每日签到
  - [x] [书香门第](http://www.txtnovel.top/?fromuser=lu66666)每日签到
@@ -30,6 +30,8 @@
  - [x] [什么值得买](smzdm.com)网页端每日签到
  - [x] 橙光游戏app每日签到+登陆奖励领取
  - [x] [龙空](lkong.cn)每日签到
+ - [x] [NGA论坛](http://bbs.nga.cn/)每日签到
+ - [x] [CSDN](https://www.csdn.net/)每日签到
  - [x] [经管之家](https://bbs.pinggu.org/?fromuid=11925701)每日签到
  - [ ] ~~哔哩哔哩每日白嫖硬币活动（夏日音乐季 手书嘉年华 14+）九月初结束~~
  - [x] [好游快爆](https://m.i3839.com/qd-huodong4.html)全任务(签到，分享/下载/体验游戏，抖音任务，邀请下载，照料好友),邀请码`sdvf180uscf3`
@@ -58,6 +60,9 @@
 <details>
 <summary>更新日志</summary>
 
+- 2020-12-31 
+  - 新增[NGA论坛](http://bbs.nga.cn/)每日签到
+  - 新增[CSDN](https://www.csdn.net/)每日签到
 - 2020-12-30 新增[经管之家](https://bbs.pinggu.org/?fromuid=11925701)
 - 2020-12-29 新增[龙空](lkong.cn)每日签到
 - 2020-12-25 多看阅读增加获取大转盘次数
