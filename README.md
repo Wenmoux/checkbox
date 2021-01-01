@@ -32,6 +32,7 @@
  - [x] [龙空](lkong.cn)每日签到
  - [x] [NGA论坛](http://bbs.nga.cn/)每日签到
  - [x] [CSDN](https://www.csdn.net/)每日签到
+ - [x] [mt论坛](https://bbs.binmt.cc/?fromuid=14593)每日签到
  - [x] [经管之家](https://bbs.pinggu.org/?fromuid=11925701)每日签到
  - [ ] ~~哔哩哔哩每日白嫖硬币活动（夏日音乐季 手书嘉年华 14+）九月初结束~~
  - [x] [好游快爆](https://m.i3839.com/qd-huodong4.html)全任务(签到，分享/下载/体验游戏，抖音任务，邀请下载，照料好友),邀请码`sdvf180uscf3`
@@ -59,7 +60,7 @@
 # other
 <details>
 <summary>更新日志</summary>
-
+- 2021-01-01 新增[mt论坛](https://bbs.binmt.cc/?fromuid=14593)每日签到
 - 2020-12-31 
   - 新增[NGA论坛](http://bbs.nga.cn/)每日签到
   - 新增[CSDN](https://www.csdn.net/)每日签到
