@@ -60,6 +60,7 @@
 # other
 <details>
 <summary>更新日志</summary>
+ 
 - 2021-01-01 新增[mt论坛](https://bbs.binmt.cc/?fromuid=14593)每日签到
 - 2020-12-31 
   - 新增[NGA论坛](http://bbs.nga.cn/)每日签到
