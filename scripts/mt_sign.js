@@ -4,7 +4,7 @@ const axios = require("axios")
 function mt() {
     return new Promise(async resolve => {
         try {
-            let cookie = require("../config.json").csdn.cookie||"wenmoux"
+            let cookie = require("../config.json").mt.cookie||"wenmoux"
             let header = {headers: {"cookie":cookie }}
             res = await axios.get("https://bbs.binmt.cc/k_misign-sign.html", header)
             let formhash = res.data.match(/formhash=(.+?)&/)
