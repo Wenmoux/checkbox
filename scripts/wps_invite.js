@@ -18,14 +18,7 @@ invite_sid = [
 function invite(id) {
   return new Promise(async (resolve, reject) => {
     url = 'http://zt.wps.cn/2018/clock_in/api/invite'
-    res = await axios.post(url, `invite_userid=${wpsinviteid}`, {headers: { "sid": id }})
-  if (res.data.result== "ok") {
-      console.log(`邀请好友 ${id}成功`)
-      num++
-    } else {
-      console.log('邀请失败')
-    }
-    
+    res = await axios.post(url, `invite_userid=${wpsinviteid}`, {headers: { "sid": id }})     
     resolve()
   })
   
@@ -38,9 +31,7 @@ num=0
   for (id of invite_sid){
   await invite(id)
   }
-dk = `\n邀请任务：${num}/10`
   console.log('邀请完毕,任务结束') 
- console.log(dk)
 }
 
 //wpadaka()
