@@ -61,6 +61,7 @@
 <details>
 <summary>更新日志</summary>
 
+- 2021-01-08 [CSDN](https://www.csdn.net/)增加抽奖(每签到5天增加一次抽奖机会)
 - 2021-01-03 橙光游戏增加每日分享,可自定义游戏id
 - 2021-01-01 新增[mt论坛](https://bbs.binmt.cc/?fromuid=14593)每日签到
 - 2020-12-31 
