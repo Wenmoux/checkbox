@@ -1,9 +1,9 @@
 {
     "duokan": {
-        "cookie": "device_id=wenmoux666666;666666;"
+        "cookie": ""
     },
     "wps": {
-        "uid": "6666"
+        "uid": "123456"
     },
     "cg": {
         "token": "",
@@ -58,15 +58,6 @@
     "cg163" : {
         "Authorization":""
     },
-    "jjwxc": {
-        "cookie":""
-    },
-    "smzdm": {
-        "cookie":""
-    },
-    "cg163": {
-        "Authorization":""
-    },
     "lkong": {
         "cookie":""
     },
@@ -84,5 +75,4 @@
         "cookie":"666",
         "time":""
     }
-    
 }

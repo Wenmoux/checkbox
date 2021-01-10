@@ -46,9 +46,10 @@
    ```
        node index.js   
    ```
+  ![结果](https://cdn.jsdelivr.net/gh/Wenmoux/wenpic/other/IMG_20210111_004229.jpg)
 
- -  自行在index.js的signList中添加需要的任务,格式自行参考,同时需要require,格式一样
--  如需单独运行某脚本,请注释掉最后的module.xxx这一行并去掉上行xxx()的注释,之后
+ -  自行在index.js的signList中添加需要的任务,格式自行参考,同时需要require,格式一样  
+ 如需单独运行某脚本,请注释掉最后的module.xxx这一行并去掉上行xxx()的注释,之后
 
 
 ```
