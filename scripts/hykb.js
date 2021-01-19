@@ -198,5 +198,5 @@ async function task() {
 //  return result;
 }
 
-task();
-//module.exports=task
+//task();
+module.exports=task
