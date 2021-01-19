@@ -31,7 +31,8 @@
  - [x] 橙光游戏app每日签到+登陆奖励领取
  - [x] [龙空](lkong.cn)每日签到
  - [x] [NGA论坛](http://bbs.nga.cn/)每日签到
- - [x] [CSDN](https://www.csdn.net/)每日签到
+ - [x] [SF轻小说app](http://book.sfacg.com)每日签到+每日任务
+ - [x] [CSDN](https://www.csdn.net/)每日签到+抽奖
  - [x] [mt论坛](https://bbs.binmt.cc/?fromuid=14593)每日签到
  - [x] [经管之家](https://bbs.pinggu.org/?fromuid=11925701)每日签到
  - [ ] ~~哔哩哔哩每日白嫖硬币活动（夏日音乐季 手书嘉年华 14+）九月初结束~~
@@ -41,9 +42,11 @@
 
  
 
-# 使用方法
-在config.json文件内填入对应cookis或其它参数,然后
-   ```
+# 使用方法 (懂得自然懂 bushi
+下载源码,在config.json文件内填入对应cookis,安装依耐,运行
+   ```       
+       git clone https://github.com/Wenmoux/checkbox.git
+       npm install
        node index.js   
    ```
   ![结果](https://cdn.jsdelivr.net/gh/Wenmoux/wenpic/other/IMG_20210111_004229.jpg)
@@ -62,6 +65,7 @@
 <details>
 <summary>更新日志</summary>
 
+- 2021-01-19 [x] [SF轻小说app](http://book.sfacg.com)每日签到+每日任务
 - 2021-01-08 [CSDN](https://www.csdn.net/)增加抽奖(每签到5天增加一次抽奖机会)
 - 2021-01-03 橙光游戏增加每日分享,可自定义游戏id
 - 2021-01-01 新增[mt论坛](https://bbs.binmt.cc/?fromuid=14593)每日签到
