@@ -73,7 +73,7 @@ async function kai() {
 //参团
 async function can(code) {
     invitedata = `code=${code}`
-    for (i = 0; i < invite_sid.length && k < 3; i++) {
+    for (i = 0; i < invite_sid.length && k < 4; i++) {
         let res = await axios.post("https://zt.wps.cn/2020/massing/api", invitedata, {
             headers: {
                 sid: invite_sid[i]
@@ -97,6 +97,7 @@ async function task() {
     if (code) {
         await can(code)
     }}
+    await cha()
 }
 
 task()
