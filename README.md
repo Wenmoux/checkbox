@@ -16,7 +16,7 @@
 <summary>查看签到列表</summary>
 
  - [x] [人人视频(安卓端) ](https://mobile.rr.tv/fe/#/invite/phone)福利|签到|答题|开宝箱 抄[@chavyleung](https://github.com/chavyleung/scripts/tree/master/rrtv)
- - [x] [WPS](https://zt.wps.cn/2018/clock_in?csource=pc_clock_oldactivity) 邀请好友,需小程序手动打卡,抄自[@lepecoder/checkin](https://github.com/lepecoder/checkin)
+ - [x] [WPS邀请/群集结](https://zt.wps.cn/2018/clock_in?csource=pc_clock_oldactivity) 邀请好友,需小程序手动打卡,抄自[@lepecoder/checkin](https://github.com/lepecoder/checkin)
  - [x] [时光相册](https://web.everphoto.cn/)每日签到
  - [x] [书香门第](http://www.txtnovel.top/?fromuser=lu66666)每日签到
  - [x] [多看阅读app](http://www.duokan.com/m/product)每日任务薅书豆+自动延期 保底3k+ (大概
@@ -65,7 +65,8 @@
 <details>
 <summary>更新日志</summary>
 
-- 2021-01-19 [x] [SF轻小说app](http://book.sfacg.com)每日签到+每日任务
+- 2021-01-22 新增wps群集结活动
+- 2021-01-19 [SF轻小说app](http://book.sfacg.com)每日签到+每日任务
 - 2021-01-08 [CSDN](https://www.csdn.net/)增加抽奖(每签到5天增加一次抽奖机会)
 - 2021-01-03 橙光游戏增加每日分享,可自定义游戏id
 - 2021-01-01 新增[mt论坛](https://bbs.binmt.cc/?fromuid=14593)每日签到
