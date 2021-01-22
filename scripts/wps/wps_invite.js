@@ -34,4 +34,4 @@ num=0
   console.log('邀请完毕,任务结束') 
 }
 
-wpadaka()
+wpsdaka()
