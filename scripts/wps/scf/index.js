@@ -1,5 +1,14 @@
+const axios = require("axios")
+
+
+
+exports.main_handler =  async() => {
+ await task()
+};
+
 /*
 wps会员群集结
+https://github.com/Wenmoux/checkbox
 活动地址：WPS会员公众号-福利签到-打卡免费领会员-群集结
 奖励：集结成功3次,获得6天会员+10M空间
 运行方法：获取sid,填入,就可以了
@@ -10,8 +19,6 @@ wps会员群集结
      https://cdn.jsdelivr.net/gh/Wenmoux/wenpic/other/IMG_20210122_111815.jpg
 */
 
-
-const axios = require("axios")
 let ssid = [
     "僵尸用户1@V02S2UBSfNlvEprMOn70qP3jHPDqiZU00a7ef4a800341c7c3b",
     "僵尸用户2@V02StVuaNcoKrZ3BuvJQ1FcFS_xnG2k00af250d4002664c02f",
@@ -113,5 +120,3 @@ async function task() {
     }
     await cha()
 }
-
-task()
