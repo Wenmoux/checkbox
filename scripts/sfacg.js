@@ -10,6 +10,7 @@ const headers = {
         "cookie": cookie
     }
 }
+//上面的user-agent authorization sfsecurity 建议自行替换成自己的
 //任务列表
 const axios = require("axios")
 dailytasklist = []
@@ -161,7 +162,8 @@ async function task() {
     await getask()
     console.log(dailytasklist)
     await info()
-    console.log(result)
 }
 
-task()
+
+//task()
+module.exports=task

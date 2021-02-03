@@ -44,7 +44,9 @@ if(scookie.match("\\|")){
                     if(bzs.seed&&(bzs.seed==0)){
                   //    console.log("莫得种子了")
                       await get("grow", "GouMai&resure=1&gmmode=seed&tmpNum=10", "") //购买种子*10
-                    }}                                          
+                    }
+                    await get(a,b,c)  
+                    }                                          
                     if (b == "Watering") {
                         if (res.data.key == "ok") {
                             waterresult = `今日浇灌成功,获得${res.data.add_bmh}爆米花,连续浇灌${res.data.nowJiaoGuanDay}天,成熟度：${res.data.csd_num},爆米花：${res.data.baomihua}`
@@ -89,9 +91,9 @@ function getid() {
 }
 async function task() {
   var mres =await axios.get("https://cdn.jsdelivr.net/gh/Wenmoux/checkbox/scripts/other/haoyoukuaibao/miling.txt")
-  await get("fgb",`Secretorder&miling=${mres.data.miling}`,"")//密令   
+  await get("friend",`Secretorder&miling=${mres.data.miling}`,"")//密令
   await get('wxsph',`send_egg&egg_data=${mres.data.egg}`,"")//视频彩蛋
-  await get("grow", "GuanZhu", "21039293"); //关注我
+  await get("grow", "GuanZhu", "21039293") //关注我         
   await getid();
   await get("grow", "Watering", "6");
   for (i of buid) {
