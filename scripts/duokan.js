@@ -314,7 +314,7 @@ function info() {
 }
 
 //签到
-function sign() {
+function dailysign() {
   return new Promise(async resolve => {
     try {
       let url ='https://www.duokan.com/checkin/v0/checkin'
@@ -353,7 +353,7 @@ console.log(a)
 
 async function task() {
     await info()
-    await sign()
+    await dailysign()
     await getO()
     await getchances()
     await drawingadd()
