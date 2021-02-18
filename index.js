@@ -1,4 +1,6 @@
-    let signList = ["pingu","duokan"]  //自行添加任务 名字看脚本里的文件名 比如csdn.js 就填"csdn"
+    let signList = ["missevan","csdn"]  
+    
+    //自行添加任务 名字看脚本里的文件名 比如csdn.js 就填"csdn"
     start(signList)
     
                                   

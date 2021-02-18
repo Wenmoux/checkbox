@@ -16,7 +16,7 @@
 <summary>查看签到列表</summary>
 
  - [x] [人人视频(安卓端) ](https://mobile.rr.tv/fe/#/invite/phone)福利|签到|答题|开宝箱 抄[@chavyleung](https://github.com/chavyleung/scripts/tree/master/rrtv)
- - [x] [WPS邀请/群集结](https://zt.wps.cn/2018/clock_in?csource=pc_clock_oldactivity) 邀请好友,需小程序手动打卡,抄自[@lepecoder/checkin](https://github.com/lepecoder/checkin)
+ - [x] [WPS邀请](https://zt.wps.cn/2018/clock_in?csource=pc_clock_oldactivity) 邀请好友,需小程序手动打卡,抄自[@lepecoder/checkin](https://github.com/lepecoder/checkin)
  - [x] [时光相册](https://web.everphoto.cn/)每日签到
  - [x] [书香门第](http://www.txtnovel.top/?fromuser=lu66666)每日签到
  - [x] [多看阅读app](http://www.duokan.com/m/product)每日任务薅书豆+自动延期 保底3k+ (大概
@@ -36,13 +36,16 @@
  - [x] [mt论坛](https://bbs.binmt.cc/?fromuid=14593)每日签到
  - [x] [经管之家](https://bbs.pinggu.org/?fromuid=11925701)每日签到
  - [ ] ~~哔哩哔哩每日白嫖硬币活动（夏日音乐季 手书嘉年华 14+）九月初结束~~
- - [x] [好游快爆](https://m.i3839.com/qd-huodong4.html)全任务(签到，分享/下载/体验游戏，抖音任务，邀请下载，照料好友),邀请码`sdvf180uscf3`
-
+ - [x] [好游快爆](https://huodong3.3839.com/n/hykb/friend/yaoqing.php?u=21039293)全任务(签到，分享/下载/体验游戏，抖音任务，邀请下载，照料好友),下载安装后首页搜索99999领取新人福利,爆米花可兑换实物周边,虚拟兑换码等
+ - [x] [猫耳FM](https://m.missevan.com)
 </details>
 
  
 
-# 使用方法 (懂得自然懂 bushi
+# 使用方法 (懂得自然懂 bushi  
+
+[关于如何使用termux运行签到盒那件事](https://www.1oner.cn/archives/121/)  
+
 下载源码,在config.json文件内填入对应cookis,安装依耐,运行
    ```       
        git clone https://github.com/Wenmoux/checkbox.git
@@ -65,6 +68,7 @@
 <details>
 <summary>更新日志</summary>
 
+- 2021-02-18 新增[猫耳FM](https://m.missevan.com)每日任务
 - 2021-01-22 新增wps群集结活动
 - 2021-01-19 [SF轻小说app](http://book.sfacg.com)每日签到+每日任务
 - 2021-01-08 [CSDN](https://www.csdn.net/)增加抽奖(每签到5天增加一次抽奖机会)
