@@ -2,7 +2,7 @@ const axios = require ("axios")
 const scookie = ""
 scookie = scookie.match("\\|")?encodeURIComponent(scookie):scookie
   
-async function get(a, b) {
+async function get(a,b,key) {
     return new Promise(async resolve => {
         try {
             let res = await axios.post(`https://huodong3.3839.com/n/hykb/bmhstore2/inc/${key}/ajax${key.slice(0, 1).toUpperCase() + key.slice(1)}.php`, `ac=${a}&r=0.9948423196524376&${b}&scookie=${scookie}`, {
@@ -19,9 +19,9 @@ async function get(a, b) {
 }
 
 async function exchange(id,key) {
-        await get("checkExchange", `gid=${id}`) //检测
+        await get("checkExchange", `gid=${id}`,key) //检测
     for (i = 0; i < 999; i++) {
-        await get("exchange", `goodsid=${id}`) //兑换
+        await get("exchange", `goodsid=${id}`,key) //兑换
     }
 }
 
