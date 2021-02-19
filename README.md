@@ -44,7 +44,7 @@
 
 # 使用方法 (懂得自然懂 bushi  
 
-[关于如何使用termux运行签到盒那件事](https://www.1oner.cn/archives/121/)  
+[教程：关于如何使用termux运行签到盒那件事](https://www.1oner.cn/archives/121/)  
 
 下载源码,在config.json文件内填入对应cookis,安装依耐,运行
    ```       
@@ -68,6 +68,7 @@
 <details>
 <summary>更新日志</summary>
 
+- 2021-02-20 更新好游快爆抢兑脚本,可兑换所有商品
 - 2021-02-18 新增[猫耳FM](https://m.missevan.com)每日任务
 - 2021-01-22 新增wps群集结活动
 - 2021-01-19 [SF轻小说app](http://book.sfacg.com)每日签到+每日任务
