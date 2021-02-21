@@ -1,4 +1,5 @@
 const axios = require("axios")
+let sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 invite_sid = [
   'V02S2UBSfNlvEprMOn70qP3jHPDqiZU00a7ef4a800341c7c3b',
   'V02StVuaNcoKrZ3BuvJQ1FcFS_xnG2k00af250d4002664c02f',
@@ -16,12 +17,9 @@ invite_sid = [
   'V02SC1mOHS0RiUBxeoA8NTliH2h2NGc00a803c35002693584d'
 ]
 function invite(id) {
-  return new Promise(async (resolve, reject) => {
     url = 'http://zt.wps.cn/2018/clock_in/api/invite'
-    res = await axios.post(url, `invite_userid=${wpsinviteid}`, {headers: { "sid": id }})     
-    resolve()
-  })
-  
+    await axios.post(url, `invite_userid=${wpsinviteid}`, {headers: { "sid": id }})     
+
 }
 
 
@@ -30,6 +28,7 @@ wpsinviteid =require("../config.json").wps.uid//就是自己账号id
 num=0
   for (id of invite_sid){
   await invite(id)
+  await sleep(2000)
   }
   console.log('邀请完毕,任务结束') 
 }

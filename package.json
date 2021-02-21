@@ -4,7 +4,8 @@
   "description": "签到合集",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node index.js",
+    "start":"node index.js"
   },
   "keywords": [
     "签到"
