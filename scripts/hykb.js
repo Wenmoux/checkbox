@@ -142,7 +142,7 @@ async function task() {
                             let resss = await  axios.get(urll)
                             if(resss.data.result){
                             let strr = JSON.stringify(resss.data.result.data.downinfo.appinfo).replace(/&nbsp;/g,"").replace(/ /g,"")  //查答案                          
-                         reg=/错误|不属于|不是|不存在|没有|不需要|不能|不可以|不需要/
+                         reg=/错误|不属于|不是|不存在|没有|不能|不可以|不需要/
                            if(reg.test(ress.title)){  
                            console.log("错误类型") 
                         for (i ; i < 5; i++) {
