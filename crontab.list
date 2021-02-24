@@ -3,7 +3,7 @@
 50 23 * * * rm -rf /sdcard/check/logs/*.log
 
 #签到盒scripts1 普通任务
-1 5 * * * node /sdcard/脚本/wenmoux/index.js >> /sdcard/wenmoux/logs/checkbox.log 2>&1
+1 5 * * * node /sdcard/checkbox/index.js >> /sdcard/checkbox/logs/checkbox.log 2>&1
 
 #scripts2 定时任务
 
