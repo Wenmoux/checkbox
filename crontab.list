@@ -1,0 +1,16 @@
+# 每天的23:50分清理一次日志
+#不需要的任务前面加#注释掉就可以了
+50 23 * * * rm -rf /sdcard/check/logs/*.log
+
+#签到盒scripts1 普通任务
+1 5 * * * node /sdcard/脚本/wenmoux/index.js >> /sdcard/wenmoux/logs/checkbox.log 2>&1
+
+#scripts2 定时任务
+
+#爱好论坛 
+30 8,13,18 * * * node /sdcard/checkbox/scripts2/aihao.js >> /sdcard/checkbox/logs/aihao.log 2>&1
+
+#好游快爆抢兑 对应商品时间自己修改 提前几秒运行就行
+59 12 * * * node /sdcard/checkbox/scripts2/hykb_exchange_goods.js >> /sdcard/checkbox/logs/hykb_exchange_goods.log 2>&1
+
+

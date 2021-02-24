@@ -38,6 +38,7 @@
  - [ ] ~~哔哩哔哩每日白嫖硬币活动（夏日音乐季 手书嘉年华 14+）九月初结束~~
  - [x] [好游快爆](https://huodong3.3839.com/n/hykb/friend/yaoqing.php?u=21039293)全任务(签到，分享/下载/体验游戏，抖音任务，邀请下载，照料好友),下载安装后首页搜索99999领取新人福利,爆米花可兑换实物周边,虚拟兑换码等
  - [x] [猫耳FM](https://m.missevan.com)
+ - [x] [爱好论坛](https://www.aihao.cc)
 </details>
 
  
@@ -45,6 +46,8 @@
 # 使用方法 (懂得自然懂 bushi  
 
 [教程：关于如何使用termux运行签到盒那件事](https://www.1oner.cn/archives/121/)  
+termux可以使用crontab设置定时任务
+
 
 下载源码,在config.json文件内填入对应cookis,安装依耐,运行
    ```       
@@ -68,6 +71,7 @@
 <details>
 <summary>更新日志</summary>
 
+- 2021-02-23 增加[爱好论坛](https://www.aihao.cc)
 - 2021-02-20 更新好游快爆抢兑脚本,可兑换所有商品
 - 2021-02-18 新增[猫耳FM](https://m.missevan.com)每日任务
 - 2021-01-22 新增wps群集结活动

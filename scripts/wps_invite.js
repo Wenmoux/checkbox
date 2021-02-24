@@ -16,7 +16,7 @@ invite_sid = [
   'V02SwV15KQ_8n6brU98_2kLnnFUDUOw00adf3fda0026934a7f',
   'V02SC1mOHS0RiUBxeoA8NTliH2h2NGc00a803c35002693584d'
 ]
-function invite(id) {
+async function invite(id) {
     url = 'http://zt.wps.cn/2018/clock_in/api/invite'
     await axios.post(url, `invite_userid=${wpsinviteid}`, {headers: { "sid": id }})     
 
@@ -25,7 +25,6 @@ function invite(id) {
 
 async function wpsdaka() {
 wpsinviteid =require("../config.json").wps.uid//就是自己账号id
-num=0
   for (id of invite_sid){
   await invite(id)
   await sleep(2000)
