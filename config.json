@@ -83,5 +83,9 @@
     },
     "aihao":{
     "cookie":""
+    },
+    "hbooker":{
+    "login_name":"",
+    "passwd" : ""
     }
 }

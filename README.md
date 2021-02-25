@@ -37,8 +37,10 @@
  - [x] [经管之家](https://bbs.pinggu.org/?fromuid=11925701)每日签到
  - [ ] ~~哔哩哔哩每日白嫖硬币活动（夏日音乐季 手书嘉年华 14+）九月初结束~~
  - [x] [好游快爆](https://huodong3.3839.com/n/hykb/friend/yaoqing.php?u=21039293)全任务(签到，分享/下载/体验游戏，抖音任务，邀请下载，照料好友),下载安装后首页搜索99999领取新人福利,爆米花可兑换实物周边,虚拟兑换码等
- - [x] [猫耳FM](https://m.missevan.com)
- - [x] [爱好论坛](https://www.aihao.cc)
+ - [x] [猫耳FM](https://m.missevan.com)每日任务
+ - [x] [爱好论坛](https://www.aihao.cc)早中晚打卡以及全勤领取
+ - [x] [刺猬猫](https://wap.ciweimao.com/)每日任务(除了订阅章节)
+ 
 </details>
 
  
@@ -71,7 +73,8 @@ termux可以使用crontab设置定时任务
 <details>
 <summary>更新日志</summary>
 
-- 2021-02-23 增加[爱好论坛](https://www.aihao.cc)
+- 2021-02-25 增加- [x] [刺猬猫](https://wap.ciweimao.com/)每日任务
+- 2021-02-23 增加[爱好论坛](https://www.aihao.cc)早中晚打卡以及全勤领取
 - 2021-02-20 更新好游快爆抢兑脚本,可兑换所有商品
 - 2021-02-18 新增[猫耳FM](https://m.missevan.com)每日任务
 - 2021-01-22 新增wps群集结活动
