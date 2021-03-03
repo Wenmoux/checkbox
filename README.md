@@ -40,7 +40,7 @@
  - [x] [猫耳FM](https://m.missevan.com)每日任务
  - [x] [爱好论坛](https://www.aihao.cc)早中晚打卡以及全勤领取
  - [x] [刺猬猫](https://wap.ciweimao.com/)每日任务(除了订阅章节)
- 
+ - [acfun](https://activity.acfun.cn/invite-share?userId=3941489&activityType=default&page_source=resource_slot_invite_friend_tips&sid=9e0a35788902e0db)每日签到/投🍌/点赞
 </details>
 
  
@@ -72,8 +72,9 @@ termux可以使用crontab设置定时任务
 # other
 <details>
 <summary>更新日志</summary>
-
-- 2021-02-25 增加- [x] [刺猬猫](https://wap.ciweimao.com/)每日任务
+ 
+- 2021-03-03 新增[Acfun](https://activity.acfun.cn/invite-share?userId=3941489&activityType=default&page_source=resource_slot_invite_friend_tips&sid=9e0a35788902e0db)每日签到任务
+- 2021-02-25 增加[刺猬猫](https://wap.ciweimao.com/)每日任务
 - 2021-02-23 增加[爱好论坛](https://www.aihao.cc)早中晚打卡以及全勤领取
 - 2021-02-20 更新好游快爆抢兑脚本,可兑换所有商品
 - 2021-02-18 新增[猫耳FM](https://m.missevan.com)每日任务
