@@ -18,10 +18,16 @@ function check() {
             if (ress.data.success) {
                 let data = ress.data.info
                 point = data.point
-                 console.log(`${data.username}   当前小鱼干：${data.point}`)
+                console.log(`${data.username}   当前小鱼干：${data.point}`)
+                    await task(`https://www.missevan.com/member/gettask?ttype=1&userid=`)
+    await task('https://www.missevan.com/member/getcatears?gtype=1')
+    await task('https://www.missevan.com/member/getcatears?gtype=4')
+    await task(`https://www.missevan.com/member/getfeedtask?ttype=1&userid=&_=`)
+    await task('https://www.missevan.com/member/getcatears?gtype=2')
+
             } else {
                 console.log("cookie失效")
-                return;
+                
             }
         } catch (err) {
             console.log(err)
@@ -133,11 +139,6 @@ function ts() {
 
 async function missevan() {
     point1 = await check()
-    await task(`https://www.missevan.com/member/gettask?ttype=1&userid=`)
-    await task('https://www.missevan.com/member/getcatears?gtype=1')
-    await task('https://www.missevan.com/member/getcatears?gtype=4')
-    await task(`https://www.missevan.com/member/getfeedtask?ttype=1&userid=&_=`)
-    await task('https://www.missevan.com/member/getcatears?gtype=2')
     point2 = await check()
     console.log(`今日共获得${point2-point1}小鱼干`)
 }
