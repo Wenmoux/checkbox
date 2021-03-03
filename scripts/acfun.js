@@ -85,8 +85,8 @@
              if (res.data.result == 0 && res.data["acfun.midground.api_st"]) {
                  st = res.data["acfun.midground.api_st"]
                  console.log("获取token成功：%s", st)
-                 await interact("delete")
-                 await interact("add")
+                 await interact("delete") //取消点赞
+                 await interact("add") //重新点赞
              } else {
                  console.log("获取token失败")
                  console.log(res.data)
@@ -102,7 +102,7 @@
  function interact(option) {
      return new Promise(async resolve => {
          try {
-             let data = `kpn=ACFUN_APP&kpf=PC_WEB&subBiz=mainApp&interactType=1&objectType=2&objectId=26030726&acfun.midground.api_st=${st}&userId=${authkey}&extParams%5BisPlaying%5D=false&extParams%5BshowCount%5D=1&extParams%5BotherBtnClickedCount%5D=10&extParams%5BplayBtnClickedCount%5D=0`
+             let data = `kpn=ACFUN_APP&kpf=PC_WEB&subBiz=mainApp&interactType=1&objectType=2&objectId=26030726&acfun.midground.api_st=${st||0}&userId=${authkey}&extParams%5BisPlaying%5D=false&extParams%5BshowCount%5D=1&extParams%5BotherBtnClickedCount%5D=10&extParams%5BplayBtnClickedCount%5D=0`
              let res = await $http.post(`https://kuaishouzt.com/rest/zt/interact/${option}`, data, {
                  headers
              })
@@ -118,7 +118,27 @@
          resolve()
      })
  }
-
+//直播间扭蛋 还没测试 做任务前观看30s直播 等能开第一个了就用脚本跑 就可以全部领取了
+ function timeBox(id) {
+     return new Promise(async resolve => {
+         try {
+             console.log("开始扭蛋领取 请先手动观看30s+直播")
+             headers["url_page"]="LIVE_DETAIL"
+             let res =await $http.post(`https://api-ipv6.acfunchina.com/rest/app/live/timeBox/draw?userId=${authkey}&boxId=${id}&market=tencent&product=ACFUN_APP&sys_version=8.0.0&app_version=6.40.2.1108&boardPlatform=hi3650&sys_name=android&socName=%3A%20HiSilicon%20Kirin%20950&appMode=0`,"",{headers})
+          //   console.log(res.data)
+             if (res.data.result == 0) {
+                 console.log("扭蛋 %d 开启成功 ,获得 %d 🍌",id,res.data.timeBoxList[id-1].bananaCount)
+             } else {
+                 console.log("扭蛋 %d 开启失败：%s",id,res.data.error_msg )
+             }
+         } catch (err) {
+             console.log(err.response.data)
+             console.log("扭蛋接口请求出错")
+         }
+         resolve()
+     })
+ }
+ 
  function acfun(account,password) {
      return new Promise(async resolve => {
          try {
@@ -136,6 +156,9 @@
                  await ThrowBanana(Math.round(Math.random() * 10000) + 14431808)
                  await NewDanmu()
                  await getoken()
+                 for (id of [1,2,3,4,5,6]){
+                 await timeBox(id)
+                 }
              } else {
                  console.log("登陆失败 %s", res.data.error_msg)
              }

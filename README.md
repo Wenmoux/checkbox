@@ -9,6 +9,7 @@
 
 # 简介
 一些常用网站以及app的签到,有用的话点个star⭐️呗
+[TG群](https://t.me/wenmou_car)
 需要什么签到可以去提[issues](https://github.com/wenmoux/checkbox/issues),也欢迎PR
 
 # 签到列表
@@ -19,7 +20,7 @@
  - [x] [WPS邀请](https://zt.wps.cn/2018/clock_in?csource=pc_clock_oldactivity) 邀请好友,需小程序手动打卡,抄自[@lepecoder/checkin](https://github.com/lepecoder/checkin)
  - [x] [时光相册](https://web.everphoto.cn/)每日签到
  - [x] [书香门第](http://www.txtnovel.top/?fromuser=lu66666)每日签到
- - [x] [多看阅读app](http://www.duokan.com/m/product)每日任务薅书豆+自动延期 保底3k+ (大概
+ - [x] [多看阅读app](http://www.duokan.com/m/product)每日任务薅书豆+自动延期 保底6k+ (大概
  - [x] [绅士领域](https://hk.hksslyapp.xyz/mz_pbl/app_down/)每日签到得硬币
  - [x] [ucloud社区](https://uclub.ucloud.cn/invite/478)每日签到得积分
  - [x] [网易蜗牛读书](https://du.163.com/static/activity/new_rank/index.html?user=8cf097eb09724ec5b5389a262f069a14)每日签到
@@ -40,7 +41,7 @@
  - [x] [猫耳FM](https://m.missevan.com)每日任务
  - [x] [爱好论坛](https://www.aihao.cc)早中晚打卡以及全勤领取
  - [x] [刺猬猫](https://wap.ciweimao.com/)每日任务(除了订阅章节)
- - [acfun](https://activity.acfun.cn/invite-share?userId=3941489&activityType=default&page_source=resource_slot_invite_friend_tips&sid=9e0a35788902e0db)每日签到/投🍌/点赞
+ - [x] [acfun](https://activity.acfun.cn/invite-share?userId=3941489&activityType=default&page_source=resource_slot_invite_friend_tips&sid=9e0a35788902e0db)每日签到/投🍌/点赞/直播扭蛋
 </details>
 
  
@@ -72,7 +73,8 @@ termux可以使用crontab设置定时任务
 # other
 <details>
 <summary>更新日志</summary>
- 
+
+- 2021-03-04 更新acfun直播扭蛋任务,需要手动先观看30s直播！ 
 - 2021-03-03 新增[Acfun](https://activity.acfun.cn/invite-share?userId=3941489&activityType=default&page_source=resource_slot_invite_friend_tips&sid=9e0a35788902e0db)每日签到任务
 - 2021-02-25 增加[刺猬猫](https://wap.ciweimao.com/)每日任务
 - 2021-02-23 增加[爱好论坛](https://www.aihao.cc)早中晚打卡以及全勤领取
