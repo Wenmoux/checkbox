@@ -1,13 +1,13 @@
 {
     "duokan": {
         "cookie": ""
-            },
+    },
     "wps": {
         "uid": "123456"
     },
     "cg": {
         "token": "",
-        "skey":""
+        "skey": ""
     },
     "ssly": {
         "uid": 12487
@@ -28,8 +28,8 @@
     },
     "hykb": {
         "scookie": "",
-        "gid":"",
-        "invitecode":""
+        "gid": "",
+        "invitecode": ""
     },
     "du163": {
         "xsrf": "",
@@ -39,57 +39,57 @@
         "cookie": ""
     },
     "xiang5": {
-        "cookie":""
+        "cookie": ""
     },
     "notice": {
-        "tgbot_token":"",
-        "serverj":"",
-        "coolpush":""
+        "tgbot_token": "",
+        "serverj": "",
+        "coolpush": ""
     },
     "jd": {
-        "cookie":""
+        "cookie": ""
     },
     "jjwxc": {
-        "cookie":""
+        "cookie": ""
     },
     "smzdm": {
-        "cookie":""
+        "cookie": ""
     },
-    "cg163" : {
-        "Authorization":""
+    "cg163": {
+        "Authorization": ""
     },
     "lkong": {
-        "cookie":""
+        "cookie": ""
     },
-    "pinggu":{
-        "cookie":""
+    "pinggu": {
+        "cookie": ""
     },
-    "nga":{
+    "nga": {
         "uid": "",
-        "accesstoken":"" 
+        "accesstoken": ""
     },
-    "csdn":{
-        "cookie":""
+    "csdn": {
+        "cookie": ""
     },
-    "mt":{
-        "cookie":"666",
-        "time":""
+    "mt": {
+        "cookie": "",
+        "time": ""
     },
-    "sfacg":{
-    "cookie":""
+    "sfacg": {
+        "cookie": ""
     },
-    "maoer":{
-    "cookie":""
+    "maoer": {
+        "cookie": ""
     },
-    "aihao":{
-    "cookie":""
+    "aihao": {
+        "cookie": ""
     },
-    "hbooker":{
-    "login_name":"",
-    "passwd" : ""
+    "hbooker": {
+        "login_name": "",
+        "passwd": ""
     },
-    "acfun":{
-    "phone":"",
-    "password":""
+    "acfun": {
+        "phone": "",
+        "password": ""
     }
 }

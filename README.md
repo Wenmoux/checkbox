@@ -8,10 +8,11 @@
 </div>
 
 # 简介
-一些常用网站以及app的签到,有用的话点个star⭐️呗
-[TG群](https://t.me/wenmou_car)
-需要什么签到可以去提[issues](https://github.com/wenmoux/checkbox/issues),也欢迎PR
-
+一些常用网站以及app的签到,有用的话点个star⭐️呗  
+[点这里加TG群](https://t.me/wenmou_car)  
+需要什么签到可以去提[issues](https://github.com/wenmoux/checkbox/issues),也欢迎PR  
+关于代码为什么这么烂:  
+开始写的时候就不知道js是啥，也不了解编程，全靠百度，以及抄大佬的代码
 # 签到列表
 <details>
 <summary>查看签到列表</summary>
@@ -74,6 +75,7 @@ termux可以使用crontab设置定时任务
 <details>
 <summary>更新日志</summary>
 
+- 2021-03-07 增加qmsg/coolpush/server酱推送
 - 2021-03-04 更新acfun直播扭蛋任务,需要手动先观看30s直播！ 
 - 2021-03-03 新增[Acfun](https://activity.acfun.cn/invite-share?userId=3941489&activityType=default&page_source=resource_slot_invite_friend_tips&sid=9e0a35788902e0db)每日签到任务
 - 2021-02-25 增加[刺猬猫](https://wap.ciweimao.com/)每日任务
@@ -94,7 +96,16 @@ termux可以使用crontab设置定时任务
 - 2020-12-22 新增[网易云游戏平台](https://cloudgame.webapp.163.com/newer.html?invite_code=R6522U)每日签到
 -  ...
 
-</details>
+</details> 
+
+
+
+# 致谢
+
+[@chavyleung](https://github.com/chavyleung/scripts/tree/master/rrtv)  
+[@lepecoder](https://github.com/lepecoder/checkin)  
+[@zsakvo](https://github.com/zsakvo)  
+
 
 # 支持一下
 

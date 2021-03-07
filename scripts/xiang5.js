@@ -18,7 +18,7 @@ function task() {
           console.log(err)
           
         }
-        resolve(msg)
+        resolve("香网小说每日签到：\n"+msg)
     })
 }
 

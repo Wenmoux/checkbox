@@ -1,5 +1,4 @@
 const w2ck = require("../config.json").w2pj.cookie
-let w2result = ""
 const axios = require("axios")
 function w2sign() {
     return new Promise(async (resolve) => {
@@ -17,7 +16,7 @@ function w2sign() {
             } else if (data.match(/已申请过此任务/)) {
                 w2result="今日已签☑️"
             } else if (data.match(/恭喜/)) {
-              w2result+="签到成功✅"
+              w2result="签到成功✅"
              
             } else {             
               w2result="签到失败,原因未知❗️"               
@@ -26,13 +25,9 @@ function w2sign() {
         } catch (err) {
             console.log(err);
         }
-        resolve();
+        resolve("吾爱破解每日签到：\n"+w2result);
     });
-}
-async function task() {
-    await w2sign()
-    //return w2result
 }
 
 //task()
-module.exports = task
+module.exports = w2sign

@@ -1,19 +1,31 @@
-const axios = require("axios")
+const axios = require("axios");
 function task() {
-    return new Promise(async resolve => {
-        try {
-            let str=require("../config.json").nga
-            let url = 'https://ngabbs.com/nuke.php?&'            
-            let res = await axios.post(url,`sign=&access_uid=${str.uid}&t=${Math.round(new Date().getTime()/1000).toString()}&access_token=${str.accesstoken}&    app_id=1010&__act=check_in&__lib=check_in&__output=12` )     
-         console.log(res.data.msg)
-        } catch (err) {
-          console.log(err)
-          
-        }
-        resolve()
-    })
+  return new Promise(async (resolve) => {
+    try {
+      let str = require("../config.json").nga;
+      let url = "https://ngabbs.com/nuke.php?&";
+      let res = await axios.post(
+        url,
+        `sign=&access_uid=${str.uid}&t=${Math.round(
+          new Date().getTime() / 1000
+        ).toString()}&access_token=${
+          str.accesstoken
+        }&    app_id=1010&__act=check_in&__lib=check_in&__output=12`
+      );
+      if (res.data.code == 0) {
+        msg = "签到成功";
+      } else {
+        msg = res.data.msg;
+      }
+      console.log(res.data);
+    } catch (err) {
+      console.log(err);
+      msg = "签到接口请求出错";
+    }
+    resolve("NGA每日签到：\n" + msg);
+  });
 }
 
 //task()
 
-module.exports=task
+module.exports = task;
