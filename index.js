@@ -1,6 +1,6 @@
 const sendmsg = require("./sendmsg");
 
-let signList = ["acfun","aihao","cg","cg163","csdn","du163","duokan","everphoto","hbooker","hykb","jjwxc","lkong","missevan","mt_sign","nga","pingu","rrsp","sfacg","smzdm","ssly","sxmd","uclub","w2pj","wps_invite","xiang5"];
+let signList = ["cg163","csdn"];
 sedmsg = require("./sendmsg")
 let logs = "";
 //自行添加任务 名字看脚本里的文件名 比如csdn.js 就填"csdn"

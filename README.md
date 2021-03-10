@@ -50,7 +50,11 @@
 # 使用方法 (懂得自然懂 bushi  
 
 [教程：关于如何使用termux运行签到盒那件事](https://www.1oner.cn/archives/121/)  
-termux可以使用crontab设置定时任务
+termux可以使用crontab设置定时任务  
+关于如何使用云函数
+下载代码 把index.js删掉 tscf.js改成index.js然后导入云函数就好了(我只用过腾讯云函数 其它的不知道  
+如果提示找不到入口函数 大概率是你压缩包多套了一层( ´艸｀)
+
 
 
 下载源码,在config.json文件内填入对应cookis,安装依耐,运行

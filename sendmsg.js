@@ -12,20 +12,20 @@ async function sendmsg(text) {
 
 function qmsg(msg) {
   return new Promise(async (resolve) => {
-    try {
-      if (qmsgkey) {
-        let url = `https://qmsg.zendee.cn/send/${qmsgkey}?msg=${encodeURI(
-          msg
-        )}`;
-        let res = await $http.get(url);
-        if (res.data.code == 0) {
-          console.log("Qmsg酱：发送成功");
+    try {        
+        if (sckey) {
+          let url = `https://sctapi.ftqq.com/${sckey}.send`
+          let data =`title=${encodeURI("wps记得手动打卡哦")}&desp=${encodeURI(text)}`
+          let res = await axios.post(url,data)
+          if (res.data.code == 0) {
+              console.log("server酱:发送成功");
+            } else {
+            console.log("server酱:发送失败");
+            console.log(res.data.info);
+          }
         } else {
-          console.log("Qmsg酱：发送失败!" + res.data.reason);
-        }
-      } else {
-        console.log("Qmsg酱：你还没有填写qmsg酱推送key呢，推送个鸡腿");
-      }
+          console.log("server酱:你还没有填写qmsg酱推送key呢，推送个鸡腿");
+        }             
     } catch (err) {
       console.log("Qmsg酱：发送接口调用失败");
       console.log(err);
