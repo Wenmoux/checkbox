@@ -43,6 +43,7 @@
  - [x] [爱好论坛](https://www.aihao.cc)早中晚打卡以及全勤领取
  - [x] [刺猬猫](https://wap.ciweimao.com/)每日任务(除了订阅章节)
  - [x] [acfun](https://activity.acfun.cn/invite-share?userId=3941489&activityType=default&page_source=resource_slot_invite_friend_tips&sid=9e0a35788902e0db)每日签到/投🍌/点赞/直播扭蛋
+ - [x] [传奇GM论坛](https://www.diygm.com)
 </details>
 
  
@@ -79,6 +80,7 @@ termux可以使用crontab设置定时任务
 <details>
 <summary>更新日志</summary>
 
+- 2021-03-11 增加[传奇GM论坛](https://www.diygm.com)每日签到
 - 2021-03-07 增加qmsg/coolpush/server酱推送
 - 2021-03-04 更新acfun直播扭蛋任务,需要手动先观看30s直播！ 
 - 2021-03-03 新增[Acfun](https://activity.acfun.cn/invite-share?userId=3941489&activityType=default&page_source=resource_slot_invite_friend_tips&sid=9e0a35788902e0db)每日签到任务
