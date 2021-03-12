@@ -94,5 +94,14 @@
     },
     "diygm":{
     "cookie":""
+    },
+    "ym3fd":{
+    "username":"",
+    "password":"",
+    "lzusername":"",
+    "lzpassword":""    
+    },
+    "acdog":{
+    "cookie":""
     }
 }

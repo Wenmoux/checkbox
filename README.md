@@ -44,6 +44,8 @@
  - [x] [刺猬猫](https://wap.ciweimao.com/)每日任务(除了订阅章节)
  - [x] [acfun](https://activity.acfun.cn/invite-share?userId=3941489&activityType=default&page_source=resource_slot_invite_friend_tips&sid=9e0a35788902e0db)每日签到/投🍌/点赞/直播扭蛋
  - [x] [传奇GM论坛](https://www.diygm.com)
+ - [x] [一亩三分地](https://www.1point3acres.com/bbs/?fromuid=702784)每日签到答题,需要填写[联众打码](https://www.jsdati.com/)账号密码 
+ - [x] [次元狗](https://www.acgndog.com/)每日签到
 </details>
 
  
@@ -80,6 +82,10 @@ termux可以使用crontab设置定时任务
 <details>
 <summary>更新日志</summary>
 
+- 2021-03-12
+  - 新增[一亩三分地](https://www.1point3acres.com/bbs/?fromuid=702784)每日签到答题,需要填写[联众打码](https://www.jsdati.com/)账号密码
+  - 新增[次元狗](https://www.acgndog.com/)每日签到
+  - 删除uclub社区签到
 - 2021-03-11 增加[传奇GM论坛](https://www.diygm.com)每日签到
 - 2021-03-07 增加qmsg/coolpush/server酱推送
 - 2021-03-04 更新acfun直播扭蛋任务,需要手动先观看30s直播！ 

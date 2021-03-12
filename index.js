@@ -1,6 +1,6 @@
 const sendmsg = require("./sendmsg");
 
-let signList = ["cg163","csdn"];
+let signList = ["csdn"];
 sedmsg = require("./sendmsg")
 let logs = "";
 //自行添加任务 名字看脚本里的文件名 比如csdn.js 就填"csdn"
@@ -14,5 +14,5 @@ async function start(taskList) {
     logs += await task() + "    \n\n"
   }
   console.log("------------任务执行完毕------------\n");
-  await sendmsg(logs)
+   await sendmsg(logs)
 }

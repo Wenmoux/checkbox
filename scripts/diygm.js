@@ -16,7 +16,6 @@ const rules = {
 
 async function diygm(){
 const template = require("../Template");
-
 return await template(rules)
 }
 module.exports=diygm

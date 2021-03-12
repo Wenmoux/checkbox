@@ -34,6 +34,7 @@ function Template(rules) {
       //   console.log(msg);
     } catch (err) {
       console.log(err);
+      msg = "签到失败"
     }
     resolve(rules.name + msg);
   });
