@@ -24,6 +24,7 @@ function w2sign() {
          console.log(w2result)
         } catch (err) {
             console.log(err);
+            w2result="签到请求失败️"  
         }
         resolve("吾爱破解每日签到：\n"+w2result);
     });

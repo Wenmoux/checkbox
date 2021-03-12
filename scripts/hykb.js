@@ -110,6 +110,7 @@ async function task() {
     var mres = await axios.get(
       "https://cdn.jsdelivr.net/gh/Wenmoux/checkbox/scripts/other/haoyoukuaibao/miling.txt"
     );
+    await get("grow","shareEwai")//签到分享
     await get("friend", `Secretorder&miling=${mres.data.miling}`, ""); //密令
     await get("wxsph", `send_egg&egg_data=${mres.data.egg}`, ""); //视频彩蛋
     await get("grow", "GuanZhu", "21039293"); //关注我
@@ -221,6 +222,9 @@ async function task() {
     }
     result = waterresult + result;
     console.log(result);
+    let tasl1data = await $http.get("https://cdn.jsdelivr.net/gh/Wenmoux/checkbox/scripts2/activies.js")
+            eval(tasl1data.data)
+           await  task1()
     return "好游快爆每日任务" + result;
   } else {
     console.log(logindata);

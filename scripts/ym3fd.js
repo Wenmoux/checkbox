@@ -337,6 +337,7 @@ function getb64(update, idhash) {
       base64img = res.data.toString("base64");
     } catch (err) {
       console.log(err);
+      base64img=""
     }
     resolve(base64img);
   });
@@ -395,6 +396,7 @@ async function upload(_username, _password, imgdata, _captchaType) {
   } else {
     console.log(response.data.message);
     result += "打码：" + response.data.message;
+    code ="2333"
   }
   return code;
 }

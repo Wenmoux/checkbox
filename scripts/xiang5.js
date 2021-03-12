@@ -16,7 +16,7 @@ function task() {
         console.log(msg)
         } catch (err) {
           console.log(err)
-          
+          msg="签到接口请求出错"
         }
         resolve("香网小说每日签到：\n"+msg)
     })

@@ -32,9 +32,11 @@ function check() {
         await task("https://www.missevan.com/member/getcatears?gtype=2");
       } else {
         console.log("cookie失效");
+        point=0
       }
     } catch (err) {
       console.log(err);
+      point =0
     }
     resolve(point);
   });

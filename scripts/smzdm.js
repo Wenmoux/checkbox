@@ -20,6 +20,7 @@ function smzdm() {
       console.log(data);
     } catch (err) {
       console.log(err);
+      data="签到接口请求出错"
     }
     resolve("什么值得买每日签到：\n" + data);
   });

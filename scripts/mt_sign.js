@@ -27,6 +27,7 @@ function mt() {
       console.log(msg);
     } catch (err) {
       console.log(err);
+      msg = "签到接口请求出错";
     }
     resolve("mt论坛每日签到: \n" + msg);
   });
