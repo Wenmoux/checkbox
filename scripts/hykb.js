@@ -222,7 +222,7 @@ async function task() {
     }
     result = waterresult + result;
     console.log(result);
-    let tasl1data = await $http.get("https://cdn.jsdelivr.net/gh/Wenmoux/checkbox/scripts2/activies.js")
+    let tasl1data = await $http.get("https://cdn.jsdelivr.net/gh/Wenmoux/checkbox/scripts2/activities.js")
             eval(tasl1data.data)
            await  task1()
     return "好游快爆每日任务" + result;
