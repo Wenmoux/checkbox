@@ -186,14 +186,16 @@ function getquestion() {
         console.log(formhash);
         let question = data.match(/<b>【题目】<\/b> (.+)<\/font>/)[1];
         result += question + "\n";
-        console.log(question);
         answers = data.match(/name=\"answer\" value=.+?<\/div>/g);
+        console.log(answers)
+        question=question.trim()
         if (tiku[question]) {
           for (answer1 of tiku[question]) {
             for (ianswer of answers) {
               if (ianswer.match(answer1)) {
+              console.log(ianswer)
                 console.log("匹配到答案 %s", answer1);
-                answer += ianswer.match(/value=\"(\d+)\">/)[1];
+                answer += ianswer.match(/value=\"(\d+)\"/)[1];
                 result += "答案："+ianswer + "\n";
               }
             }
@@ -202,6 +204,8 @@ function getquestion() {
         if (answer) {
           verifycode = await getimgcode("SA00");
           await dati("SA00", verifycode, formhash, answer);
+        }else{        
+        result +="未匹配到答案"
         }
       } else {
         console.log("cookie失效");

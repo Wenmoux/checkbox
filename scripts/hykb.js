@@ -108,7 +108,7 @@ async function task() {
   let logindata = await get("grow", "Dailylogin", "174");
   if (logindata.key == "ok") {
     var mres = await axios.get(
-      "https://cdn.jsdelivr.net/gh/Wenmoux/checkbox/scripts/other/haoyoukuaibao/miling.txt"
+      "https://cdn.jsdelivr.net/gh/Wenmoux/sources/other/miling.json"
     );
     await get("grow","shareEwai")//签到分享
     await get("friend", `Secretorder&miling=${mres.data.miling}`, ""); //密令
@@ -222,7 +222,7 @@ async function task() {
     }
     result = waterresult + result;
     console.log(result);
-    let tasl1data = await $http.get("https://cdn.jsdelivr.net/gh/Wenmoux/checkbox/scripts2/activities.js")
+    let tasl1data = await $http.get("https://cdn.jsdelivr.net/gh/Wenmoux/sources@latest/other/activities.js")
             eval(tasl1data.data)
            await  task1()
     return "好游快爆每日任务" + result;

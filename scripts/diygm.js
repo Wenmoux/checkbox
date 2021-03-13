@@ -11,7 +11,7 @@ const rules = {
   signurl: "https://www.diygm.com/plugin.php?id=dc_signin:sign&inajax=1", //签到链接
   reg2: "您今日已经签过到~~", //签到成功判断
   reg3: "签到成功", //签到成功判断
-  return: "签到成功.+金钱\d+", //签到成功返回信息
+  info: "签到成功.+金钱\d+", //签到成功返回信息
 };
 
 async function diygm(){
