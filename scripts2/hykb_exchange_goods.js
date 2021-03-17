@@ -21,7 +21,7 @@ async function get(a,b,key) {
 async function exchange(id,key) {
         await get("checkExchange", `gid=${id}`,key) //检测
     for (i = 0; i < 100; i++) {
-        await get("exchange", `goodsid=${id}`,key) //兑换
+        get("exchange", `goodsid=${id}`,key) //兑换
     }
 }
 

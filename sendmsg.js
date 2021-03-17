@@ -32,7 +32,7 @@ function qmsg(msg) {
             }
         } catch (err) {
             console.log("Qmsg酱：发送接口调用失败");
-            console.log(err);
+            console.log(err.response.data.message);
         }
         resolve();
     });

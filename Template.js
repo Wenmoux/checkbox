@@ -22,7 +22,7 @@ function Template(rules) {
         if (res2.data.match(rules.reg2)) {
           msg = "今天已经签到过啦";
         } else if (res2.data.match(rules.reg3)) {
-          msg = res2.data.match(rules.info);
+          msg = res2.data.match(rules.info)[0];
         } else {
           msg = "签到失败!原因未知";
           console.log(res2.data);
