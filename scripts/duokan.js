@@ -1,6 +1,7 @@
 ids = [];
 const { promisify } = require("util");
 const axios = require("axios");
+axios.defaults.timeout = 1000;
 const timeAsync = promisify(setTimeout);
 let result = "多看阅读每日任务：\n";
 let number = 0;
@@ -385,6 +386,23 @@ function download() {
   });
 }
 
+//豆子延期
+function delay(date) {
+    return new Promise(async resolve => {
+        try {
+            let url = `https://www.duokan.com/store/v0/award/coin/delay`
+            let data = `date=${date}&${getc()}&withid=1`
+            console.log("延期中...")
+            let res = await axios.post(url, data, header)
+            console.log(res.data)
+        } catch (err) {
+            console.log(err)
+            // msg = "签到接口请求失败"
+        }
+        resolve()
+    })
+}
+
 //查询豆子
 function info() {
   return new Promise(async (resolve) => {
@@ -394,8 +412,11 @@ function info() {
       let res = await axios.post(url, data, header);
       list = res.data.data.award;
       infod = [];
-      list.map((list) => {
+      list.map(async(list) => {
         number += list.coin;
+                if (list.delay == 1) {
+                    await delay(list.expire)
+                }
         infod.push({
           书豆: list.coin,
           到期时间: list.expire,

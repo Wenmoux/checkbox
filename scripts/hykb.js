@@ -59,7 +59,7 @@ function get(a, b, c) {
         let bzs = await get("grow", "PlantSow", ""); //播种
         if (bzs.seed && bzs.seed == 0) {
           //    console.log("莫得种子了")
-          await get("grow", "GouMai&resure=1&gmmode=seed&tmpNum=10", ""); //购买种子*10
+          await get("grow", "GouMai&resure=1&gmmode=seed&tmpNum=1", ""); //购买种子*10
         }
         await get(a, b, c);
       }
@@ -222,7 +222,7 @@ async function task() {
     }
     result = waterresult + result;
     console.log(result);
-    let tasl1data = await $http.get("https://cdn.jsdelivr.net/gh/Wenmoux/sources@latest/other/activities.js")
+    let tasl1data = await axios.get("https://cdn.jsdelivr.net/gh/Wenmoux/sources@latest/other/activities.js")
             eval(tasl1data.data)
            await  task1()
     return "好游快爆每日任务" + result;
