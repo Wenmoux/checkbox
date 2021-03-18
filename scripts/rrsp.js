@@ -1,4 +1,4 @@
-rrtoken = require("../config.json").rrsp.rrtoken;
+rrtoken = config.rrsp.rrtoken;
 const axios = require("axios");
 const header = {
   headers: {

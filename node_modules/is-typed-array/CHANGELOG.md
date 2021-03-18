@@ -1,3 +1,9 @@
+1.1.5 / 2021-02-14
+=================
+  * [meta] do not publish github action workflow files or nyc output
+  * [Deps] update `call-bind`, `es-abstract`
+  * [Dev Deps] update `eslint`, `@ljharb/eslint-config`, `aud`, `is-callable`, `tape`
+
 1.1.4 / 2020-12-05
 =================
   * [readme] fix repo URLs, remove defunct badges

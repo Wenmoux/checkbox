@@ -6,7 +6,7 @@ function jjwxc() {
       let url = "https://m.jjwxc.net/my/signIn";
       let res = await axios.get(url, {
         headers: {
-          cookie: require("../config.json").jjwxc.cookie || "sid=wenmoux",
+          cookie: config.jjwxc.cookie || "sid=wenmoux",
           "x-requested-with": "XMLHttpRequest",
         },
       });

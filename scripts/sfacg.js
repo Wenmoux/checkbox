@@ -1,6 +1,6 @@
 //sf轻小说app每日签到以及每日任务(除了分享)
 let result = "sf轻小说app每日签到：\n";
-cookie = require("../config.json").sfacg.cookie;
+cookie = config.sfacg.cookie;
 const headers = {
   headers: {
     "user-agent": "boluobao/4.6.36(android;23)/BDFZH2",

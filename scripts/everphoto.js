@@ -1,6 +1,6 @@
 const axios = require("axios");
-phone = require("../config.json").everphoto.phone;
-password = require("../config.json").everphoto.password;
+phone = config.everphoto.phone;
+password = config.everphoto.password;
 let result = "时光相册每日签到：\n";
 let header = {
   headers: {

@@ -24,13 +24,13 @@ async function invite(id) {
 }
 
 async function wpsdaka() {
-  wpsinviteid = require("../config.json").wps.uid; //就是自己账号id
+  wpsinviteid = config.wps.uid; //就是自己账号id
   for (id of invite_sid) {
     await invite(id);
     console.log("等待两秒延迟中...")
     await sleep(2000);
   }
-  return "邀请完毕,任务结束";
+  return "WPS邀请：\n邀请完毕,任务结束";
 }
 
 //wpadaka()

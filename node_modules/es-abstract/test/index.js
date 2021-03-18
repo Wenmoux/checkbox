@@ -22,8 +22,7 @@ test('methods match', function (t) {
 
 require('./GetIntrinsic');
 
-require('./helpers/getSymbolDescription');
-require('./helpers/OwnPropertyKeys');
+require('./helpers');
 
 require('./es5');
 require('./es6');

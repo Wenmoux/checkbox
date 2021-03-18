@@ -1,13 +1,13 @@
 ids = [];
 const { promisify } = require("util");
 const axios = require("axios");
-axios.defaults.timeout = 1000;
+//axios.defaults.timeout = 1000;
 const timeAsync = promisify(setTimeout);
 let result = "多看阅读每日任务：\n";
 let number = 0;
 header = {
   headers: {
-    cookie: require("../config.json").duokan.cookie,
+    cookie: config.duokan.cookie,
   },
 };
 device = header.headers.cookie.match(/device_id=(.+?);/);
@@ -490,3 +490,4 @@ module.exports = task;
 //看视频看广告
 //体验app
 //下载app
+//自动延期

@@ -1,7 +1,9 @@
 const sendmsg = require("./sendmsg");
-
+const yaml = require("js-yaml");
+const fs   = require('fs');
 let signList = ["csdn","mt_sign"];
 sedmsg = require("./sendmsg")
+global.config = yaml.load(fs.readFileSync('./config.yml', 'utf8'));
 let logs = "";
 //自行添加任务 名字看脚本里的文件名 比如csdn.js 就填"csdn"
 start(signList);

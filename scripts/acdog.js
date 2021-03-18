@@ -1,7 +1,7 @@
 let header = {
     headers: {
         'referer': 'https://www.acgndog.com/category/qingxiaoshuo',
-        'cookie': require("../config.json").acdog.cookie }
+        'cookie': config.acdog.cookie }
 }
 const axios = require("axios")
 let result = "次元🐕：\n"

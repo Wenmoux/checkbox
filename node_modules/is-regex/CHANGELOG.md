@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.1.2](https://github.com/inspect-js/is-regex/compare/v1.1.1...v1.1.2) - 2021-02-01
+
+### Commits
+
+- [Tests] migrate tests to Github Actions [`cc1686e`](https://github.com/inspect-js/is-regex/commit/cc1686e25f446ca6948f43b3f180d6e55e31fb4e)
+- [readme] fix repo URLs; remove travis badge [`d1d1da6`](https://github.com/inspect-js/is-regex/commit/d1d1da647bb4e91589606f12470cd27a47b3bb81)
+- [meta] do not publish github action workflow files [`9f84b99`](https://github.com/inspect-js/is-regex/commit/9f84b993a995f057b4d2d097ef47b1ff9c84115d)
+- [Tests] run `nyc` on all tests [`c37aab9`](https://github.com/inspect-js/is-regex/commit/c37aab9d332c4834b08ada94736c45ab1d39cd2f)
+- [Robustness] use `call-bind` [`fbb61bf`](https://github.com/inspect-js/is-regex/commit/fbb61bf3e19ccc178e6ed1e0d7ab9cc7c7167393)
+- [actions] add "Allow Edits" workflow [`9022b53`](https://github.com/inspect-js/is-regex/commit/9022b53cb05b0f105cd179800cf96e055b249f08)
+- [Dev Deps] update `eslint`, `@ljharb/eslint-config`, `aud`, `auto-changelog` [`d60f28f`](https://github.com/inspect-js/is-regex/commit/d60f28f7f2fb21dade7bce302b3e0246206423d3)
+- [Dev Deps] update `eslint`, `@ljharb/eslint-config`, `tape` [`2c35c43`](https://github.com/inspect-js/is-regex/commit/2c35c437edf3eeb37129eea2404d8f465d27620f)
+- [actions] switch Automatic Rebase workflow to `pull_request_target` event [`1009e25`](https://github.com/inspect-js/is-regex/commit/1009e259d49a63753dc6e79e2b876a30c00c6de6)
+- [meta] gitignore coverage output [`3b5fa9e`](https://github.com/inspect-js/is-regex/commit/3b5fa9ed2882c65ee81dff979f79f1a2751d3772)
+- [actions] update workflows [`1843ef6`](https://github.com/inspect-js/is-regex/commit/1843ef65b8b8c24a44e91bc4ed5ee60dffc31c2d)
+
 ## [v1.1.1](https://github.com/inspect-js/is-regex/compare/v1.1.0...v1.1.1) - 2020-08-03
 
 ### Commits

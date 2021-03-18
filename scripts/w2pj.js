@@ -1,4 +1,4 @@
-const w2ck = require("../config.json").w2pj.cookie
+const w2ck = config.w2pj.cookie
 const axios = require("axios")
 function w2sign() {
     return new Promise(async (resolve) => {

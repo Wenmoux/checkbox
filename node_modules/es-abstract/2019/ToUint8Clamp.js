@@ -5,7 +5,7 @@ var floor = require('./floor');
 
 var $isNaN = require('../helpers/isNaN');
 
-// https://www.ecma-international.org/ecma-262/6.0/#sec-touint8clamp
+// https://ecma-international.org/ecma-262/6.0/#sec-touint8clamp
 
 module.exports = function ToUint8Clamp(argument) {
 	var number = ToNumber(argument);

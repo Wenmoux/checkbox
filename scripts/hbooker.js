@@ -6,8 +6,8 @@
  * @Other：加解密还有写法都抄的 @zsakvo
  */
 
-login_name = require("../config.json").hbooker.login_name;
-passwd = require("../config.json").hbooker.passwd;
+login_name = config.hbooker.login_name;
+passwd = config.hbooker.passwd;
 token = "";
 username = "";
 const crypto = require("crypto");

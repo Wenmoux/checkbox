@@ -1,5 +1,5 @@
-let account = require("../config.json").sxmd.account;
-let password = require("../config.json").sxmd.password;
+let account = config.sxmd.account;
+let password = config.sxmd.password;
 const iconv = require("iconv-lite");
 const axios = require("axios");
 let ck = null;

@@ -1,7 +1,7 @@
 const headers = {
   headers: {
     Authorization:
-      require("../config.json").cg163.Authorization || " bearer xxxxx",
+      config.cg163.Authorization || " bearer xxxxx",
     "user-agent":
       "Mozilla/5.0 (Linux; Android 10; Redmi K30 Build/QKQ1.190825.002; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/85.0.4183.127 Mobile Safari/537.36",
     //                "content-type": "application/x-www-form-urlencoded; charset=UTF-8"

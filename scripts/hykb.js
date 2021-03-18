@@ -20,7 +20,7 @@ buid = [
   44761568,
   45466314,
 ];
-let scookie = require("../config.json").hykb.scookie; //打开好游快爆app，任务页面，随便一个post包，查看post数据里的scookie
+let scookie = config.hykb.scookie; //打开好游快爆app，任务页面，随便一个post包，查看post数据里的scookie
 if (scookie.match("\\|")) {
   scookie = encodeURIComponent(scookie);
 } else {
@@ -59,7 +59,7 @@ function get(a, b, c) {
         let bzs = await get("grow", "PlantSow", ""); //播种
         if (bzs.seed && bzs.seed == 0) {
           //    console.log("莫得种子了")
-          await get("grow", "GouMai&resure=1&gmmode=seed&tmpNum=1", ""); //购买种子*10
+          await get("grow", "GouMai&resure=1&gmmode=seed&tmpNum=10", ""); //购买种子*10
         }
         await get(a, b, c);
       }

@@ -1,7 +1,7 @@
-config = {
+let header = {
   headers: {
     "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
-    cookie: require("../config.json").maoer.cookie,
+    cookie: config.maoer.cookie,
     referer: "https://fm.missevan.com/live/160481424",
     "user-agent":
       "Mozilla/5.0 (Linux; Android 10; Redmi K30) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.111 Mobile Safari/537.36",
@@ -17,7 +17,7 @@ function check() {
     try {
       ress = await $http.get(
         "https://www.missevan.com/account/userinfo",
-        config
+        header
       );
       if (ress.data.success) {
         let data = ress.data.info;
@@ -45,7 +45,7 @@ function check() {
 function task(url) {
   return new Promise(async (resolve) => {
     try {
-      let res = await $http.get(url, config);
+      let res = await $http.get(url, header);
       message = res.data.success;
       //  console.log(res.data)
       if (res.data.success && res.data.info && res.data.info.message) {
@@ -56,7 +56,6 @@ function task(url) {
         message = res.data.error ? res.data.error : res.data.info;
       }
       console.log(message);
-
       if (JSON.stringify(res.data).match(/必须发布/)) {
         await addcomment();
         await task(url);
@@ -81,7 +80,7 @@ function addcomment() {
         let ress = await $http.post(
           "https://www.missevan.com/site/addcomment",
           data,
-          config
+          header
         );
 
         if (ress.data.success) {
@@ -109,7 +108,7 @@ function ts() {
         let res = await $http.post(
           "https://www.missevan.com/sound/ts",
           data1,
-          config
+          header
         );
 
         if (res.data.success) {

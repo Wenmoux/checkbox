@@ -5,7 +5,7 @@ function jd() {
       let url =
         "https://cdn.jsdelivr.net/gh/NobyDa/Script/JD-DailyBonus/JD_DailyBonus.js";
       let res = await axios.get(url);
-      a = `Key=require("../config.json").jd.cookie`;
+      a = `Key=config.jd.cookie`;
       script = res.data
         .replace(/var Key = ''/, a)
         .replace(/ stop = 0/, " stop = 1");

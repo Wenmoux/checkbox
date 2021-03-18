@@ -4,7 +4,7 @@ function aihao() {
   return new Promise(async (resolve) => {
     try {
       console.log("爱好论坛打卡开始...");
-      let cookie = require("../config.json").aihao.cookie;
+      let cookie = config.aihao.cookie;
       let header = { headers: { cookie: cookie } };
       for (i of [1, 2, 3, 4]) {
         str = ["上午打卡", "下午打卡", "晚上打卡", "全勤奖励"];

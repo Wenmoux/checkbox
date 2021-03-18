@@ -4,11 +4,11 @@ let result = "网易蜗牛每日签到: \n";
 function du163() {
   return new Promise(async (resolve) => {
     try {
-      const str = require("../config.json").du163;
+      const du = config.du163;
       const headers = {
         headers: {
-          _xsrf: str.xsrf,
-          "X-Auth-Token": str["X-Auth-Token"],
+          _xsrf: du.xsrf,
+          "X-Auth-Token": du["X-Auth-Token"],
           "User-Agent":
             "Mozilla/5.0 (Linux; Android 10; Redmi K30 Build/QKQ1.190825.002; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/85.0.4183.127 Mobile Safari/537.36 NeteaseSnailReader/1.9.11 NetType/3G+ (00ef591f8e05c305;coolapk) NEJSBridge/2.0.0",
         },

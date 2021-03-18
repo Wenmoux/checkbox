@@ -4,7 +4,7 @@ function task() {
     return new Promise(async resolve => {
         try {
             let url = 'http://m.xiang5.com/dosign'            
-            let res = await axios.post(url, "",{headers:{"X-Requested-With":"XMLHttpRequest","cookie":require("../config.json").xiang5.cookie}})     
+            let res = await axios.post(url, "",{headers:{"X-Requested-With":"XMLHttpRequest","cookie":config.xiang5.cookie}})     
             if(res.data.status==1)
          {
            msg=`签到成功✅✅获得${res.data.money}香豆,连签${res.data.continue}天`

@@ -1,11 +1,16 @@
 //mt论坛每日签到  https://bbs.binmt.cc/?fromuid=14593
 
 const axios = require("axios");
+
 function mt() {
   return new Promise(async (resolve) => {
     try {
-      let cookie = require("../config.json").mt.cookie || "wenmoux";
-      let header = { headers: { cookie: cookie } };
+      let cookie = config.mt.cookie || "wenmoux";
+      let header = {
+        headers: {
+          cookie: cookie
+        }
+      };
       res = await axios.get("https://bbs.binmt.cc/k_misign-sign.html", header);
       let formhash = res.data.match(/formhash=(.+?)&/);
       if (formhash && !res.data.match(/登录/)) {

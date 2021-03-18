@@ -6,7 +6,7 @@ var floor = require('./floor');
 var $isNaN = require('../helpers/isNaN');
 var $isFinite = require('../helpers/isFinite');
 
-// https://www.ecma-international.org/ecma-262/6.0/#sec-isinteger
+// https://ecma-international.org/ecma-262/6.0/#sec-isinteger
 
 module.exports = function IsInteger(argument) {
 	if (typeof argument !== 'number' || $isNaN(argument) || !$isFinite(argument)) {

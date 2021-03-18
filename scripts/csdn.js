@@ -3,7 +3,7 @@ let result = "CSDN每日签到：\n";
 function task(id) {
   return new Promise(async (resolve) => {
     try {
-      let cookie = require("../config.json").csdn.cookie;
+      let cookie = config.csdn.cookie;
       let url = `https://me.csdn.net/api/LuckyDraw_v2/${id}`;
       let res = await axios.get(url, { headers: { cookie: cookie } });
       if (res.data.code == 200 && res.data.data && res.data.data.msg) {

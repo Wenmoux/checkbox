@@ -8,8 +8,8 @@
 
 const axios = require("axios");
 const md5 = require("md5");
-const token = require("../config.json").cg.token;
-const skey = require("../config.json").cg.skey;
+const token = config.cg.token;
+const skey = config.cg.skey;
 const shareid = 1129745;
 let result = "橙光app签到: \n";
 function check() {

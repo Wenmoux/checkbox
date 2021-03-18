@@ -19,7 +19,9 @@
   "dependencies": {
     "axios": "^0.21.0",
     "crypto": "^1.0.1",
+    "fs": "^0.0.1-security",
     "iconv-lite": "^0.6.2",
+    "js-yaml": "^4.0.0",
     "md5": "^2.3.0",
     "request": "^2.88.2",
     "util": "^0.12.3"

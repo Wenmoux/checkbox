@@ -178,8 +178,8 @@ function acfun(account, password) {
   return new Promise(async (resolve) => {
     try {
       console.log("Acfun每日任务开始...");
-      const account = require("../config.json").acfun.phone;
-      const password = require("../config.json").acfun.password;
+      const account = config.acfun.phone;
+      const password = config.acfun.password;
       let res = await $http.post(
         "https://id.app.acfun.cn/rest/app/login/signin",
         `username=${account}&password=${password}`,

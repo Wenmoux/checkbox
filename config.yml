@@ -1,68 +1,129 @@
+#多看阅读 cookie为app里的全部cookie
 duokan:
-  cookie: ''
+  cookie: 
+  
+#wps 小程序个人中心账号id 一串数字
 wps:
-  uid: '123456'
+  uid: 123456
+  
+#橙光游戏app随便抓个包就有token
 cg:
-  token: ''
-  skey: ''
+  token: 
+  skey: 
+  
+#绅士领域个人uid可抓签到包看到
 ssly:
   uid: 12487
+  
+#时光相册 手机号密码 请抓登陆包查看 手机号里包括区号 86啥的 密码为加密后的密码
 everphoto:
-  phone: ''
-  password: ''
+  phone: 8611012451110
+  password: 
+
+#书香门第 登陆账号密码(只支持字母+数字组合账号)
 sxmd:
-  account: ''
-  password: ''
+  account: 
+  password: 
+  
+#uclub这个签到失效了 在cookie里
 ucloud:
-  token: ''
+  token: 
+  
+#人人视频app安卓端 在headers里
 rrsp:
-  rrtoken: ''
+  rrtoken: rrtv-12345678910jqka
+
+#好游快爆 去我的-赚爆米花-任务里 随便抓一个post包 请求数据里有scookie
 hykb:
-  scookie: ''
-  gid: ''
-  invitecode: ''
+  scookie:  
+  gid: 
+  invitecode: 
+
+#网易蜗牛读书  都在cookie或者headers里 抓签到包最方便
 du163:
-  xsrf: ''
-  X-Auth-Token: ''
+  xsrf: 
+  X-Auth-Token: 
+
+#吾爱破解 全部cookie
 w2pj:
-  cookie: ''
+  cookie:
+  
+# 香网小说网页端 全部cookie
 xiang5:
-  cookie: ''
-notice:
-  tgbot_token: ''
-  serverj: ''
-  coolpush: ''
+  cookie:  
+  
+#京东 全部cookie
 jd:
-  cookie: ''
+  cookie: 
+
+#晋江小说 手机版网页端 m.jjwxc.net cookie中sid 最好抓签到的 填完整 sid=xxx
 jjwxc:
-  cookie: ''
+  cookie: sid=20070297_1234576798787
+
+#什么值得买网页端 全部cookie
 smzdm:
-  cookie: ''
+  cookie: 
+  
+#网易云游戏网页端  请求头里
 cg163:
-  Authorization: ''
+  Authorization:  
+
+#龙空论坛 全部cookie
 lkong:
-  cookie: ''
+  cookie: 
+  
+#经管之家 全部cookie
 pinggu:
-  cookie: ''
+  cookie:  
+  
+#nga论坛 app端 
 nga:
-  uid: ''
-  accesstoken: ''
+  uid: 
+  accesstoken: 
+
+#cdsn 网页 全部cookie
 csdn:
-  cookie: ''
+  cookie:  
+  
+#mt论坛 全部cookie
 mt:
-  cookie: ''
+  cookie:  
   time: ''
+
+#sf轻小说 app
 sfacg:
-  cookie: ''
+  cookie: 
+
+#猫耳fm 网页 全部cookie
 maoer:
-  cookie: ''
+  cookie:  
+  
+  
+#爱好论坛 全部cookie
 aihao:
-  cookie: ''
+  cookie:  
+  
+#刺猬猫小说 账号密码
 hbooker:
-  login_name: ''
-  passwd: ''
+  login_name: 
+  passwd: 
+
+#ACFun 手机号 密码
 acfun:
-  phone: ''
-  password: ''
+  phone: 
+  password: 
+
+#传奇gm论坛 全部cookie
 diygm:
-  cookie: ''
+  cookie:  
+  
+#一亩三分地 登陆账号 密码 (不要设置登录问题) 联众打码平台 账号密码
+ym3fd:
+  username: 
+  password: 
+  lzusername: 
+  lzpassword: 
+
+#次元狗 全部cookie
+acdog:
+  cookie:  
