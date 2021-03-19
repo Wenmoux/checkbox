@@ -276,6 +276,7 @@ function dati(idhash, verifycode, formhash,answer) {
         console.log(data1);
         msg ="答题出错"
       }
+      console.log(msg)
       result+=msg
      
     } catch (err) {

@@ -60,7 +60,7 @@ termux可以使用crontab设置定时任务
 
 
 
-下载源码,在config.json文件内填入对应cookis,安装依耐,运行
+下载源码,在config.yml文件内填入对应cookis,安装依耐,运行
    ```       
        git clone https://github.com/Wenmoux/checkbox.git
        npm install
