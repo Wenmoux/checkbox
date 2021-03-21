@@ -13,6 +13,7 @@
 需要什么签到可以去提[issues](https://github.com/wenmoux/checkbox/issues),也欢迎PR  
 关于代码为什么这么烂:  
 开始写的时候就不知道js是啥，也不了解编程，全靠百度，以及抄大佬的代码
+ ![运行结果](https://cdn.jsdelivr.net/gh/Wenmoux/wenpic/other/1367573175823623.png)
 # 签到列表
 <details>
 <summary>查看签到列表</summary>
@@ -60,28 +61,20 @@ termux可以使用crontab设置定时任务
 
 
 
-下载源码,在config.yml文件内填入对应cookis,安装依耐,运行
+下载源码,安装依赖在config.yml文件内填入对应cookies(不要更改原有格式,index.js文件里自行按照格式添加需要的任务,运行
    ```       
-       git clone https://github.com/Wenmoux/checkbox.git
-       npm install
-       node index.js   
-   ```
-  ![结果](https://cdn.jsdelivr.net/gh/Wenmoux/wenpic/other/IMG_20210111_004229.jpg)
-
- -  自行在index.js的signList中添加需要的任务,格式自行参考,同时需要require,格式一样  
- 如需单独运行某脚本,请注释掉最后的module.xxx这一行并去掉上行xxx()的注释,之后
-
-
-```
-    node xxx.js
-```
-
+      git clone https://github.com/Wenmoux/checkbox.git
+      cd /sdcard/checkbox (这里还是要看你的路径)
+      npm install
+      node index.js
+   ```   
 
 
 # other
 <details>
 <summary>更新日志</summary>
-- 2021-03-13 好游快爆增加临时任务 粉丝福利任务,记得去app中首页分别搜索80080 25525 630630 79979进行qq号绑定哦！！
+
+- 2021-03-13 好游快爆增加临时任务 粉丝福利任务,记得去app中首页分别搜索123444,80080 25525 630630 79979进行qq号绑定哦！！
 - 2021-03-12
   - 新增[一亩三分地](https://www.1point3acres.com/bbs/?fromuid=702784)每日签到答题,需要填写[联众打码](https://www.jsdati.com/)账号密码
   - 新增[次元狗](https://www.acgndog.com/)每日签到

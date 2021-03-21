@@ -5,6 +5,7 @@ const cpkey = "";
 const pushplustoken = ""
 const corpsecret = ""
 const corpid = ""
+const agentid= ""
 mediaid=""//素材库图片id
 async function sendmsg(text) {
     console.log(text)
@@ -20,7 +21,7 @@ function server(msg) {
         try {
             if (sckey) {
                 let url = `https://sctapi.ftqq.com/${sckey}.send`
-                let data = `title=${encodeURI("wps记得手动打卡哦")}&desp=${encodeURI(msg)}`
+                let data = `title=${encodeURI("签到盒每日任务已完成")}&desp=${encodeURI(msg.replace(/\n/g,"\n\n"))}`
                 let res = await axios.post(url, data)
                 if (res.data.code == 0) {
                     console.log("server酱:发送成功");
@@ -130,7 +131,7 @@ function wx(msg) {
                 let text = {
                     "touser": "@all",
                     "msgtype": "text",
-                    "agentid": 1000003,
+                    "agentid": agentid?agentid:1000002,
                     "text": {
                         "content": msg
                     },
@@ -140,7 +141,7 @@ function wx(msg) {
                 let mpnews = {
                     "touser": "@all",
                     "msgtype": "mpnews",
-                    "agentid": 1000003,
+                    "agentid": agentid?agentid:1000002,
                     "mpnews": {
        "articles":[
            {
@@ -148,7 +149,7 @@ function wx(msg) {
                "thumb_media_id": mediaid?mediaid:"",
                "author": "wenmoux",
                "content_source_url": "",
-               "content": msg,
+               "content": msg.replace(/\n/g,"<br>"),
                "digest": msg
             }
        ]
