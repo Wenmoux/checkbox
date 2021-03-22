@@ -362,7 +362,7 @@ function sign(idhash, verifycode, formhash) {
       } else if (data1.match(/验证码填写错误/)) {
         msg = "验证码错误,重新签到...";
       } else if (data1.match(/恭喜你签到成功!/)) {
-        msg = data1.match(/恭喜你签到成功!获得随机奖励 大米 \d+ 颗/);
+        msg = data1.match(/恭喜你签到成功!获得随机奖励 大米 \d+ 颗/)[0];
         console.log("恭喜你签到成功!获得随机奖励 大米 1 颗 ...");
       } else {
         msg = "签到失败 原因未知";

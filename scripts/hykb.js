@@ -27,8 +27,9 @@ function get(a, b) {
       if (JSON.stringify(res.data).match(/玉米成熟度已经达到100/)) {
         await get("grow", "PlantRipe"); //收获
         await get("grow", "PlantSow"); //播种
-        await get(a, b); //播种
-        if (JSON.stringify(res.data).match(/还没有播种玉米/)) {
+        await get(a, b); //播种        
+      }
+      if (JSON.stringify(res.data).match(/还没有播种玉米/)) {
           let bzs = await get("grow", "PlantSow"); //播种
           if (bzs.seed && bzs.seed == 0) {
             //    console.log("莫得种子了")
@@ -37,7 +38,6 @@ function get(a, b) {
           }
           await get(a, b);
         }
-      }
       if (b == "Watering") {
         if (res.data.key == "ok") {
           waterresult = `今日浇灌成功,获得${res.data.add_bmh}爆米花,连续浇灌${res.data.nowJiaoGuanDay}天,成熟度：${res.data.csd_num},爆米花：${res.data.baomihua}`;
@@ -80,6 +80,8 @@ function getid() {
   });
 }
 async function task() {
+  let logindata = await get("grow", "Dailylogin&id=174");
+  if (logindata.key == "ok") {
   var mres = await $http.get(
     "https://cdn.jsdelivr.net/gh/Wenmoux/sources/other/miling.json"
   );
@@ -202,6 +204,10 @@ async function task() {
   eval(tasl1data.data);
   await task1();
   return result;
+    } else {
+    console.log(logindata);
+    return "好游快爆每日任务:\n" + logindata.key;
+  }
 }
 
 module.exports = task;

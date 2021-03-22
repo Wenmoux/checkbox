@@ -44,7 +44,7 @@ function pushplus(msg) {
     return new Promise(async (resolve) => {
         try {
             if (pushplustoken) {
-                let url = "http://pushplus.hxtrip.com/send"
+                let url = "http://www.pushplus.plus/send"
                 let data = {
                     "token": pushplustoken,
                     "title": "签到盒每日任务已完成-",
