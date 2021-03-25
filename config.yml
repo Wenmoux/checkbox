@@ -1,3 +1,7 @@
+#注意所有的冒号后边都有个空格 别删别删
+
+
+
 #多看阅读 cookie为app里的全部cookie
 duokan:
   cookie: 
@@ -127,3 +131,10 @@ ym3fd:
 #次元狗 全部cookie
 acdog:
   cookie:  
+  
+#登陆联想智选app的手机号密码以及请求头header中的baseinfo
+lenovo:
+  account: 
+  password: 
+  baseinfo: 
+  

@@ -1,0 +1,29 @@
+{
+  "name": "js-base64",
+  "version": "3.6.0",
+  "description": "Yet another Base64 transcoder in pure-JS",
+  "main": "base64.js",
+  "module": "base64.mjs",
+  "types": "base64.d.ts",
+  "files": [
+    "base64.js",
+    "base64.mjs",
+    "base64.d.ts"
+  ],
+  "scripts": {
+    "test": "make clean && make test"
+  },
+  "devDependencies": {
+    "typescript": "^3.9.7",
+    "@types/node": "^14.0.26",
+    "esm": "^3.2.25",
+    "mocha": "^8.0.0"
+  },
+  "repository": "git+https://github.com/dankogai/js-base64.git",
+  "keywords": [
+    "base64",
+    "binary"
+  ],
+  "author": "Dan Kogai",
+  "license": "BSD-3-Clause"
+}

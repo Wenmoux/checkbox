@@ -1,7 +1,7 @@
 const sendmsg = require("./sendmsg");
 const yaml = require("js-yaml");
 const fs   = require('fs');
-let signList = ["csdn","mt_sign"];
+let signList = ["lenovo"];
 sedmsg = require("./sendmsg")
 global.config = yaml.load(fs.readFileSync('./config.yml', 'utf8'));
 let logs = "";
