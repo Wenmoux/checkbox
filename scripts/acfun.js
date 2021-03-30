@@ -88,6 +88,29 @@ var NewDanmu = async function () {
     return res;
   });
 };
+//分享任务
+function share() {
+  return new Promise(async (resolve) => {
+    try {
+         let res = await $http.get("https://api-ipv6.app.acfun.cn/rest/app/task/reportTaskAction?taskType=1&market=tencent&product=ACFUN_APP&sys_version=8.0.0&app_version=6.42.0.1119&ftt=K-F-T&boardPlatform=hi3650&sys_name=android&socName=%3A%20HiSilicon%20Kirin%20950&ks_ipv6_cellular=2408%3A8470%3A8a03%3A526d%3A8017%3Acdeb%3A414%3Acbec&appMode=0",
+        {
+          headers
+        }
+      );
+      if (res.data.result == 0) {
+        console.log("分享成功");
+        result+="分享成功\n"
+      } else {
+        console.log(res.data);
+      }
+    } catch (err) {
+      console.log(err.response.data);
+      console.log("分享接口请求出错");
+      result += "分享接口请求出错\n";
+    }
+    resolve();
+  });
+}
 
 function getoken() {
   return new Promise(async (resolve) => {
@@ -101,12 +124,12 @@ function getoken() {
       );
       if (res.data.result == 0 && res.data["acfun.midground.api_st"]) {
         st = res.data["acfun.midground.api_st"];
-        signdata = "获取token成功";
+        signdata = "获取token成功\n";
         console.log(signdata);
         await interact("delete"); //取消点赞
         await interact("add"); //重新点赞
       } else {
-        signdata = "获取token失败";
+        signdata = "获取token失败\n";
         console.log(res.data);
       }
       result += signdata;
@@ -117,7 +140,7 @@ function getoken() {
     resolve();
   });
 }
-
+//点赞
 function interact(option) {
   return new Promise(async (resolve) => {
     try {
@@ -199,7 +222,8 @@ function acfun(account, password) {
         await ThrowBanana(Math.round(Math.random() * 10000) + 14431808);
         await NewDanmu();
         await getoken();
-        console.log("开始扭蛋领取 请先手动观看30s+直播");
+        await share()
+        console.log("开始扭蛋领取 请先手动观看30s+直播\n");
         for (id of [1, 2, 3, 4, 5, 6]) {
           await timeBox(id);
         }
