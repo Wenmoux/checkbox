@@ -138,3 +138,19 @@ lenovo:
   password: 
   baseinfo: 
   
+#数码之家全部cookie
+mydigit:
+  cookie: 
+  
+#联动云租车 全部cookie
+ldygo:
+  cookie: 
+  
+#玩物志好物商店 如果是小程序登陆的 type 默认为wx 如果是网页的就随便改比如 web 123等等,只要不是wx就行,小程序可不填cookie,网页需要
+coolbuy:
+  type: wx
+  authorization: 
+  xcsrftoken: 
+  cookie:   
+  
+  

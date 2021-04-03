@@ -14,6 +14,7 @@
 关于代码为什么这么烂:  
 开始写的时候就不知道js是啥，也不了解编程，全靠百度，以及抄大佬的代码
  ![运行结果](https://cdn.jsdelivr.net/gh/Wenmoux/wenpic/other/1367573175823623.png)
+未经允许,禁止搬运
 # 签到列表
 <details>
 <summary>查看签到列表</summary>
@@ -48,6 +49,9 @@
  - [x] [联想智选app每日签到]()
  - [x] [一亩三分地](https://www.1point3acres.com/bbs/?fromuid=702784)每日签到答题,需要填写[联众打码](https://www.jsdati.com/)账号密码 
  - [x] [次元狗](https://www.acgndog.com/)每日签到
+ - [x] [联动云租车](https://m.ldygo.com/app/extension/phoneVoucher.html?inviteCode=JW0hcdmJ)每日签到
+ - [x] [数码之家](https://www.mydigit.cn)每日签到
+ - [x] [玩物志好物商店]小程序/网页版 每日签到+浏览任务+三次抽奖
 </details>
 
  
@@ -56,13 +60,14 @@
 
 [教程：关于如何使用termux运行签到盒那件事](https://www.1oner.cn/archives/121/)  
 termux可以使用crontab设置定时任务  
+
 关于如何使用云函数
 下载代码 把index.js删掉 tscf.js改成index.js然后导入云函数就好了(我只用过腾讯云函数 其它的不知道  
 如果提示找不到入口函数 大概率是你压缩包多套了一层( ´艸｀)
 
 
 
-下载源码,安装依赖在config.yml文件内填入对应cookies(不要更改原有格式,index.js文件里自行按照格式添加需要的任务,运行
+下载源码,安装依赖,在config.yml文件内填入对应cookies(不要更改原有格式,index.js文件里自行按照格式添加需要的任务,运行
    ```       
       git clone https://github.com/Wenmoux/checkbox.git
       cd /sdcard/checkbox (这里还是要看你的路径)
@@ -75,6 +80,10 @@ termux可以使用crontab设置定时任务
 <details>
 <summary>更新日志</summary>
 
+- 2021-04-04 
+  - [新增联动云租车](https://m.ldygo.com/app/extension/phoneVoucher.html?inviteCode=JW0hcdmJ)每日签到
+  - [数码之家](https://www.mydigit.cn)每日签到
+  - [玩物志好物商店]()小程序/网页版 每日签到+浏览任务+三次抽奖
 - 2021-03-25 增加联想智选app签到
 - 2021-03-23 pushplus更换推送接口 新公众号pushplus推送加
 - 2021-03-13 好游快爆增加临时任务 粉丝福利任务,记得去app中首页分别搜索123444,80080 25525 630630 79979进行qq号绑定哦！！
