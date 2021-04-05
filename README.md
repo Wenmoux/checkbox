@@ -51,7 +51,8 @@
  - [x] [次元狗](https://www.acgndog.com/)每日签到
  - [x] [联动云租车](https://m.ldygo.com/app/extension/phoneVoucher.html?inviteCode=JW0hcdmJ)每日签到
  - [x] [数码之家](https://www.mydigit.cn)每日签到
- - [x] [玩物志好物商店]小程序/网页版 每日签到+浏览任务+三次抽奖
+ - [x] [玩物志好物商店](mp://4ALvYqY0abf69mg)小程序/网页版 每日签到+浏览任务+三次抽奖
+ - [x] [阅次元论坛](https://www.abooky.com/forum.php?register=1&fromuid=334021)每日签到
 </details>
 
  
@@ -80,10 +81,11 @@ termux可以使用crontab设置定时任务
 <details>
 <summary>更新日志</summary>
 
+- 2021-04-05 新增[阅次元论坛](https://www.abooky.com/forum.php?register=1&fromuid=334021)每日签到
 - 2021-04-04 
   - [新增联动云租车](https://m.ldygo.com/app/extension/phoneVoucher.html?inviteCode=JW0hcdmJ)每日签到
   - [数码之家](https://www.mydigit.cn)每日签到
-  - [玩物志好物商店]()小程序/网页版 每日签到+浏览任务+三次抽奖
+  - [玩物志好物商店](mp://4ALvYqY0abf69mg)小程序/网页版 每日签到+浏览任务+三次抽奖
 - 2021-03-25 增加联想智选app签到
 - 2021-03-23 pushplus更换推送接口 新公众号pushplus推送加
 - 2021-03-13 好游快爆增加临时任务 粉丝福利任务,记得去app中首页分别搜索123444,80080 25525 630630 79979进行qq号绑定哦！！
