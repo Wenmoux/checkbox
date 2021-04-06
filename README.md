@@ -67,6 +67,7 @@
 
 [教程：关于如何使用termux运行签到盒那件事](https://www.1oner.cn/archives/121/)  
 termux可以使用crontab设置定时任务  
+写法参见crontab.list
 
 关于如何使用云函数
 下载代码 把index.js删掉 tscf.js改成index.js然后导入云函数就好了(我只用过腾讯云函数 其它的不知道  
@@ -80,7 +81,13 @@ termux可以使用crontab设置定时任务
       cd /sdcard/checkbox (这里还是要看你的路径)
       npm install
       node index.js
-   ```   
+   ```  
+   
+         
+如不想填signList,可在index.js后加上对应脚本名字    
+如`node index.js acfun csdn`  
+多脚本间用空格  
+一般用于定时任务  
 
 
 # other
