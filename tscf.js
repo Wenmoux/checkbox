@@ -3,12 +3,10 @@ const yaml = require("js-yaml");
 const fs   = require('fs');
 sedmsg = require("./sendmsg")
 global.config = yaml.load(fs.readFileSync('./config.yml', 'utf8'));
-
+signList = ["lenovo"];
+logs = "";
 //自行添加任务 名字看脚本里的文件名 比如csdn.js 就填"csdn"
 exports.main_handler = async () => {
-  let signList = ["lenovo"];
-  //自行添加任务 名字看脚本里的文件名 比如csdn.js 就填"csdn"
-  let logs = "";
   await start(signList);
   await sendmsg(logs)
 };

@@ -70,6 +70,19 @@ var ThrowBanana = async function (id) {
     return res;
   });
 };
+
+var getinfo = async function () {
+  return await get({
+    url: "/user/personalInfo",
+    para: "",
+  }).then(async (res) => {
+    
+    let info=`香蕉：${res.info.banana}  金香蕉：${res.info.goldBanana}`
+    console.log(info)
+    return res;
+  });
+};
+
 var NewDanmu = async function () {
   return await get({
     url: `/new-danmaku/add`,
@@ -227,6 +240,7 @@ function acfun(account, password) {
         for (id of [1, 2, 3, 4, 5, 6]) {
           await timeBox(id);
         }
+        await getinfo()
       } else {
         signdata = `登陆失败 ${res.data.error_msg}\n`;
       }

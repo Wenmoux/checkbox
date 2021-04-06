@@ -1,9 +1,9 @@
 const rules = {
-  name: "【阅次元论坛每日签到】：[如提示原因未知大概率是已签到过]  ",
+  name: "【阅次元论坛每日签到】： ",
   type: 2, //签到类型 2 需要formhash
   url1: "https://www.abooky.com/plugin.php?id=k_misign:sign", //用于获取formhash的链接
   cookie: config.abooky.cookie,
-  reg1: 'formhash=(.+?)&"', //formhash正则
+  reg1: 'formhash=(.+)"', //formhash正则
   verify: "没有帐号", //验证cookie状态
   signmethod: "get", //签到请求方式 get/post
   signurl: "https://www.abooky.com/plugin.php?id=k_misign:sign&operation=qiandao&format=button&formhash=@formhash", //签到链接
