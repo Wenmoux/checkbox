@@ -78,8 +78,8 @@ var getinfo = async function () {
   }).then(async (res) => {
     
     let info=`香蕉：${res.info.banana}  金香蕉：${res.info.goldBanana}`
+    result += info
     console.log(info)
-    return res;
   });
 };
 

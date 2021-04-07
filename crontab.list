@@ -13,7 +13,7 @@
 #好游快爆抢兑 对应商品时间自己修改 提前几秒运行就行
 59 12 * * * cd  /sdcard/checkbox && node index.js hykb_exchange_goods >> /sdcard/checkbox/logs/hykb_exchange_goods.log 2>&1
 
-#富贵论坛整点签到
+#富贵论坛整点抢签
 1 */1 * * * cd /sdcard/checkbox && node index.js fglt >> /sdcard/checkbox/logs/fglt.log 2>&1
 
 

@@ -9,7 +9,7 @@ const rules = {
   signurl: "http://www.togamemod.cn/plugin.php?id=k_misign:sign&operation=qiandao&formhash=@formhash&inajax=1&ajaxtarget=midaben_sign", //签到链接
    reg2: "今日已签", //重复签到判断
   reg3: "签到成功", //签到成功判断
-  info: "获得随机奖励 \d+金币", //签到成功返回信息
+  info: "获得随机奖励 \\d+金币", //签到成功返回信息
 };
 
 async function togamemod(){

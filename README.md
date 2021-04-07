@@ -58,7 +58,8 @@
  - [x] [ug爱好者](www.ugsnx.com)每日签到
  - [x] [纪录片之家](www.jlpzj.net)每日签到
  - [x] [togamemod](http://www.togamemod.cn/?fromuid=414)每日签到
-
+ - [x] [魅族社区](https://bbs.meizu.cn/)每日签到
+ - [x] [菜鸟图库](http://cntk.sucaidao.com/invite/NDY4MjU0.html)每日签到
 </details>
 
  
@@ -95,6 +96,9 @@ termux可以使用crontab设置定时任务
 <summary>更新日志</summary>
 
 - 2021-04-06  
+  - 增加任务执行方式 可直接在命令行输入任务列表 如 node index.js acfun
+  - 新增[魅族社区](https://bbs.meizu.cn/)每日签到
+  - 新增[菜鸟图库](http://cntk.sucaidao.com/invite/NDY4MjU0.html)每日签到
   - 新增[富贵论坛](https://www.fglt.net)每日签到
   - 新增[好书友论坛](www.93hsy.com)每日签到
   - 新增[ug爱好者](www.ugsnx.com)每日签到
