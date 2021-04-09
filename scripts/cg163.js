@@ -15,7 +15,7 @@ function check() {
       console.log("cookie未失效,即将开始签到...");
       ckstatus = 1;
     } catch (err) {
-      //   console.log(err)
+       console.log(err)
       console.log("cookie已失效");
       ckstatus = 0;
     }

@@ -10,7 +10,7 @@ const rules = {
   signurl: "http://www.ugsnx.com/plugin.php?id=dsu_amupper&ppersubmit=true&nogoto=1&formhash=@formhash&mobile=2&inajax=1", //签到链接
   reg2: "签到完毕", //重复签到判断
   reg3: "签到成功", //签到成功判断
-  info: ">由于(.+?)的奖励", //签到成功返回信息
+  info: "由于.+", //签到成功返回信息
 };
 
 async function ugsnx(){

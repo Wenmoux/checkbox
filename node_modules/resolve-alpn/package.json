@@ -1,0 +1,31 @@
+{
+    "name": "resolve-alpn",
+    "version": "1.0.0",
+    "description": "Detects the ALPN protocol",
+    "main": "index.js",
+    "scripts": {
+        "test": "xo && nyc ava",
+        "coveralls": "nyc report --reporter=text-lcov | coveralls"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/szmarczak/resolve-alpn.git"
+    },
+    "keywords": [
+        "alpn",
+        "http2"
+    ],
+    "author": "Szymon Marczak",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/szmarczak/resolve-alpn/issues"
+    },
+    "homepage": "https://github.com/szmarczak/resolve-alpn#readme",
+    "devDependencies": {
+        "ava": "^1.0.1",
+        "coveralls": "^3.0.2",
+        "nyc": "^13.1.0",
+        "pem": "^1.13.2",
+        "xo": "^0.23.0"
+    }
+}

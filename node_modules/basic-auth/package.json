@@ -1,0 +1,36 @@
+{
+  "name": "basic-auth",
+  "description": "node.js basic auth parser",
+  "version": "1.1.0",
+  "license": "MIT",
+  "keywords": [
+    "basic",
+    "auth",
+    "authorization",
+    "basicauth"
+  ],
+  "repository": "jshttp/basic-auth",
+  "devDependencies": {
+    "eslint": "3.10.2",
+    "eslint-config-standard": "6.2.1",
+    "eslint-plugin-markdown": "1.0.0-beta.3",
+    "eslint-plugin-promise": "3.4.0",
+    "eslint-plugin-standard": "2.0.1",
+    "istanbul": "0.4.5",
+    "mocha": "1.21.5"
+  },
+  "files": [
+    "HISTORY.md",
+    "LICENSE",
+    "index.js"
+  ],
+  "engines": {
+    "node": ">= 0.6"
+  },
+  "scripts": {
+    "lint": "eslint --plugin markdown --ext js,md .",
+    "test": "mocha --check-leaks --reporter spec --bail",
+    "test-cov": "istanbul cover node_modules/mocha/bin/_mocha -- --reporter dot --check-leaks test/",
+    "test-travis": "istanbul cover node_modules/mocha/bin/_mocha --report lcovonly -- --reporter spec --check-leaks test/"
+  }
+}

@@ -13,8 +13,8 @@
 需要什么签到可以去提[issues](https://github.com/wenmoux/checkbox/issues),也欢迎PR  
 关于代码为什么这么烂:  
 开始写的时候就不知道js是啥，也不了解编程，全靠百度，以及抄大佬的代码
+# **<font color="red">未经允许,禁止搬运</font>**
  ![运行结果](https://cdn.jsdelivr.net/gh/Wenmoux/wenpic/other/1367573175823623.png)
-未经允许,禁止搬运
 # 签到列表
 <details>
 <summary>查看签到列表</summary>
@@ -60,13 +60,14 @@
  - [x] [togamemod](http://www.togamemod.cn/?fromuid=414)每日签到
  - [x] [魅族社区](https://bbs.meizu.cn/)每日签到
  - [x] [菜鸟图库](http://cntk.sucaidao.com/invite/NDY4MjU0.html)每日签到
+ - [x] [埋堆堆]app每日任务,得堆豆和经验值,可兑换埋堆堆会员
 </details>
 
  
 
 # 使用方法 (懂得自然懂 bushi  
 
-[教程：关于如何使用termux运行签到盒那件事](https://www.1oner.cn/archives/121/)  
+[教程：关于如何使用termux运行签到盒那件事](https://blog.1oner.cn/posts/termux-checkbox/)  
 termux可以使用crontab设置定时任务  
 写法参见crontab.list
 
@@ -95,6 +96,7 @@ termux可以使用crontab设置定时任务
 <details>
 <summary>更新日志</summary>
 
+- 2021-04-09 新增[埋堆堆]app每日任务
 - 2021-04-06  
   - 增加任务执行方式 可直接在命令行输入任务列表 如 node index.js acfun
   - 新增[魅族社区](https://bbs.meizu.cn/)每日签到

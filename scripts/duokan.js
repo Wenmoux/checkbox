@@ -1,8 +1,7 @@
 ids = [];
-const { promisify } = require("util");
 const axios = require("axios");
 //axios.defaults.timeout = 1000;
-const timeAsync = promisify(setTimeout);
+const timeAsync =  ms => new Promise(resolve => setTimeout(resolve, ms));
 let result = "多看阅读每日任务：\n";
 let number = 0;
 header = {

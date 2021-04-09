@@ -1,0 +1,44 @@
+{
+  "author": "Joshua Holbrook <josh@nodejitsu.com> (http://jesusabdullah.net)",
+  "name": "ecstatic",
+  "description": "A simple static file server middleware",
+  "version": "3.3.2",
+  "homepage": "https://github.com/jfhbrook/node-ecstatic",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:jfhbrook/node-ecstatic.git"
+  },
+  "main": "./lib/ecstatic.js",
+  "scripts": {
+    "fix": "eslint --fix ./lib/ ./example/ ./test",
+    "pretest": "eslint ./lib/ ./example/ ./test",
+    "test": "tap --jobs-auto --coverage test/*.js",
+    "posttest": "tap --coverage-report=clover"
+  },
+  "bin": "./lib/ecstatic.js",
+  "keywords": [
+    "static",
+    "web",
+    "server",
+    "files",
+    "mime",
+    "middleware"
+  ],
+  "dependencies": {
+    "he": "^1.1.1",
+    "mime": "^1.6.0",
+    "minimist": "^1.1.0",
+    "url-join": "^2.0.5"
+  },
+  "devDependencies": {
+    "eol": "^0.9.1",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb-base": "^11.3.2",
+    "eslint-plugin-import": "^2.14.0",
+    "express": "^4.16.3",
+    "mkdirp": "^0.5.0",
+    "request": "^2.88.0",
+    "tap": "^12.0.1"
+  },
+  "license": "MIT"
+}

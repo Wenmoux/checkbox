@@ -10,7 +10,7 @@ const rules = {
   signdata:"formhash=@formhash&qdxq=kx&qmode=3&todaysay=&fastreply=0",
   reg2: "已经签到", //重复签到判断
   reg3: "恭喜你签到成功", //签到成功判断
-  info: "恭喜你签到成功!获得随机奖励(.+?)元", //签到成功返回信息
+  info: "恭喜你签到成功!获得随机奖励(.+)元", //签到成功返回信息
 };
 
 async function jlpzj(){
