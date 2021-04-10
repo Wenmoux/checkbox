@@ -7,7 +7,7 @@
  */
 
 const axios = require("axios");
-const md5 = require("md5");
+const md5 =require("crypto-js").MD5
 const token = config.cg.token;
 const skey = config.cg.skey;
 const shareid = 1129745;
@@ -54,7 +54,7 @@ function loginreward() {
       let data = `token=${token}&mobile_uid=&client=2&android_cur_ver=268`;
       headers = {
         headers: {
-          "x-sign": md5(str + "a_744022879dc25b40"),
+          "x-sign": md5(str + "a_744022879dc25b40").toString(),
           "user-agent":
             "Mozilla/5.0 (Linux; Android 10; Redmi K30 Build/QKQ1.190825.002; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/85.0.4183.127 Mobile Safari/537.36",
           "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
@@ -96,7 +96,7 @@ function share() {
       const url = `http://www.66rpg.com/api/newClient?${ar}`;
       headers = {
         headers: {
-          "x-sign": md5(str + "a_744022879dc25b40"),
+          "x-sign": md5(str + "a_744022879dc25b40").toString(),
           "user-agent":
             "Mozilla/5.0 (Linux; Android 10; Redmi K30 Build/QKQ1.190825.002; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/85.0.4183.127 Mobile Safari/537.36",
           "content-type": "application/x-www-form-urlencoded; charset=UTF-8",

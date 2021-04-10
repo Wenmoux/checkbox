@@ -190,3 +190,9 @@ sucai999:
 mdd: 
   appToken: 
   
+#闪艺app  都在app请求post数据里  client为ios或者android
+shanyi:
+  token: 
+  u: 
+  client: ios
+  

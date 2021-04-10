@@ -16,5 +16,8 @@
 #富贵论坛整点抢签
 1 */1 * * * cd /sdcard/checkbox && node index.js fglt >> /sdcard/checkbox/logs/fglt.log 2>&1
 
+#闪艺挂时长
+*/1 0-2 * * * cd /sdcard/checkbox && node ./scripts/shanyi_addtime.js >> /sdcard/checkbox/logs/shanyi_addtime.log 2>&1
+
 
 
