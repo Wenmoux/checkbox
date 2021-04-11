@@ -6,9 +6,13 @@ function get(name, url, data) {
         url = config.xjvideo.baseurl+ url
         data = data ? data : null
         if (data) {
-            res = axios.post(url, data, {headers})
+            res = axios.post(url, data, {
+                headers
+            })
         } else {
-            res = axios.get(url, {headers})
+            res = axios.get(url, {
+                headers
+            })
         }
         res
             .then(response => {
@@ -36,6 +40,7 @@ async function xjtask(){
 await get("每日签到", "/ucp/task/sign")
 await get("点击视频广告","/ucp/task/adviewClick")
 await get("发表评论", "/comment/post", "vodid=51134&parentid=0&content=yyds")
+await get("兑换会员","/ucp/vippkg/coinorder/","pkgid=1")
 let res = await get("获取视频列表","/vod/listing--0-0-1-0-0-0-0-0-1")
 let list = res.data.vodrows
  for (i=0;i<list.length;i++) 
