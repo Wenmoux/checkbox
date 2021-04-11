@@ -1,12 +1,11 @@
- const {
-     Base64
- } = require('js-base64');
+ const CryptoJS= require('crypto-js');
  const baseinfo =config.lenovo.baseinfo?config.lenovo.baseinfo:"eyJpbWVpIjoiODY1MzE1MDMxOTg1ODc4IiwicGhvbmVicmFuZCI6Imhvbm9yIiwicGhvbmVNb2RlbCI6IkZSRC1BTDEwIiwiYXBwVmVyc2lvbiI6IlY0LjIuNSIsInBob25laW5jcmVtZW50YWwiOiI1NTYoQzAwKSIsIlBhZ2VJbmZvIjoiTXlJbmZvcm1hdGlvbkFjdGlvbkltcGwiLCJwaG9uZWRpc3BsYXkiOiJGUkQtQUwxMCA4LjAuMC41NTYoQzAwKSIsInBob25lTWFudWZhY3R1cmVyIjoiSFVBV0VJIiwibGVub3ZvQ2x1YkNoYW5uZWwiOiJ5aW5neW9uZ2JhbyIsImxvZ2luTmFtZSI6IjE3NjQwNDA4NTM3IiwicGhvbmVwcm9kdWN0IjoiRlJELUFMMTAiLCJzeXN0ZW1WZXJzaW9uIjoiOC4wLjAiLCJhbmRyb2lkc2RrdmVyc2lvbiI6IjI2In0="
  const $http=require("axios")
  let result = "【联想延保每日签到】："
  const account = config.lenovo.account
  const password =config.lenovo.password
- const info = JSON.parse(Base64.decode(baseinfo))
+ const parsedWordArray = CryptoJS.enc.Base64.parse(baseinfo);
+ const info=JSON.parse(parsedWordArray.toString(CryptoJS.enc.Utf8))
  let deviceid = info.imei
  const url = {
      "login": `https://uss.lenovomm.com/authen/1.2/tgt/user/get?msisdn=${account}`,
@@ -24,7 +23,7 @@
      Authorization: ""
  }
 
- function login() {
+ function lxlogin() {
      return new Promise(async (resolve) => {
          try {
              let data = `lang=zh-CN-%23Hans&source=android%3Acom.lenovo.club.app-V4.2.5&deviceidtype=mac&deviceid=${deviceid}&devicecategory=unknown&devicevendor=${info.phoneManufacturer}&devicefamily=unknown&devicemodel=${info.phoneModel}&osversion=${info.systemVersion}&osname=Android&password=${password}`
@@ -110,7 +109,9 @@ console.log(res.data)
 
 
  async function lxyb() {
-     lpsutgt = await login()
+ console.log("任务开始")
+     lpsutgt = await lxlogin()
+     
      let session = await getsession(lpsutgt)     
      if (session) {
          console.log(session)

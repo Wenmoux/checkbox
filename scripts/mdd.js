@@ -126,21 +126,27 @@ async function mdd() {
     await task("分享帖子", "\/api\/post\/share.action", {
         "postUuid": "51e658fd35204a55859a0eebfdc8d492"
     })
-/*    await task("观影记录", "\/api\/watchHistory\/add.action", {
+   await task("观影记录", "\/api\/watchHistory\/add.action", {
         "duration": 1562,
         "sactionUuid": "ff80808178691eab01787cf4d4ef094b",
         "time": 2892,
         "vodUuid": "ff80808178446800017863197a110fa4"
-    })*/
+    })
     await task("上传观影时长", "\/missionApi\/action\/uploadAction", {
         "actionCode": "watch_vod",
         "params": "{\"session_id\":\"4701617887966740\",\"vod_type\":0,\"vod_uuid\":\"e96180c6a8cc424a88dec5ec4416f6fa\",\"duration\":32000}"
     })
+
     await task("赠送礼物", "\/userLiveApi\/gift\/sendGiftEnd", {
-       "batchUuid": "nuh7qdx5j4cd848gjmp49405aogprjg8",
-       "deductWay": 0,
+       "batchUuid": "4a345dc9221541ee9ba403487bd1965d",
        "giftUuid": 4,
-       "liveUuid": "1044237",        
+       "liveUuid": "1044127"      
+  })
+      await task("赠送礼物", "\/userLiveApi\/gift\/sendGift", {
+       "batchUuid": "4a345dc9221541ee9ba403487bd1965d",
+       "deductWay": 1,
+       "giftUuid": 4,
+       "liveUuid": "1044127",        
        "num": 1        
   })
     await task("一键领取奖励", "\/missionApi\/award\/acceptAll", {})
