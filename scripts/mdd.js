@@ -56,7 +56,7 @@ function task(name, action, param) {
     return new Promise(async (resolve) => {
         try {
             let data = Sign(action, param)
-            let res = await axios.post(`https://mob.mddcloud.com.cn${action}`, data, {
+           let res = await axios.post(`https://mob.mddcloud.com.cn${action}`, data, {
                 headers: {
                     "Content-Type": "application/json"
                 }
@@ -103,6 +103,7 @@ async function mdd() {
         "actionCode": "share_vod_to_out",
         "params": "{\"vod_uuid\":\"ff8080817844680001786373c7481028\",\"vod_type\":0}"
     })
+    await task("关注我","/api/member/followMember.action",{memberUuid:"e3f799b3eeac4f2eaa5ea70b0289c67a"})
     await task("分享结果", "\/api\/vod\/shareVod.action", {
         "isServiceShareNum": 1,
         "vodUuid": "ff8080817844680001786373c7481028"
@@ -119,13 +120,50 @@ async function mdd() {
         "times": 169,
         "vodUuid": "e96180c6a8cc424a88dec5ec4416f6fa"
     })
+        await task("分享帖子", "\/api\/post\/share.action", {
+        "postUuid": "24c4fb58fd1d405f97f08273165eaf40"
+    })
     await task("分享帖子", "\/missionApi\/action\/uploadAction", {
         "actionCode": "share_post",
-        "postUuid": "51e658fd35204a55859a0eebfdc8d492"
+        "postUuid": "24c4fb58fd1d405f97f08273165eaf40"
     })
-    await task("分享帖子", "\/api\/post\/share.action", {
-        "postUuid": "51e658fd35204a55859a0eebfdc8d492"
-    })
+    let comment = ["666","奥利给！！！","好看滴很","爱了爱了","必须顶","ヾ(๑╹ヮ╹๑)ﾉ","路过ヾ(๑╹ヮ╹๑)ﾉ","每日一踩","重温经典(*ﾟ∀ﾟ*)","资瓷"]
+   await task("评论剧集","/api/post/post.action", {
+    "atInfoList": "",
+    "content": comment[Math.round(Math.random()*10)],
+    "contentType": 0,
+    "faceUuid": 0,
+    "imageArrayStr": "",
+    "imageResolutionRatio": "",
+    "redirectTimes": 0,
+    "resourceId": "",
+    "thumbnail": "",
+    "title": "",
+    "topicName": "",
+    "uuid": "ff8080817410d5a50174b531028c3f58",
+    "uuidName": "",
+    "uuidType": "1"
+  })
+  let  date = new Date();
+  let  msg = await axios.get("https://chp.shadiao.app/api.php");
+     await task("日常发帖","/api/post/post.action", {
+    "atInfoList": "",
+    "content": msg.data,
+    "contentType": 0,
+    "faceUuid": 0,
+    "imageArrayStr": "",
+    "imageResolutionRatio": "",
+    "redirectTimes": 0,
+    "resourceId": "",
+    "thumbnail": "",
+    "title": "日常打卡 "+date.getFullYear()+"-"+(date.getMonth() + 1)+"-"+date.getDate(),
+    "topicName": "",
+    "uuid": "ff80808175b1bb7c0175f95318ed42da",
+    "uuidName": "埋堆吹水堂",
+    "uuidType": "2"
+  })
+  
+    
    await task("观影记录", "\/api\/watchHistory\/add.action", {
         "duration": 1562,
         "sactionUuid": "ff80808178691eab01787cf4d4ef094b",
@@ -149,6 +187,7 @@ async function mdd() {
        "liveUuid": "1044127",        
        "num": 1        
   })
+  
     await task("一键领取奖励", "\/missionApi\/award\/acceptAll", {})
     return signdata
 }

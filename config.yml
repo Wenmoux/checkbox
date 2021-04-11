@@ -194,3 +194,11 @@ shanyi:
   client: ios
   UA: 
   
+  
+#香蕉视频 xxx_api_auth记得加双引号
+xjvideo:
+  xxx_api_auth: 
+  baseurl: 
+  
+    
+        
