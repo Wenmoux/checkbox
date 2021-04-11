@@ -117,7 +117,7 @@ async function shanyi() {
         let cid = qz.data.comment_id
         await task("删除评论","/?m=comment&op=index&ac=del_comment","comment_id="+jm(cid))  
         await renwu()
-        await video()*/
+        await video()
         await task("兑换阅读时长", "/?m=user&op=index&ac=exchange_star", "star=" + jm(20))
         let info = await getinfo()
         return info
