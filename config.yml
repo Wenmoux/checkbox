@@ -33,9 +33,6 @@ sxmd:
 ucloud:
   token: 
   
-#人人视频app安卓端 在headers里
-rrsp:
-  rrtoken: rrtv-12345678910jqka
 
 #好游快爆 去我的-赚爆米花-任务里 随便抓一个post包 请求数据里有scookie 直接分享商品链接查看  gid 和 key 分享需要兑换的商品链接查看 例https://huodong3.3839.com/n/hykb/bmhstore2/inc/libao/index.php?gid=6237 比如上面这个 gid就是6237  key就是 libao 就是查看inc/后面的那个东西
 

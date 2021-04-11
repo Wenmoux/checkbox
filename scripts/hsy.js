@@ -4,7 +4,7 @@ const rules = {
   url1: "https://www.93hsy.com/plugin.php?id=k_misign:sign", //用于获取formhash的链接
   cookie: config.hsy.cookie,
   charset:"gb2312",
-  reg1: 'formhash=(.+?)\"', //formhash正则
+  reg1: 'formhash=(.+?)"', //formhash正则
   verify: "你还没登录，确定登录", //验证cookie状态
   signmethod: "get", //签到请求方式 get/post
   signurl: "https://www.93hsy.com/plugin.php?id=k_misign:sign&operation=qiandao&format=text&formhash=@formhash", //签到链接

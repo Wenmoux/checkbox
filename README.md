@@ -19,7 +19,7 @@
 <details>
 <summary>查看签到列表</summary>
 
- - [x] [人人视频(安卓端) ](https://mobile.rr.tv/fe/#/invite/phone)福利|签到|答题|开宝箱 抄[@chavyleung](https://github.com/chavyleung/scripts/tree/master/rrtv)
+ - [] ~~[人人视频(安卓端) ](https://mobile.rr.tv/fe/#/invite/phone)福利|签到|答题|开宝箱 抄[@chavyleung](https://github.com/chavyleung/scripts/tree/master/rrtv)~~
  - [x] [WPS邀请](https://zt.wps.cn/2018/clock_in?csource=pc_clock_oldactivity) 邀请好友,需小程序手动打卡,抄自[@lepecoder/checkin](https://github.com/lepecoder/checkin)
  - [x] [时光相册](https://web.everphoto.cn/)每日签到
  - [x] [书香门第](http://www.txtnovel.top/?fromuser=lu66666)每日签到
