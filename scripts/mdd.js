@@ -119,14 +119,14 @@ async function mdd() {
         "sactionUuid": "ff80808178691eab01788cee4b4c12f2",
         "times": 169,
         "vodUuid": "e96180c6a8cc424a88dec5ec4416f6fa"
-    })
+    }) 
         await task("分享帖子", "\/api\/post\/share.action", {
-        "postUuid": "24c4fb58fd1d405f97f08273165eaf40"
+        "postUuid": "52d6d8359a9947c48d59639afd7771ee"
     })
     await task("分享帖子", "\/missionApi\/action\/uploadAction", {
-        "actionCode": "share_post",
-        "postUuid": "24c4fb58fd1d405f97f08273165eaf40"
-    })
+    "actionCode": "share_post",
+    "params": "{\"post_uuid\":\"52d6d8359a9947c48d59639afd7771ee\"}"
+  },)
     let comment = ["666","奥利给！！！","好看滴很","爱了爱了","必须顶","ヾ(๑╹ヮ╹๑)ﾉ","路过ヾ(๑╹ヮ╹๑)ﾉ","每日一踩","重温经典(*ﾟ∀ﾟ*)","资瓷"]
    await task("评论剧集","/api/post/post.action", {
     "atInfoList": "",

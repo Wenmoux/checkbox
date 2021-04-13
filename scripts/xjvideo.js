@@ -1,3 +1,4 @@
+//https://YYJVAZ.gg257.club?inviteCode=YYJVAZ
 const axios = require("axios")
 let result ="【香蕉视频每日任务】："
 let headers ={cookie:`xxx_api_auth=${config.xjvideo.xxx_api_auth}`}
@@ -41,7 +42,7 @@ await get("每日签到", "/ucp/task/sign")
 await get("点击视频广告","/ucp/task/adviewClick")
 await get("发表评论", "/comment/post", "vodid=51134&parentid=0&content=yyds")
 await get("兑换会员","/ucp/vippkg/coinorder/","pkgid=1")
-let res = await get("获取视频列表","/vod/listing--0-0-1-0-0-0-0-0-1")
+let res = await get("获取视频列表","/vod/listing--0-0-1-0-0-0-0-0-1?timestamp=1618077496773&pid=&apiVersion=29&deviceModel=Redmi%20K30&brand=Redmi&deviceName=phoenix&serial=unknown&platform=android&version=3.8.3&_t=1618077496778")
 let list = res.data.vodrows
  for (i=0;i<list.length;i++) 
    {

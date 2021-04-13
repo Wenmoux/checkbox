@@ -5,7 +5,7 @@ function Template(rules) {
         try {
             const header = {
                 headers: {
-                    cookie: rules.cookie
+                    cookie: rules.cookie,referer:rules.url1
                 }
             };
             res = await axios.get(rules.url1, header);

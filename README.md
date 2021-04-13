@@ -19,13 +19,13 @@
 <details>
 <summary>查看签到列表</summary>
 
- - [] ~~[人人视频(安卓端) ](https://mobile.rr.tv/fe/#/invite/phone)福利|签到|答题|开宝箱 抄[@chavyleung](https://github.com/chavyleung/scripts/tree/master/rrtv)~~
+ - [ ] ~~[人人视频](https://mobile.rr.tv/fe/#/invite/phone)福利|签到|答题|开宝箱 抄[@chavyleung](https://github.com/chavyleung/scripts/tree/master/rrtv)~~
  - [x] [WPS邀请](https://zt.wps.cn/2018/clock_in?csource=pc_clock_oldactivity) 邀请好友,需小程序手动打卡,抄自[@lepecoder/checkin](https://github.com/lepecoder/checkin)
  - [x] [时光相册](https://web.everphoto.cn/)每日签到
  - [x] [书香门第](http://www.txtnovel.top/?fromuser=lu66666)每日签到
  - [x] [多看阅读app](http://www.duokan.com/m/product)每日任务薅书豆+自动延期 保底6k+ (大概
  - [x] [绅士领域](https://hk.hksslyapp.xyz/mz_pbl/app_down/)每日签到得硬币
- - [x] [ucloud社区](https://uclub.ucloud.cn/invite/478)每日签到得积分
+ - [ ] ~~[ucloud社区](https://uclub.ucloud.cn/invite/478)每日签到得积分~~
  - [x] [网易蜗牛读书](https://du.163.com/static/activity/new_rank/index.html?user=8cf097eb09724ec5b5389a262f069a14)每日签到
  - [x] [香网小说](http://sc.xiang5.com/2.2/invite/share?uid=5563201)每日签到
  - [x] [吾爱破解](www.52pojie.com)签到
