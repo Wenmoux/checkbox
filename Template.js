@@ -5,12 +5,16 @@ function Template(rules) {
         try {
             const header = {
                 headers: {
-                    cookie: rules.cookie,referer:rules.url1
-                }
+                    cookie: rules.cookie,
+                    referer:rules.url1,
+                    "User-Agent":rules.ua=="pc"?"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.105 Safari/537.36":"Mozilla/5.0 (Linux; Android 10; Redmi K30) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.105 Mobile Safari/537.36"
+                              }
             };
             res = await axios.get(rules.url1, header);
             let formhash = res.data.match(rules.reg1)
-             if (formhash&&!res.data.match(rules.verify)) {
+            //  console.log(formhash)
+            //console.log(res.data)
+              if (!res.data.match(rules.verify)) {
                 let signurl = rules.signurl.replace(/@formhash/, formhash[1]);
                // console.log(signurl)
                 if (rules.charset) {
@@ -32,7 +36,7 @@ function Template(rules) {
                 } else {
                     res2data = res2.data
                 }
-                console.log(res2data)
+       
                 if (res2data.match(rules.reg2)) {
                     msg = "今天已经签到过啦";
                 } else if (res2data.match(rules.reg3)) {
