@@ -6,7 +6,7 @@ https://github.com/navhu/MddOnline
 */
 const axios = require("axios")
 const md5 = require("md5")
-const appToken ="666"
+const appToken =config.mdd.appToken
 const deviceNum = config.mdd.deviceNum ? config.mdd.deviceNum : "11b1384f0801478795ae2fab421fc413" 
 var i = 1
 const date = new Date();
