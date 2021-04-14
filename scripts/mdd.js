@@ -6,7 +6,7 @@ https://github.com/navhu/MddOnline
 */
 const axios = require("axios")
 const md5 = require("md5")
-const appToken = config.mdd.appToken
+const appToken ="666"
 const deviceNum = config.mdd.deviceNum ? config.mdd.deviceNum : "11b1384f0801478795ae2fab421fc413" 
 var i = 1
 const date = new Date();
@@ -19,7 +19,7 @@ const Sign = function(action, param) {
         'version': '4.0.04',
         'action': action,
         'time': new Date().getTime().toString(),
-        'appToken': appToken,
+       'appToken': appToken,
         'privateKey': 'e1be6b4cf4021b3d181170d1879a530a9e4130b69032144d5568abfd6cd6c1c2',
         'data': ''
     };
@@ -91,6 +91,13 @@ function task(name, action, param) {
 }
 
 async function mdd() {
+ /*   
+ await task("登陆","/api/member/login.action",{
+    "loginNum": "手机号",
+    "password": "密码",
+    "type": 0
+  }) 一般用不到 群里有个憨批分身抓不了包
+  */ 
     await task("每日签到", "\/missionApi\/signIn\/sign", {})
     for (k = 0; k < 10; k++) {
         await task("点赞", "\/api\/post\/like.action", {

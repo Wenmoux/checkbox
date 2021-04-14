@@ -104,6 +104,9 @@ async function shanyi() {
         //默认填写我的邀请码 
         await task("填写邀请码 05802486","/?m=user&op=activity&ac=use_invite_code","code="+jm(05802486))
         await task("每日签到", "/?m=user&op=check_in&ac=check_in", "")
+     /*   for(trigger=0;trigger<5;trigger++){
+        await task("连续签到奖励", "/?m=user&op=check_in&ac=receive_monthly_bonus", "trigger="+jm(trigger))
+        }*/
         await task("签到翻牌", "/?m=user&op=check_in&ac=receive_daily_bonus", "type=2jyfrX4gfTvnrWc+orX+og==")
         await task("补签卡领取","/?m=user&op=check_in&ac=receive_replenish_card","")
         await task("作品评论取消点赞", "/?m=comment&op=index&ac=hate_comment", "comment_id=My7xxKY4ZkyoMMJg3T3zww%3D%3D")
