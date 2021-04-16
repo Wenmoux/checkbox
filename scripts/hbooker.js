@@ -189,7 +189,7 @@ function getNowFormatDate() {
 }
 
 async function hbooker() {
-  let result = "刺猬猫每日任务：\n";
+  let result = "【刺猬猫小说】：";
   a = await login();
   if (a.tip == "密码不正确" || a.tip == "此用户不存在" || a.tip == "缺少参数") {
     result += "账号或密码不正确";
@@ -221,7 +221,7 @@ async function hbooker() {
     for (i in tasklist) {
       taskname = tasklist[i].name;
       status = tasklist[i].is_finished == 1 ? "已完成" : "未完成";
-      result += `任务${parseInt(i) + 1}：${taskname}：${status}\n`;
+      result += `${taskname}：${status}  ||  `;
     }
   } else {
     result = "未知错误";

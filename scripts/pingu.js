@@ -12,8 +12,10 @@ function task() {
             "Mozilla/5.0 (Linux; Android 10; Redmi K30) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.110 Mobile Safari/537.36",
         },
       });
+      console.log(res)
       if (res.data.data) {
-        msg = res.data.data.msg;
+      
+        msg = res.data.data.msg
       } else {
         msg = "cookie已失效,请及时更新";
       }
@@ -22,7 +24,7 @@ function task() {
       console.log(err);
       msg = "签到接口请求出错";
     }
-    resolve("经管之家每日签到：\n" + msg);
+    resolve("【经管之家】：\n" + msg);
   });
 }
 

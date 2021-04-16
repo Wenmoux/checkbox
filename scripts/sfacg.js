@@ -1,5 +1,5 @@
 //sf轻小说app每日签到以及每日任务(除了分享)
-let result = "sf轻小说app每日签到：\n";
+let result = "【SF轻小说】：";
 cookie = config.sfacg.cookie;
 const headers = {
   headers: {
@@ -26,7 +26,7 @@ function getask() {
       k = 0;
       result = "";
       for (i of res.data.data) {
-        result += `任务${++k}：${i.name}：${i.tips2}\n`;
+        result += `${i.name}：${i.tips2}  ||  `;
         dailytasklist.push({
           name: i.name,
           id: i.taskId,
@@ -113,14 +113,14 @@ function Sign(id) {
         headers
       );
       if (res.data.status.httpCode == 200) {
-        msg = "签到成功";
+        msg = "签到成功 || ";
       } else {
-        msg = "签到失败";
+        msg = "签到失败 || ";
       }
       result += msg;
       console.log(msg);
     } catch (err) {
-      result += "签到失败" + err.response.data;
+      result += "签到失败" + err.response.data+" || ";
       console.log(err.response.data);
     }
     resolve();
@@ -151,7 +151,7 @@ function info(id) {
         "https://api.sfacg.com/user/welfare/income",
         headers
       );
-      msg = "共" + res.data.data.coinRemain + "金币";
+      msg = "共" + res.data.data.coinRemain + "金币  ";
       result += msg;
       console.log(msg);
     } catch (err) {

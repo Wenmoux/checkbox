@@ -133,7 +133,7 @@ async function missevan() {
   let point1 = await check();
   let point2 = await check();
   console.log(`今日共获得${point2 - point1}小鱼干`);
-  return `猫耳FM：\n今日共获得${point2 - point1}小鱼干`;
+  return `【猫耳FM】：今日共获得${point2 - point1}小鱼干`;
 }
 
 module.exports = missevan;

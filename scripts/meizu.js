@@ -23,7 +23,7 @@ function meizu() {
       console.log(err);
       data="签到接口请求出错"
     }
-    resolve("【魅族社区每日签到】：" + data);
+    resolve("【魅族社区】：" + data);
   });
 }
 

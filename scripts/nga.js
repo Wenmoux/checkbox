@@ -22,7 +22,7 @@ function task() {
       console.log(err);
       msg = "签到接口请求出错";
     }
-    resolve("NGA每日签到：\n" + msg);
+    resolve("【NGA论坛】：" + msg);
   });
 }
 

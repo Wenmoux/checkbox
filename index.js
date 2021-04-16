@@ -19,9 +19,9 @@ function start(taskList) {
                 let exists = fs.existsSync(`./scripts/${taskList[i]}.js`)
                 if (exists) {
                     const task = require(`./scripts/${taskList[i]}.js`);
-                    logs += (await task()) + "    \n\n";
+                    logs +=await task() + "    \n\n";
                 } else {
-                    logs += `任务${i+1}：${taskList[i]}  不存在该脚本文件,请确认输入是否有误\n\n`
+                    logs += `${taskList[i]}  不存在该脚本文件,请确认输入是否有误\n\n`
                     console.log("不存在该脚本文件,请确认输入是否有误")
                 }
             }

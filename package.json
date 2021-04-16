@@ -1,10 +1,10 @@
 {
   "name": "checkbox",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "签到合集",
   "main": "index.js",
   "scripts": {
-    "test": "node index.js",
+    "test": "node index.js csdn",
     "start": "node index.js"
   },
   "keywords": [

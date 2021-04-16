@@ -38,9 +38,9 @@ var signIn = async function () {
   }).then((res) => {
     //console.log(res)
     if (res.result == 0) {
-      signata = "签到成功\n";
+      signata = "签到成功！ || ";
     } else if (res.result == 122) {
-      signdata = "今天已经签到过啦(/ω＼)害羞\n";
+      signdata = "今天已经签到过啦！ || ";
     }
     console.log(signdata);
     result += signdata;
@@ -55,14 +55,14 @@ var ThrowBanana = async function (id) {
     //console.log(res)
     console.log(id);
     if (res.result == 0) {
-      signdata = "🍌易已达成(/ω＼)害羞\n";
+      signdata = "🍌易已达成！ || ";
     } else if (
       res.error_msg == "内容未找到" ||
       res.error_msg == "被投蕉用户id不能小于0"
     ) {
       await ThrowBanana(Math.round(Math.random() * 10000) + 14431808);
     } else {
-      signdata = "有内鬼，取消🍌易 俺也不知道原因，自行看日志叭\n";
+      signdata = "🍌易失败！ || ";
       console.log(res);
     }
     console.log(signdata);
@@ -77,7 +77,7 @@ var getinfo = async function () {
     para: "",
   }).then(async (res) => {
     
-    let info=`香蕉：${res.info.banana}  金香蕉：${res.info.goldBanana}`
+    let info=`香蕉：${res.info.banana}  金香蕉：${res.info.goldBanana} ||  `
     result += info
     console.log(info)
   });
@@ -91,9 +91,9 @@ var NewDanmu = async function () {
   }).then((res) => {
     //console.log(res)
     if (res.result == 0) {
-      signdata = "发送弹幕成功(/ω＼)害羞\n";
+      signdata = "发送弹幕成功！ ||  ";
     } else {
-      signdata = "发送弹幕失败\n";
+      signdata = "发送弹幕失败！||  ";
       console.log(res);
     }
     console.log(signdata);
@@ -112,14 +112,14 @@ function share() {
       );
       if (res.data.result == 0) {
         console.log("分享成功");
-        result+="分享成功\n"
+        result+="分享成功！ ||  "
       } else {
         console.log(res.data);
       }
     } catch (err) {
       console.log(err.response.data);
       console.log("分享接口请求出错");
-      result += "分享接口请求出错\n";
+      result += "分享接口请求出错！ ||  ";
     }
     resolve();
   });
@@ -145,10 +145,10 @@ function getoken() {
         signdata = "获取token失败\n";
         console.log(res.data);
       }
-      result += signdata;
+     // result += signdata;
     } catch (err) {
       console.log(err.response.data);
-      result += "token获取出错\n";
+      result += "token获取出错！ ||  ";
     }
     resolve();
   });
@@ -175,7 +175,7 @@ function interact(option) {
     } catch (err) {
       console.log(err.response.data);
       console.log("点赞接口请求出错");
-      result += "点赞接口请求出错\n";
+      result += "点赞接口请求出错！ ||  ";
     }
     resolve();
   });
@@ -194,17 +194,17 @@ function timeBox(id) {
       if (res.data.result == 0) {
         signdata = `扭蛋${id}开启成功 ,获得${
           res.data.timeBoxList[id - 1].bananaCount
-        }🍌\n"`;
+        }🍌 || `;
         console.log(signdata);
       } else {
-        signdata = `扭蛋${id}开启失败：${res.data.error_msg}\n`;
+        signdata = `扭蛋${id}开启失败：${res.data.error_msg} ||  `;
         console.log(signdata);
       }
       result += signdata;
     } catch (err) {
       console.log(err.response.data);
       console.log("扭蛋接口请求出错");
-      result += "扭蛋接口请求出错";
+      result += "扭蛋接口请求出错！|| ";
     }
     resolve();
   });
@@ -224,7 +224,7 @@ function acfun(account, password) {
         }
       );
       if (res.data.result == 0 && res.data.acPassToken) {
-        signdata = `${res.data.username}登陆成功\n`;
+        signdata = `${res.data.username}登陆成功👏 ||  `;
         console.log(signdata);
         authkey = res.data.auth_key;
         headers["access_token"] = res.data.token;
@@ -242,13 +242,13 @@ function acfun(account, password) {
         }
         await getinfo()
       } else {
-        signdata = `登陆失败 ${res.data.error_msg}\n`;
+        signdata = `登陆失败 ${res.data.error_msg}😅！！`;
       }
       console.log(signdata);
       result += signdata;
     } catch (err) {
       console.log(err.response.data);
-      result += "登陆失败\n";
+      result += "登陆失败😅！！";
       console.log("登陆失败");
     }
     resolve(result);

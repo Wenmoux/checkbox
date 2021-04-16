@@ -35,13 +35,13 @@
                  lpsutgt = lpsutgt2 ? lpsutgt2[1] : null
              }
              //预约游戏id
-             result += "登陆成功\n"
+             result += "登陆成功！|| "
              console.log("login：" + lpsutgt)
              resolve(lpsutgt);
          } catch (err) {
              console.log(err.response);
              lpsutgt = null
-             result += "登陆失败\n"
+             result += "登陆失败！ ||  "
          }
          resolve();
      });
@@ -86,10 +86,10 @@ console.log(res.data)
              if (typeof(res.data) === "object" & res.data.status == 0) {
                  //  msg+=res.data.res.add_yb_tip
                  if (!res.data.res.success) {
-                     result += "今天已经签到过啦"
+                     result += "今天已经签到过啦！  "
                      console.log("今天已经签到过啦")
                  } else {
-                     result += "签到成功||" + res.data.res.rewardTips + " || 连续签到" + res.data.res.continueCount + "天"
+                     result += "签到成功||" + res.data.res.rewardTips.replace(/\\n/g," || ") + " || 连续签到" + res.data.res.continueCount + "天"
                      console.log("签到成功    " + res.data.res.rewardTips + "连续签到" + res.data.res.continueCount + "天")
 
                  }

@@ -62,6 +62,7 @@
  - [x] [菜鸟图库](http://cntk.sucaidao.com/invite/NDY4MjU0.html)每日签到
  - [x] [埋堆堆](https://www.mddcloud.com.cn/)app每日任务,得堆豆和经验值,可兑换埋堆堆会员
  - [x] [闪艺app](https://app.3000.com/html/share.php?invite_code=05802486)每日所有任务
+ - [x] [有分享](https://www.bl20166.com/)每日签到
 </details>
 
  
@@ -97,6 +98,9 @@ termux可以使用crontab设置定时任务
 <details>
 <summary>更新日志</summary>
 
+- 2021-04-16 
+  - 新增有分享论坛每日签到
+  - 增加telegram bot 推送 (默认使用的饭袋网址)
 - 2021-04-10 新增[闪艺app](https://app.3000.com/html/share.php?invite_code=05802486)每日任务
 - 2021-04-09 新增[埋堆堆](https://www.mddcloud.com.cn/)app每日任务
 - 2021-04-06  

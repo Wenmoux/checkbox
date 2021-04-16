@@ -4,7 +4,7 @@ const iconv = require("iconv-lite");
 const axios = require("axios");
 let ck = null;
 let formhash = null;
-let result = "书香门第签到：\n";
+let result = "【书香门第】：";
 let header = {
   headers: {
     Host: "www.txtnovel.top",
@@ -35,7 +35,7 @@ function login() {
       });
       let resdata = iconv.decode(res.data, "gb2312");
       if (resdata.match(/欢迎您回来/)) {
-        result += "登陆成功\n";
+        result += "登陆成功  ";
         console.log("登陆成功");
         ckk = res.headers["set-cookie"];
         ck = "";
@@ -47,7 +47,7 @@ function login() {
         let message = resdata.match(
           /<div id=\"messagetext\">.*?<p>(.+?)<\/p>/s
         );
-        result += "登陆失败";
+        result += "登陆失败  ";
       }
     } catch (err) {
       console.log(err);
@@ -78,9 +78,9 @@ function sign() {
       let res = await axios.post(url, data, header);
       let message = res.data.match(/<div id=\"messagetext\">.*?<p>(.+?)<\/p>/s);
       if (message) {
-        result += message[1] + "\n";
+        result += message[1] + "！  ";
       } else {
-        result += "签到失败\n";
+        result += "签到失败！  ";
       }
     } catch (err) {
       console.log(err);

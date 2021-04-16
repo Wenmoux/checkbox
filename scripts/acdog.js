@@ -4,11 +4,11 @@ let header = {
         'cookie': config.acdog.cookie }
 }
 const axios = require("axios")
-let result = "次元🐕：\n"
+let result = "【次元🐕】："
 async function getnonce() {
     var res = await axios.get('https://www.acgndog.com/wp-admin/admin-ajax.php?action=d2e5b56b75e2f3d4ab412a6d9561faee&%5Btype%5D=checkSigned&6bce68d6adeec8e9a3fb135daeb30b7f%5Btype%5D=checkUnread&7a2a6dd56f97c9a9a1b3bd5ade6d8f17%5Btype%5D=getUnreadCount', header)
     if (res.data.user.uid) {
-        msg = "当前共" + res.data.customPoint.point + "狗爪\n"
+        msg = "当前共" + res.data.customPoint.point + "狗爪  "
         nonce = res.data._nonce
         result += msg
         console.log(msg)

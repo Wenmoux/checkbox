@@ -29,13 +29,13 @@ function sign() {
       const url = `https://n.cg.163.com/api/v2/sign-today`;
       let res = await $http.post(url, "", headers);
       console.log("签到成功");
-      msg = "签到成功\n";
+      msg = "签到成功！！ ";
     } catch (err) {
       //   console.log(err)
-      msg = "签到失败,已签到过或其它未知原因\n";
+      msg = "签到失败,已签到过或其它未知原因！！ ";
       console.log(msg);
     }
-    resolve(msg);
+    resolve("【网易云游戏】："+msg);
   });
 }
 async function cg163() {
@@ -45,7 +45,7 @@ async function cg163() {
     return await sign();
   } else {
     console.log("cookie失效,请重新抓取cookies...");
-    return "网易云游戏: cookie失效,请重新抓取cookies...";
+    return "【网易云游戏】: cookie失效,请重新抓取cookies...";
   }
 }
 //cg163()

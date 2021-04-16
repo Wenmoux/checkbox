@@ -1,7 +1,7 @@
 const axios = require("axios");
 phone = config.everphoto.phone;
 password = config.everphoto.password;
-let result = "时光相册每日签到：\n";
+let result = "【时光相册每日签到】：";
 let header = {
   headers: {
     "User-Agent": "EverPhoto/2.7.0 (Android;2702;ONEPLUS A6000;28;oppo)",
@@ -22,7 +22,7 @@ function balance() {
       token = res.data.data.token;
     } catch (err) {
       console.log("登陆失败" + err.response.data.message);
-      result += "登陆失败" + err.response.data.message + "\n";
+      result += "登陆失败" + err.response.data.message + " ";
     }
     resolve();
   });

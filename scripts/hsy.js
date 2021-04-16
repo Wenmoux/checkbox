@@ -1,5 +1,5 @@
 const rules = {
-  name: "【好书友论坛每日签到】： ",
+  name: "【好书友论坛】： ",
   type: 2, //签到类型 2 需要formhash
   url1: "https://www.93hsy.com/plugin.php?id=k_misign:sign", //用于获取formhash的链接
   cookie: config.hsy.cookie,

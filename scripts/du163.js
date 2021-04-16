@@ -1,6 +1,6 @@
 //网易蜗牛读书
 const axios = require("axios");
-let result = "网易蜗牛每日签到: \n";
+let result = "【网易蜗牛读书】: ";
 function du163() {
   return new Promise(async (resolve) => {
     try {

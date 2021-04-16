@@ -11,7 +11,7 @@ const md5 =require("crypto-js").MD5
 const token = config.cg.token;
 const skey = config.cg.skey;
 const shareid = 1129745;
-let result = "橙光app签到: \n";
+let result = "【橙光游戏】: ";
 function check() {
   return new Promise(async (resolve) => {
     try {
@@ -26,14 +26,14 @@ function check() {
         headers,
       });
       if (res.data.status == 1) {
-        msg = `签到成功,获得：${res.data.data.today.award_name}\n明日继续签到🉑获得：${res.data.data.tomorrow.award_name}\n`;
+        msg = `签到成功,获得：${res.data.data.today.award_name}明日继续签到🉑获得：${res.data.data.tomorrow.award_name}！！ ||  `;
       } else {
-        msg = "签到失败⚠️⚠️⚠️ " + res.data.msg + "\n";
+        msg = "签到失败⚠️⚠️⚠️ " + res.data.msg + " ||  ";
       }
       console.log(msg);
       result += msg;
     } catch (err) {
-      msg = "签到接口请求出错\n";
+      msg = "签到接口请求出错！！ ";
       console.log(err);
     }
     resolve();

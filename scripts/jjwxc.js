@@ -1,5 +1,5 @@
 const axios = require("axios");
-let result = "晋江小说每日签到:\n";
+let result = "【晋江小说】：";
 function jjwxc() {
   return new Promise(async (resolve) => {
     try {

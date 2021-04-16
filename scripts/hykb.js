@@ -3,7 +3,6 @@
 waterresult = "";
 const axios = require("axios");
 const hyck = config.hykb.scookie; 
-const $http=require("axios")
 //照料id 我没加好友所以随机取得 第一个是我,不建议改ヽ(*´з｀*)ﾉ
 //   const moment=require("moment")
 
@@ -13,7 +12,7 @@ scookie = hyck.match(/\|/)?encodeURIComponent(hyck):hyck
 function get(a, b) {
   return new Promise(async (resolve) => {
     try {
-      let res = await $http.post(
+      let res = await axios.post(
         `https://huodong3.3839.com/n/hykb/${a}/ajax.php`,
         `ac=${b}&r=0.${Math.round(Math.random() * 8999999999999999) + 1000000000000000}&scookie=${scookie}`,
         {
@@ -40,7 +39,7 @@ function get(a, b) {
         }
       if (b == "Watering") {
         if (res.data.key == "ok") {
-          waterresult = `今日浇灌成功,获得${res.data.add_bmh}爆米花,连续浇灌${res.data.nowJiaoGuanDay}天,成熟度：${res.data.csd_num},爆米花：${res.data.baomihua}`;
+          waterresult = `今日浇灌成功,获得${res.data.add_bmh}爆米花,连续浇灌${res.data.nowJiaoGuanDay}天,成熟度：${res.data.csd_num},爆米花：${res.data.baomihua}  `;
           back = waterresult;
         } else {
           waterresult = res.data.info;
@@ -60,12 +59,12 @@ function get(a, b) {
 function getid() {
   return new Promise(async (resolve) => {
     try {
-      let res = await $http.get(
+      let res = await axios.get(
         "https://huodong3.3839.com/n/hykb/gs/index.php"
       );
       //预约游戏id
       str = res.data.match(/HdmodelUser\.Ling\((.+?)\)/g);
-      let res2 = await $http.get(
+      let res2 = await axios.get(
         "https://huodong3.3839.com/n/hykb/grow/daily.php"
       );
       //任务id
@@ -82,7 +81,7 @@ function getid() {
 async function task() {
   let logindata = await get("grow", "Dailylogin&id=174");
   if (logindata.key == "ok") {
-  var mres = await $http.get(
+  var mres = await axios.get(
     "https://cdn.jsdelivr.net/gh/Wenmoux/sources/other/miling.json"
   );
   await get("friend", `Secretorder&miling=${mres.data.miling}`); //密令
@@ -139,7 +138,7 @@ async function task() {
           kw = 1;
           let yxid = ress.expand.split("##")[1] || "16876"; //获取游戏id
           let urll = `https://api.3839app.com/cdn/android/gameintro-home-1546-id-${yxid}-packag--level-2.htm`;
-          let resss = await $http.get(urll);
+          let resss = await axios.get(urll);
           if (resss.data.result) {
             let strr = JSON.stringify(resss.data.result.data.downinfo.appinfo)
               .replace(/&nbsp;/g, "")
@@ -187,7 +186,7 @@ async function task() {
   }    
   let csdata = await get("grow", `Dailylogin&id=174`); //查询  
   if (csdata.key == "ok" && csdata.config && csdata.config.day_rw_csd) {
-    result = `\n今日获得${csdata.config.day_rw_csd}成熟度,共${csdata.config.chengshoudu}成熟度,${csdata.config.baomihua}爆米花`;
+    result = `今日获得${csdata.config.day_rw_csd}成熟度,共${csdata.config.chengshoudu}成熟度,${csdata.config.baomihua}爆米花  `;
     if (csdata.config.chengshoudu == 100) {
       await get("grow", "PlantRipe"); //收获
       await get("grow", "PlantSow"); //播种
@@ -197,7 +196,7 @@ async function task() {
   }
   result = "" + waterresult + result;
   console.log(result);
-  let tasl1data = await $http.get(
+  let tasl1data = await axios.get(
     "https://cdn.jsdelivr.net/gh/Wenmoux/sources@latest/other/activities.js"
   );
 
@@ -206,7 +205,7 @@ async function task() {
   return result;
     } else {
     console.log(logindata);
-    return "好游快爆每日任务:\n" + logindata.key;
+    return "【好游快爆】: " + logindata.key;
   }
 }
 

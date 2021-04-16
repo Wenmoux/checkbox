@@ -22,7 +22,7 @@ function sucai999() {
       console.log(err);
       data="签到接口请求出错"
     }
-    resolve("【菜鸟图库每日签到】：" + data);
+    resolve("【菜鸟图库】：" + data);
   });
 }
 //smzdm()

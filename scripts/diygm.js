@@ -1,7 +1,7 @@
 //传奇GM论坛  https://www.diygm.com/home.php?mod=spacecp&ac=credit&op=rule
 
 const rules = {
-  name: "【传奇GM论坛每日签到】：",
+  name: "【传奇GM论坛】：",
   type: 2, //签到类型 2 需要formhash
   url1: "https://www.diygm.com/plugin.php?id=dc_signin", //用于获取formhash的链接
   cookie: config.diygm.cookie,

@@ -1,7 +1,7 @@
 //每整点可签
 
 const rules = {
-  name: "【富贵论坛每日签到】： ",
+  name: "【富贵论坛】： ",
   type: 2, //签到类型 2 需要formhash
  // ua: "pc",
   url1: "https://www.fglt.net/forum.php", //用于获取formhash的链接

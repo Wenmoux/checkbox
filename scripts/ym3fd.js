@@ -29,7 +29,7 @@ lzusername = config.ym3fd.lzusername //联众账号
 lzpassword = config.ym3fd.lzpassword //联众密码
 softwareId = 22870; //打码 软件id 
 softwareSecret = "Ykt5eVBtSaeHhivCyxUURCWMTniJmTgGmKYDxlC7";//不用管 打码 软件密钥
-let result = "一亩三分地：\n";
+let result = "【一亩三分地】：";
 const tiku = {
   下面哪个州在美国西海岸: ["Washington"],
   "公司之间级别对应，如下哪个是错误的？": ["Facebook L6 = Facebook E6"],
@@ -147,18 +147,18 @@ function login() {
   //  console.log(data)
         if (!data.match(/您需要先登录才能继续本操作/)) {
         let name = data.match(/访问我的空间\">(.+?)<\//)[1];
-        msg = name + "   登陆成功\n";
+        msg = name + "   登陆成功！ ";
         result += msg;
         console.log(msg);
        await getcode();
        await getquestion();
       } else {
         console.log("登陆出错 账号或密码错误或者有设置问题?");
-        result += "登陆出错 账号或密码错误或者有设置问题?";
+        result += "登陆出错 账号或密码错误或者有设置问题?  ";
       }
     } catch (err) {
       console.log(err);
-      result += "登陆请求出错";
+      result += "登陆请求出错  ";
     }
     resolve(result);
   });
@@ -185,7 +185,7 @@ function getquestion() {
         formhash = data.match(/name=\"formhash\" value=\"(.+?)\">/)[1];
         console.log(formhash);
         let question = data.match(/<b>【题目】<\/b> (.+)<\/font>/)[1];
-        result += question + "\n";
+      //  result += question + "\n";
         answers = data.match(/name=\"answer\" value=.+?<\/div>/g);
         console.log(answers)
         question=question.trim()
@@ -196,7 +196,7 @@ function getquestion() {
               console.log(ianswer)
                 console.log("匹配到答案 %s", answer1);
                 answer += ianswer.match(/value=\"(\d+)\"/)[1];
-                result += "答案："+ianswer + "\n";
+             //   result += "答案："+ianswer + "\n";
               }
             }
           }
@@ -205,7 +205,7 @@ function getquestion() {
           verifycode = await getimgcode("SA00");
           await dati("SA00", verifycode, formhash, answer);
         }else{        
-        result +="未匹配到答案"
+      //  result +="未匹配到答案"
         }
       } else {
         console.log("cookie失效");
@@ -244,7 +244,7 @@ function getimgcode(idhash) {
           //await getimgcode(idhash)
         }
         console.log(msg)
-        result += msg + verifycode+"\n";
+       // result += msg + verifycode+"\n";
         resolve(verifycode);
       }
     } catch (err) {
@@ -315,15 +315,15 @@ function getcode() {
         await sign(update[2], verifycode, formhash);
       } else if (data.match(/您今天已经签到过了或者签到时间还未开始/)) {
         console.log("您今天已经签到过了或者签到时间还未开始,请稍后再来");
-        result += "您今天已经签到过了或者签到时间还未开始,请稍后再来\n";
+        result += "您今天已经签到过了或者签到时间还未开始,请稍后再来！！  ";
       } else {
     //  console.log(data)
         console.log("cookie失效");
-        result += "cookie失效";
+        result += "cookie失效⚠️   ";
       }
     } catch (err) {
       console.log(err);
-      result += "签到请求出错";
+      result += "签到请求出错！ ";
     }
     resolve();
   });
@@ -400,7 +400,7 @@ async function upload(_username, _password, imgdata, _captchaType) {
     code = response.data.data.recognition;
   } else {
     console.log(response.data.message);
-    result += "打码：" + response.data.message;
+   // result += "打码：" + response.data.message;
     code ="2333"
   }
   return code;

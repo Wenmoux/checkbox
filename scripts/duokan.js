@@ -2,7 +2,7 @@ ids = [];
 const axios = require("axios");
 //axios.defaults.timeout = 1000;
 const timeAsync =  ms => new Promise(resolve => setTimeout(resolve, ms));
-let result = "多看阅读每日任务：\n";
+let result = "【多看阅读每日任务】：";
 let number = 0;
 header = {
   headers: {
@@ -438,7 +438,7 @@ function dailysign() {
       let res = await axios.post(url, getc(), header);
       msg = res.data.msg;
       console.log(msg);
-      result += msg + "\n";
+      result += msg 
       await getO();
       await getchances();
       await drawingadd();
@@ -463,7 +463,7 @@ function getO() {
       data = `payment_name=BC&ch=VSZUVB&book_id=${bid}&price=0&allow_discount=1`;
       let furl = "https://www.duokan.com/store/v0/payment/book/create";
       let fres = await axios.post(furl, data, header);
-      a = `今日限免：${fres.data.book.title} • ${fres.data.msg}`;
+      a = `  今日限免：${fres.data.book.title} • ${fres.data.msg}`;
       result += a;
       console.log(a);
     } catch (err) {

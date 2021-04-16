@@ -1,5 +1,5 @@
 const rules = {
-  name: "【纪录片之家每日签到】： ",
+  name: "【纪录片之家】： ",
   type: 2, //签到类型 2 需要formhash
   url1: "http://www.jlpzj.net/plugin.php?id=dsu_paulsign:sign&mobile=2", //用于获取formhash的链接
   cookie: config.jlpzj.cookie,

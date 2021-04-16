@@ -34,7 +34,7 @@ function mt() {
       console.log(err);
       msg = "签到接口请求出错";
     }
-    resolve("mt论坛每日签到: \n" + msg);
+    resolve("【MT论坛】: " + msg);
   });
 }
 

@@ -13,7 +13,7 @@ function smzdm() {
       };
       let res = await axios.get(url, header);
       if (res.data.error_code == 0) {
-        data = `签到成功!\n签到天数: ${res.data.data.checkin_num} | Lv:${res.data.data.rank} | 经验值:${res.data.data.exp}`;
+        data = `签到成功! 签到天数: ${res.data.data.checkin_num} | Lv:${res.data.data.rank} | 经验值:${res.data.data.exp}`;
       } else {
         data = res.data.error_msg;
       }
@@ -22,7 +22,7 @@ function smzdm() {
       console.log(err);
       data="签到接口请求出错"
     }
-    resolve("什么值得买每日签到：\n" + data);
+    resolve("【什么值得买】：" + data);
   });
 }
 //smzdm()

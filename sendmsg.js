@@ -1,19 +1,22 @@
 const axios = require("axios");
-const sckey = "";
+const sckey = "";//server酱turbo版key
 const qmsgkey = "";
 const cpkey = "";
 const pushplustoken = ""
 const corpsecret = ""
 const corpid = ""
-const agentid= ""
+const agentid=""
 mediaid=""//素材库图片id
+const tgbotoken="" //bot token
+const chatid="" //私聊就是userid 群聊就是群组id 可通过userinfo机器人获得
 async function sendmsg(text) {
     console.log(text)
     await server(text);
     await qmsg(text);
     await cp(text);
     await pushplus(text);
-    await wx(text);
+    await wx(text); 
+    await tgpush(text)
 }
 
 function server(msg) {
@@ -44,7 +47,7 @@ function pushplus(msg) {
     return new Promise(async (resolve) => {
         try {
             if (pushplustoken) {
-                let url = "http://www.pushplus.plus/send"
+                let url = "http://pushplus.hxtrip.com/send"
                 let data = {
                     "token": pushplustoken,
                     "title": "签到盒每日任务已完成-",
@@ -72,6 +75,7 @@ function pushplus(msg) {
         resolve();
     });
 }
+
 
 
 function qmsg(msg) {
@@ -114,6 +118,30 @@ function cp(msg) {
             }
         } catch (err) {
             console.log("酷推：发送接口调用失败");
+            console.log(err);
+        }
+        resolve();
+    });
+}
+
+function tgpush(msg) {
+    return new Promise(async (resolve) => {
+        try {
+            if(tgbotoken&&tgbotoken){
+         //   let url = "https://api.telegram.org/bot${tgbotoken}/sendMessage";
+         //   let data=`parse_mode=Markdown&text=${msg.replace(/\n/g,"%0A").replace(/【|】/g,"*")}&chat_id=${chatid}`
+             let url=`https://telegram_proxy.lulafun.workers.dev/bot${tgbotoken}/sendMessage?parse_mode=Markdown&text=${encodeURI(msg.replace(/【|】/g,"*"))}&chat_id=${chatid}`
+           //     console.log(uu)
+           //   let res = await axios.post(url,data);
+             let res = await axios.get(url);
+            if (res.data.ok) {
+                console.log("Tg：发送成功");
+            } else {
+                console.log("Tg：发送失败!");
+                console.log(res.data);
+            }}else{
+            console.log("tg：你还没有填写tgbot token和chatid呢！！！")}
+        } catch (err) {
             console.log(err);
         }
         resolve();

@@ -102,11 +102,11 @@
                 info = `${res.data.nickname} || 可用玩币：${res.data.available_point} || ${res.data.checked_in_today==1?"今日已签":"今日未签"} || 连签${res.data.continuous_check_in_days}天`
                 lotterycs = res.data.lottery_ticket_count
                 console.log(info)
-                result = "玩物志好物商店：" + info
+                result = "【玩物志好物商店】：" + info
             } catch (err) {
                 console.log(err)
                 console.log(err.response.statusText);
-                result = "玩物志好物商店：" + err.response.statusText
+                result = "【玩物志好物商店】：" + err.response.statusText
             }
             resolve();
         });

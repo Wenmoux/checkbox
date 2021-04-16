@@ -1,5 +1,5 @@
 const rules = {
-  name: "【togamemod每日签到】： ",
+  name: "【togamemod】： ",
   type: 2, //签到类型 2 需要formhash
   url1: "http://www.togamemod.cn/forum.php?mod=forumdisplay&fid=71", //用于获取formhash的链接
   cookie: config.togamemod.cookie,

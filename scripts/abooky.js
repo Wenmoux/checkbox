@@ -1,5 +1,5 @@
 const rules = {
-  name: "【阅次元论坛每日签到】： ",
+  name: "【阅次元论坛】： ",
   type: 2, //签到类型 2 需要formhash
   url1: "https://www.abooky.com/plugin.php?id=k_misign:sign", //用于获取formhash的链接
   cookie: config.abooky.cookie,

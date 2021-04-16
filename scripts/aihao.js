@@ -1,5 +1,5 @@
 const axios = require("axios");
-let result = "爱好论坛：\n";
+let result = "【爱好论坛】：";
 function aihao() {
   return new Promise(async (resolve) => {
     try {
@@ -31,7 +31,7 @@ function aihao() {
           msg = "cookie已失效";
         }
         console.log(str[i - 1] + "：" + msg);
-        result += str[i - 1] + "：" + msg;
+        result += str[i - 1] + "：" + msg+" ";
       }
     } catch (err) {
       console.log(err);

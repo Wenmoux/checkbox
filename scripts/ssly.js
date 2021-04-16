@@ -21,7 +21,7 @@ function ssly() {
       console.log(err);
       msg = "签到接口请求失败";
     }
-    resolve("绅士领域每日签到：\n" + msg);
+    resolve("【绅士领域】：" + msg);
   });
 }
 //ssly()

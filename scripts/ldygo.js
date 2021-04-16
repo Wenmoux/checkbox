@@ -13,7 +13,7 @@ function ldygo() {
        const postdata = {"_channel_id":"09","_client_version_no":"2.11.0","timestamp":Math.round(new Date().getTime()/1000).toString()}    
         let res =  await axios.post(url, postdata,header);
       if (res.data.responseCode == "000000") {
-        data = `签到成功!\n☁️ + ${res.data.model.points}`;
+        data = `签到成功! ☁️ + ${res.data.model.points}`;
       } else {
         data = res.data.responseMsg;
       }
@@ -22,7 +22,7 @@ function ldygo() {
       console.log(err);
       data="签到接口请求出错"
     }
-    resolve("【联动云租车每日签到】：" + data);
+    resolve("【联动云租车】：" + data);
   });
 }
 module.exports = ldygo;

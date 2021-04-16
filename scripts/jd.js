@@ -13,7 +13,7 @@ function jd() {
     } catch (err) {
       console.log(err);
     }
-    resolve("jd：\n我没有加返回日志");
+    resolve("【京东】：我没有加返回日志");
   });
 }
 

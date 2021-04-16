@@ -15,7 +15,7 @@ function task() {
       msg = "签到接口请求出错";
       console.log(err);
     }
-    resolve("龙空论坛签到：\n" + msg);
+    resolve("【龙空论坛】：" + msg);
   });
 }
 
