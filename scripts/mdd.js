@@ -6,7 +6,7 @@ https://github.com/navhu/MddOnline
 */
 const axios = require("axios")
 const md5 = require("md5")
-const appToken =config.mdd.appToken
+const appToken = config.mdd.appToken
 const deviceNum = config.mdd.deviceNum ? config.mdd.deviceNum : "11b1384f0801478795ae2fab421fc413" 
 var i = 1
 const date = new Date();
@@ -19,7 +19,7 @@ const Sign = function(action, param) {
         'version': '4.0.04',
         'action': action,
         'time': new Date().getTime().toString(),
-       'appToken': appToken,
+        'appToken': appToken,
         'privateKey': 'e1be6b4cf4021b3d181170d1879a530a9e4130b69032144d5568abfd6cd6c1c2',
         'data': ''
     };
@@ -34,7 +34,7 @@ const Sign = function(action, param) {
             str += (key + '=' + param[key] + '&');
         }
     }
-    sign = md5(str)   
+    sign = md5(str)  
     bbody = {
         action: action,
         os: 'iOS',
@@ -56,12 +56,12 @@ function task(name, action, param) {
     return new Promise(async (resolve) => {
         try {
             let data = Sign(action, param)
-           let res = await axios.post(`https://mob.mddcloud.com.cn${action}`, data, {
+            let res = await axios.post(`https://mob.mddcloud.com.cn${action}`, data, {
                 headers: {
                     "Content-Type": "application/json"
                 }
             })
-            console.log(res.data)
+            //    console.log(res.data)
             if (res.data.status && res.data.data) {
                 if (action.match(/like/)) {
                     console.log(`第${i++}次点赞成功`)
@@ -79,6 +79,7 @@ function task(name, action, param) {
             } else {
                 msg = name + "：" + res.data.msg + " || "
             }
+            resolve(res.data)
 
             console.log(msg)
             signdata += msg
@@ -86,18 +87,18 @@ function task(name, action, param) {
             console.log(err);
             signdata += "签到接口请求失败"
         }
-        resolve(signdata);
+        resolve();
     });
 }
 
 async function mdd() {
- /*   
- await task("登陆","/api/member/login.action",{
-    "loginNum": "手机号",
-    "password": "密码",
-    "type": 0
-  }) 一般用不到 群里有个憨批分身抓不了包
-  */ 
+    /*   
+    await task("登陆","/api/member/login.action",{
+       "loginNum": "手机号",
+       "password": "密码",
+       "type": 0
+     }) 一般用不到 群里有个憨批分身抓不了包
+     */
     await task("每日签到", "\/missionApi\/signIn\/sign", {})
     for (k = 0; k < 10; k++) {
         await task("点赞", "\/api\/post\/like.action", {
@@ -110,7 +111,15 @@ async function mdd() {
         "actionCode": "share_vod_to_out",
         "params": "{\"vod_uuid\":\"ff8080817844680001786373c7481028\",\"vod_type\":0}"
     })
-    await task("关注我","/api/member/followMember.action",{memberUuid:"e3f799b3eeac4f2eaa5ea70b0289c67a"})
+    await task("查询关注状态", "/api/member/profile.action", {
+        memberUuid: "e3f799b3eeac4f2eaa5ea70b0289c67a"
+    }).then(async (res) => {
+        if (res.data.followType == 0) {
+            await task("关注我", "/api/member/followMember.action", {
+                memberUuid: "e3f799b3eeac4f2eaa5ea70b0289c67a"
+            })
+        }
+    })
     await task("分享结果", "\/api\/vod\/shareVod.action", {
         "isServiceShareNum": 1,
         "vodUuid": "ff8080817844680001786373c7481028"
@@ -126,52 +135,52 @@ async function mdd() {
         "sactionUuid": "ff80808178691eab01788cee4b4c12f2",
         "times": 169,
         "vodUuid": "e96180c6a8cc424a88dec5ec4416f6fa"
-    }) 
-        await task("分享帖子", "\/api\/post\/share.action", {
+    })
+    await task("分享帖子", "\/api\/post\/share.action", {
         "postUuid": "52d6d8359a9947c48d59639afd7771ee"
     })
     await task("分享帖子", "\/missionApi\/action\/uploadAction", {
-    "actionCode": "share_post",
-    "params": "{\"post_uuid\":\"52d6d8359a9947c48d59639afd7771ee\"}"
-  },)
-    let comment = ["666","奥利给！！！","好看滴很","爱了爱了","必须顶","ヾ(๑╹ヮ╹๑)ﾉ","路过ヾ(๑╹ヮ╹๑)ﾉ","每日一踩","重温经典(*ﾟ∀ﾟ*)","资瓷"]
-   await task("评论剧集","/api/post/post.action", {
-    "atInfoList": "",
-    "content": comment[Math.round(Math.random()*10)],
-    "contentType": 0,
-    "faceUuid": 0,
-    "imageArrayStr": "",
-    "imageResolutionRatio": "",
-    "redirectTimes": 0,
-    "resourceId": "",
-    "thumbnail": "",
-    "title": "",
-    "topicName": "",
-    "uuid": "ff8080817410d5a50174b531028c3f58",
-    "uuidName": "",
-    "uuidType": "1"
-  })
-  let  date = new Date();
-  let  msg = await axios.get("https://chp.shadiao.app/api.php");
-     await task("日常发帖","/api/post/post.action", {
-    "atInfoList": "",
-    "content": msg.data,
-    "contentType": 0,
-    "faceUuid": 0,
-    "imageArrayStr": "",
-    "imageResolutionRatio": "",
-    "redirectTimes": 0,
-    "resourceId": "",
-    "thumbnail": "",
-    "title": "日常打卡 "+date.getFullYear()+"-"+(date.getMonth() + 1)+"-"+date.getDate(),
-    "topicName": "",
-    "uuid": "ff80808175b1bb7c0175f95318ed42da",
-    "uuidName": "埋堆吹水堂",
-    "uuidType": "2"
-  })
-  
-    
-   await task("观影记录", "\/api\/watchHistory\/add.action", {
+        "actionCode": "share_post",
+        "params": "{\"post_uuid\":\"52d6d8359a9947c48d59639afd7771ee\"}"
+    }, )
+    let comment = ["666", "奥利给！！！", "好看滴很", "爱了爱了", "必须顶", "ヾ(๑╹ヮ╹๑)ﾉ", "路过ヾ(๑╹ヮ╹๑)ﾉ", "每日一踩", "重温经典(*ﾟ∀ﾟ*)", "资瓷"]
+    await task("评论剧集", "/api/post/post.action", {
+        "atInfoList": "",
+        "content": comment[Math.round(Math.random() * 10)],
+        "contentType": 0,
+        "faceUuid": 0,
+        "imageArrayStr": "",
+        "imageResolutionRatio": "",
+        "redirectTimes": 0,
+        "resourceId": "",
+        "thumbnail": "",
+        "title": "",
+        "topicName": "",
+        "uuid": "ff8080817410d5a50174b531028c3f58",
+        "uuidName": "",
+        "uuidType": "1"
+    })
+    let date = new Date();
+    let msg = await axios.get("https://chp.shadiao.app/api.php");
+    await task("日常发帖", "/api/post/post.action", {
+        "atInfoList": "",
+        "content": msg.data,
+        "contentType": 0,
+        "faceUuid": 0,
+        "imageArrayStr": "",
+        "imageResolutionRatio": "",
+        "redirectTimes": 0,
+        "resourceId": "",
+        "thumbnail": "",
+        "title": "日常打卡 " + date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate(),
+        "topicName": "",
+        "uuid": "ff80808175b1bb7c0175f95318ed42da",
+        "uuidName": "埋堆吹水堂",
+        "uuidType": "2"
+    })
+
+
+    await task("观影记录", "\/api\/watchHistory\/add.action", {
         "duration": 1562,
         "sactionUuid": "ff80808178691eab01787cf4d4ef094b",
         "time": 2892,
@@ -183,18 +192,18 @@ async function mdd() {
     })
 
     await task("赠送礼物", "\/userLiveApi\/gift\/sendGiftEnd", {
-       "batchUuid": "4a345dc9221541ee9ba403487bd1965d",
-       "giftUuid": 4,
-       "liveUuid": "1044127"      
-  })
-      await task("赠送礼物", "\/userLiveApi\/gift\/sendGift", {
-       "batchUuid": "4a345dc9221541ee9ba403487bd1965d",
-       "deductWay": 1,
-       "giftUuid": 4,
-       "liveUuid": "1044127",        
-       "num": 1        
-  })
-  
+        "batchUuid": "4a345dc9221541ee9ba403487bd1965d",
+        "giftUuid": 4,
+        "liveUuid": "1044127"
+    })
+    await task("赠送礼物", "\/userLiveApi\/gift\/sendGift", {
+        "batchUuid": "4a345dc9221541ee9ba403487bd1965d",
+        "deductWay": 1,
+        "giftUuid": 4,
+        "liveUuid": "1044127",
+        "num": 1
+    })
+
     await task("一键领取奖励", "\/missionApi\/award\/acceptAll", {})
     return signdata
 }

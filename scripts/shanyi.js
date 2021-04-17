@@ -79,7 +79,8 @@ async function renwu() {
     for (id of dataa.data.daily_task_list) {
         await ling(id.task_name, jm(2), jm(id.task_id))
     }
-    for (id of dataa.data.hy_bonus_daily_list) {
+    hylist = [...dataa.data.hy_bonus_daily_list,...dataa.data.hy_bonus_weekly_config]
+    for (id of hylist) {
         await task("活跃度宝箱 " + id.hy_val, "?m=user&op=daily_task&ac=receive_hy_bonus", "package_id=" + jm(id.package_id))
     }
 
@@ -91,6 +92,11 @@ async function getinfo() {
     for (id of dataa.data.daily_task_list) {
         status = id.status == 3 ? "已领取" : "未领取"
         info += id.task_name + " ：" + status + " || "
+    }
+    info+= "资产信息： "
+    let packs=await task("获取资产信息","/?m=user&op=index&ac=my_backpack","")
+    for (pack of packs.data.list){
+    info+=pack.name + ":"+pack.amount+"  "    
     }
     //console.log(info)
     return info
@@ -104,7 +110,7 @@ async function shanyi() {
         //默认填写我的邀请码 
         await task("填写邀请码 05802486","/?m=user&op=activity&ac=use_invite_code","code="+jm(05802486))
         await task("每日签到", "/?m=user&op=check_in&ac=check_in", "")
-     /*   for(trigger=0;trigger<5;trigger++){
+       /* for(trigger=0;trigger<5;trigger++){
         await task("连续签到奖励", "/?m=user&op=check_in&ac=receive_monthly_bonus", "trigger="+jm(trigger))
         }*/
         await task("签到翻牌", "/?m=user&op=check_in&ac=receive_daily_bonus", "type=2jyfrX4gfTvnrWc+orX+og==")
@@ -121,6 +127,7 @@ async function shanyi() {
         await task("删除评论","/?m=comment&op=index&ac=del_comment","comment_id="+jm(cid))  
         await renwu()
         await video()
+        await task("合成赠币","/?m=pay&op=index&ac=fragments_to_zcoin","amount=OGzPvzYB3YSI3POa/15kYQ==")
         await task("兑换阅读时长", "/?m=user&op=index&ac=exchange_star", "star=" + jm(20))
         let info = await getinfo()
         return info
