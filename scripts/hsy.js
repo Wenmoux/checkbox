@@ -1,6 +1,7 @@
 const rules = {
   name: "【好书友论坛】： ",
   type: 2, //签到类型 2 需要formhash
+  op: "签到",
   url1: "https://www.93hsy.com/plugin.php?id=k_misign:sign", //用于获取formhash的链接
   cookie: config.hsy.cookie,
   ua: "pc",
@@ -16,6 +17,6 @@ const rules = {
 
 async function hsy(){
 const template = require("../Template");
-return await template(rules)
+return rules.name+await template(rules)
 }
 module.exports=hsy

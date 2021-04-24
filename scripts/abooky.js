@@ -1,6 +1,7 @@
 const rules = {
   name: "【阅次元论坛】： ",
   type: 2, //签到类型 2 需要formhash
+  op: "签到",
   url1: "https://www.abooky.com/plugin.php?id=k_misign:sign", //用于获取formhash的链接
   cookie: config.abooky.cookie,
   reg1: 'formhash=(.+)"', //formhash正则
@@ -14,6 +15,6 @@ const rules = {
 
 async function abooky(){
 const template = require("../Template");
-return await template(rules)
+return rules.name+await template(rules)
 }
 module.exports=abooky

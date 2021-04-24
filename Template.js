@@ -11,10 +11,11 @@ function Template(rules) {
                               }
             };
             res = await axios.get(rules.url1, header);
-            let formhash = res.data.match(rules.reg1)
+            formhash = res.data.match(rules.reg1)
             //  console.log(formhash)
             //console.log(res.data)
               if (!res.data.match(rules.verify)) {
+              ckstatus=1
                 let signurl = rules.signurl.replace(/@formhash/, formhash[1]);
                // console.log(signurl)
                 if (rules.charset) {
@@ -36,16 +37,18 @@ function Template(rules) {
                 } else {
                     res2data = res2.data
                 }
+              //  console.log(res2data)
        
                 if (res2data.match(rules.reg2)) {
-                    msg = "今天已经签到过啦";
+                    msg = "今天已经"+rules.op+"过啦";
                 } else if (res2data.match(rules.reg3)) {
                     msg = res2data.match(rules.info)[0];
                 } else {
-                    msg = "签到失败!原因未知";
+                    msg =rules.op+"失败!原因未知";
                     console.log(res2data);
                 }
             } else {
+               ckstatus= 0
                 msg = "cookie失效";
             }
 
@@ -53,9 +56,9 @@ function Template(rules) {
             //   console.log(msg);
         } catch (err) {
             console.log(err);
-            msg = "签到失败"
+            msg = rules.op+"接口请求失败"
         }
-        resolve(rules.name + msg);
+        resolve(msg);
     });
 }
 

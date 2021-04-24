@@ -3,6 +3,7 @@
 const rules = {
   name: "【传奇GM论坛】：",
   type: 2, //签到类型 2 需要formhash
+  op: "签到",
   url1: "https://www.diygm.com/plugin.php?id=dc_signin", //用于获取formhash的链接
   cookie: config.diygm.cookie,
   reg1: 'formhash=(.+?)"', //formhash正则
@@ -17,6 +18,6 @@ const rules = {
 
 async function diygm(){
 const template = require("../Template");
-return await template(rules)
+return rules.name+await template(rules)
 }
 module.exports=diygm

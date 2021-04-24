@@ -1,6 +1,7 @@
 const rules = {
   name: "【ug爱好者】： ",
   type: 2, //签到类型 2 需要formhash
+  op: "签到",
   url1: "http://www.ugsnx.com/forum.php?mod=guide&view=newthread&mobile=2", //用于获取formhash的链接
   cookie: config.ugsnx.cookie,
   charset:"gb2312",
@@ -15,6 +16,6 @@ const rules = {
 
 async function ugsnx(){
 const template = require("../Template");
-return await template(rules)
+return rules.name+await template(rules)
 }
 module.exports=ugsnx

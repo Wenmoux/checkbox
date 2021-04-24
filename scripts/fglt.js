@@ -3,6 +3,7 @@
 const rules = {
   name: "【富贵论坛】： ",
   type: 2, //签到类型 2 需要formhash
+  op: "签到",
  // ua: "pc",
   url1: "https://www.fglt.net/forum.php", //用于获取formhash的链接
   cookie: config.fglt.cookie,
@@ -17,6 +18,6 @@ const rules = {
 
 async function fglt(){
 const template = require("../Template");
-return await template(rules)
+return rules.name+await template(rules)
 }
 module.exports=fglt

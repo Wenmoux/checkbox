@@ -109,7 +109,7 @@ async function mdd() {
     signdata += `点赞 ${i-1}/10 || `
     await task("分享至外站", "\/missionApi\/action\/uploadAction", {
         "actionCode": "share_vod_to_out",
-        "params": "{\"vod_uuid\":\"ff8080817844680001786373c7481028\",\"vod_type\":0}"
+        "params": "{\"vod_uuid\":\"ff8080817825bd37017839bb80b009c7\",\"vod_type\":0}"
     })
     await task("查询关注状态", "/api/member/profile.action", {
         memberUuid: "e3f799b3eeac4f2eaa5ea70b0289c67a"
@@ -122,7 +122,7 @@ async function mdd() {
     })
     await task("分享结果", "\/api\/vod\/shareVod.action", {
         "isServiceShareNum": 1,
-        "vodUuid": "ff8080817844680001786373c7481028"
+        "vodUuid": "ff8080817825bd37017839bb80b009c7"
     })
 
     await task("上传观看直播时长", "\/missionApi\/action\/uploadAction", {
@@ -132,9 +132,9 @@ async function mdd() {
     await task("发送影视弹幕", "\/api\/barrage\/addBarrage396.action", {
         "barrageUuid": "1",
         "content": "好看",
-        "sactionUuid": "ff80808178691eab01788cee4b4c12f2",
+        "sactionUuid": "ff80808178c47cf70178f8fcc7ef1d29",
         "times": 169,
-        "vodUuid": "e96180c6a8cc424a88dec5ec4416f6fa"
+        "vodUuid": "ff8080817825bd37017839bb80b009c7"
     })
     await task("分享帖子", "\/api\/post\/share.action", {
         "postUuid": "52d6d8359a9947c48d59639afd7771ee"
@@ -143,6 +143,7 @@ async function mdd() {
         "actionCode": "share_post",
         "params": "{\"post_uuid\":\"52d6d8359a9947c48d59639afd7771ee\"}"
     }, )
+    
     let comment = ["666", "奥利给！！！", "好看滴很", "爱了爱了", "必须顶", "ヾ(๑╹ヮ╹๑)ﾉ", "路过ヾ(๑╹ヮ╹๑)ﾉ", "每日一踩", "重温经典(*ﾟ∀ﾟ*)", "资瓷"]
     await task("评论剧集", "/api/post/post.action", {
         "atInfoList": "",
@@ -156,11 +157,11 @@ async function mdd() {
         "thumbnail": "",
         "title": "",
         "topicName": "",
-        "uuid": "ff8080817410d5a50174b531028c3f58",
+        "uuid": "ff8080817825bd37017839bb80b009c7",
         "uuidName": "",
         "uuidType": "1"
     })
-    let date = new Date();
+       let date = new Date();
     let msg = await axios.get("https://chp.shadiao.app/api.php");
     await task("日常发帖", "/api/post/post.action", {
         "atInfoList": "",
@@ -182,16 +183,23 @@ async function mdd() {
 
     await task("观影记录", "\/api\/watchHistory\/add.action", {
         "duration": 1562,
-        "sactionUuid": "ff80808178691eab01787cf4d4ef094b",
+        "sactionUuid": "ff80808178c47cf70178f8fcc7ef1d29",
         "time": 2892,
-        "vodUuid": "ff80808178446800017863197a110fa4"
+        "vodUuid": "ff8080817825bd37017839bb80b009c7"
     })
+    
+    //伙计办大事 国语
     await task("上传观影时长", "\/missionApi\/action\/uploadAction", {
         "actionCode": "watch_vod",
-        "params": "{\"session_id\":\"4701617887966740\",\"vod_type\":0,\"vod_uuid\":\"e96180c6a8cc424a88dec5ec4416f6fa\",\"duration\":32000}"
+        "params": "{\"session_id\":\"4701617887966740\",\"vod_type\":0,\"vod_uuid\":\"ff8080817825bd37017839bb80b009c7\",\"duration\":32000}"
+    })
+    //粤语
+    await task("上传观影时长", "\/missionApi\/action\/uploadAction", {
+        "actionCode": "watch_vod",
+        "params": "{\"session_id\":\"4701617887966740\",\"vod_type\":0,\"vod_uuid\":\"ff8080817655969d017689db61e11f6d\",\"duration\":32000}"
     })
 
-    await task("赠送礼物", "\/userLiveApi\/gift\/sendGiftEnd", {
+     await task("赠送礼物", "\/userLiveApi\/gift\/sendGiftEnd", {
         "batchUuid": "4a345dc9221541ee9ba403487bd1965d",
         "giftUuid": 4,
         "liveUuid": "1044127"
@@ -203,7 +211,6 @@ async function mdd() {
         "liveUuid": "1044127",
         "num": 1
     })
-
     await task("一键领取奖励", "\/missionApi\/award\/acceptAll", {})
     return signdata
 }
