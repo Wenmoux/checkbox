@@ -8,7 +8,7 @@ duokan:
   
 #wps 小程序个人中心账号id 一串数字
 wps:
-  uid: 123456
+  sid: 123456
   
 #橙光游戏app随便抓个包就有token
 cg:
