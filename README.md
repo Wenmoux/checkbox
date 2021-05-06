@@ -79,7 +79,8 @@ termux可以使用crontab设置定时任务
 
 
 
-下载源码,安装依赖,在config.yml文件内填入对应cookies(不要更改原有格式,index.js文件里自行按照格式添加需要的任务,运行
+下载源码,安装依赖,在config.yml文件内填入对应cookies(不要更改原有格式, 比如冒号后面的空格emmm
+,index.js文件里自行按照格式添加需要的任务,运行
    ```       
       git clone https://github.com/Wenmoux/checkbox.git
       cd /sdcard/checkbox (这里还是要看你的路径)

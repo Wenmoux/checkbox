@@ -112,14 +112,14 @@ function share() {
       );
       if (res.data.result == 0) {
         console.log("分享成功");
-        result+="分享成功！ ||  "
+        result+="分享成功！  "
       } else {
         console.log(res.data);
       }
     } catch (err) {
       console.log(err.response.data);
       console.log("分享接口请求出错");
-      result += "分享接口请求出错！ ||  ";
+      result += "分享接口请求出错！  ";
     }
     resolve();
   });
@@ -200,11 +200,11 @@ function timeBox(id) {
         signdata = `扭蛋${id}开启失败：${res.data.error_msg} ||  `;
         console.log(signdata);
       }
-      result += signdata;
+    //  result += signdata;
     } catch (err) {
       console.log(err.response.data);
       console.log("扭蛋接口请求出错");
-      result += "扭蛋接口请求出错！|| ";
+   //   result += "扭蛋接口请求出错！|| ";
     }
     resolve();
   });

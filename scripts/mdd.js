@@ -5,7 +5,7 @@ https://github.com/navhu/MddOnline
 2021-04-09
 */
 const axios = require("axios")
-const md5 = require("md5")
+const md5 =require("crypto-js").MD5
 const appToken = config.mdd.appToken
 const deviceNum = config.mdd.deviceNum ? config.mdd.deviceNum : "11b1384f0801478795ae2fab421fc413" 
 var i = 1
@@ -34,7 +34,7 @@ const Sign = function(action, param) {
             str += (key + '=' + param[key] + '&');
         }
     }
-    sign = md5(str)  
+    sign = md5(str).toString()
     bbody = {
         action: action,
         os: 'iOS',
