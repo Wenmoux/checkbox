@@ -1,13 +1,14 @@
 //好游快爆爆米花任务,可兑换激活码、实物周边等
 //我的邀请码 sdvf180uscf3
-waterresult = "";
-const axios = require("axios");
-const hyck = config.hykb.scookie; 
+result = "【好游快爆】：";
+const $http = axios = require("axios");
+const hyck = config.hykb.scookie;
+const qq =  config.hykb.qq?config.hykb.qq:null
 //照料id 我没加好友所以随机取得 第一个是我,不建议改ヽ(*´з｀*)ﾉ
 //   const moment=require("moment")
 
 //照料id 我没加好友所以随机取得 第一个是我,不建议改ヽ(*´з｀*)ﾉ
-buid = [21039293,48653684,44191145,54216701,54184381,38442812,34977383,54099572,54060137,18344113,53950826,53334988,49100316,24158995,53043395,53746196,7495782,53752398,13268805,53540861,53169378,53481728,53480955,53236037,5015419,17998323,142234,53043027,53022651,52883552,52919017,52883915,2987459,52863870,52787172,52782808,52694050,20997885,51870224,51854475,45610785,51060995,51041635,22673480,26442566,49469272,49614447,2596430,49728164,49486242,49662192,49613978,46353292,49343258,45415658,49011759,48694743,48557745,39246562,48714555,7081589,19159172,1779737,48346086,48339861,47879039,23201290,48214589,48204930,48075558,576273,48074580,48043586,47937184,45231130,47937216,47236557,47889444,1656229,12094940,113403,35309397,47126286,39092668,46987060,46938478,33318766,39092819,24164451,46816636,20041171,1991977,45236927,45229941,45416573,45535123,11222716,45230227,29935848,32441297,23450463,45461447,8251603,45783763,14409304,12661364,45473957,45751761,23079057,140449,27139868,44840858,21273234,45078335,44758815,44838804,45234308,45466314,45562418,45045871,45507665,45263948,45249695,44042408,9169383,44761568,44471412,44440362]
+buid = [21039293,48653684,44191145,54216701,54184381,38442812,34977383,54099572,54060137,18344113,53950826,53334988,49100316,24158995,53043395,53746196,7495782,53752398,13268805,53540861,53169378,53481728,53480955,53236037,5015419,17998323,142234,53043027,53022651,52883552,52919017,52883915,2987459,52863870]
 scookie = hyck.match(/\|/)?encodeURIComponent(hyck):hyck
 function get(a, b) {
   return new Promise(async (resolve) => {
@@ -37,17 +38,9 @@ function get(a, b) {
           }
           await get(a, b);
         }
-      if (b == "Watering") {
-        if (res.data.key == "ok") {
-          waterresult = `今日浇灌成功,获得${res.data.add_bmh}爆米花,连续浇灌${res.data.nowJiaoGuanDay}天,成熟度：${res.data.csd_num},爆米花：${res.data.baomihua}  `;
-          back = waterresult;
-        } else {
-          waterresult = res.data.info;
-          back = waterresult;
-        }
-      } else {
+
         back = res.data;
-      }
+      
       console.log(back);
     } catch (err) {
       console.log(err);
@@ -184,17 +177,22 @@ async function task() {
         break;
     }
   }    
+  let tasl1data = await axios.get(
+    "https://cdn.jsdelivr.net/gh/Wenmoux/sources/other/activities.js"
+  );
+  eval(tasl1data.data);
+  await task1();   
   let csdata = await get("grow", `Dailylogin&id=174`); //查询  
   if (csdata.key == "ok" && csdata.config && csdata.config.day_rw_csd) {
-    result = `今日获得${csdata.config.day_rw_csd}成熟度,共${csdata.config.chengshoudu}成熟度,${csdata.config.baomihua}爆米花  `;
+    result += `今日获得${csdata.config.day_rw_csd}成熟度,共${csdata.config.chengshoudu}成熟度,${csdata.config.baomihua}爆米花  `;
     if (csdata.config.chengshoudu == 100) {
       await get("grow", "PlantRipe"); //收获
       await get("grow", "PlantSow"); //播种
     }
   } else {
-    result = csdata.key;
+    result += csdata.key;
   }
-  result = "" + waterresult + result;
+  
   return result;
     } else {
     console.log(logindata);
