@@ -109,7 +109,7 @@ async function mdd() {
     signdata += `点赞 ${i-1}/10 || `
     await task("分享至外站", "\/missionApi\/action\/uploadAction", {
         "actionCode": "share_vod_to_out",
-        "params": "{\"vod_uuid\":\"ff8080817825bd37017839bb80b009c7\",\"vod_type\":0}"
+        "params": "{\"vod_uuid\":\"ff8080817825bd3701783a09c7230a1e\",\"vod_type\":0}"
     })
     await task("查询关注状态", "/api/member/profile.action", {
         memberUuid: "e3f799b3eeac4f2eaa5ea70b0289c67a"
@@ -122,7 +122,7 @@ async function mdd() {
     })
     await task("分享结果", "\/api\/vod\/shareVod.action", {
         "isServiceShareNum": 1,
-        "vodUuid": "ff8080817825bd37017839bb80b009c7"
+        "vodUuid": "ff8080817825bd3701783a09c7230a1e"
     })
 
     await task("上传观看直播时长", "\/missionApi\/action\/uploadAction", {
@@ -132,9 +132,9 @@ async function mdd() {
     await task("发送影视弹幕", "\/api\/barrage\/addBarrage396.action", {
         "barrageUuid": "1",
         "content": "好看",
-        "sactionUuid": "ff80808178c47cf70178f8fcc7ef1d29",
+        "sactionUuid": "ff808081790d553801795e6b8c552953",
         "times": 169,
-        "vodUuid": "ff8080817825bd37017839bb80b009c7"
+        "vodUuid": "ff8080817825bd3701783a09c7230a1e"
     })
     await task("分享帖子", "\/api\/post\/share.action", {
         "postUuid": "52d6d8359a9947c48d59639afd7771ee"
@@ -157,7 +157,7 @@ async function mdd() {
         "thumbnail": "",
         "title": "",
         "topicName": "",
-        "uuid": "ff8080817825bd37017839bb80b009c7",
+        "uuid": "ff8080817825bd3701783a09c7230a1e",
         "uuidName": "",
         "uuidType": "1"
     })
@@ -182,21 +182,21 @@ async function mdd() {
 
 
     await task("观影记录", "\/api\/watchHistory\/add.action", {
-        "duration": 1562,
-        "sactionUuid": "ff80808178c47cf70178f8fcc7ef1d29",
-        "time": 2892,
-        "vodUuid": "ff8080817825bd37017839bb80b009c7"
+        "duration": 2577,
+        "sactionUuid": "ff808081790d553801795e6b8c552953",
+        "time": 2576,
+        "vodUuid": "ff8080817825bd3701783a09c7230a1e"
     })
     
-    //伙计办大事 国语
+    // 国语
     await task("上传观影时长", "\/missionApi\/action\/uploadAction", {
         "actionCode": "watch_vod",
-        "params": "{\"session_id\":\"4701617887966740\",\"vod_type\":0,\"vod_uuid\":\"ff8080817825bd37017839bb80b009c7\",\"duration\":32000}"
+        "params": "{\"session_id\":\"4701617887966740\",\"vod_type\":0,\"vod_uuid\":\"ff80808176ad70cc01771482f6a230ca\",\"duration\":30000}"
     })
     //粤语
     await task("上传观影时长", "\/missionApi\/action\/uploadAction", {
         "actionCode": "watch_vod",
-        "params": "{\"session_id\":\"4701617887966740\",\"vod_type\":0,\"vod_uuid\":\"ff8080817655969d017689db61e11f6d\",\"duration\":32000}"
+        "params": "{\"session_id\":\"4701617887966740\",\"vod_type\":0,\"vod_uuid\":\"ff8080817825bd3701783a09c7230a1e\",\"duration\":30000}"
     })
 
      await task("赠送礼物", "\/userLiveApi\/gift\/sendGiftEnd", {

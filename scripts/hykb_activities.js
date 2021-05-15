@@ -25,7 +25,7 @@ async function jhy(id) {
 
 //获取任务id
 async function lottery(a,c,b){
-let res = await $http.get(
+let res = await axiod.get(
        `https://huodong3.3839.com/n/hykb/${a}/m/?comm_id=${b}`
    );
    str=res.data.match(/daily_btn_(\d+)/g);
