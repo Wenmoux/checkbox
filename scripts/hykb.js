@@ -19,7 +19,7 @@ function get(a, b) {
         {
           headers: {
             "User-Agent":
-              "Mozilla/5.0 (Linux; Android 8.0.0; FRD-AL10 Build/HUAWEIFRD-AL10; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/77.0.3865.120 MQQBrowser/6.2 TBS/045224 Mobile Safari/537.36 V1_AND_SQ_7.1.0_0_TIM_D TIM/3.0.0.2860 QQ/6.5.5  NetType/WIFI WebP/0.3.0 Pixel/1080",
+              config.UA?config.UA:"Mozilla/5.0 (Linux; Android 8.0.0; FRD-AL10 Build/HUAWEIFRD-AL10; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/77.0.3865.120 MQQBrowser/6.2 TBS/045224 Mobile Safari/537.36 V1_AND_SQ_7.1.0_0_TIM_D TIM/3.0.0.2860 QQ/6.5.5  NetType/WIFI WebP/0.3.0 Pixel/1080",
           },
         }
       );
@@ -39,8 +39,7 @@ function get(a, b) {
           await get(a, b);
         }
 
-        back = res.data;
-      
+        back = res.data;      
       console.log(back);
     } catch (err) {
       console.log(err);
@@ -170,11 +169,13 @@ async function task() {
         await get("grow", `DailyFriendLing&id=${i[2]}`); //照料5次
         break;
       case "DailyInviteLing":
-        let invite = await get("grow", `DailyInviteJump&id=${i[2]}`);
+       /* let invite = await get("grow", `DailyInviteJump&id=${i[2]}`);
         let uid = invite.invite_url.match(/u=(.+?)&/);
         await get("grow", `DailyInvite&u=${uid ? uid[1] : ""}&rwid=10`); //邀请下载
+        */
         await get("grow", `DailyInviteLing&id=${i[2]}`);
         break;
+        
     }
   }    
   let tasl1data = await axios.get(

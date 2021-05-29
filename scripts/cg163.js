@@ -7,11 +7,12 @@ const headers = {
     //                "content-type": "application/x-www-form-urlencoded; charset=UTF-8"
   },
 };
+const axios = require("axios")
 function check() {
   return new Promise(async (resolve) => {
     try {
       const url = `https://n.cg.163.com/api/v2/users/@me`;
-      let res = await $http.get(url, headers);
+      let res = await axios.get(url, headers);
       console.log("cookie未失效,即将开始签到...");
       ckstatus = 1;
     } catch (err) {

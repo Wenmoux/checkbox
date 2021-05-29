@@ -1,6 +1,8 @@
 let sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 result +="【好游快爆临时任务】:"
 
+
+
 //  助力抽奖通用
 async function jhy(id) {
        prize = `\n[活动id${id}]`
@@ -25,7 +27,7 @@ async function jhy(id) {
 
 //获取任务id
 async function lottery(a,c,b){
-let res = await axios.get(
+let res = await $http.get(
        `https://huodong3.3839.com/n/hykb/${a}/m/?comm_id=${b}`
    );
    str=res.data.match(/daily_btn_(\d+)/g);
@@ -49,9 +51,9 @@ async function lottery2(a, c, b, str) {
 }
 
 async function ddd(id) {
-    await get("yuyue2020/m", `invite&comm_id=${id}&isyuyue=0&isfx=1&testkey=4399NoneDeviceId`)
-    await get("yuyue2020/m", `choujiang&comm_id=${id}&isyuyue=0&isdown=1&isdownonly=1&testkey=4399NoneDeviceId`)
-    await get("yuyue2020/m", `mycode&comm_id=${id}&isyuyue=0&testkey=4399NoneDeviceId`)
+    await get("yuyue2020/m", `invite&comm_id=${id}&isyuyue=1&isfx=1&testkey=4399NoneDeviceId`)
+    await get("yuyue2020/m", `choujiang&comm_id=${id}&isyuyue=1&isdown=1&isdownonly=1&testkey=4399NoneDeviceId`)
+    await get("yuyue2020/m", `mycode&comm_id=${id}&isyuyue=1&testkey=4399NoneDeviceId`)
 }
 
 
@@ -61,9 +63,13 @@ async function task1() {
     await lottery("lottery", "[630630]王牌勋章", 5)
     await lottery("lottery", "[25525]补给箱", 4)
     await lottery("lottery", "[79979]宝石", 3)
- //   await lottery("lottery", "[12344]洞天百宝", 10)
     await lottery("lottery2", "0", 2)
-
+    var ids = await axios.get("https://cdn.jsdelivr.net/gh/Wenmoux/sources/other/id.json");
+    for (id of ids.data) {
+        result += await jhy(id)
+    }
+    await ddd(113)
+    await ddd(113)
     
 }
 
