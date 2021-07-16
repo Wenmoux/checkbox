@@ -14,7 +14,7 @@ function du163() {
         },
       };
       let url = `https://du.163.com/activity/201907/activityCenter/sign.jsonannel=0&_versions=1080&merchant=17Kxiaomi&platform=2&manufacturer=`;
-      let data = { csrfToken: str.xsrf || 6 };
+      let data = { csrfToken: du.xsrf || 6 };
       let res = await axios.post(url, data, headers);
       if (res.data.code == -1104) {
         msg = res.data.msg;

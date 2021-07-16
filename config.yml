@@ -204,5 +204,10 @@ xjvideo:
 #有分享论坛
 bl20166:
   cookie:        
-  
+
+#BigFun网页版  token在请求头里 x-csrf-token
+bigfun:
+  cookie: 
+  token:   
+
     
