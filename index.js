@@ -2,12 +2,12 @@ const sendmsg = require("./sendmsg");
 const yaml = require("js-yaml");
 const fs = require('fs');
 const yargs = require('yargs');
-let argv = yargs.argv;
+var argv = yargs.argv;
 global.config = yaml.load(fs.readFileSync('./config.yml', 'utf8'));
-let signlist = ["lenovo","csdn"]
+var signlist = ["lenovo","csdn"]
 //自行添加任务 名字看脚本里的文件名 比如csdn.js 就填"csdn"
-let signList = (argv._.length) > 0 ? argv._ : signlist
-let logs = "";
+var signList = (argv._.length) > 0 ? argv._ : signlist
+var logs = "";
 start(signList);
 function start(taskList) {
     return new Promise(async (resolve) => {

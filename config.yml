@@ -6,10 +6,7 @@
 duokan:
   cookie: 
   
-#wps 小程序个人中心账号id 一串数字
-wps:
-  sid: 123456
-  
+
 #橙光游戏app随便抓个包就有token
 cg:
   token: 
@@ -47,9 +44,7 @@ du163:
   xsrf: 
   X-Auth-Token: 
 
-#吾爱破解 全部cookie
-w2pj:
-  cookie:
+
   
 # 香网小说网页端 全部cookie
 xiang5:
@@ -210,4 +205,7 @@ bigfun:
   cookie: 
   token:   
 
+#阡陌居
+qmj: 
+  cookie:     
     
