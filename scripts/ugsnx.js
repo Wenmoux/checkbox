@@ -9,9 +9,9 @@ const rules = {
   verify: "有你更精彩！", //验证cookie状态
   signmethod: "get", //签到请求方式 get/post
   signurl: "http://www.ugsnx.com/plugin.php?id=dsu_amupper&ppersubmit=true&nogoto=1&formhash=@formhash&mobile=2&inajax=1", //签到链接
-  reg2: "签到完毕", //重复签到判断
-  reg3: "签到成功", //签到成功判断
-  info: "p>由于您累计签到\\d+次，连续签到\\d+次，特奖励：G币 \\d+", //签到成功返回信息
+  reg2: "", //重复签到判断
+  reg3: "", //签到成功判断
+  info: "", //签到成功返回信息
 };
 
 async function ugsnx(){

@@ -22,7 +22,7 @@
 <summary>查看签到列表</summary>
 
  - [ ] ~~[人人视频](https://mobile.rr.tv/fe/#/invite/phone)福利|签到|答题|开宝箱 抄[@chavyleung](https://github.com/chavyleung/scripts/tree/master/rrtv)~~
- - [] ~~[WPS邀请](https://zt.wps.cn/2018/clock_in?csource=pc_clock_oldactivity) 邀请好友,需小程序手动打卡,抄自[@lepecoder/checkin](https://github.com/lepecoder/checkin)~~
+ - [ ] ~~[WPS邀请](https://zt.wps.cn/2018/clock_in?csource=pc_clock_oldactivity) 邀请好友,需小程序手动打卡,抄自[@lepecoder/checkin](https://github.com/lepecoder/checkin)~~
  - [x] [时光相册](https://web.everphoto.cn/)每日签到
  - [x] [书香门第](http://www.txtnovel.top/?fromuser=lu66666)每日签到
  - [x] [多看阅读app](http://www.duokan.com/m/product)每日任务薅书豆+自动延期 保底6k+ (大概
@@ -30,7 +30,7 @@
  - [ ] ~~[ucloud社区](https://uclub.ucloud.cn/invite/478)每日签到得积分~~
  - [x] [网易蜗牛读书](https://du.163.com/static/activity/new_rank/index.html?user=8cf097eb09724ec5b5389a262f069a14)每日签到
  - [x] [香网小说](http://sc.xiang5.com/2.2/invite/share?uid=5563201)每日签到
- - [] [吾爱破解](www.52pojie.com)签到
+ - [ ] [吾爱破解](www.52pojie.com)签到
  - [x] [网易云游戏](https://cloudgame.webapp.163.com/newer.html?invite_code=R6522U)每日签到得免费时长
  - [x] [晋江小说网](https://m.jjwxc.com/invite/index?novelid=2911400&inviteid=11581969)每日签到,得月石
  - [x] [什么值得买](smzdm.com)网页端每日签到
@@ -67,6 +67,8 @@
  - [x] [有分享](https://www.bl20166.com/)每日签到
  - [x] [bigfun](https://bigfun.bilibili.com)每日任务
  - [x] [阡陌居](http://www.1050qm.com/forum.php?mod=guide&view=hot&mobile=2)每日签到
+ - [x] [HiFiNi](https://www.hifini.com/sg_sign.htm)每日签到
+ - [x] [Hires后花园](https://dsdlove.com)每日签到
 </details>
 
  
@@ -103,6 +105,9 @@ termux可以使用crontab设置定时任务
 <details>
 <summary>更新日志</summary>
 
+-2021-08-01
+  - 新增[HiFiNi](https://www.hifini.com/sg_sign.htm)每日签到
+  - 新增[Hires后花园](https://dsdlove.com)每日签到
 - 2021-07-21 
   - 修复书香门第签到
   - 修复acfun签到

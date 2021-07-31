@@ -22,7 +22,7 @@ async function get(a,b,key) {
 async function exchange() {
         await get("checkExchange", `gid=${gid}`,key) //检测
     for (i = 0; i < 100; i++) {
-        get("exchange", `goodsid=${id}`,key) //兑换
+        get("exchange", `goodsid=${gid}`,key) //兑换
     }
 }
 

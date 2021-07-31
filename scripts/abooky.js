@@ -8,9 +8,9 @@ const rules = {
   verify: "没有帐号", //验证cookie状态
   signmethod: "get", //签到请求方式 get/post
   signurl: "https://www.abooky.com/plugin.php?id=k_misign:sign&operation=qiandao&format=button&formhash=@formhash", //签到链接
-   reg2: "今日已签", //重复签到判断
-  reg3: "签到成功", //签到成功判断
-  info: "获得随机奖励.+?银币", //签到成功返回信息
+  reg2: "", //重复签到判断
+  reg3: "", //签到成功判断
+  info: "", //签到成功返回信息
 };
 
 async function abooky(){

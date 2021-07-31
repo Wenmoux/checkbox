@@ -9,10 +9,9 @@ const rules = {
   signmethod: "post", //签到请求方式 get/post
   signurl: "http://www.1050qm.com/plugin.php?id=dsu_paulsign:sign&operation=qiandao&infloat=0&inajax=0&mobile=yes", //签到链接
   signdata: "formhash=@formhash&qdxq=wl",
-  reg2: "今日已签", //重复签到判断
-  reg3: "签到成功", //签到成功判断
-  reg4: "<div id=\"messagetext\">.*?<p>(.+?)<\/p>",
-  info: "获得随机奖励 \\d+金币", //签到成功返回信息
+  reg2: "", //重复签到判断
+  reg3: "", //签到成功判断
+  info: "", //签到成功返回信息
 };
 
 async function togamemod(){

@@ -10,9 +10,9 @@ const rules = {
   signmethod: "post", //签到请求方式 get/post
   signurl: "https://www.bl20166.com/plugin.php?id=dsu_paulsign:sign&operation=qiandao&infloat=0&inajax=0&mobile=yes", //签到链接
   signdata:"formhash=@formhash&qdxq=kx&qdmode=1&todaysay=%E4%B9%88%E4%B9%88%E5%93%92%EF%BD%9E%28%5E%D0%B7%5E%29-%E2%98%86&fastreply=3",
-  reg2: "今日已经签到", //重复签到判断
-  reg3: "成功", //签到成功判断
-  info: "<p>.+签到.+", //签到成功返回信息
+  reg2: "", //重复签到判断
+  reg3: "", //签到成功判断
+  info: "", //签到成功返回信息
 };
 
 async function bl20166(){

@@ -6,7 +6,7 @@ const hyck = config.hykb.scookie;
 const qq =  config.hykb.qq?config.hykb.qq:null
 //照料id 我没加好友所以随机取得 第一个是我,不建议改ヽ(*´з｀*)ﾉ
 //   const moment=require("moment")
-
+var uid = ""
 //照料id 我没加好友所以随机取得 第一个是我,不建议改ヽ(*´з｀*)ﾉ
 buid = [21039293,48653684,44191145,54216701,54184381,38442812,34977383,54099572,54060137,18344113,53950826,53334988,49100316,24158995,53043395,53746196,7495782,53752398,13268805,53540861,53169378,53481728,53480955,53236037,5015419,17998323,142234,53043027,53022651,52883552,52919017,52883915,2987459,52863870]
 scookie = hyck.match(/\|/)?encodeURIComponent(hyck):hyck
@@ -72,7 +72,9 @@ function getid() {
 }
 async function task() {
   let logindata = await get("grow", "Dailylogin&id=174");
-  if (logindata.key == "ok") {
+  if (logindata.key == "ok" ) {
+   exdata = await get("kbexam","login")
+   if(exdata.config.lyks==1){
   var mres = await axios.get(
     "https://cdn.jsdelivr.net/gh/Wenmoux/sources/other/miling.json"
   );
@@ -85,12 +87,23 @@ async function task() {
   //  await get("friend","EnterInviteCode&invitecode=sdvf180uscf3","") //填邀请码
   await getid(); //获取任务id
   await get("grow", "Watering&id=6"); //浇灌
- for (i of buid) {
-    await get("grow", `gamehander&buid=${i}&icon_id=49`); //照料
-    if (i != 21039293) {
-      await get("grow",  `gamehander&buid=${i}&icon_id=888888`); //偷玉米
+  let canzl = true
+  let mode =0
+  let uids = await axios.get("http://1oner.cn:1919/hykb/all?res=uid")
+  if(uids && uids.data && uids.data.message) buid = uids.data.message
+  for (i of buid) { 
+  if(mode!=2){
+   if(canzl) {          
+  let zlres= await get("grow", `gamehander&buid=${i}&icon_id=58`); //照料
+  mode = zlres.mode
+  if(zlres.sy_day_shijian_corn_max_num ==0) canzl=false
+}
+    if (i != 21039293) {      
+    let stealres = await get("grow",  `gamehander&buid=${i}&icon_id=888888`,true); //偷玉米
+      console.log(`偷 ${i}玉米 ${stealres.msg}`)  
     }
-  }
+  }}
+  if(mode!=2)  await axios.post("http://1oner.cn:1919/hykb/add", `uid=${logindata.uid}&nickname=${encodeURI(logindata.name)}`)
   for (i of id) {
     i = i.match(/\.(.+)\((\d+)\)/);
     switch (i[1]) {
@@ -184,16 +197,20 @@ async function task() {
   eval(tasl1data.data);
   await task1();   
   let csdata = await get("grow", `Dailylogin&id=174`); //查询  
-  if (csdata.key == "ok" && csdata.config && csdata.config.day_rw_csd) {
-    result += `今日获得${csdata.config.day_rw_csd}成熟度,共${csdata.config.chengshoudu}成熟度,${csdata.config.baomihua}爆米花  `;
-    if (csdata.config.chengshoudu == 100) {
+  if (csdata.key == "ok" && csdata.config ) {
+  csinfo = csdata.config
+  exinfo = exdata.config
+  result +=`昵称：${csinfo.name} \n种子：${csinfo.seed}爆米花：${csinfo.baomihua}  \n成熟度：${csinfo.chengshoudu}  \n荣誉等级：${exinfo.tag_title}\n`
+    if (csinfo.chengshoudu == 100) {
       await get("grow", "PlantRipe"); //收获
       await get("grow", "PlantSow"); //播种
     }
   } else {
     result += csdata.key;
+  }  
+  }else{
+  result + = "请先进行礼仪考试,再运行脚本"  
   }
-  
   return result;
     } else {
     console.log(logindata);

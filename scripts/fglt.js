@@ -11,9 +11,9 @@ const rules = {
   verify: "使用QQ帐号登录", //验证cookie状态
   signmethod: "get", //签到请求方式 get/post
   signurl: "https://www.fglt.net/plugin.php?id=dsu_amupper&ppersubmit=true&formhash=@formhash&mobile=2", //签到链接
-   reg2: "已签到完毕", //重复签到判断
-  reg3: "特奖励", //签到成功判断
-  info: "感谢您积极打卡.+", //签到成功返回信息
+   reg2: "", //重复签到判断
+  reg3: "", //签到成功判断
+  info: "", //签到成功返回信息
 };
 
 async function fglt(){

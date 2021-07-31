@@ -14,8 +14,7 @@ function Template(rules) {
             formhash = res.data.match(rules.reg1)
             if (!res.data.match(rules.verify)) {
                 ckstatus = 1
-                let signurl = rules.signurl.replace(/@formhash/, formhash[1]);
-                // console.log(signurl)
+                let signurl = rules.signurl.replace(/@formhash/, formhash[1]);               
                 if (rules.charset) {
                     header.responseType = "arraybuffer"
                 }
@@ -34,9 +33,12 @@ function Template(rules) {
                 } else {
                     res2data = res2.data
                 }
-
-                if (res2data.match(/<div id=\"messagetext\">.*?<p>(.+?)<\/p>/s)) { //dz论坛大多都是
-                    msg = res2data.match(/<div id=\"messagetext\">.*?<p>(.+?)<\/p>/s)[1];
+//                console.log(res2data)
+                if (res2data.match(/id=\"messagetext\">.*?<p>(.+?)<\/p>/s)) { //dz论坛大多都是
+                    msg = res2data.match(/id=\"messagetext\">.*?<p>(.+?)</s)[1];
+                } else if (!rules.name.match("togamemod")&&res2data.match(/<root><!\[CDATA\[/)) {
+                    console.log(res2data)
+                    msg = res2data.match(/<!\[CDATA\[(.+?)>/)[1].replace(/]/g, "")
                 } else if (res2data.match(rules.reg2)) {
                     msg = "今天已经" + rules.op + "过啦";
                 } else if (res2data.match(rules.reg3)) {

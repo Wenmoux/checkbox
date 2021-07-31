@@ -11,9 +11,9 @@ const rules = {
   signmethod: "post", //签到请求方式
   signurl: "https://www.diygm.com/plugin.php?id=dc_signin:sign&inajax=1", //签到链接
   signdata:"formhash=@formhash&signsubmit=yes&handlekey=signin&emotid=1&referer=https%3A%2F%2Fwww.diygm.com%2Fmisc.php%3Fmod%3Dmobile&content=%E8%AE%B0%E4%B8%8A%E4%B8%80%E7%AC%94%EF%BC%8Chold%E4%BD%8F%E6%88%91%E7%9A%84%E5%BF%AB%E4%B9%90%EF%BC%81;",
-   reg2: "您今日已经签过到", //重复签到判断
-  reg3: "签到成功", //签到成功判断
-  info: "签到成功.*?金钱\\d+", //签到成功返回信息
+   reg2: "", //重复签到判断
+  reg3: "", //签到成功判断
+  info: "", //签到成功返回信息
 };
 
 async function diygm(){
