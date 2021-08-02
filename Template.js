@@ -37,8 +37,9 @@ function Template(rules) {
                 if (res2data.match(/id=\"messagetext\">.*?<p>(.+?)<\/p>/s)) { //dz论坛大多都是
                     msg = res2data.match(/id=\"messagetext\">.*?<p>(.+?)</s)[1];
                 } else if (!rules.name.match("togamemod")&&res2data.match(/<root><!\[CDATA\[/)) {
-                    console.log(res2data)
-                    msg = res2data.match(/<!\[CDATA\[(.+?)>/)[1].replace(/]/g, "")
+                   // console.log(res2data)
+                    msg = res2data.match(/<!\[CDATA\[(.+?)>/)[1].replace(/]/g, "").replace(/<script.+/,"")
+                    if(rules.name=="【Hires后花园】： " &&res2.data.match(/签到成功/)) msg = res2data.match(/签到成功~随机奖励新币\d+/)[0]                  
                 } else if (res2data.match(rules.reg2)) {
                     msg = "今天已经" + rules.op + "过啦";
                 } else if (res2data.match(rules.reg3)) {

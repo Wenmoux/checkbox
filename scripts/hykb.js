@@ -209,7 +209,7 @@ async function task() {
     result += csdata.key;
   }  
   }else{
-  result + = "请先进行礼仪考试,再运行脚本"  
+  result += "请先进行礼仪考试,再运行脚本"  
   }
   return result;
     } else {

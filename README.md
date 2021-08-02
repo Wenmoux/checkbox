@@ -21,13 +21,10 @@
 <details>
 <summary>查看签到列表</summary>
 
- - [ ] ~~[人人视频](https://mobile.rr.tv/fe/#/invite/phone)福利|签到|答题|开宝箱 抄[@chavyleung](https://github.com/chavyleung/scripts/tree/master/rrtv)~~
- - [ ] ~~[WPS邀请](https://zt.wps.cn/2018/clock_in?csource=pc_clock_oldactivity) 邀请好友,需小程序手动打卡,抄自[@lepecoder/checkin](https://github.com/lepecoder/checkin)~~
  - [x] [时光相册](https://web.everphoto.cn/)每日签到
  - [x] [书香门第](http://www.txtnovel.top/?fromuser=lu66666)每日签到
  - [x] [多看阅读app](http://www.duokan.com/m/product)每日任务薅书豆+自动延期 保底6k+ (大概
  - [x] [绅士领域](https://hk.hksslyapp.xyz/mz_pbl/app_down/)每日签到得硬币
- - [ ] ~~[ucloud社区](https://uclub.ucloud.cn/invite/478)每日签到得积分~~
  - [x] [网易蜗牛读书](https://du.163.com/static/activity/new_rank/index.html?user=8cf097eb09724ec5b5389a262f069a14)每日签到
  - [x] [香网小说](http://sc.xiang5.com/2.2/invite/share?uid=5563201)每日签到
  - [ ] [吾爱破解](www.52pojie.com)签到
@@ -41,7 +38,6 @@
  - [x] [CSDN](https://www.csdn.net/)每日签到+抽奖
  - [x] [mt论坛](https://bbs.binmt.cc/?fromuid=14593)每日签到
  - [x] [经管之家](https://bbs.pinggu.org/?fromuid=11925701)每日签到
- - [ ] ~~哔哩哔哩每日白嫖硬币活动（夏日音乐季 手书嘉年华 14+）九月初结束~~
  - [x] [好游快爆](https://huodong3.3839.com/n/hykb/friend/yaoqing.php?u=21039293)全任务(签到，分享/下载/体验游戏，抖音任务，邀请下载，照料好友),下载安装后首页搜索99999领取新人福利,爆米花可兑换实物周边,虚拟兑换码等
  - [x] [猫耳FM](https://m.missevan.com)每日任务
  - [x] [爱好论坛](https://www.aihao.cc)早中晚打卡以及全勤领取
@@ -49,7 +45,7 @@
  - [x] [acfun](https://activity.acfun.cn/invite-share?userId=3941489&activityType=default&page_source=resource_slot_invite_friend_tips&sid=9e0a35788902e0db)每日签到/投🍌/点赞/直播扭蛋
  - [x] [传奇GM论坛](https://www.diygm.com)
  - [x] [联想智选app每日签到]()
- - [x] [一亩三分地](https://www.1point3acres.com/bbs/?fromuid=702784)每日签到答题,需要填写[联众打码](https://www.jsdati.com/)账号密码 
+ - [ ] ~~[一亩三分地](https://www.1point3acres.com/bbs/?fromuid=702784)每日签到答题,需要填写[联众打码](https://www.jsdati.com/)账号密码~~ 
  - [x] [次元狗](https://www.acgndog.com/)每日签到
  - [x] [联动云租车](https://m.ldygo.com/app/extension/phoneVoucher.html?inviteCode=JW0hcdmJ)每日签到
  - [x] [数码之家](https://www.mydigit.cn)每日签到
@@ -69,6 +65,8 @@
  - [x] [阡陌居](http://www.1050qm.com/forum.php?mod=guide&view=hot&mobile=2)每日签到
  - [x] [HiFiNi](https://www.hifini.com/sg_sign.htm)每日签到
  - [x] [Hires后花园](https://dsdlove.com)每日签到
+ - [x] [爱企查](https://aiqicha.baidu.com/m/usercenter/inviteCode?uid=xlTM-TogKuTwF6g4ihCXLTt55PoEI2gS8Amd)每日任务 
+ - [x] [曲奇云盘](https://quqi.com/)每日任务
 </details>
 
  
@@ -105,7 +103,11 @@ termux可以使用crontab设置定时任务
 <details>
 <summary>更新日志</summary>
 
--2021-08-01
+- 2021-08-02
+ - 新增[百度爱企查](https://aiqicha.baidu.com/m/usercenter/inviteCode?uid=xlTM-TogKuTwF6g4ihCXLTt55PoEI2gS8Amd)每日任务 
+ - 新增[曲奇云盘](https://quqi.com/)每日任务
+ - 移除一亩三分地每日任务
+- 2021-08-01
   - 新增[HiFiNi](https://www.hifini.com/sg_sign.htm)每日签到
   - 新增[Hires后花园](https://dsdlove.com)每日签到
 - 2021-07-21 
