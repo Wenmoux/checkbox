@@ -67,6 +67,7 @@
  - [x] [Hires后花园](https://dsdlove.com)每日签到
  - [x] [爱企查](https://aiqicha.baidu.com/m/usercenter/inviteCode?uid=xlTM-TogKuTwF6g4ihCXLTt55PoEI2gS8Amd)每日任务 
  - [x] [曲奇云盘](https://quqi.com/)每日任务
+ - [x] [奥拉星积分商城](http://www.100bt.com/m/creditMall/?gameId=2#home)每日任务
 </details>
 
  
@@ -103,6 +104,7 @@ termux可以使用crontab设置定时任务
 <details>
 <summary>更新日志</summary>
 
+- 2021-08-03 新增[积分商城](http://www.100bt.com/m/creditMall/?gameId=2#home)每日任务
 - 2021-08-02
  - 新增[百度爱企查](https://aiqicha.baidu.com/m/usercenter/inviteCode?uid=xlTM-TogKuTwF6g4ihCXLTt55PoEI2gS8Amd)每日任务 
  - 新增[曲奇云盘](https://quqi.com/)每日任务

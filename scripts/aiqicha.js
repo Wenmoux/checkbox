@@ -38,8 +38,7 @@ function get(api, method, data) {
 async function getaskList() {
     let tres = await get("usercenter/checkTaskStatusAjax", "get")
     let obj = tres.data
-    //console.log(tres)
-  if(tres.status ==0){  
+    if(tres.status ==0){  
     Object.keys(obj).forEach(function(key) {
         if (oo[key]) {
             let task = obj[key]
@@ -95,8 +94,13 @@ async function dotask(taskList){
                 break
             case "CX11007": //浏览监控日报
                 console.log("开始任务：" + oo[o.title])
-                await get("zxcenter/monitorDailyReportDetailAjax?reportdate=2021-07-29", "get")
-                break
+                let jk = await get("zxcenter/monitorDailyReportListAjax?page=1&size=10","get")
+                let list = jk.data.list
+                if(list){
+                for (p=0;p<3&&p<list.length;p++){
+                await get(`zxcenter/monitorDailyReportDetailAjax?reportdate=${list[p].reportDate}`, "get")
+                }}
+                 break
             case "CX11009": //查询关系
                 console.log("开始任务：" + oo[o.title])
                 await get(`relations/findrelationsAjax?from=e07a8ef1409bff3987f1b28d118ff826&to=6f5966de4af2eb29085ffbcc9cc0116a&pathNum=10`, "get")
@@ -109,8 +113,9 @@ async function dotask(taskList){
                 break
             case "CX12001": //添加监控
                 console.log("开始任务：" + oo[o.title])
-                await get(`zxcenter/addMonitorAjax?pid=28696417032417`, "get")
-                await get(`zxcenter/delMonitorAjax?pid=28696417032417`, "get")
+                for( id of [29829264524016,28696417032417,31370200772422,31242153386614]){await get(`zxcenter/addMonitorAjax?pid=28696417032417`, "get")}
+                await get(`zxcenter/addMonitorAjax?pid=29710155220353`, "get")
+                await get(`zxcenter/cancelMonitorAjax?pid=29710155220353`, "get")
                 await sleep(500)
                 break
             case "CX12002": //添加关注
