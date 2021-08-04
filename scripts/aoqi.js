@@ -35,8 +35,8 @@ async function aoqi() {
         if (b == 5) console.log("今日已完成5任务")
         else taskList = await getSsort(res.data.filter(x => x.status != 1))
         for (task of taskList) {
-            await get("activity/do_task", `taskId=${task.taskID}&gameId=${task.gameID}`)
-            await sleep(1200)
+            await sleep(1500)
+            await get("activity/do_task", `taskId=${task.taskID}&gameId=${task.gameID}`)            
         }
         let infores = await get("my/user_info")
        info = `积分：${infores.data.credit}  已累计签到：${infores.data.signInTotal}天`

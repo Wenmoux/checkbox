@@ -36,7 +36,7 @@ function visit(id) {
             let res = await axios.post(`https://quqi.com/api/dir/ls?quqi_id=${id}`, `quqi_id=${id}&tree_id=1&node_id=0`, {headers})
             let res1 = await axios.post(`https://quqi.com/auth/updateVisit?quqi_id=${id}`, `quqi_id=${id}`, {headers})
             console.log("浏览多人群组：" + res1.data.msg)
-            await sleep(500)
+            await sleep(1000)
              await getreward(14)
         } catch (err) {
             console.log(err)
@@ -80,7 +80,7 @@ function uploadimg(id) {
                 console.log(`上传图片 ${name} 成功`)
                 nid = res.data.data.node_id
                 if (nid) await axios.post(`https://quqi.com/api/node/batchDel?quqi_id=${id}`, `quqi_id=${id}&tree_id=1&node_ids=${nid}`, {headers})
-                await sleep(500)
+                await sleep(1000)
                 await getreward(15)
             } else console.log("上传失败：" + res.data.msg)
         } catch (err) {

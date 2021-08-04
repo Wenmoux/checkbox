@@ -1,5 +1,6 @@
 /*
 邀请链接：https://aiqicha.baidu.com/m/usercenter/inviteCode?uid=xlTM-TogKuTwF6g4ihCXLTt55PoEI2gS8Amd
+批量查询任务需手动抓包查询之后的exportkey 并替换 见118行
 */
 const axios = require("axios")
 var sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
@@ -14,6 +15,12 @@ ytaskList = []
 taskList = []
 claimList = []
 alltaskList = []
+
+function rand(){
+let key = ["苹果","华为","百度","一个","暴风","王者"]
+let i = Math.floor((Math.random()*key.length))
+return key[i]
+}
 let oo = {CX10002:"每日签到",CX10001:"每日登陆",CX11001:"查询企业",CX11002:"查询老板",CX11003:"查询老赖",CX11004:"查询商标",CX11005:"查询地图",CX11006:"浏览新闻",CX11007:"浏览监控日报",CX11009:"查询关系",CX11010:"批量查询",CX12001:"添加监控",CX12002:"添加关注",CX12005:"分享任务",CX12006:"邀请任务",CX12007:"高级搜索",CX12008:"高级筛选"}
 function get(api, method, data) {
     return new Promise(async (resolve) => {
@@ -65,22 +72,22 @@ async function dotask(taskList){
                 break
             case "CX11001": //查询企业 
                 console.log("开始任务：" + oo[o.title])
-                await get(`s/getHeadBrandAndPersonAjax?q=${encodeURI("白云")}`, "get")
+                await get(`s/getHeadBrandAndPersonAjax?q=${encodeURI(rand())}`, "get")
                 await sleep(500)
                 break
             case "CX11002": //查询老板 
                 console.log("开始任务：" + oo[o.title])
-                await get(`person/relevantPersonalAjax?page=1&q=${encodeURI("王者")}&size=10`, "get")
+                await get(`person/relevantPersonalAjax?page=1&q=${encodeURI(rand())}&size=10`, "get")
                 await sleep(500)
                 break
             case "CX11003": //查询老赖
                 console.log("开始任务：" + oo[o.title])
-                await get(`c/dishonestAjax?q=${encodeURI("暴风")}&t=8&s=10&p=1&f=%7B%22type%22:%221%22%7D`, "get")
+                await get(`c/dishonestAjax?q=${encodeURI(rand())}&t=8&s=10&p=1&f=%7B%22type%22:%221%22%7D`, "get")
                 await sleep(500)
                 break
             case "CX11004": //查询商标
                 console.log("开始任务：" + oo[o.title])
-                await get(`c/markproAjax?q=%E4%B9%9D%E4%B9%9D%E5%85%AD&p=1&s=10&f=%7B%7D&o=%7B%7D`, "get")
+                await get(`c/markproAjax?q=${encodeURI(rand())}&p=1&s=10&f=%7B%7D&o=%7B%7D`, "get")
                 await sleep(500)
                 break
             case "CX11005": //查询地图
@@ -97,7 +104,7 @@ async function dotask(taskList){
                 let jk = await get("zxcenter/monitorDailyReportListAjax?page=1&size=10","get")
                 let list = jk.data.list
                 if(list){
-                for (p=0;p<3&&p<list.length;p++){
+                for (p=0;p<2&&p<list.length;p++){
                 await get(`zxcenter/monitorDailyReportDetailAjax?reportdate=${list[p].reportDate}`, "get")
                 }}
                  break
@@ -106,14 +113,14 @@ async function dotask(taskList){
                 await get(`relations/findrelationsAjax?from=e07a8ef1409bff3987f1b28d118ff826&to=6f5966de4af2eb29085ffbcc9cc0116a&pathNum=10`, "get")
                 await sleep(500)
                 break
-            case "CX11010": //批量查询
+            case "CX11010": //批量查询 
                 console.log("开始任务：" + oo[o.title])
-                await get(`batchquery/show?exportkey=xlTM-TogKuTwFXlQeIXL0-YmXymqY9*2WSog5X1eolIlnw54STdnS8R-F60i0atJlZDa5cJwZjljmd`, "get")
+                await get(`batchquery/show?exportkey=xlTM-TogKuTwFXlQeIXL0-ZSYg3hsic*l8GeygZ33JY5yKM7wIuRZJ9YNE*8CciQoAU5UjsmI-hdmd`, "get")
                 await sleep(500)
                 break
             case "CX12001": //添加监控
                 console.log("开始任务：" + oo[o.title])
-                for( id of [29829264524016,28696417032417,31370200772422,31242153386614]){await get(`zxcenter/addMonitorAjax?pid=28696417032417`, "get")}
+                for( id of [29829264524016,28696417032417,31370200772422,31242153386614]){await get(`zxcenter/addMonitorAjax?pid=${id}`, "get")}
                 await get(`zxcenter/addMonitorAjax?pid=29710155220353`, "get")
                 await get(`zxcenter/cancelMonitorAjax?pid=29710155220353`, "get")
                 await sleep(500)
@@ -126,14 +133,22 @@ async function dotask(taskList){
                 break
             case "CX12005": //分享好友
                 console.log("开始任务：" + oo[o.title])
+                console.log("666")
                 let shres = await get(`usercenter/getShareUrlAjax`, "get")
-                uid = shres.data.match(/uid=(.+?)/)[1]
-                await get(`m/getuserinfoAjax?uid=${uid}`, "get")
+                uid = shres.data.match(/uid=(.+)/)[1]
+                headers["cookie"] =""
+                let t = Date.now()
+                headers["referer"] =  "https://"+shres.data+"&VNK="+t
+                headers["Zx-Open-Url"] = "https://"+shres.data+"&VNK="+t
+                console.log(headers)
+                await get(`m/?uid=${uid}`,"get")                
+                await get(`m/getuserinfoAjax?uid=${uid}`,"get")                 
+                headers.cookie = config.aiqicha.cookie
                 await sleep(500)
                 break
             case "CX12007": //高级搜索
                 console.log("开始任务：" + oo[o.title])
-                await get(`search/advanceSearchAjax?q=%E7%99%BE%E5%BA%A6&t=11&p=1&s=10&o=0&f=%7B%22searchtype%22:[%221%22]%7D`, "get")
+                await get(`search/advanceSearchAjax?q=${encodeURI(rand())}&t=11&p=1&s=10&o=0&f=%7B%22searchtype%22:[%221%22]%7D`, "get")
                 break
             case "CX12008": //高级筛选
                 console.log("开始任务：" + oo[o.title])
@@ -161,6 +176,7 @@ async function aqc() {
             claimList = []
             await getaskList()
             for (task of claimList) {
+                console.log(`领取爱豆：${oo[task]}`)
                 let clres = await get(`zxcenter/claimUserTaskAjax?taskCode=${task}`, "get")
                 if (clres.status == 0) console.log(`  领取成功！获得${clres.data.totalScore}爱豆`)
             }
