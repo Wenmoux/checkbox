@@ -123,8 +123,12 @@ async function shanyi() {
         await task("分享作品", "/?m=share&op=index&ac=game_share", "game_id="+jm(98865)+"&op_from=5nXP9qADvw3bmKOnRJA5Xw%3D%3D")
         await task("守护角色礼物", "/?m=game_info&op=role&ac=give_gift", "amount=5nXP9qADvw3bmKOnRJA5Xw%3D%3D&is_own=5nXP9qADvw3bmKOnRJA5Xw%3D%3D&gift_id=Ee6W%2F%2FIRGANKm%2FJI1ZdVqw%3D%3D&gift_num=W%2FWdZKs5lJhcLOK5XBhwXA%3D%3D&comment=&role_id=%2BU8vUwupuwFWbE94QXgYow%3D%3D")
         let qz= await task("圈子回复", "?m=qz&op=topic&ac=add_topic_comment", "topic_id=b5Xy0BT9w1np7AOUwumsRA==&content=IcQo64q0HYOVzUoFR6X0uQ==")
-        let cid = qz.data.comment_id
-        await task("删除评论","/?m=comment&op=index&ac=del_comment","comment_id="+jm(cid))  
+        let gift =await task("获取背包礼物","/?m=game_info&op=role&ac=my_gift_list","")
+        giftList = gift.data?gift.data.gift_list : []
+         for(g = 0;g<giftList.length;g++){
+        console.log("开始赠送 ："+giftList[g].gift_name+"  "+giftList[g].gift_amount+"  "+giftList[g].gift_id)
+                await task("守护角色礼物", "/?m=game_info&op=role&ac=give_gift", `amount=${jm(giftList[g].gift_amount)}&is_own=${jm(1)}&gift_id=${jm(giftList[g].gift_id)}&gift_num=${jm(giftList[g].gift_amount)}&comment=(*^ω^*)&role_id=%2BU8vUwupuwFWbE94QXgYow%3D%3D`)
+        }
         await renwu()
         await video()
         await task("合成赠币","/?m=pay&op=index&ac=fragments_to_zcoin","amount=OGzPvzYB3YSI3POa/15kYQ==")

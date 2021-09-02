@@ -3,7 +3,7 @@ const axios = require("axios");
 //axios.defaults.timeout = 1000;
 const timeAsync =  ms => new Promise(resolve => setTimeout(resolve, ms));
 let result = "【多看阅读每日任务】：";
-let number = 0;
+//let number = 0;
 header = {
   headers: {
     cookie: config.duokan.cookie,
@@ -406,6 +406,7 @@ function delay(date) {
 function info() {
   return new Promise(async (resolve) => {
     try {
+      number = 0
       let url = `https://www.duokan.com/store/v0/award/coin/list`;
       let data = `sandbox=0&${getc()}&withid=1`;
       let res = await axios.post(url, data, header);
@@ -477,7 +478,6 @@ function getO() {
 async function task() {
   await info();
   await dailysign();
-
   await info();
   return result;
 }
