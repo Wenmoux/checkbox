@@ -27,7 +27,7 @@
  - [x] [绅士领域](https://hk.hksslyapp.xyz/mz_pbl/app_down/)每日签到得硬币
  - [x] [网易蜗牛读书](https://du.163.com/static/activity/new_rank/index.html?user=8cf097eb09724ec5b5389a262f069a14)每日签到
  - [x] [香网小说](http://sc.xiang5.com/2.2/invite/share?uid=5563201)每日签到
- - [ ] [吾爱破解](www.52pojie.com)签到
+ - [x] [吾爱破解](www.52pojie.com)签到
  - [x] [网易云游戏](https://cloudgame.webapp.163.com/newer.html?invite_code=R6522U)每日签到得免费时长
  - [x] [晋江小说网](https://m.jjwxc.com/invite/index?novelid=2911400&inviteid=11581969)每日签到,得月石
  - [x] [什么值得买](smzdm.com)网页端每日签到
@@ -68,6 +68,7 @@
  - [x] [爱企查](https://aiqicha.baidu.com/m/usercenter/inviteCode?uid=xlTM-TogKuTwF6g4ihCXLTt55PoEI2gS8Amd)每日任务 
  - [x] [曲奇云盘](https://quqi.com/)每日任务
  - [x] [奥拉星积分商城](http://www.100bt.com/m/creditMall/?gameId=2#home)每日任务
+ - [x] [4399游戏盒](https://yxhhd2.5054399.com/comm/bzyld2/share/index.php?ext=3091185497)疯狂游乐城任务 
 </details>
 
  
@@ -84,8 +85,12 @@ termux可以使用crontab设置定时任务
 
 
 
-下载源码,安装依赖,在config.yml文件内填入对应cookies(不要更改原有格式, 比如冒号后面的空格emmm
-,index.js文件里自行按照格式添加需要的任务,运行
+下载源码,安装依赖
+复制一份config.yml.temple文件并改名config.yml 
+在config.yml文件内填入对应cookies(不要更改原有格式
+> 注意每个冒号后面都有空格  
+
+在index.js文件里自行按照格式添加需要的任务,运行
    ```       
       git clone https://github.com/Wenmoux/checkbox.git
       cd /sdcard/checkbox (这里还是要看你的路径)
@@ -104,6 +109,7 @@ termux可以使用crontab设置定时任务
 <details>
 <summary>更新日志</summary>
 
+- 2021-09-07 新增[4399游戏盒](https://yxhhd2.5054399.com/comm/bzyld2/share/index.php?ext=3091185497)疯狂游乐城任务 
 - 2021-08-03 新增[积分商城](http://www.100bt.com/m/creditMall/?gameId=2#home)每日任务
 - 2021-08-02
  - 新增[百度爱企查](https://aiqicha.baidu.com/m/usercenter/inviteCode?uid=xlTM-TogKuTwF6g4ihCXLTt55PoEI2gS8Amd)每日任务 
