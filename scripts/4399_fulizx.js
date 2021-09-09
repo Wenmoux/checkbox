@@ -78,8 +78,8 @@ async function getstrcode() {
     name = resdata.match(/<p class=\"p1\">.+?福利中心<\/p>/g)
     name.push('"<p class=\"p1\">《英雄联盟》福利中心<\/p>"')
     console.log("共"+code.length+"游戏 任务待完成")
-    console.log(code)
-    console.log(name)
+  //  console.log(code)
+  //  console.log(name)
     return code
 }
 
@@ -88,7 +88,7 @@ async function task() {
 if(UA){
   yxinfo = "【4399游戏福利社】: \n"
   let codeList =   await getstrcode()
-   for(k=codeList.length-1;k< codeList.length;k++){   
+   for(k=0;k< codeList.length;k++){   
    if (sckstatus) await dotask(name[k],codeList[k])      
      yxinfo += await dotask(name[k],codeList[k],1)  
    console.log("\n\n") 

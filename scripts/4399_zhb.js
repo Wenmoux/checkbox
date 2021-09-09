@@ -19,12 +19,13 @@ var sckstatus = false
 const device = config.youlecheng.device
 const scookie = config.youlecheng.scookie
 const UA = config.youlecheng.UA
+const sdevice = config.youlecheng.udid
 const date = new Date()
 function get(ac, b, log) {
     return new Promise(async resolve => {
         try {
             let url = "https://www.mobayx.com/comm/playapp2/m/hd_wap_user_e1.php"
-            let data = `ac=${ac}&${b}&t=${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}&scookie=${scookie}&device=${device}&sdevice=`
+            let data = `ac=${ac}&${b}&t=${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}&scookie=${scookie}&device=${device}&sdevice=${sdevice}`
             let res = await axios.post(url, data, {
                 headers: {
                     "User-Agent": UA,                
@@ -47,12 +48,18 @@ if(UA){
     let res = await axios.get("https://www.mobayx.com/2017/hebi2/")
     let ids = res.data.match(/https:\/\/www\.mobayx\.com\/comm\/playapp2\/m\/index\.php\?comm_id=\d+/g)
     console.log(`共获取到${ids.length}个试玩软件`)
+    
     for (id of ids) {
         yxid = id.match(/comm_id=(\d+)/)[1]
         //查询信息
-        let conf = (await get("login", "cid=" + yxid)).config
+        let cres = await get("login", "cid=" + yxid)
+              let conf = cres.config
+  
+
+
         console.log(`软件名: ${conf.gameinfo.appname}\n已体验天数: ${conf.play_day}\n今日已体验: ${conf.play_day==1?"是":"否"}\n已验证: ${conf.check_code_stat.success==1?"是":"否"}`)               
-        if (conf.check_code_stat.success != 1) {
+      if(lzpassword){
+          if (conf.check_code_stat.success != 1) {
             console.log("开始打码验证")
             let pickey = await axios.get("https://www.mobayx.com/identifying_code/identifyCode.https.api.php?ac=pic&type=4&randkey=hd_playapp_lingqu&reflash=1")
             if (pickey.data.key) {
@@ -62,21 +69,22 @@ if(UA){
                 if (vres.check_code_stat && vres.check_code_stat.success == 1) console.log("验证成功")
                 else console.log("验证失败")
             }
-        }
+        }}
+        
         await get("download", "cid=" + yxid)
         await get("clickplay", "cid=" + yxid)
                 await sleep(5000)  
-        let playinfo = await get("playtime", "cid=" + yxid) 
-        await sleep(3000)     
-        if (playinfo.play_stat == 0) console.log("您的试玩时间不够哦,请稍后再来领取")
-        else{
+        
+       // await sleep(3000)    
+        let playinfo = await get("playtime", "cid=" + yxid)  
+     //   if (playinfo.play_stat == 0) console.log("您的试玩时间不够哦,请稍后再来领取")
+    //    else{
          lq = await get("lingqu", "cid=" + yxid)
         console.log(lq.msg || lq.error_msg)
         }      
         console.log("\n\n")
         await sleep(3000)
-    }
- }else console.log("请先填写你的User-Agent再运行脚本")   
+    }else console.log("请先填写你的User-Agent再运行脚本")   
 }
 
 function getb64(key) {
@@ -119,7 +127,7 @@ async function upload(_username, _password, imgdata, _captchaType) {
         code = response.data.data.recognition;
     } else {
         console.log(response.data.message);
-         result += "打码：" + response.data.message;
+       //  result += "打码：" + response.data.message;
         code = null
     }
     return code;
