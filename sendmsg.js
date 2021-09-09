@@ -16,7 +16,7 @@ async function sendmsg(text) {
     await cp(text);
     await pushplus(text);
     await wx(text); 
-    await tgpush(text)
+  //  await tgpush(text)
 }
 
 function server(msg) {
@@ -142,7 +142,7 @@ function tgpush(msg) {
             }}else{
             console.log("tg：你还没有填写tgbot token和chatid呢！！！")}
         } catch (err) {
-            console.log(err);
+           // console.log(err);
         }
         resolve();
     });

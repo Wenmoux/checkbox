@@ -68,7 +68,7 @@
  - [x] [爱企查](https://aiqicha.baidu.com/m/usercenter/inviteCode?uid=xlTM-TogKuTwF6g4ihCXLTt55PoEI2gS8Amd)每日任务 
  - [x] [曲奇云盘](https://quqi.com/)每日任务
  - [x] [奥拉星积分商城](http://www.100bt.com/m/creditMall/?gameId=2#home)每日任务
- - [x] [4399游戏盒](https://yxhhd2.5054399.com/comm/bzyld2/share/index.php?ext=3091185497)疯狂游乐城任务 
+ - [x] [4399游戏盒](https://yxhhd2.5054399.com/comm/bzyld2/share/index.php?ext=3091185497)疯狂游乐城/app试玩/等级小怪/闯三关/福利中心任务 
 </details>
 
  
@@ -109,6 +109,7 @@ termux可以使用crontab设置定时任务
 <details>
 <summary>更新日志</summary>
 
+- 2021-09-09 新增新增[4399游戏盒](http://huodong.4399.cn/game/maintain/game/inviteNew/share/210909?stype=link&code=9DPRJEY#/home)/app试玩/等级小怪/闯三关/福利中心任务
 - 2021-09-07 新增[4399游戏盒](https://yxhhd2.5054399.com/comm/bzyld2/share/index.php?ext=3091185497)疯狂游乐城任务 
 - 2021-08-03 新增[积分商城](http://www.100bt.com/m/creditMall/?gameId=2#home)每日任务
 - 2021-08-02

@@ -11,6 +11,7 @@ var sckstatus = false
 const device = config.youlecheng.device
 const scookie = config.youlecheng.scookie
 const SMid = config.youlecheng.SMid
+const UA = config.youlecheng.UA?config.youlecheng.UA:"..."
 function get(a, b, log) {
     return new Promise(async resolve => {
         try {
@@ -19,7 +20,7 @@ function get(a, b, log) {
             let url = `https://yxhhd2.5054399.com/${a}/${aj}.php?ac=${b}&scookie=${scookie}&device=${device}`
             let res = await axios.get(url, {
                 headers: {
-                    "User-Agent": "Mozilla/5.0 (Linux; Android 11; MEIZU 18 Pro Build/RKQ1.201105.002; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/86.0.4240.185 Mobile Safari/537.36 4399GameCenter/6.2.5.29(android;MEIZU 18 Pro;11;1080x2296;4G;1663.737;wap4399)",
+                    "User-Agent": UA,                    
                     "Referer": "https://yxhhd2.5054399.com/2019/fxyxtq2/"
                 }
             })
@@ -70,7 +71,10 @@ async function share() {
     await get("2019/fxyxtq2", "getprize")
 }
 
+
+
 async function task() {
+if(UA){
     await getinfo()
     if (sckstatus) {
         await get("comm/bzyld2", "sub_yqm&yqm=3091185497&SMid=" + SMid)
@@ -94,8 +98,9 @@ async function task() {
             console.log("恭喜您抽中了：" + lotteryres.prizetitle)
         }
     }
-    let userinfo = await getinfo()
+    let userinfo ="【4399疯狂游乐城】:\n"+ await getinfo()
     return userinfo
+}else console.log("你把UA吃了吗,赶快去填")    
 }
 
 module.exports = task;

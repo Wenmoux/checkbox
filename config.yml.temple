@@ -1,6 +1,9 @@
 #注意所有的冒号后边都有个空格 别删别删
 
-
+#联众打码账号密码https://www.jsdati.com/
+Lzong:
+  account: 
+  password: 
 
 #多看阅读 cookie为app里的全部cookie
 duokan:
@@ -229,8 +232,10 @@ quqi:
 aoqi:
   cookie:   
             
-#4399游戏盒之疯狂游乐城
+#4399游戏盒之疯狂游乐城 ua必填
 youlecheng:
   scookie: 
   SMid: 
   device: 
+  udid: 
+  UA: 
