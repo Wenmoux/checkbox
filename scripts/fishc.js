@@ -14,7 +14,7 @@ const rules = {
   info: "", //签到成功返回信息
 };
 
-async function fglt(){
+async function fishc(){
 const template = require("../Template");
 return rules.name+await template(rules)
 }
