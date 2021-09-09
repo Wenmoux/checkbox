@@ -21,14 +21,13 @@ var sckstatus = true
 const device = config.youlecheng.device
 const scookie = config.youlecheng.scookie
 const UA = config.youlecheng.UA
-const sdevice = config.youlecheng.udid
 const date = new Date()
 
 function get(ac, b, log) {
     return new Promise(async resolve => {
         try {
             let url = "https://www.mobayx.com/2016/signcart2/hd_wap_user_e13.php?1="
-            let data = `ac=${ac}&${b}&t=${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}&scookie=${scookie}&device=${device}&sdevice=${sdevice}`
+            let data = `ac=${ac}&${b}&t=${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}&scookie=${scookie}&device=${device}&sdevice=1102gCazTJOqMJZRcBvX3b0dd`
             let res = await axios.post(url, data, {
                 headers: {
                     "User-Agent": UA,
