@@ -185,10 +185,11 @@ sucai999:
 mdd: 
   appToken: 
   
-#闪艺app  都在app请求post数据里  client为ios或者android
+#闪艺app  都在app请求post数据里  client为ios或者android gids 需要每天做刷粉丝值的作品id 用&分割 建议少于12个
 shanyi:
   token: 
   u: 
+  gids: 
   client: ios
   UA: 
   
@@ -244,4 +245,11 @@ youlecheng:
 fishc:
   cookie: 
   
+#村花论坛
+cunhua: 
+  cookie: 
+
+
   
+  
+ 

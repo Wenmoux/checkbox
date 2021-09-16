@@ -84,7 +84,7 @@ if(UA){
     if(ext){ 
     let b64token =  new Buffer(ext, 'base64').toString('utf8')   
     let gametoken = encrypt(b64token+`_${Math.floor(Math.random()*10)}_1`)
-    await sleep(30000)
+    await sleep(25000)
     let oinfo= await get("-gameOver","ext="+gametoken)
     if(oinfo.code==100) console.log("成功通关")
    }

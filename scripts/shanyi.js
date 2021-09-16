@@ -65,7 +65,7 @@ async function renwu() {
     let timelist = dataa.data.task_limit_time_list
     if (timelist.length>0) {
         for (id of timelist) {
-        if(id.title.match(/观看/)){
+        if(id.title.match(/阅读/)){
             await task("阅读", "/?m=user&op=index&ac=add_user_play_time", "minute=" + jm(120) + "&gid=" + jm(id.game_id))         
             await sleep(60000)
             }else if(id.title.match(/收藏/)){
@@ -88,11 +88,7 @@ async function renwu() {
 }
 async function getinfo() {
     let dataa = await task("获取个人信息", "/?m=user&op=daily_task&ac=index", "")
-    info = `【闪艺app每日任务】：${dataa.data.nickname}|| Lv${dataa.data.level_info.level} 经验值 ${dataa.data.level_info.current_empirical} / ${dataa.data.level_info.next_empirical}\n任务完成情况：`
-    for (id of dataa.data.daily_task_list) {
-        status = id.status == 3 ? "已领取" : "未领取"
-        info += id.task_name + " ：" + status + " || "
-    }
+    info = `【闪艺】：${dataa.data.nickname}|| Lv${dataa.data.level_info.level} 经验值 ${dataa.data.level_info.current_empirical} / ${dataa.data.level_info.next_empirical}\n`   
     info+= "资产信息： "
     let packs=await task("获取资产信息","/?m=user&op=index&ac=my_backpack","")
     for (pack of packs.data.list){
@@ -108,13 +104,14 @@ async function shanyi() {
         return "token和u已失效或填写错误";
     } else {            
         //默认填写我的邀请码 
-        await task("填写邀请码 05802486","/?m=user&op=activity&ac=use_invite_code","code="+jm(05802486))
+        await task("填写邀请码","/?m=user&op=activity&ac=use_invite_code","code="+jm(05802486))
         await task("每日签到", "/?m=user&op=check_in&ac=check_in", "")
-       /* for(trigger=0;trigger<5;trigger++){
+        for(trigger=0;trigger<5;trigger++){
         await task("连续签到奖励", "/?m=user&op=check_in&ac=receive_monthly_bonus", "trigger="+jm(trigger))
-        }*/
+        }
         await task("签到翻牌", "/?m=user&op=check_in&ac=receive_daily_bonus", "type=2jyfrX4gfTvnrWc+orX+og==")
-        await task("补签卡领取","/?m=user&op=check_in&ac=receive_replenish_card","")
+        await task("签到翻牌", "/?m=user&op=check_in&ac=receive_daily_bonus", "type=2jyfrX4gfTvnrWc+orX+og==")
+         await task("补签卡领取","/?m=user&op=check_in&ac=receive_replenish_card","")
         await task("作品评论取消点赞", "/?m=comment&op=index&ac=hate_comment", "comment_id=My7xxKY4ZkyoMMJg3T3zww%3D%3D")
         await task("作品评论点赞", "/?m=comment&op=index&ac=love_comment", "comment_id=My7xxKY4ZkyoMMJg3T3zww%3D%3D")
         await task("评论作品", "/?m=comment&op=index&ac=do_comment", "game_id=y822%2Bk8oG37pr8x6YUBAcQ%3D%3D&type=2jyfrX4gfTvnrWc%2BorX%2Bog%3D%3D&content=DFdLvn%2BxRXBsPs8BuHNxzg%3D%3D")

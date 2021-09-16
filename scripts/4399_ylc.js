@@ -8,43 +8,46 @@
 
 const axios = require("axios")
 var sckstatus = false
+var vip = 0
 const device = config.youlecheng.device
 const scookie = config.youlecheng.scookie
 const SMid = config.youlecheng.SMid
-const UA = config.youlecheng.UA?config.youlecheng.UA:"..."
+const UA = config.youlecheng.UA ? config.youlecheng.UA : "..."
+
 function get(a, b, log) {
     return new Promise(async resolve => {
         try {
-            if (a == "comm/ylddb") aj = "ajax2"
-            else aj = "ajax"
-            let url = `https://yxhhd2.5054399.com/${a}/${aj}.php?ac=${b}&scookie=${scookie}&device=${device}`
+            ac = "ac"
+            aj = "ajax.php"
+            if (a == "comm/ylddb") aj = "ajax2.php"
+            else if (a == "youlecheng") {aj = "app";ac = "act";}
+            let url = `https://yxhhd2.5054399.com/${a}/${aj}?${ac}=${b}&scookie=${scookie}&device=${device}`
             let res = await axios.get(url, {
                 headers: {
-                    "User-Agent": UA,                    
+                    "User-Agent": UA,
                     "Referer": "https://yxhhd2.5054399.com/2019/fxyxtq2/"
                 }
             })
             resolve(res.data)
             if (!log) {
-                console.log("    " + res.data.msg)
+                console.log("    " + (res.data.status_code || res.data.msg))
             }
         } catch (err) {
             console.log(err)
         }
         resolve()
     })
-
-
 }
 
 //查询游乐豆
 async function getinfo() {
-    let res = await axios.get(`https://yxhhd2.5054399.com/youlecheng/app/?ctl=ucenter&act=recordInfo&device=${device}&sm_device=&scookie=${scookie}`)
-    if (res.data.userinfo) {
-        info = res.data.userinfo
+    let res = await get("youlecheng", "recordInfo&ctl=ucenter", 1)
+    if (res.userinfo) {
+        info = res.userinfo
         userinfo = `昵称:${info.username}\n游乐豆: ${info.myYld}`
+        vip = info.vip
         sckstatus = true
-    } else userinfo = res.data.msg
+    } else userinfo = res.msg
     console.log(userinfo)
     return userinfo
 }
@@ -74,33 +77,43 @@ async function share() {
 
 
 async function task() {
-if(UA){
-    await getinfo()
-    if (sckstatus) {
-        await get("comm/bzyld2", "sub_yqm&yqm=3091185497&SMid=" + SMid)
-        var mres = await axios.get(
-            "https://cdn.jsdelivr.net/gh/Wenmoux/sources/other/ylcml.json"
-        );
-        await get("comm/bzyld2", `sub_zb_kouling&klid=32&kl=${encodeURI(mres.data.smkl)}`); //)主播 神秘口令
-        await get("comm/bzyld2", `sub_kouling&kl=${mres.data.zskl}`); //)主播 神秘口令
-        await get("comm/bzyld2", "share_total", true); //每日分享
-        await get("comm/bzyld2", "n_task11")
-        let fxres = await get("2019/fxyxtq2", "init", true)
-        if (fxres.box3 == 2) console.log("分享宝箱已领完,跳过任务")
-        else await share()
+    if (UA) {
+        await getinfo()
+        if (sckstatus) {
+            if (vip == 1) {
+                console.log("去做vip每日任务")
+                console.log("  签到中")
+                await get("youlecheng", "signIn&ctl=vip")
+                let gres = await axios.get("https://yxhhd2.5054399.com/youlecheng/app/?ctl=list&type=typeid&typeid=2")
+                let gids = gres.data.match(/giftid=\"(\d+)\"/g)
+                console.log("  vip浏览任务 ")
+                for (g = 0; g < 7; g++) await get("youlecheng", `ajaxInit&ctl=detail&id=${gids[g].match(/\d+/)[0]}`)
+                await get("youlecheng", "uidViewGift&ctl=vip")
+            }
+            await get("comm/bzyld2", "sub_yqm&yqm=3091185497&SMid=" + SMid)
+            var mres = await axios.get(
+                "https://cdn.jsdelivr.net/gh/Wenmoux/sources/other/ylcml.json"
+            );
+            await get("comm/bzyld2", `sub_zb_kouling&klid=32&kl=${encodeURI(mres.data.smkl)}`); //)主播 神秘口令
+            await get("comm/bzyld2", `sub_kouling&kl=${mres.data.zskl}`); //)主播 神秘口令
+            await get("comm/bzyld2", "share_total", true); //每日分享
+            await get("comm/bzyld2", "n_task11")
+            let fxres = await get("2019/fxyxtq2", "init", true)
+            if (fxres.box3 == 2) console.log("分享宝箱已领完,跳过任务")
+            else await share()
+            //游乐豆转盘
+            await get("comm/ylddb", "played", true)
+            await get("comm/ylddb", "playshow", true)
+            let zpres = await get("comm/ylddb", "sharesuccess&res=1&type=3")
+            if (zpres.chances && zpres.chances > 0) {
+                let lotteryres = await get("comm/ylddb", "lottery", true)
+                console.log("恭喜您抽中了：" + lotteryres.prizetitle)
+            }
 
-        //游乐豆转盘
-        await get("comm/ylddb", "played", true)
-        await get("comm/ylddb", "playshow", true)
-        let zpres = await get("comm/ylddb", "sharesuccess&res=1&type=3")
-        if (zpres.chances && zpres.chances > 0) {
-            let lotteryres = await get("comm/ylddb", "lottery", true)
-            console.log("恭喜您抽中了：" + lotteryres.prizetitle)
         }
-    }
-    let userinfo ="【4399疯狂游乐城】:\n"+ await getinfo()
-    return userinfo
-}else console.log("你把UA吃了吗,赶快去填")    
+        let userinfo = "【4399疯狂游乐城】:\n" + await getinfo()
+        return userinfo
+    } else console.log("你把UA吃了吗,赶快去填")
 }
 
 module.exports = task;

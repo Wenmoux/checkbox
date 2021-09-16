@@ -95,9 +95,7 @@ if(UA){
         },1000);
     }(i))
     await sleep(2000)
-}            
-      
-
+}                  
         }
     bbinfo =  await bb()
   //  await ddtob()

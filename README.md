@@ -70,6 +70,7 @@
  - [x] [奥拉星积分商城](http://www.100bt.com/m/creditMall/?gameId=2#home)每日任务
  - [x] [4399游戏盒](https://yxhhd2.5054399.com/comm/bzyld2/share/index.php?ext=3091185497)疯狂游乐城/app试玩/等级小怪/闯三关/福利中心任务 
  - [x] [鱼C论坛](https://fishc.com.cn)每日签到
+ - [x] [村花论坛](https://www.cunhua.uno)每日签到  
 </details>
 
  
@@ -110,6 +111,7 @@ termux可以使用crontab设置定时任务
 <details>
 <summary>更新日志</summary>
 
+- 2021-09-14 新增[村花论坛](https://www.cunhua.uno)签到
 - 2021-09-09 
   - 新增[4399游戏盒](http://huodong.4399.cn/game/maintain/game/inviteNew/share/210909?stype=link&code=9DPRJEY#/home)/app试玩/等级小怪/闯三关/福利中心任务
   - 新增[鱼C论坛](https://fishc.com.cn)每日签到

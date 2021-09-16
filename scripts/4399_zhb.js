@@ -57,7 +57,7 @@ if(UA){
   
 
 
-        console.log(`软件名: ${conf.gameinfo.appname}\n已体验天数: ${conf.play_day}\n今日已体验: ${conf.play_day==1?"是":"否"}\n已验证: ${conf.check_code_stat.success==1?"是":"否"}`)               
+        console.log(`软件名: ${conf.gameinfo.appname}\n已体验天数: ${conf.play_day}\n今日已体验: ${conf.today_play_stat==1?"是":"否"}\n已验证: ${conf.check_code_stat.success==1?"是":"否"}`)               
       if(lzpassword){
           if (conf.check_code_stat.success != 1) {
             console.log("开始打码验证")
@@ -73,17 +73,14 @@ if(UA){
         
         await get("download", "cid=" + yxid)
         await get("clickplay", "cid=" + yxid)
-                await sleep(5000)  
-        
+        await sleep(1000)          
        // await sleep(3000)    
-        let playinfo = await get("playtime", "cid=" + yxid)  
-     //   if (playinfo.play_stat == 0) console.log("您的试玩时间不够哦,请稍后再来领取")
-    //    else{
+        let playinfo = await get("playtime", "cid=" + yxid)     
          lq = await get("lingqu", "cid=" + yxid)
         console.log(lq.msg || lq.error_msg)
         }      
         console.log("\n\n")
-        await sleep(3000)
+        await sleep(2000)
     }else console.log("请先填写你的User-Agent再运行脚本")   
 }
 

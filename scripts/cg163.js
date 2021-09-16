@@ -28,7 +28,7 @@ function sign() {
   return new Promise(async (resolve) => {
     try {
       const url = `https://n.cg.163.com/api/v2/sign-today`;
-      let res = await $http.post(url, "", headers);
+      let res = await axios.post(url, "", headers);
       console.log("签到成功");
       msg = "签到成功！！ ";
     } catch (err) {
