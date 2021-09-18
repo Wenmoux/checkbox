@@ -9,13 +9,13 @@ const headers = {
     referer: "https://aiqicha.baidu.com/m/s?t=3&q=%E5%B0%8F%E7%B1%B3&VNK=e73b55ef",
     "X-Requested-With": "XMLHttpRequest",
     "Host": "aiqicha.baidu.com",
-     cookie: config.aiqicha.cookie
+     cookie: ""
    }
 ytaskList = []
 taskList = []
 claimList = []
 alltaskList = []
-
+aqcookie = ""
 function rand(){
 let key = ["苹果","华为","百度","一个","暴风","王者"]
 let i = Math.floor((Math.random()*key.length))
@@ -132,19 +132,20 @@ async function dotask(taskList){
                 await sleep(500)
                 break
             case "CX12005": //分享好友
-                console.log("开始任务：" + oo[o.title])
-                console.log("666")
+                console.log("开始任务：" + oo[o.title])                
                 let shres = await get(`usercenter/getShareUrlAjax`, "get")
-                uid = shres.data.match(/uid=(.+)/)[1]
+                uid = shres.data.match(/uid=(.+)/)
+                if(uid){
+                uid = uid[1]
                 headers["cookie"] =""
                 let t = Date.now()
                 headers["referer"] =  "https://"+shres.data+"&VNK="+t
                 headers["Zx-Open-Url"] = "https://"+shres.data+"&VNK="+t
-                console.log(headers)
                 await get(`m/?uid=${uid}`,"get")                
                 await get(`m/getuserinfoAjax?uid=${uid}`,"get")                 
-                headers.cookie = config.aiqicha.cookie
+                headers.cookie = aqcookie
                 await sleep(500)
+               } 
                 break
             case "CX12007": //高级搜索
                 console.log("开始任务：" + oo[o.title])
@@ -165,8 +166,14 @@ async function dotask(taskList){
 }
 
 async function aqc() {
-    console.log("爱企查每日任务开始")
+    msg = "【爱企查】："
+   console.log("爱企查每日任务开始")
     if (config.aiqicha.cookie) {
+    console.log("爱企查cookie数量："+config.aiqicha.cookie.length)
+    for(a=0;a<config.aiqicha.cookie.length;a++){
+        aqcookie = config.aiqicha.cookie[a]
+        headers.cookie = aqcookie
+        console.log("账号"+(a+1)+"开始")
         let logininfo = await get("m/getuserinfoAjax", "get")
         if (logininfo.data.isLogin == 1) {
             await getaskList()
@@ -182,15 +189,16 @@ async function aqc() {
             }
             console.log("去查询爱豆积分")
             let userinfo = await get("usercenter/getvipinfoAjax", "get")
-            msg = `账号 【${logininfo.data.userName}】 共${userinfo.data.consume}爱豆`
+            msg += `账号${a+1} 【${logininfo.data.userName}】 共${userinfo.data.consume}爱豆\n`
         } else {
             msg = "cookie已失效"
         }
+       } 
     } else { 
-        msg = "请填写百度爱企查cookies(同百度贴吧"     
+        msg += "请填写百度爱企查cookies(同百度贴吧"     
     }
     console.log(msg)
-    return "【爱企查】："+msg
+    return msg
 }
 module.exports = aqc
 //aqc()

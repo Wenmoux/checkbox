@@ -111,7 +111,7 @@ async function shanyi() {
         }
         await task("签到翻牌", "/?m=user&op=check_in&ac=receive_daily_bonus", "type=2jyfrX4gfTvnrWc+orX+og==")
         await task("签到翻牌", "/?m=user&op=check_in&ac=receive_daily_bonus", "type=2jyfrX4gfTvnrWc+orX+og==")
-         await task("补签卡领取","/?m=user&op=check_in&ac=receive_replenish_card","")
+        await task("补签卡领取","/?m=user&op=check_in&ac=receive_replenish_card","")
         await task("作品评论取消点赞", "/?m=comment&op=index&ac=hate_comment", "comment_id=My7xxKY4ZkyoMMJg3T3zww%3D%3D")
         await task("作品评论点赞", "/?m=comment&op=index&ac=love_comment", "comment_id=My7xxKY4ZkyoMMJg3T3zww%3D%3D")
         await task("评论作品", "/?m=comment&op=index&ac=do_comment", "game_id=y822%2Bk8oG37pr8x6YUBAcQ%3D%3D&type=2jyfrX4gfTvnrWc%2BorX%2Bog%3D%3D&content=DFdLvn%2BxRXBsPs8BuHNxzg%3D%3D")
@@ -119,7 +119,7 @@ async function shanyi() {
         await task("圈子点赞", "/?m=qz&op=topic&ac=praise", "topic_id=b5Xy0BT9w1np7AOUwumsRA%3D%3D")
         await task("分享作品", "/?m=share&op=index&ac=game_share", "game_id="+jm(98865)+"&op_from=5nXP9qADvw3bmKOnRJA5Xw%3D%3D")
         await task("守护角色礼物", "/?m=game_info&op=role&ac=give_gift", "amount=5nXP9qADvw3bmKOnRJA5Xw%3D%3D&is_own=5nXP9qADvw3bmKOnRJA5Xw%3D%3D&gift_id=Ee6W%2F%2FIRGANKm%2FJI1ZdVqw%3D%3D&gift_num=W%2FWdZKs5lJhcLOK5XBhwXA%3D%3D&comment=&role_id=%2BU8vUwupuwFWbE94QXgYow%3D%3D")
-        let qz= await task("圈子回复", "?m=qz&op=topic&ac=add_topic_comment", "topic_id=b5Xy0BT9w1np7AOUwumsRA==&content=IcQo64q0HYOVzUoFR6X0uQ==")
+        await task("圈子回复", "?m=qz&op=topic&ac=add_topic_comment", "topic_id=b5Xy0BT9w1np7AOUwumsRA==&content=IcQo64q0HYOVzUoFR6X0uQ==")
         let gift =await task("获取背包礼物","/?m=game_info&op=role&ac=my_gift_list","")
         giftList = gift.data?gift.data.gift_list : []
          for(g = 0;g<giftList.length;g++){

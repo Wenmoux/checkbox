@@ -8,8 +8,8 @@ let sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 const axios = require("axios")
 token = config.shanyi.token
 u = config.shanyi.u
-const = config.shanyi.gids.split("&")
-const gids = [116993]
+const gids= config.shanyi.gids.split("&")
+//const gids = [116993]
 urlpara = "&v=1.0.0&app_version=2.1.0&client=" + config.shanyi.client
 datapara = "&u=" + encodeURIComponent(u) + "&token=" + encodeURIComponent(token)
 
@@ -22,6 +22,7 @@ function post(options) {
                 }
             })
             .then(response => {
+      //      if(options.url.match(/topic/))console.log(response)
                 resolve(response.data);
             })
             .catch(err => {
@@ -39,7 +40,6 @@ var task = async function(name, url, data) {
         url: url,
         data: data
     }).then(res => {
-        //  console.log(res)
         console.log(`${name}：${res.msg}`)
         return res;
     });
@@ -60,7 +60,7 @@ function jm(data) {
 
 
 function randC() {
-    let key = ["日常表白作者大大", "爱了爱了", "咪啾", "好玩"]
+    let key = ["日常表白作者大大", "爱了爱了", "咪啾", "好玩","(☝ ՞ਊ ՞)☝"]
     let i = Math.floor((Math.random() * key.length))
     return key[i]
 }
@@ -83,7 +83,7 @@ async function shanyi() {
                     await task(`第${i+1}次分享`, "/?m=share&op=index&ac=game_share", "game_id=" + jm(gid) + "&op_from=5nXP9qADvw3bmKOnRJA5Xw%3D%3D")
                     await sleep(13000)
                 }
-                await task("评论作品", "/?m=comment&op=index&ac=do_comment", "game_id=" + jm(gid) + "&type=2jyfrX4gfTvnrWc%2BorX%2Bog%3D%3D&content=" + jm(randC()))
+             await task("评论作品", "/?m=comment&op=index&ac=do_comment", "game_id=" + jm(gid) + "&type=2jyfrX4gfTvnrWc%2BorX%2Bog%3D%3D&content=" + jm(randC()))
                 let cres = await task("获取评论列表", "?m=comment&op=index&ac=list", "list_type=W%2FWdZKs5lJhcLOK5XBhwXA%3D%3D&game_id=" + jm(gid) + "&page=2jyfrX4gfTvnrWc%2BorX%2Bog%3D%3D")
                 if (cres.status == 0 && cres.data.comment_list) {
                     comment_list = cres.data.comment_list.list || []
@@ -91,19 +91,22 @@ async function shanyi() {
                         if (comment_list[c]) {
                             cid = jm(comment_list[c].id)
                             await task("作品评论点赞", "/?m=comment&op=index&ac=love_comment", "comment_id=" + cid)
-                            await task("作品评论回复", "/?m=reply&op=index&ac=do_reply", "comment_id=" + cid + "&content=" + jm(randC))
+                            await task("作品评论回复", "/?m=reply&op=index&ac=do_reply", "comment_id=" + cid + "&content=" + jm(randC()))
+                            await sleep(2000)
                         }
                     }
-                }
+                }                
                 if (qzid) {
-                    let qres = await task("获取圈子评论列表", "/?m=qz&op=circle&ac=topic_list", "page=2jyfrX4gfTvnrWc+orX+og==&type=2jyfrX4gfTvnrWc+orX+og==&limit=W/WdZKs5lJhcLOK5XBhwXA==&circle_id=" + jm(qzid))
+                    let qres = await task("获取圈子评论列表", "/?m=qz&op=circle&ac=topic_list", `page=2jyfrX4gfTvnrWc%2BorX%2Bog%3D%3D&type=2jyfrX4gfTvnrWc%2BorX%2Bog%3D%3D&limit=W%2FWdZKs5lJhcLOK5XBhwXA%3D%3D&circle_id=${jm(qzid)}`)
                     if (qres.status == 0 && qres.data && qres.data.list) {
                         let qzlist = qres.data.list || []
                         for (q = 0; q < 7; q++) {
                             if (qzlist[q]) {
+                                console.log(qzlist[q].topic_name)
                                 qid = qzlist[q].id
-                                await task("圈子点赞", "/?m=qz&op=topic&ac=praise", "topic_id=" + jm(qid))
-                                await task("圈子回复", "?m=qz&op=topic&ac=add_topic_comment", "topic_id=" + jm(qid) + "&content=" + jm(randC()))
+                                await task("    点赞", "/?m=qz&op=topic&ac=praise", "topic_id=" + jm(qid))
+                                await task("    回复", "?m=qz&op=topic&ac=add_topic_comment", "topic_id=" + jm(qid) + "&content=" + jm(randC()))
+                                await sleep(2000)
                             }
 
                         }

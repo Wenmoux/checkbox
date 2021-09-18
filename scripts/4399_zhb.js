@@ -75,7 +75,8 @@ if(UA){
         await get("clickplay", "cid=" + yxid)
         await sleep(1000)          
        // await sleep(3000)    
-        let playinfo = await get("playtime", "cid=" + yxid)     
+        let playinfo = await get("playtime", "cid=" + yxid)  
+        console.log(playinfo)   
          lq = await get("lingqu", "cid=" + yxid)
         console.log(lq.msg || lq.error_msg)
         }      

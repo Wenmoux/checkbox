@@ -105,12 +105,22 @@ termux可以使用crontab设置定时任务
 如`node index.js acfun csdn`  
 多脚本间用空格  
 一般用于定时任务  
+## 青龙使用教程
+```
+ql repo https://github.com/Wenmoux/checkbox.git "index" "node_modules|icon" "scripts|config|Template|sendmsg"
+cp /ql/scripts/config.yml.temple /ql/config/config.yml
+npm install  axios crypto crypto-js fs iconv-lite js-yaml 
+```
+之后在config.yml里填写cookie等信息
+任务列表写在环境变量里
+`cbList`   `xx& xx`  如 csdn&aiqicha
 
 
 # other
 <details>
 <summary>更新日志</summary>
 
+- 2021-09-18 适配青龙(测试)
 - 2021-09-14 新增[村花论坛](https://www.cunhua.uno)签到
 - 2021-09-09 
   - 新增[4399游戏盒](http://huodong.4399.cn/game/maintain/game/inviteNew/share/210909?stype=link&code=9DPRJEY#/home)/app试玩/等级小怪/闯三关/福利中心任务

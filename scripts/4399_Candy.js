@@ -49,7 +49,7 @@ function get(a, b, log) {
             })  
             }
             resolve(res.data)
-       //     console.log(res.data)
+                if(a=="-gameOver")     console.log(res)
             if (!log) {
                 console.log("    " + res.data.message)
             }
@@ -83,10 +83,13 @@ if(UA){
     else ext = gameinfo.result.ext
     if(ext){ 
     let b64token =  new Buffer(ext, 'base64').toString('utf8')   
-    let gametoken = encrypt(b64token+`_${Math.floor(Math.random()*10)}_1`)
-    await sleep(25000)
+    let str =b64token+`_${Math.ceil(9*Math.random())}_1`
+ let gametoken =encrypt(str)
+ console.log(str)
+       await sleep(9000+Math.ceil(3*Math.random())*25)
     let oinfo= await get("-gameOver","ext="+gametoken)
     if(oinfo.code==100) console.log("成功通关")
+    
    }
     }
     return ""
