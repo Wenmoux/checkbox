@@ -91,7 +91,7 @@ async function shanyi() {
                         if (comment_list[c]) {
                             cid = jm(comment_list[c].id)
                             await task("作品评论点赞", "/?m=comment&op=index&ac=love_comment", "comment_id=" + cid)
-                            await task("作品评论回复", "/?m=reply&op=index&ac=do_reply", "comment_id=" + cid + "&content=" + jm(randC()))
+                            await task("作品评论回复", "/?m=reply&op=index&ac=do_reply", "comment_id=" + cid + "&content=" + jm("dd"))
                             await sleep(2000)
                         }
                     }
@@ -105,7 +105,7 @@ async function shanyi() {
                                 console.log(qzlist[q].topic_name)
                                 qid = qzlist[q].id
                                 await task("    点赞", "/?m=qz&op=topic&ac=praise", "topic_id=" + jm(qid))
-                                await task("    回复", "?m=qz&op=topic&ac=add_topic_comment", "topic_id=" + jm(qid) + "&content=" + jm(randC()))
+                                await task("    回复", "?m=qz&op=topic&ac=add_topic_comment", "topic_id=" + jm(qid) + "&content=" + jm("dd"))
                                 await sleep(2000)
                             }
 

@@ -12,6 +12,7 @@ const device = config.youlecheng.device
 const scookie = config.youlecheng.scookie
 const udid = config.youlecheng.udid
 const CryptoJS = require("crypto-js") 
+var Canstart = true
 const UA = config.youlecheng.UA?config.youlecheng.UA:"..."
 function encrypt(word) {
     let key = CryptoJS.enc.Utf8.parse("candyGame2020yxh");
@@ -49,7 +50,7 @@ function get(a, b, log) {
             })  
             }
             resolve(res.data)
-                if(a=="-gameOver")     console.log(res)
+              //  if(a=="-gameOver")     console.log(res)
             if (!log) {
                 console.log("    " + res.data.message)
             }
@@ -67,6 +68,7 @@ async function getinfo() {
     let res = await get("","",true) 
      if (res.code == 100 && res.result) {
         userinfo = res.result.userInfo
+        if(userinfo.limit9 <=23 || userinfo.limit39<=18) Canstart = false
         sckstatus = true
     } else userinfo = res.data.message
     console.log(userinfo)
@@ -76,20 +78,20 @@ async function getinfo() {
 async function task() {
 if(UA){
     await getinfo()
-    if (sckstatus) {
+    if (sckstatus &&Canstart) {
     ext = null
     let gameinfo = await get("-gameStart","type=1",true)
     if(gameinfo.code !=100) console.log(gameinfo.message)
     else ext = gameinfo.result.ext
     if(ext){ 
-    let b64token =  new Buffer(ext, 'base64').toString('utf8')   
+    let b64token = Buffer.from(ext, 'base64').toString('utf8')   
     let str =b64token+`_${Math.ceil(9*Math.random())}_1`
- let gametoken =encrypt(str)
- console.log(str)
-       await sleep(9000+Math.ceil(3*Math.random())*25)
+    let gametoken =encodeURIComponent(encrypt(str))
+    console.log("等待9s...")
+    console.log(gametoken)
+    await sleep(9000+Math.ceil(3*Math.random())*25)
     let oinfo= await get("-gameOver","ext="+gametoken)
-    if(oinfo.code==100) console.log("成功通关")
-    
+    if(oinfo.code==100) console.log("成功通关")    
    }
     }
     return ""
