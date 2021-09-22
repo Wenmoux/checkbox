@@ -109,7 +109,7 @@ termux可以使用crontab设置定时任务
 ```
 ql repo https://github.com/Wenmoux/checkbox.git "index" "node_modules|icon" "scripts|config|Template|sendmsg"
 cp /ql/scripts/config.yml.temple /ql/config/config.yml
-npm install  axios crypto crypto-js fs iconv-lite js-yaml 
+npm install  axios crypto crypto-js fs iconv-lite js-yaml yargs
 ```
 之后在config.yml里填写cookie等信息
 任务列表写在环境变量里
