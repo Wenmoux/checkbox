@@ -100,7 +100,7 @@ async function getinfo() {
 async function shanyi() {
 
     let res = await task("获取任务列表", "/?m=user&op=daily_task&ac=index", "")
-    if (JSON.stringify(res).match(/你还未登录/)) {
+    if (JSON.stringify(res).match(/你还未登录|另一台设备登录/)) {
         return "token和u已失效或填写错误";
     } else {            
         //默认填写我的邀请码 
@@ -109,8 +109,9 @@ async function shanyi() {
         for(trigger=0;trigger<5;trigger++){
         await task("连续签到奖励", "/?m=user&op=check_in&ac=receive_monthly_bonus", "trigger="+jm(trigger))
         }
+        await task("领取赠币","/?m=pay&op=card&ac=receive_packages","")
         await task("签到翻牌", "/?m=user&op=check_in&ac=receive_daily_bonus", "type=2jyfrX4gfTvnrWc+orX+og==")
-        await task("签到翻牌", "/?m=user&op=check_in&ac=receive_daily_bonus", "type=2jyfrX4gfTvnrWc+orX+og==")
+        await task("二次翻牌", "/?m=user&op=check_in&ac=receive_daily_bonus", "type=W/WdZKs5lJhcLOK5XBhwXA==")
         await task("补签卡领取","/?m=user&op=check_in&ac=receive_replenish_card","")
         await task("作品评论取消点赞", "/?m=comment&op=index&ac=hate_comment", "comment_id=My7xxKY4ZkyoMMJg3T3zww%3D%3D")
         await task("作品评论点赞", "/?m=comment&op=index&ac=love_comment", "comment_id=My7xxKY4ZkyoMMJg3T3zww%3D%3D")

@@ -69,7 +69,7 @@ function randC() {
 
 async function shanyi() {
     let res = await task("获取任务列表", "/?m=user&op=daily_task&ac=index", "")
-    if (JSON.stringify(res).match(/你还未登录/)) {
+    if (JSON.stringify(res).match(/你还未登录|另一台设备/)) {
         return "token和u已失效或填写错误";
     } else {
         for (gid of gids) {
@@ -83,7 +83,7 @@ async function shanyi() {
                     await task(`第${i+1}次分享`, "/?m=share&op=index&ac=game_share", "game_id=" + jm(gid) + "&op_from=5nXP9qADvw3bmKOnRJA5Xw%3D%3D")
                     await sleep(13000)
                 }
-             await task("评论作品", "/?m=comment&op=index&ac=do_comment", "game_id=" + jm(gid) + "&type=2jyfrX4gfTvnrWc%2BorX%2Bog%3D%3D&content=" + jm(randC()))
+                await task("评论作品", "/?m=comment&op=index&ac=do_comment", "game_id=" + jm(gid) + "&type=2jyfrX4gfTvnrWc%2BorX%2Bog%3D%3D&content=" + jm(randC()))
                 let cres = await task("获取评论列表", "?m=comment&op=index&ac=list", "list_type=W%2FWdZKs5lJhcLOK5XBhwXA%3D%3D&game_id=" + jm(gid) + "&page=2jyfrX4gfTvnrWc%2BorX%2Bog%3D%3D")
                 if (cres.status == 0 && cres.data.comment_list) {
                     comment_list = cres.data.comment_list.list || []

@@ -87,13 +87,12 @@ if(UA){
     let b64token = Buffer.from(ext, 'base64').toString('utf8')   
     let str =b64token+`_${Math.ceil(9*Math.random())}_1`
     let gametoken =encodeURIComponent(encrypt(str))
-    console.log("等待9s...")
+    console.log("等待19s...")
     console.log(gametoken)
-    await sleep(9000+Math.ceil(3*Math.random())*25)
+    await sleep(15000+Math.ceil(3*Math.random())*25)
     let oinfo= await get("-gameOver","ext="+gametoken)
     if(oinfo.code==100) console.log("成功通关")    
-   }
-    }
+   }}    
     return ""
     }else console.log("请先填写你的User-Agent再运行脚本")   
 

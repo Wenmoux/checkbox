@@ -1,3 +1,7 @@
+/*
+cron: 28 8 * * *
+new Env('签到盒');
+*/
 const sendmsg = require("./sendmsg");
 const yaml = require("js-yaml");
 const fs = require('fs');
@@ -17,7 +21,7 @@ if (QL) {
         return;
     } else config = yaml.load(fs.readFileSync(`/${QL}/config/config.yml`, 'utf8'));
 }
-var signlist = []
+var signlist = ["ssly"]
 //自行添加任务 名字看脚本里的文件名 比如csdn.js 就填"csdn"
 var signList = (argv._.length) > 0 ? argv._ : (cbList.length>0 ? cbList : signlist)
 var logs = "";
