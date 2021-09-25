@@ -13,6 +13,7 @@ const device = config.youlecheng.device
 const scookie = config.youlecheng.scookie
 const SMid = config.youlecheng.SMid
 const UA = config.youlecheng.UA ? config.youlecheng.UA : "..."
+var sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 function get(a, b, log) {
     return new Promise(async resolve => {
@@ -70,6 +71,7 @@ async function share() {
         yxname = str.match(/data-name=\"(.+?)\"/)[1]
         console.log("开始分享游戏：" + yxname)
         let shareres = await get("2019/fxyxtq2", `shareOver&id=${yxid}`)
+        await sleep(1500)
     }
     await get("2019/fxyxtq2", "getprize")
 }
@@ -89,6 +91,7 @@ async function task() {
                 console.log("  vip浏览任务 ")
                 for (g = 0; g < 7; g++) await get("youlecheng", `ajaxInit&ctl=detail&id=${gids[g].match(/\d+/)[0]}`)
                 await get("youlecheng", "uidViewGift&ctl=vip")
+                await sleep(2000)
             }
             await get("comm/bzyld2", "sub_yqm&yqm=3091185497&SMid=" + SMid)
             var mres = await axios.get(
@@ -98,6 +101,7 @@ async function task() {
             await get("comm/bzyld2", `sub_kouling&kl=${mres.data.zskl}`); //)主播 神秘口令
             await get("comm/bzyld2", "share_total", true); //每日分享
             await get("comm/bzyld2", "n_task11")
+            await sleep(1500)
             let fxres = await get("2019/fxyxtq2", "init", true)
             if (fxres.box3 == 2) console.log("分享宝箱已领完,跳过任务")
             else await share()

@@ -71,6 +71,7 @@
  - [x] [4399游戏盒](https://yxhhd2.5054399.com/comm/bzyld2/share/index.php?ext=3091185497)疯狂游乐城/app试玩/等级小怪/闯三关/福利中心任务 
  - [x] [鱼C论坛](https://fishc.com.cn)每日签到
  - [x] [村花论坛](https://www.cunhua.uno)每日签到  
+ - [x] [帆软社区](bbs.fanruan.com)签到/大转盘/摇摇乐
 </details>
 
  
@@ -120,6 +121,10 @@ npm install  axios crypto crypto-js fs iconv-lite js-yaml yargs
 <details>
 <summary>更新日志</summary>
 
+- 2021-09-25 
+  - 新增[帆软社区](bbs.fanruan.com)签到/摇摇乐/大转盘
+  - 好书友增加在线奖励领取
+  - 阡陌居增加贡献任务申请
 - 2021-09-18 适配青龙(测试)
 - 2021-09-14 新增[村花论坛](https://www.cunhua.uno)签到
 - 2021-09-09 

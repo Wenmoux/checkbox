@@ -17,7 +17,7 @@
   "author": "Wenmoux",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.21.0",
+    "axios": "^0.21.2",
     "crypto": "^1.0.1",
     "crypto-js": "^4.0.0",
     "fs": "^0.0.1-security",
