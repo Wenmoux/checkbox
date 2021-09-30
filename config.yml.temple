@@ -254,7 +254,11 @@ cunhua:
 fanruan:
   cookie: 
   
-  
-  
+#云原神 需要在云原神里抓包:x-rpc-combo_token
+yunys: 
+
+#瞻彼文学 全部cookie:accessToken=xxxxxxxx
+zbwx:
+  cookie: 
   
  
