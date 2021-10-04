@@ -72,6 +72,8 @@
  - [x] [鱼C论坛](https://fishc.com.cn)每日签到
  - [x] [村花论坛](https://www.cunhua.uno)每日签到  
  - [x] [帆软社区](bbs.fanruan.com)签到/大转盘/摇摇乐
+ - [x] 瞻彼文学app每日签到
+ - [x] 云原神每日签到
 </details>
 
  
@@ -121,6 +123,10 @@ npm install  axios crypto crypto-js fs iconv-lite js-yaml yargs
 <details>
 <summary>更新日志</summary>
 
+- 2021-10-04
+  - 新增云原神和瞻彼文学签到 by ytgo
+  - 修复帆软社区摇摇乐
+  - 修复阡陌居贡献任务
 - 2021-09-25 
   - 新增[帆软社区](bbs.fanruan.com)签到/摇摇乐/大转盘
   - 好书友增加在线奖励领取

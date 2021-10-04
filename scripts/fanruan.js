@@ -10,11 +10,11 @@ const rules = {
             url: "https://bbs.fanruan.com/qiandao/?mod=sign&operation=qiandao&format=text&formhash=@formhash", //签到链接
         },
         {
-            name: "大转盘",
+            name: "大转盘", //多次运行会扣豆
             method: "get", //签到请求方式 get/post
             url: "https://bbs.fanruan.com/plugin.php?id=levaward:l&fh=@formhash&m=_openaward.18&ajax&_t=0.7032190526469371",
             reg2: "awardnum", //重复签到判断
-            reg3: "8(\\d+)", //签到成功判断
+            reg3: "8\\d+", //签到成功判断
             info: ".+", //签到成功返回信息
         },
         {

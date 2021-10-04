@@ -11,13 +11,12 @@ const rules = {
             data: "formhash=@formhash&qdxq=wl"
         },
         {
-            name: "申请贡献任务",
+            name: "申请威望红包任务",
             ua: "pc",
             charset: "gb2312",
             method: "get", 
-            url: "http://www.1000qm.vip/home.php?mod=task&do=draw&id=1"
-        }
-    ]
+            url: "http://www.1000qm.vip/home.php?mod=task&do=apply&id=1"
+        }]
 };
 async function togamemod() {
     const template = require("../Template");

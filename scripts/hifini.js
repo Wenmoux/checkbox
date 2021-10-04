@@ -6,7 +6,7 @@ function task() {
             let res = await axios.post(url, "000", {
                 headers: {
                     "X-Requested-With": "XMLHttpRequest",
-                    "cookie": config.HiFiNi.cookie
+                    "cookie": config.hifini.cookie
                 }
             })
             msg = res.data.message

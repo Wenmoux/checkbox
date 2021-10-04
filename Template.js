@@ -36,6 +36,7 @@ function Template(rules) {
                     } else {
                         res2data = res2.data
                     }
+                    res2data = "" + res2data
                     if (res2data.match(/id=\"messagetext\".*?<p>(.+?)<\/p>/s)) { //dz论坛大多都是
                         msg = res2data.match(/id=\"messagetext\".*?<p>(.+?)</s)[1];
                     } else if ((!rules.name.match(/togamemod/))&&res2data.match(/<root><!\[CDATA\[/)) {
