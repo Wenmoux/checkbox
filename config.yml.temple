@@ -254,7 +254,20 @@ cunhua:
 fanruan:
   cookie: 
   
-  
-  
+#云原神 需要在云原神里抓包x-rpc-combo_token
+yunys: 
+  combo_token: ai=x;ci=x;oi=xxxxxx;ct=xxxxxx;si=xxxxxx;bi=xxxxxx
+  type: 
+  app_version: 
+  sys_version: 
+  device_id: 
+  device_name: 
+  device_model: 
+  app_id: 
+
+#瞻彼文学 cookie为app里的全部cookie
+
+zbwx:
+  cookie: accessToken=xxxxxxxx
   
  
