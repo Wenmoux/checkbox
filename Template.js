@@ -28,6 +28,7 @@ function Template(rules) {
                     if (rules.op[i].method == "post") {
                         data = rules.op[i].data
                         res2 = await axios.post(signurl, data.replace(/@formhash/, formhash), header);
+                      //  console.log(res2)
                     } else {
                         res2 = await axios.get(signurl, header);
                     }
@@ -37,9 +38,10 @@ function Template(rules) {
                         res2data = res2.data
                     }
                     res2data = "" + res2data
+                    //console.log(res2data)
                     if (res2data.match(/id=\"messagetext\".*?<p>(.+?)<\/p>/s)) { //dz论坛大多都是
                         msg = res2data.match(/id=\"messagetext\".*?<p>(.+?)</s)[1];
-                    } else if ((!rules.name.match(/togamemod/))&&res2data.match(/<root><!\[CDATA\[/)) {
+                    } else if ((!(rules.name.match(/togamemod/) || rules.name.match(/耽漫/) ))&&res2data.match(/<root><!\[CDATA\[/)) {
                         msg = res2data.match(/<!\[CDATA\[(.+?)>/)[1].replace(/]/g, "").replace(/<script.+/, "")
                         if (rules.name == "【Hires后花园】： " && res2.data.match(/签到成功/)) msg = res2data.match(/签到成功~随机奖励新币\d+/)[0]
                     } else if (rules.op[i].reg2 && res2data.match(rules.op[i].reg2)) {
@@ -49,7 +51,7 @@ function Template(rules) {
                     } else {
                         msg = rules.op[i].name + "失败!原因未知";
                         console.log(res2data);
-                    }
+                    }               
                     message += "    " + (rules.op.length > 1 ? (rules.op[i].name + "：") : "") + msg + "\n"
                     console.log(msg)
                 }

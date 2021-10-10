@@ -11,10 +11,6 @@ const headers = {
     "Host": "aiqicha.baidu.com",
      cookie: ""
    }
-ytaskList = []
-taskList = []
-claimList = []
-alltaskList = []
 aqcookie = ""
 function rand(){
 let key = ["苹果","华为","百度","一个","暴风","王者"]
@@ -166,13 +162,17 @@ async function dotask(taskList){
 }
 
 async function aqc() {
-    msg = "【爱企查】："
-   console.log("爱企查每日任务开始")
+    msg = "【爱企查】：" 
+    console.log("爱企查每日任务开始")
     if (config.aiqicha.cookie) {
     console.log("爱企查cookie数量："+config.aiqicha.cookie.length)
     for(a=0;a<config.aiqicha.cookie.length;a++){
         aqcookie = config.aiqicha.cookie[a]
         headers.cookie = aqcookie
+        ytaskList = []
+        taskList = []
+        claimList = []
+        alltaskList = []        
         console.log("账号"+(a+1)+"开始")
         let logininfo = await get("m/getuserinfoAjax", "get")
         if (logininfo.data.isLogin == 1) {

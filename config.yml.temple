@@ -225,6 +225,7 @@ dsdlove:
 aiqicha: 
   cookie: 
     - cookie在这里 -不能取消 空格也要
+    - 多账号继续往下 不需要的请删除
 
 #曲奇云盘      
 quqi:
@@ -267,7 +268,20 @@ yunys:
 
 #瞻彼文学 cookie为app里的全部cookie
 
-zbwx:
+zbwx: zbwx
   cookie: accessToken=xxxxxxxx
+  
+#天使动漫  tsdm
+tsdm:
+  cookie:  
+      
+#耽漫资源网  fuman99
+fuman99:
+  cookie: 
+  
+#Qoo token  Qoo
+Qoo:
+  token:       
+
   
  

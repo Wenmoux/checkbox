@@ -21,14 +21,14 @@ function du163() {
       } else if (res.data.code == 0) {
         msg = res.data.message + " 连签" + res.data.continuousSignedDays + "天";
       } else {
-        msg = "签到失败,原因未知";
+        msg = "签到失败 "+res.data.msg;
         console.log(res.data);
       }
       result += msg;
       console.log(msg);
     } catch (err) {
-      console.log(err);
-      result += "签到接口请求失败";
+      console.log(err.response.data.msg);
+      result =result + "签到失败  "+ err.response.data.msg;
     }
     resolve(result);
   });

@@ -74,6 +74,9 @@
  - [x] [帆软社区](bbs.fanruan.com)签到/大转盘/摇摇乐
  - [x] 瞻彼文学app每日签到
  - [x] 云原神每日签到
+ - [x] Qoo app 每日签到
+ - [x] [天使动漫](https://tsdm.live/forum.php?mobile=yes)每日签到and打工
+ - [x] [耽漫](99fuman.com)每日签到
 </details>
 
  
@@ -123,6 +126,10 @@ npm install  axios crypto crypto-js fs iconv-lite js-yaml yargs
 <details>
 <summary>更新日志</summary>
 
+- 2021-10-10
+  - [x] Qoo app 每日签到
+  - [x] [天使动漫](https://tsdm.live/forum.php?mobile=yes)每日签到and打工
+  - [x] [耽漫](99fuman.com)每日签到
 - 2021-10-04
   - 新增云原神和瞻彼文学签到 by ytgo
   - 修复帆软社区摇摇乐
