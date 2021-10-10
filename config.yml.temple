@@ -267,8 +267,7 @@ yunys:
   app_id: 
 
 #瞻彼文学 cookie为app里的全部cookie
-
-zbwx: zbwx
+zbwx: 
   cookie: accessToken=xxxxxxxx
   
 #天使动漫  tsdm
