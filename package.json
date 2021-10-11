@@ -1,7 +1,7 @@
 {
   "name": "checkbox",
   "version": "1.2.1",
-  "description": "签到合集",
+  "description": "js签到盒,可于青龙面板/云函数/本地运行",
   "main": "index.js",
   "scripts": {
     "test": "node index.js csdn",
@@ -15,7 +15,7 @@
     "url": "git+https://github.com/Wenmoux/checkbox.git"
   },
   "author": "Wenmoux",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "axios": "^0.21.2",
     "crypto": "^1.0.1",

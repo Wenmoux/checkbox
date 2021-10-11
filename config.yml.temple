@@ -266,21 +266,23 @@ yunys:
   device_model: 
   app_id: 
 
-#瞻彼文学 cookie为app里的全部cookie
+#瞻彼文学 cookie为app里的全部cookie zbwx.js
 zbwx: 
   cookie: accessToken=xxxxxxxx
   
-#天使动漫  tsdm
+#天使动漫  tsdm.js
 tsdm:
   cookie:  
       
-#耽漫资源网  fuman99
+#耽漫资源网  fuman99.js
 fuman99:
   cookie: 
   
-#Qoo token  Qoo
+#Qoo token  Qoo.js
 Qoo:
   token:       
 
-  
+#轻之文库 linovel.js
+linovel:
+  cookie:   
  

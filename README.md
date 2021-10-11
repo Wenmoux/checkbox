@@ -77,6 +77,7 @@
  - [x] Qoo app 每日签到
  - [x] [天使动漫](https://tsdm.live/forum.php?mobile=yes)每日签到and打工
  - [x] [耽漫](99fuman.com)每日签到
+ - [x] [轻之文库](www.linovel.net)每日签到
 </details>
 
  
@@ -114,18 +115,20 @@ termux可以使用crontab设置定时任务
 ## 青龙使用教程
 ```
 ql repo https://github.com/Wenmoux/checkbox.git "index" "node_modules|icon" "scripts|config|Template|sendmsg"
+docker exec -it qinglong bash  
 cp /ql/scripts/config.yml.temple /ql/config/config.yml
 npm install  axios crypto crypto-js fs iconv-lite js-yaml yargs
 ```
-之后在config.yml里填写cookie等信息
-任务列表写在环境变量里
-`cbList`   `xx& xx`  如 csdn&aiqicha
+之后在config.yml里填写cookie等信息  
+任务列表写在环境变量里  
+`cbList`   `xx& xx`  如 csdn&aiqicha  
 
 
 # other
 <details>
 <summary>更新日志</summary>
 
+- 2021-10-12 新增[轻之文库](www.linovel.net)每日签到
 - 2021-10-10
   - [x] Qoo app 每日签到
   - [x] [天使动漫](https://tsdm.live/forum.php?mobile=yes)每日签到and打工
