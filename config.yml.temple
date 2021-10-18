@@ -1,9 +1,19 @@
 #注意所有的冒号后边都有个空格 别删别删
 
 #联众打码账号密码https://www.jsdati.com/
+#无对应脚本 仅用于需要打码的时候
 Lzong:
   account: 
   password: 
+
+#推送参数
+Push:
+  qywx: 
+  sckey: 
+  pushplustoken: 
+  tgbotoken: 
+  qmsgkey: 
+  
 
 #多看阅读 cookie为app里的全部cookie
 duokan:
@@ -286,3 +296,9 @@ Qoo:
 linovel:
   cookie:   
  
+#游戏动力app
+gamepower:
+  contentoken:  
+  
+  
+  

@@ -11,10 +11,8 @@ function task() {
           "User-Agent":
             "Mozilla/5.0 (Linux; Android 10; Redmi K30) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.110 Mobile Safari/537.36",
         },
-      });
-      console.log(res)
-      if (res.data.data) {
-      
+      });    
+      if (res.data.data) {      
         msg = res.data.data.msg
       } else {
         msg = "cookie已失效,请及时更新";

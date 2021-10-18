@@ -25,7 +25,7 @@ var sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
     let dg= await require("axios").post("https://www.tsdm39.net/plugin.php?id=np_cliworkdz:work","act=clickad", {headers: {cookie: rules.cookie,referer: rules.url,"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.105 Safari/537.36"}})
     if((""+dg.data).match(/才可再次进行。/)) break;
     console.log("第"+(i+1)+"次打工："+dg.data)
-    await sleep(1000)
+    await sleep(1500)
     }    
     return rules.name + await template(rules)
 }

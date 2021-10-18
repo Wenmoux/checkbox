@@ -139,8 +139,8 @@ async function video() {
     for (i = 1; i < 11; i++) {
         await task("点击广告", "/?m=user&op=index&ac=watch_ad_status", "")
         let rres = await task("获取获取时间戳", "/?m=index&op=index&ac=timestamp", "")
-        timestamp = rres.data.timestamp
-        await task(`第${i}次获取赠币奖励`, "/?m=user&op=index&ac=watch_ad", `timestamp=${jm(rres.data.timestamp)}`)
+        timestamp = rres.data?rres.data.timestamp:null
+        if(timestamp)await task(`第${i}次获取赠币奖励`, "/?m=user&op=index&ac=watch_ad", `timestamp=${jm(rres.data.timestamp)}`)
         await sleep(10000)
     }
 }

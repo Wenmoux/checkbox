@@ -78,6 +78,7 @@
  - [x] [天使动漫](https://tsdm.live/forum.php?mobile=yes)每日签到and打工
  - [x] [耽漫](99fuman.com)每日签到
  - [x] [轻之文库](www.linovel.net)每日签到
+ - [x] [游戏动力app]()每日任务
 </details>
 
  
@@ -128,6 +129,7 @@ npm install  axios crypto crypto-js fs iconv-lite js-yaml yargs
 <details>
 <summary>更新日志</summary>
 
+- 2021-10-19 新增游戏动力app每日任务(gamepower.js)
 - 2021-10-12 新增[轻之文库](www.linovel.net)每日签到
 - 2021-10-10
   - [x] Qoo app 每日签到
