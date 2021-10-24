@@ -18,7 +18,7 @@ Push:
     agentid: 
     mediaid:
 #telegram推送     
-  tgpush:
+  tgpushkey:
     tgbotoken: 
     chatid: 
 #server酱turbo版    
@@ -324,4 +324,10 @@ gamepower:
   contentoken:  
   
   
-  
+#立创
+oshwhub:
+  cookie: 
+
+#捷配 客编中的数字 如 J1845A id就是1845
+jiepei:
+  MbId:  

@@ -78,6 +78,8 @@
  - [x] [耽漫](99fuman.com)每日签到
  - [x] [轻之文库](www.linovel.net)每日签到
  - [x] [游戏动力app]()每日任务
+ - [x] [立创](https://oshwhub.com)每日签到
+ - [x] [捷配](https://www.jiepei.com/Member)每日签到
 </details>
  
 # 使用方法 (懂得自然懂 bushi  
@@ -115,13 +117,15 @@ ql repo https://github.com/Wenmoux/checkbox.git "index|install" "node_modules|ic
 # other
 <details>
 <summary>更新日志</summary>
-- 2021-10-24 修复绅士领域签到 更新青龙安装签到盒方式
+- 2021-10-24 
+  - 修复绅士领域签到 更新青龙安装签到盒方式
+  - 新增捷配和立创每日签到
 - 2021-10-19 新增游戏动力app每日任务(gamepower.js)
 - 2021-10-12 新增[轻之文库](www.linovel.net)每日签到
 - 2021-10-10
-  - [x] Qoo app 每日签到
-  - [x] [天使动漫](https://tsdm.live/forum.php?mobile=yes)每日签到and打工
-  - [x] [耽漫](99fuman.com)每日签到
+  - 新增 Qoo app 每日签到
+  - 新增[天使动漫](https://tsdm.live/forum.php?mobile=yes)每日签到and打工
+  - 新增耽漫每日签到
 - 2021-10-04
   - 新增云原神和瞻彼文学签到 by ytgo
   - 修复帆软社区摇摇乐
