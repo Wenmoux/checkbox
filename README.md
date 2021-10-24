@@ -87,7 +87,7 @@ termux可以使用crontab设置定时任务
 复制一份config.yml.temple文件并改名config.yml 
 在config.yml文件内填入对应cookies(不要更改原有格式
 > 注意每个冒号后面都有空格  
-在index.js文件里自行按照格式添加需要的任务,运行
+在`config.yml`文件里自行按照格式添加需要的任务,运行
    ```       
       git clone https://github.com/Wenmoux/checkbox.git
       cd /sdcard/checkbox (这里还是要看你的路径)
@@ -96,18 +96,19 @@ termux可以使用crontab设置定时任务
    ```  
    
          
-如不想填signList,可在index.js后加上对应脚本名字    
+如不想填任务列表,可在index.js后加上对应脚本名字    
 如`node index.js acfun csdn`  
 多脚本间用空格  
-一般用于定时任务  
+一般用于定时任务 
+
+ 
 ## 青龙使用教程
 ```
 ql repo https://github.com/Wenmoux/checkbox.git "index|install" "node_modules|icon" "scripts|config|Template|sendmsg"
 ```
  > 1 在面板内添加定时任务
  2 手动运行签到盒安装任务 成功后请禁用
- 3 在config.yml里填写cookie等信息  
- 4 任务列表写在环境变量里  `cbList`   `xx& xx`  如 csdn&aiqicha  
+ 3 在`config.yml`里填写cookie以及需要运行的任务列表(开头cbList)等信息  
 
 # other
 <details>

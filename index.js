@@ -6,8 +6,8 @@ const yaml = require("js-yaml");
 const fs = require('fs');
 const yargs = require('yargs');
 var argv = yargs.argv;
-config = null,notify = null
-var signlist = ["ssly","ssly"]
+config = null,notify = null,signlist = [],logs = ""
+
 //自行添加任务 名字看脚本里的文件名 比如csdn.js 就填"csdn"
 var cbList = []
 if (fs.existsSync("./config.yml")) config = yaml.load(fs.readFileSync('./config.yml', 'utf8'));
@@ -21,8 +21,8 @@ if (QL) {
         return;
     } else config = yaml.load(fs.readFileSync(`/${QL}/config/config.yml`, 'utf8'));
 }
-var signList = (argv._.length) > 0 ? argv._ : (cbList.length>0 ? cbList : signlist)
-var logs = "";
+if(config) signlist = config.cbList.split("&")
+var signList = (argv._.length) > 0 ? argv._ : (cbList.length>0 ? cbList : signlist) 
 if (config) start(signList);
 function start(taskList) {
     return new Promise(async (resolve) => {
