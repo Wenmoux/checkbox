@@ -1,12 +1,10 @@
-<div align="center"> 
+　　<div align="center"> 
 <h1 align="center">签到盒</h1>
-
 [![GitHub stars](https://img.shields.io/github/stars/wenmoux/checkbox?style=flat-square)](https://github.com/wenmoux/checkbox)
 [![GitHub forks](https://img.shields.io/github/forks/wenmoux/checkbox?style=flat-square)](https://github.com/wenmoux/checkbox/network)
 [![GitHub issues](https://img.shields.io/github/issues/wenmoux/checkbox?style=flat-square)](https://github.com/wenmoux/checkbox/issues)
 ![GitHub issues](https://img.shields.io/github/languages/code-size/wenmoux/checkbox?style=flat-square)
 </div>
-
 # 简介
 一些常用网站以及app的签到,有用的话点个star⭐️呗  
 [点这里加TG群](https://t.me/xiubuye)  
@@ -20,7 +18,6 @@
 # 签到列表
 <details>
 <summary>查看签到列表</summary>
-
  - [x] [时光相册](https://web.everphoto.cn/)每日签到
  - [x] [书香门第](http://www.txtnovel.top/?fromuser=lu66666)每日签到
  - [x] [多看阅读app](http://www.duokan.com/m/product)每日任务薅书豆+自动延期 保底6k+ (大概
@@ -80,22 +77,16 @@
  - [x] [轻之文库](www.linovel.net)每日签到
  - [x] [游戏动力app]()每日任务
 </details>
-
  
-
 # 使用方法 (懂得自然懂 bushi  
-
 [教程：关于如何使用termux运行签到盒那件事](https://blog.1oner.cn/posts/termux-checkbox/)  
 termux可以使用crontab设置定时任务  
 写法参见crontab.list
-
-
 
 下载源码,安装依赖
 复制一份config.yml.temple文件并改名config.yml 
 在config.yml文件内填入对应cookies(不要更改原有格式
 > 注意每个冒号后面都有空格  
-
 在index.js文件里自行按照格式添加需要的任务,运行
    ```       
       git clone https://github.com/Wenmoux/checkbox.git
@@ -111,22 +102,17 @@ termux可以使用crontab设置定时任务
 一般用于定时任务  
 ## 青龙使用教程
 ```
-ql repo https://github.com/Wenmoux/checkbox.git "index" "node_modules|icon" "scripts|config|Template|sendmsg"
-docker exec -it qinglong bash  
-cp /ql/scripts/config.yml.temple /ql/config/config.yml
-npm install  axios crypto crypto-js fs iconv-lite js-yaml yargs
+ql repo https://github.com/Wenmoux/checkbox.git "index|install" "node_modules|icon" "scripts|config|Template|sendmsg"
 ```
- > 第一行ql repo在面板内添加定时任务 其它进入容器内操作
-之后在config.yml里填写cookie等信息  
-任务列表写在环境变量里  
-`cbList`   `xx& xx`  如 csdn&aiqicha  
-
+ > 1 在面板内添加定时任务
+ 2 手动运行签到盒安装任务 成功后请禁用
+ 3 在config.yml里填写cookie等信息  
+ 4 任务列表写在环境变量里  `cbList`   `xx& xx`  如 csdn&aiqicha  
 
 # other
 <details>
 <summary>更新日志</summary>
-
-- 2021-10-24 修复绅士领域签到
+- 2021-10-24 修复绅士领域签到 更新青龙安装签到盒方式
 - 2021-10-19 新增游戏动力app每日任务(gamepower.js)
 - 2021-10-12 新增[轻之文库](www.linovel.net)每日签到
 - 2021-10-10
@@ -208,21 +194,14 @@ npm install  axios crypto crypto-js fs iconv-lite js-yaml yargs
 - 2020-12-25 多看阅读增加获取大转盘次数
 - 2020-12-22 新增[网易云游戏平台](https://cloudgame.webapp.163.com/newer.html?invite_code=R6522U)每日签到
 -  ...
-
 </details> 
 
-
-
 # 致谢
-
 [@chavyleung](https://github.com/chavyleung/scripts/tree/master/rrtv)  
 [@lepecoder](https://github.com/lepecoder/checkin)  
 [@zsakvo](https://github.com/zsakvo)  
 
-
 # 支持一下
-
   ![支持一下](https://cdn.jsdelivr.net/gh/Wenmoux/wenpic/qrcode/wx_rewardqrcode.png)
-
 # 免责申明
 该项目仅供学习使用，严禁用于商业用途，由此造成的一切后果，本人概不负责。
