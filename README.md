@@ -20,6 +20,7 @@
 # 签到列表
 <details>
 <summary>查看签到列表</summary>
+
  - [x] [时光相册](https://web.everphoto.cn/)每日签到
  - [x] [书香门第](http://www.txtnovel.top/?fromuser=lu66666)每日签到
  - [x] [多看阅读app](http://www.duokan.com/m/product)每日任务薅书豆+自动延期 保底6k+ (大概
@@ -80,6 +81,7 @@
  - [x] [游戏动力app]()每日任务
  - [x] [立创](https://oshwhub.com)每日签到
  - [x] [捷配](https://www.jiepei.com/Member)每日签到
+
 </details>
  
 # 使用方法 (懂得自然懂 bushi  
@@ -117,9 +119,11 @@ ql repo https://github.com/Wenmoux/checkbox.git "index|install" "node_modules|ic
 # other
 <details>
 <summary>更新日志</summary>
+
 - 2021-10-24 
   - 修复绅士领域签到 更新青龙安装签到盒方式
   - 新增捷配和立创每日签到
+- 2021-10-24 - 修复绅士领域签到 更新青龙安装签到盒方式
 - 2021-10-19 新增游戏动力app每日任务(gamepower.js)
 - 2021-10-12 新增[轻之文库](www.linovel.net)每日签到
 - 2021-10-10
@@ -201,6 +205,7 @@ ql repo https://github.com/Wenmoux/checkbox.git "index|install" "node_modules|ic
 - 2020-12-25 多看阅读增加获取大转盘次数
 - 2020-12-22 新增[网易云游戏平台](https://cloudgame.webapp.163.com/newer.html?invite_code=R6522U)每日签到
 -  ...
+
 </details> 
 
 # 致谢
