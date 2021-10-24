@@ -2,27 +2,25 @@
 cron: 28 8 * * *
 new Env('签到盒');
 */
-const sendmsg = require("./sendmsg");
 const yaml = require("js-yaml");
 const fs = require('fs');
 const yargs = require('yargs');
 var argv = yargs.argv;
-config = null
-cbList = []
+config = null,notify = null
+var signlist = ["ssly","ssly"]
+//自行添加任务 名字看脚本里的文件名 比如csdn.js 就填"csdn"
+var cbList = []
 if (fs.existsSync("./config.yml")) config = yaml.load(fs.readFileSync('./config.yml', 'utf8'));
-notify = null
 if (fs.existsSync("./sendNotify.js")) notify = require('./sendNotify')
 let QL = process.env.QL_DIR
 if (QL) {
     console.log("当前是青龙面板,路径："+QL)
     cbList = process.env.cbList ? process.env.cbList.split("&") : []
     if (!fs.existsSync(`/${QL}/config/config.yml`)) {
-        console.log("您还没有填写cookies配置文件,请配置好再来运行8...")
+        console.log("您还没有填写cookies配置文件,请配置好再来运行8...\n配置文件路径ql/config/config.yml\n如没有文件复制一份config.yml.temple并改名为config.yml")
         return;
     } else config = yaml.load(fs.readFileSync(`/${QL}/config/config.yml`, 'utf8'));
 }
-var signlist = ["ssly"]
-//自行添加任务 名字看脚本里的文件名 比如csdn.js 就填"csdn"
 var signList = (argv._.length) > 0 ? argv._ : (cbList.length>0 ? cbList : signlist)
 var logs = "";
 if (config) start(signList);
@@ -43,7 +41,7 @@ function start(taskList) {
                 }
             }
             console.log("------------任务执行完毕------------\n");
-            await sendmsg(logs);
+            await require("./sendmsg")(logs);
             if (notify) await notify.sendNotify("签到盒", `${logs}\n\n吹水群：https://t.me/wenmou_car`);
         } catch (err) {
             console.log(err);
@@ -51,3 +49,9 @@ function start(taskList) {
         resolve();
     });
 }
+
+//云函数入口
+exports.main_handler = async () => {
+  await start(signList);
+  await require("./sendmsg")(logs);
+};

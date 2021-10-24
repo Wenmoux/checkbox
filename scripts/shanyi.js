@@ -100,8 +100,8 @@ async function getinfo() {
 async function shanyi() {
 
     let res = await task("获取任务列表", "/?m=user&op=daily_task&ac=index", "")
-    if (JSON.stringify(res).match(/你还未登录|另一台设备登录/)) {
-        return "token和u已失效或填写错误";
+    if (JSON.stringify(res).match(/你还未登录|另一台设备登录|已过期/)) {
+        return ("【闪艺】："+res.msg)
     } else {            
         //默认填写我的邀请码 
         await task("填写邀请码","/?m=user&op=activity&ac=use_invite_code","code="+jm(05802486))

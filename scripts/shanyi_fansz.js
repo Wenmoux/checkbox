@@ -69,7 +69,7 @@ function randC() {
 
 async function shanyi() {
     let res = await task("获取任务列表", "/?m=user&op=daily_task&ac=index", "")
-    if (JSON.stringify(res).match(/你还未登录|另一台设备/)) {
+    if (JSON.stringify(res).match(/你还未登录|另一台设备|已过期/)) {
         return "token和u已失效或填写错误";
     } else {
         for (gid of gids) {

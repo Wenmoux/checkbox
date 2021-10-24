@@ -5,8 +5,8 @@ uid = config.ssly.uid; //抓包看,比如签到的post包里就有u_id,如120487
 function ssly() {
   return new Promise(async (resolve) => {
     try {
-      let url = `https://hk.hksslyapp.xyz/mz_pbl/app_con/add_sign.php`;
-      let data = `time=1600797047&mac=43f4923e7a18172b61128850c9079324&u_id=${uid}`;
+      let url = `https://91ssly.xyz/mz_pbl/app_con/add_sign.php`;
+      let data = `time=1635039871&mac=09308021a9da3472e6095aa048c98327&u_id=${uid}`;
       let res = await axios.post(url, data);
       if (res.data.state == 0) {
         msg = res.data.erro;

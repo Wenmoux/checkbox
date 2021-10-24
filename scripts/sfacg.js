@@ -1,14 +1,12 @@
 //sf轻小说app每日签到以及每日任务(除了分享)
 let result = "【SF轻小说】：";
-cookie = config.sfacg.cookie;
 const headers = {
     headers: {
         "user-agent": "boluobao/4.6.36(android;23)/BDFZH2",
-        authorization: "Basic YW5kcm9pZHVzZXI6MWEjJDUxLXl0Njk7KkFjdkBxeHE=",
+        authorization: config.sfacg.authorization,
         "content-type": "application/json; charset=UTF-8",
-        sfsecurity: "",
-        "nonce=04FB0B0F-56BF-4119-BFD6-5B3895564562&timestamp=1632459519271&devicetoken=6AF221B5-01FD-3F9A-9647-7644EA6D71A6&sign=421BB9164D4F99A97C0C41BFAAEA558C",
-        cookie: "",
+        sfsecurity:config.sfacg.sfsecurity,       
+        cookie:config.sfacg.cookie
     },
 };
 //上面的user-agent authorization sfsecurity 建议自行替换成自己的

@@ -12,11 +12,12 @@ function Template(rules) {
                     "User-Agent": rules.ua == "pc" ? "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.105 Safari/537.36" : "Mozilla/5.0 (Linux; Android 10; Redmi K30) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.105 Mobile Safari/537.36"                }
             };
             message = rules.op.length > 1 ? "\n" : ""
-            res = await axios.get(rules.url, header);
+            res = await axios.get(rules.url, header);            
             if (rules.formhash) formhash = res.data.match(rules.formhash)
             if (!res.data.match(rules.verify)) {
                 ckstatus = 1
                 formhash = formhash ? formhash[1] : ""
+                console.log(formhash)
                 for (i = 0; i < rules.op.length; i++) {
                     console.log("去" + rules.op[i].name)
                     header.headers["User-Agent"] = (rules.op[i].ua == "pc" )? "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.105 Safari/537.36" : "Mozilla/5.0 (Linux; Android 10; Redmi K30) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.105 Mobile Safari/537.36"

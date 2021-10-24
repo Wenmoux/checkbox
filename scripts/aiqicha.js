@@ -11,14 +11,15 @@ const headers = {
     "Host": "aiqicha.baidu.com",
      cookie: ""
    }
-aqcookie = ""
+var aqcookie = ""
+var key = ["苹果","华为","百度","一个","暴风","王者"]
+var popularSearchKey = []
 function rand(){
-let key = ["苹果","华为","百度","一个","暴风","王者"]
 let i = Math.floor((Math.random()*key.length))
 return key[i]
 }
 let oo = {CX10002:"每日签到",CX10001:"每日登陆",CX11001:"查询企业",CX11002:"查询老板",CX11003:"查询老赖",CX11004:"查询商标",CX11005:"查询地图",CX11006:"浏览新闻",CX11007:"浏览监控日报",CX11009:"查询关系",CX11010:"批量查询",CX12001:"添加监控",CX12002:"添加关注",CX12005:"分享任务",CX12006:"邀请任务",CX12007:"高级搜索",CX12008:"高级筛选"}
-function get(api, method, data) {
+function get(api, method="get", data) {
     return new Promise(async (resolve) => {
         try {
             let url = `https://aiqicha.baidu.com/${api}`
@@ -39,7 +40,11 @@ function get(api, method, data) {
 }
 
 async function getaskList() {
-    let tres = await get("usercenter/checkTaskStatusAjax", "get")
+        ytaskList = []
+        taskList = []
+        claimList = []
+        alltaskList = []   
+    let tres = await get("usercenter/checkTaskStatusAjax")
     let obj = tres.data
     if(tres.status ==0){  
     Object.keys(obj).forEach(function(key) {
@@ -61,75 +66,67 @@ async function dotask(taskList){
         switch (o.title) {
             case "CX10002": //每日签到
                 console.log("开始任务：" + oo[o.title])
-                await get(`usercenter/userSignAjax`, "get")
+                await get(`usercenter/userSignAjax`)
                 break
             case "CX10001": //每日登陆
                 console.log("开始任务：" + oo[o.title])                
                 break
             case "CX11001": //查询企业 
                 console.log("开始任务：" + oo[o.title])
-                await get(`s/getHeadBrandAndPersonAjax?q=${encodeURI(rand())}`, "get")
-                await sleep(500)
+                await get(`s/getHeadBrandAndPersonAjax?q=${encodeURI(rand())}`)             
                 break
             case "CX11002": //查询老板 
                 console.log("开始任务：" + oo[o.title])
-                await get(`person/relevantPersonalAjax?page=1&q=${encodeURI(rand())}&size=10`, "get")
-                await sleep(500)
+                await get(`person/relevantPersonalAjax?page=1&q=${encodeURI(rand())}&size=10`)             
                 break
             case "CX11003": //查询老赖
                 console.log("开始任务：" + oo[o.title])
-                await get(`c/dishonestAjax?q=${encodeURI(rand())}&t=8&s=10&p=1&f=%7B%22type%22:%221%22%7D`, "get")
-                await sleep(500)
+                await get(`c/dishonestAjax?q=${encodeURI(rand())}&t=8&s=10&p=1&f=%7B%22type%22:%221%22%7D`)            
                 break
             case "CX11004": //查询商标
                 console.log("开始任务：" + oo[o.title])
-                await get(`c/markproAjax?q=${encodeURI(rand())}&p=1&s=10&f=%7B%7D&o=%7B%7D`, "get")
-                await sleep(500)
+                await get(`c/markproAjax?q=${encodeURI(rand())}&p=1&s=10&f=%7B%7D&o=%7B%7D`)           
                 break
             case "CX11005": //查询地图
                 console.log("开始任务：" + oo[o.title])
-                await get(`map/getAdvanceFilterListAjax?longitude=113.76343399&latitude=23.04302382&distance=2&page=1`, "get")
-                await sleep(500)
+                await get(`map/getAdvanceFilterListAjax?longitude=113.76343399&latitude=23.04302382&distance=2&page=1`)         
                 break
             case "CX11006": //浏览新闻
                 console.log("开始任务：" + oo[o.title])
-                await get("m/getYuqingDetailAjax?yuqingId=993090dcb7574be014599996098459e3", "get")
+                await get("m/getYuqingDetailAjax?yuqingId=993090dcb7574be014599996098459e3")
                 break
             case "CX11007": //浏览监控日报
                 console.log("开始任务：" + oo[o.title])
-                let jk = await get("zxcenter/monitorDailyReportListAjax?page=1&size=10","get")
+                let jk = await get("zxcenter/monitorDailyReportListAjax?page=1&size=10")
                 let list = jk.data.list
                 if(list){
                 for (p=0;p<2&&p<list.length;p++){
-                await get(`zxcenter/monitorDailyReportDetailAjax?reportdate=${list[p].reportDate}`, "get")
+                await get(`zxcenter/monitorDailyReportDetailAjax?reportdate=${list[p].reportDate}`)
                 }}
                  break
             case "CX11009": //查询关系
                 console.log("开始任务：" + oo[o.title])
-                await get(`relations/findrelationsAjax?from=e07a8ef1409bff3987f1b28d118ff826&to=6f5966de4af2eb29085ffbcc9cc0116a&pathNum=10`, "get")
-                await sleep(500)
+                await get(`relations/findrelationsAjax?from=e07a8ef1409bff3987f1b28d118ff826&to=6f5966de4af2eb29085ffbcc9cc0116a&pathNum=10`)  
                 break
             case "CX11010": //批量查询 
                 console.log("开始任务：" + oo[o.title])
-                await get(`batchquery/show?exportkey=xlTM-TogKuTwFXlQeIXL0-ZSYg3hsic*l8GeygZ33JY5yKM7wIuRZJ9YNE*8CciQoAU5UjsmI-hdmd`, "get")
-                await sleep(500)
+                await get(`batchquery/show?exportkey=xlTM-TogKuTwFXlQeIXL0-ZSYg3hsic*l8GeygZ33JY5yKM7wIuRZJ9YNE*8CciQoAU5UjsmI-hdmd`)  
                 break
             case "CX12001": //添加监控
                 console.log("开始任务：" + oo[o.title])
-                for( id of [29829264524016,28696417032417,31370200772422,31242153386614]){await get(`zxcenter/addMonitorAjax?pid=${id}`, "get")}
-                await get(`zxcenter/addMonitorAjax?pid=29710155220353`, "get")
-                await get(`zxcenter/cancelMonitorAjax?pid=29710155220353`, "get")
-                await sleep(500)
+                for( id of [29829264524016,28696417032417,31370200772422,31242153386614]){await get(`zxcenter/addMonitorAjax?pid=${id}`)}
+                await get(`zxcenter/addMonitorAjax?pid=29710155220353`)
+                await sleep(1500)
+                await get(`zxcenter/cancelMonitorAjax?pid=29710155220353`)
                 break
             case "CX12002": //添加关注
                 console.log("开始任务：" + oo[o.title])
                 await get(`my/addCollectAjax`, "post", `pid=34527616977197`)
-                await get(`my/delCollectAjax`, "post", `pid=34527616977197`)
-                await sleep(500)
+                await get(`my/delCollectAjax`, "post", `pid=34527616977197`)           
                 break
             case "CX12005": //分享好友
                 console.log("开始任务：" + oo[o.title])                
-                let shres = await get(`usercenter/getShareUrlAjax`, "get")
+                let shres = await get(`usercenter/getShareUrlAjax`)
                 uid = shres.data.match(/uid=(.+)/)
                 if(uid){
                 uid = uid[1]
@@ -137,55 +134,57 @@ async function dotask(taskList){
                 let t = Date.now()
                 headers["referer"] =  "https://"+shres.data+"&VNK="+t
                 headers["Zx-Open-Url"] = "https://"+shres.data+"&VNK="+t
-                await get(`m/?uid=${uid}`,"get")                
-                await get(`m/getuserinfoAjax?uid=${uid}`,"get")                 
-                headers.cookie = aqcookie
-                await sleep(500)
+                await get(`m/?uid=${uid}`)
+                await get(`m/getuserinfoAjax?uid=${uid}`)        
+                headers.cookie = aqcookie               
                } 
                 break
             case "CX12007": //高级搜索
                 console.log("开始任务：" + oo[o.title])
-                await get(`search/advanceSearchAjax?q=${encodeURI(rand())}&t=11&p=1&s=10&o=0&f=%7B%22searchtype%22:[%221%22]%7D`, "get")
+                await get(`search/advanceSearchAjax?q=${encodeURI(rand())}&t=11&p=1&s=10&o=0&f=%7B%22searchtype%22:[%221%22]%7D`)
                 break
             case "CX12008": //高级筛选
                 console.log("开始任务：" + oo[o.title])
-                await get(`search/advanceFilterAjax?q=%E7%A6%8F%E5%B7%9E%E6%AF%8F%E6%97%A5&t=0&p=1&s=10&o=0`, "get")
+                await get(`search/advanceFilterAjax?q=%E7%A6%8F%E5%B7%9E%E6%AF%8F%E6%97%A5&t=0&p=1&s=10&o=0`)
                 break
             default:
-                break
-        }
-        await sleep(500)
-        console.log("  去领取爱豆")
-        let clres = await get(`zxcenter/claimUserTaskAjax?taskCode=${o.title}`, "get")
-        if (clres.status == 0) console.log(`  领取成功！获得${clres.data.totalScore}爱豆`)
-    }
+                break                
+        }   
+             let t = Math.round(Math.random()*1000*60*2)+10*1000
+             console.log("随机延迟 秒 ："+t/1000)
+             await sleep(t) //延迟5-10s          
+   }
 }
 
 async function aqc() {
     msg = "【爱企查】：" 
     console.log("爱企查每日任务开始")
     if (config.aiqicha.cookie) {
-    console.log("爱企查cookie数量："+config.aiqicha.cookie.length)
+    if(!Array.isArray(config.aiqicha.cookie)) aqCookie.push(config.aiqicha.cookie)
+    else aqCookie = config.aiqicha.cookie
+    console.log("爱企查cookie数量："+aqCookie.length)
     for(a=0;a<config.aiqicha.cookie.length;a++){
-        aqcookie = config.aiqicha.cookie[a]
-        headers.cookie = aqcookie
-        ytaskList = []
-        taskList = []
-        claimList = []
-        alltaskList = []        
+        aqcookie = aqCookie[a]
+        headers.cookie = aqcookie   
         console.log("账号"+(a+1)+"开始")
         let logininfo = await get("m/getuserinfoAjax", "get")
         if (logininfo.data.isLogin == 1) {
+        console.log("获取热搜词...")
+        let keyword = await get("/m/popularSearcheAjax")
+        console.log("    "+JSON.stringify(keyword.data))
+        if(keyword.data) popularSearchKey = keyword.data.map((item) =>{return item.words})
+        key = [...key,...popularSearchKey]      
             await getaskList()
             await dotask(taskList)
             await dotask(taskList)
-            await sleep(500)
+            await sleep(5000)
             claimList = []
             await getaskList()
             for (task of claimList) {
                 console.log(`领取爱豆：${oo[task]}`)
                 let clres = await get(`zxcenter/claimUserTaskAjax?taskCode=${task}`, "get")
                 if (clres.status == 0) console.log(`  领取成功！获得${clres.data.totalScore}爱豆`)
+                await sleep(2500)
             }
             console.log("去查询爱豆积分")
             let userinfo = await get("usercenter/getvipinfoAjax", "get")

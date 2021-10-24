@@ -89,10 +89,6 @@
 termux可以使用crontab设置定时任务  
 写法参见crontab.list
 
-关于如何使用云函数
-下载代码 把index.js删掉 tscf.js改成index.js然后导入云函数就好了(我只用过腾讯云函数 其它的不知道  
-如果提示找不到入口函数 大概率是你压缩包多套了一层( ´艸｀)
-
 
 
 下载源码,安装依赖
@@ -120,6 +116,7 @@ docker exec -it qinglong bash
 cp /ql/scripts/config.yml.temple /ql/config/config.yml
 npm install  axios crypto crypto-js fs iconv-lite js-yaml yargs
 ```
+ > 第一行ql repo在面板内添加定时任务 其它进入容器内操作
 之后在config.yml里填写cookie等信息  
 任务列表写在环境变量里  
 `cbList`   `xx& xx`  如 csdn&aiqicha  
@@ -129,6 +126,7 @@ npm install  axios crypto crypto-js fs iconv-lite js-yaml yargs
 <details>
 <summary>更新日志</summary>
 
+- 2021-10-24 修复绅士领域签到
 - 2021-10-19 新增游戏动力app每日任务(gamepower.js)
 - 2021-10-12 新增[轻之文库](www.linovel.net)每日签到
 - 2021-10-10

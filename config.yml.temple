@@ -1,5 +1,10 @@
-#注意所有的冒号后边都有个空格 别删别删
-
+#注意冒号后边都有个空格 别删别删
+#注意冒号后边都有个空格 别删别删
+#注意冒号后边都有个空格 别删别删
+#注意冒号后边都有个空格 别删别删
+#注意冒号后边都有个空格 别删别删
+#注意冒号后边都有个空格 别删别删
+#格式报错自行百度yaml格式在线校验进去测试下就行了...
 #联众打码账号密码https://www.jsdati.com/
 #无对应脚本 仅用于需要打码的时候
 Lzong:
@@ -8,11 +13,24 @@ Lzong:
 
 #推送参数
 Push:
-  qywx: 
+#企业微信推送
+  qywx:
+    corpsecret: 
+    corpid: 
+    agentid: 
+    mediaid:
+#telegram推送     
+  tgpush:
+    tgbotoken: 
+    chatid: 
+#server酱turbo版    
   sckey: 
+#qmsg酱  
+  qmsgkey:
+#推送加  
   pushplustoken: 
-  tgbotoken: 
-  qmsgkey: 
+
+
   
 
 #多看阅读 cookie为app里的全部cookie
@@ -103,6 +121,8 @@ mt:
 #sf轻小说 app
 sfacg:
   cookie: 
+  sfsecurity: 
+  authorization: 
 
 #猫耳fm 网页 全部cookie
 maoer:

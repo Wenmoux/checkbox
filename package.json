@@ -1,6 +1,6 @@
 {
   "name": "checkbox",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "js签到盒,可于青龙面板/云函数/本地运行",
   "main": "index.js",
   "scripts": {
