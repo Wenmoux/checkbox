@@ -1,10 +1,15 @@
-　　<div align="center"> 
+<div align="center"> 
 <h1 align="center">签到盒</h1>
-[![GitHub stars](https://img.shields.io/github/stars/wenmoux/checkbox?style=flat-square)](https://github.com/wenmoux/checkbox)
-[![GitHub forks](https://img.shields.io/github/forks/wenmoux/checkbox?style=flat-square)](https://github.com/wenmoux/checkbox/network)
-[![GitHub issues](https://img.shields.io/github/issues/wenmoux/checkbox?style=flat-square)](https://github.com/wenmoux/checkbox/issues)
+ 
+[![GitHub stars](https://img.shields.io/github/stars/wenmoux/checkbox?style=flat-square)](https://github.com/wenmoux/checkbox)  
+ 
+[![GitHub forks](https://img.shields.io/github/forks/wenmoux/checkbox?style=flat-square)](https://github.com/wenmoux/checkbox/network)  
+ 
+[![GitHub issues](https://img.shields.io/github/issues/wenmoux/checkbox?style=flat-square)](https://github.com/wenmoux/checkbox/issues)  
+ 
 ![GitHub issues](https://img.shields.io/github/languages/code-size/wenmoux/checkbox?style=flat-square)
-</div>
+</div>  
+
 # 简介
 一些常用网站以及app的签到,有用的话点个star⭐️呗  
 [点这里加TG群](https://t.me/xiubuye)  
