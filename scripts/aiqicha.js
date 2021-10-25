@@ -18,7 +18,7 @@ function rand(){
 let i = Math.floor((Math.random()*key.length))
 return key[i]
 }
-let oo = {CX10002:"每日签到",CX10001:"每日登陆",CX11001:"查询企业",CX11002:"查询老板",CX11003:"查询老赖",CX11004:"查询商标",CX11005:"查询地图",CX11006:"浏览新闻",CX11007:"浏览监控日报",CX11009:"查询关系",CX11010:"批量查询",CX12001:"添加监控",CX12002:"添加关注",CX12005:"分享任务",CX12006:"邀请任务",CX12007:"高级搜索",CX12008:"高级筛选"}
+let oo = {CX10002:"每日签到",CX10001:"每日登陆",CX11001:"查询企业",CX11002:"查询老板",CX11003:"查询老赖",CX11004:"查询商标",CX11005:"查询地图",CX11006:"浏览新闻",CX11007:"浏览监控日报",CX11009:"查询关系",CX11010:"批量查询",CX12001:"添加监控",CX12002:"添加关注",CX12005:"分享任务",CX12006:"邀请任务",CX12007:"高级搜索",CX12008:"高级筛选",CX12009:"浏览互动",CX12011: "点赞观点"}
 function get(api, method="get", data) {
     return new Promise(async (resolve) => {
         try {
@@ -135,6 +135,8 @@ async function dotask(taskList){
                 headers["referer"] =  "https://"+shres.data+"&VNK="+t
                 headers["Zx-Open-Url"] = "https://"+shres.data+"&VNK="+t
                 await get(`m/?uid=${uid}`)
+                headers["Zx-Open-Url"] = null
+                headers["referer"]="https://aiqicha.baidu.com"
                 await get(`m/getuserinfoAjax?uid=${uid}`)        
                 headers.cookie = aqcookie               
                } 
@@ -147,12 +149,30 @@ async function dotask(taskList){
                 console.log("开始任务：" + oo[o.title])
                 await get(`search/advanceFilterAjax?q=%E7%A6%8F%E5%B7%9E%E6%AF%8F%E6%97%A5&t=0&p=1&s=10&o=0`)
                 break
+            case "CX12009"://浏览互动
+                console.log("开始任务：" + oo[o.title])
+                nid=null
+                let HomeQuestionres= await get("smart/getHomeQuestionListAjax?page=2&size=10&type=recommend")
+                if(HomeQuestionres.status==0) {qdetail = HomeQuestionres.data.list[Math.floor((Math.random()*HomeQuestionres.data.list.length))]                
+                await get(`smart/questionDetailAjax?nid=${qdetail.nid}`)}
+                break
+            case "CX12011"://点赞观点
+                console.log("开始任务：" + oo[o.title])
+                nid = nid?nid:"1851233986328193016"
+                let qCListres = await get(`smart/questionCommentListAjax?nid=${nid}`)
+                if(qCListres.status==0) {
+               pList = qCListres.data.list
+               randomkey = Math.floor((Math.random()*pList.length))
+               pid = pList[randomkey].reply_id
+               await get(`smart/updownAjax?undoType=0&clientType=app&nid=${nid}&parentId=${pid}`)
+                }
+                break
             default:
                 break                
         }   
-             let t = Math.round(Math.random()*1000*60*2)+10*1000
+             let t = Math.round(Math.random()*1000*(60-20)*2)+10*1000
              console.log("随机延迟 秒 ："+t/1000)
-             await sleep(t) //延迟5-10s          
+             await sleep(t)         
    }
 }
 
@@ -167,10 +187,10 @@ async function aqc() {
         aqcookie = aqCookie[a]
         headers.cookie = aqcookie   
         console.log("账号"+(a+1)+"开始")
-        let logininfo = await get("m/getuserinfoAjax", "get")
+        let logininfo = await get("m/getuserinfoAjax")
         if (logininfo.data.isLogin == 1) {
         console.log("获取热搜词...")
-        let keyword = await get("/m/popularSearcheAjax")
+        let keyword = await get("m/popularSearcheAjax")
         console.log("    "+JSON.stringify(keyword.data))
         if(keyword.data) popularSearchKey = keyword.data.map((item) =>{return item.words})
         key = [...key,...popularSearchKey]      
