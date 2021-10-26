@@ -153,8 +153,7 @@ async function dotask(taskList){
                 console.log("开始任务：" + oo[o.title])
                 let HomeQuestionres= await get("smart/getHomeQuestionListAjax?page=2&size=10&type=recommend")
                 if(HomeQuestionres.status==0) {qdetail = HomeQuestionres.data.list[Math.floor((Math.random()*HomeQuestionres.data.list.length))]                
-                nid = qdetail.nid
-                await get(`smart/questionDetailAjax?nid=${nid}`)}
+                await get(`smart/questionDetailAjax?nid=${qdetail.nid}`)}
                 break
             case "CX12011"://点赞观点
                 console.log("开始任务：" + oo[o.title])
