@@ -13,10 +13,11 @@ function Template(rules) {
             };
             message = rules.op.length > 1 ? "\n" : ""
             res = await axios.get(rules.url, header);         
-            //console.log(res)   
+            //console.log(res) 
+            if (!res.data.match(rules.verify)) {
+                ckstatus = 1  
             if (rules.formhash) formhash = res.data.match(rules.formhash)
-               if (!res.data.match(rules.verify)) {
-                ckstatus = 1
+             
                 formhash = formhash ? formhash[1] : ""
                 ///console.log(formhash)
                 for (i = 0; i < rules.op.length; i++) {
@@ -59,6 +60,7 @@ function Template(rules) {
                 ckstatus = 0
                 message = "  cookie失效";
             }
+            
         } catch (err) {
             console.log(err);
             message = "接口请求失败"

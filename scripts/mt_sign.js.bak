@@ -8,8 +8,7 @@ function mt() {
       let cookie = config.mt.cookie || "wenmoux";
       let header = {
         headers: {
-          cookie: cookie,
-         "Referer":"https://bbs.binmt.cc/member.php?mod=logging&action=login&mobile=2"
+          cookie: cookie
         }
       };
       res = await axios.get("https://bbs.binmt.cc/k_misign-sign.html", header);

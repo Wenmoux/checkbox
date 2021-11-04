@@ -65,7 +65,8 @@ async function renwu() {
     let timelist = dataa.data.task_limit_time_list
     if (timelist.length>0) {
         for (id of timelist) {
-        if(id.title.match(/阅读/)){
+        console.log(id)
+        if(id.title.match(/阅读|观看/)){
             await task("阅读", "/?m=user&op=index&ac=add_user_play_time", "minute=" + jm(120) + "&gid=" + jm(id.game_id))         
             await sleep(60000)
             }else if(id.title.match(/收藏/)){
@@ -103,7 +104,7 @@ async function shanyi() {
     if (JSON.stringify(res).match(/你还未登录|另一台设备登录|已过期/)) {
         return ("【闪艺】："+res.msg)
     } else {            
-        //默认填写我的邀请码 
+        //默认填写我的邀请码         
         await task("填写邀请码","/?m=user&op=activity&ac=use_invite_code","code="+jm(05802486))
         await task("每日签到", "/?m=user&op=check_in&ac=check_in", "")
         for(trigger=0;trigger<5;trigger++){
@@ -126,7 +127,7 @@ async function shanyi() {
          for(g = 0;g<giftList.length;g++){
         console.log("开始赠送 ："+giftList[g].gift_name+"  "+giftList[g].gift_amount+"  "+giftList[g].gift_id)
                 await task("守护角色礼物", "/?m=game_info&op=role&ac=give_gift", `amount=${jm(giftList[g].gift_amount)}&is_own=${jm(1)}&gift_id=${jm(giftList[g].gift_id)}&gift_num=${jm(giftList[g].gift_amount)}&comment=(*^ω^*)&role_id=%2BU8vUwupuwFWbE94QXgYow%3D%3D`)
-        }
+        }        
         await renwu()
         await video()
         await task("合成赠币","/?m=pay&op=index&ac=fragments_to_zcoin","amount=OGzPvzYB3YSI3POa/15kYQ==")

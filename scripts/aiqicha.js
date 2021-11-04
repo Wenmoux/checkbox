@@ -147,7 +147,7 @@ async function dotask(taskList){
                 break
             case "CX12008": //高级筛选
                 console.log("开始任务：" + oo[o.title])
-                await get(`search/advanceFilterAjax?q=%E7%A6%8F%E5%B7%9E%E6%AF%8F%E6%97%A5&t=0&p=1&s=10&o=0`)
+                // await get(`search/advanceFilterAjax?q=%E7%A6%8F%E5%B7%9E%E6%AF%8F%E6%97%A5&t=0&p=1&s=10&o=0`)
                 break
             case "CX12009"://浏览互动
                 console.log("开始任务：" + oo[o.title])
@@ -202,12 +202,12 @@ async function aqc() {
             await getaskList()
             for (task of claimList) {
                 console.log(`领取爱豆：${oo[task]}`)
-                let clres = await get(`zxcenter/claimUserTaskAjax?taskCode=${task}`, "get")
+                let clres = await get(`zxcenter/claimUserTaskAjax?taskCode=${task}`)
                 if (clres.status == 0) console.log(`  领取成功！获得${clres.data.totalScore}爱豆`)
                 await sleep(2500)
             }
             console.log("去查询爱豆积分")
-            let userinfo = await get("usercenter/getvipinfoAjax", "get")
+            let userinfo = await get("usercenter/getvipinfoAjax")
             msg += `账号${a+1} 【${logininfo.data.userName}】 共${userinfo.data.consume}爱豆\n`
         } else {
             msg = "cookie已失效"
