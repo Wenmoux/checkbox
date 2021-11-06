@@ -84,9 +84,14 @@ async function renwu() {
     for (id of hylist) {
         await task("活跃度宝箱 " + id.hy_val, "?m=user&op=daily_task&ac=receive_hy_bonus", "package_id=" + jm(id.package_id))
     }
-
-
 }
+
+function randC() {
+    let key = ["日常表白作者大大", "爱了爱了", "咪啾", "好玩","(☝ ՞ਊ ՞)☝"]
+    let i = Math.floor((Math.random() * key.length))
+    return key[i]
+}
+
 async function getinfo() {
     let dataa = await task("获取个人信息", "/?m=user&op=daily_task&ac=index", "")
     info = `【闪艺】：${dataa.data.nickname}|| Lv${dataa.data.level_info.level} 经验值 ${dataa.data.level_info.current_empirical} / ${dataa.data.level_info.next_empirical}\n`   
@@ -115,8 +120,8 @@ async function shanyi() {
         await task("二次翻牌", "/?m=user&op=check_in&ac=receive_daily_bonus", "type=W/WdZKs5lJhcLOK5XBhwXA==")
         await task("补签卡领取","/?m=user&op=check_in&ac=receive_replenish_card","")
         await task("作品评论取消点赞", "/?m=comment&op=index&ac=hate_comment", "comment_id=My7xxKY4ZkyoMMJg3T3zww%3D%3D")
-        await task("作品评论点赞", "/?m=comment&op=index&ac=love_comment", "comment_id=My7xxKY4ZkyoMMJg3T3zww%3D%3D")
-        await task("评论作品", "/?m=comment&op=index&ac=do_comment", "game_id=y822%2Bk8oG37pr8x6YUBAcQ%3D%3D&type=2jyfrX4gfTvnrWc%2BorX%2Bog%3D%3D&content=DFdLvn%2BxRXBsPs8BuHNxzg%3D%3D")
+        await task("作品评论点赞", "/?m=comment&op=index&ac=love_comment", "comment_id=My7xxKY4ZkyoMMJg3T3zww%3D%3D")        
+        await task("评论作品", "/?m=comment&op=index&ac=do_comment", "game_id=y822%2Bk8oG37pr8x6YUBAcQ%3D%3D&type=2jyfrX4gfTvnrWc%2BorX%2Bog%3D%3D&content="+jm(randC))
         await task("圈子取消点赞", "/?m=qz&op=topic&ac=praise", "topic_id=b5Xy0BT9w1np7AOUwumsRA%3D%3D")
         await task("圈子点赞", "/?m=qz&op=topic&ac=praise", "topic_id=b5Xy0BT9w1np7AOUwumsRA%3D%3D")
         await task("分享作品", "/?m=share&op=index&ac=game_share", "game_id="+jm(98865)+"&op_from=5nXP9qADvw3bmKOnRJA5Xw%3D%3D")
