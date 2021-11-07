@@ -10,28 +10,18 @@ login_name = config.hbooker.login_name;
 passwd = config.hbooker.passwd;
 token = "";
 username = "";
-const crypto = require("crypto");
+const CryptoJS = require("crypto-js");
 const axios = require("axios");
-var decrypt = function decrypt(data, key) {
-  if (key == null) {
-    key = crypto
-      .createHash("sha256")
-      .update("zG2nSeEfSHfvTCHy5LCcqtBbQehKNLXn")
-      .digest();
-  } else {
-    key = crypto.createHash("sha256").update(key).digest();
-  }
-  let decipher = crypto.createDecipheriv(
-    "aes-256-cbc",
-    key,
-    new Uint8Array(16)
-  );
-  decipher.setAutoPadding(false);
-  let decrypted = decipher.update(data, "base64", "utf8");
-  decrypted += decipher.final("utf8");
-  // console.log(JSON.parse(decrypted.match(/{(.*)}/)[0]))
-  return decrypted;
-};
+const iv = CryptoJS.enc.Hex.parse('00000000000000000000000000000000')
+const decrypt = function (data, key) {
+  key = CryptoJS.SHA256(key ? key : 'zG2nSeEfSHfvTCHy5LCcqtBbQehKNLXn')
+  var decrypted = CryptoJS.AES.decrypt(data, key, {
+    mode: CryptoJS.mode.CBC,
+    iv: iv,
+    padding: CryptoJS.pad.Pkcs7,
+  })
+  return decrypted.toString(CryptoJS.enc.Utf8)
+}
 
 //decrypt("6WafpH+G/+hDyIp4Xth47HuRUp3OWI/mxE8FJLj0OZGVAQDl9VcGF/amBrmvth9Hers7f8OE8b3zQTM+WN75DA==")
 const mixin = {
