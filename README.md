@@ -81,7 +81,7 @@
  - [x] [游戏动力app]()每日任务
  - [x] [立创](https://oshwhub.com)每日签到
  - [x] [捷配](https://www.jiepei.com/Member)每日签到
-
+ - [x] [花火论坛](www.sayhuahuo.com)每日签到
 </details>
  
 # 使用方法 (懂得自然懂 bushi  
@@ -122,6 +122,7 @@ ql repo https://github.com/Wenmoux/checkbox.git "index|install" "node_modules|ic
 <details>
 <summary>更新日志</summary>
 
+- 2021-11-15  [花火论坛](www.sayhuahuo.com)每日签到
 - 2021-10-24 
   - 修复绅士领域签到 更新青龙安装签到盒方式
   - 新增捷配和立创每日签到

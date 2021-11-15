@@ -5,7 +5,6 @@
 #注意冒号后边都有个空格 别删别删
 #注意冒号后边都有个空格 别删别删
 #格式报错自行百度yaml格式在线校验进去测试下就行了...
-
 #任务列表 任务1&任务2
 cbList: ssly&ssly
 
@@ -84,9 +83,6 @@ du163:
 xiang5:
   cookie:  
   
-#京东 全部cookie
-jd:
-  cookie: 
 
 #晋江小说 手机版网页端 m.jjwxc.net cookie中sid 最好抓签到的 填完整 sid=xxx
 jjwxc:
@@ -331,3 +327,7 @@ oshwhub:
 #捷配 客编中的数字 如 J1845A id就是1845
 jiepei:
   MbId:  
+#花火论坛
+huahuo: 
+  cookie: 
+  

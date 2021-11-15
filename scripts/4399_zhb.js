@@ -1,8 +1,9 @@
 /*
 4399游戏盒赚盒币任务
+是有活动再跑 不是一直需要
 https://www.mobayx.com/2017/hebi2/
 邀请链接：https://yxhhd2.5054399.com/comm/bzyld2/share/index.php?ext=3091185497
-2021-09-07 13:24
+2021-11-11 11:05
 联众打码 https://www.jsdati.com/
 @wenmoux
 */
@@ -15,17 +16,14 @@ softwareId = 22870; //打码 软件id
 softwareSecret = "Ykt5eVBtSaeHhivCyxUURCWMTniJmTgGmKYDxlC7"; //不用管 打码 软件密钥
 const axios = require("axios")
 var sckstatus = false
+const {device,scookie,UA,udid} = config.youlecheng
 
-const device = config.youlecheng.device
-const scookie = config.youlecheng.scookie
-const UA = config.youlecheng.UA
-const sdevice = config.youlecheng.udid
 const date = new Date()
 function get(ac, b, log) {
     return new Promise(async resolve => {
         try {
             let url = "https://www.mobayx.com/comm/playapp2/m/hd_wap_user_e1.php"
-            let data = `ac=${ac}&${b}&t=${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}&scookie=${scookie}&device=${device}&sdevice=${sdevice}`
+            let data = `ac=${ac}&${b}&t=${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}&scookie=${scookie}&device=${device}&sdevice=${udid}`
             let res = await axios.post(url, data, {
                 headers: {
                     "User-Agent": UA,                
@@ -46,17 +44,14 @@ async function task() {
 if(UA){
     //获取试玩软件id
     let res = await axios.get("https://www.mobayx.com/2017/hebi2/")
-    let ids = res.data.match(/https:\/\/www\.mobayx\.com\/comm\/playapp2\/m\/index\.php\?comm_id=\d+/g)
+    let ids = res.data.match(/https:\/\/huodong2\.4399\.com\/comm\/playapp2\/m\/index\.php\?comm_id=(\d+)/g)
     console.log(`共获取到${ids.length}个试玩软件`)
     
     for (id of ids) {
         yxid = id.match(/comm_id=(\d+)/)[1]
         //查询信息
         let cres = await get("login", "cid=" + yxid)
-              let conf = cres.config
-  
-
-
+        let conf = cres.config
         console.log(`软件名: ${conf.gameinfo.appname}\n已体验天数: ${conf.play_day}\n今日已体验: ${conf.today_play_stat==1?"是":"否"}\n已验证: ${conf.check_code_stat.success==1?"是":"否"}`)               
       if(lzpassword){
           if (conf.check_code_stat.success != 1) {
@@ -72,16 +67,15 @@ if(UA){
         }}
         
         await get("download", "cid=" + yxid)
-        await get("clickplay", "cid=" + yxid)
-        await sleep(1000)          
-       // await sleep(3000)    
+        await get("clickplay", "cid=" + yxid)      
+        await sleep(3000)    
         let playinfo = await get("playtime", "cid=" + yxid)  
         console.log(playinfo)   
-         lq = await get("lingqu", "cid=" + yxid)
+        lq = await get("lingqu", "cid=" + yxid)
         console.log(lq.msg || lq.error_msg)
+        await sleep(5000)
         }      
         console.log("\n\n")
-        await sleep(2000)
     }else console.log("请先填写你的User-Agent再运行脚本")   
 }
 
