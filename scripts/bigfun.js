@@ -17,9 +17,9 @@ async function bigfun() {
         console.log(`第${i+1}次点赞 ${formId}`)
         await bget("like", {"type": 1,"action": 1,"id": formId})
         await sleep(1000)
-        console.log(`第${i+1}次评论 ${formId}`)
-        if(i<3) await bget("newComment",{"content":comment[Math.round(Math.random() * 4)],"at":[],"images":[],"videos":[],"post_id":formId})
-        await sleep(1000)
+        // console.log(`第${i+1}次评论 ${formId}`)
+        // if(i<3) await bget("newComment",{"content":comment[Math.round(Math.random() * 4)],"at":[],"images":[],"videos":[],"post_id":formId})
+        // await sleep(1000)
     }
     myInfo = await bget("getUserProfile", "", "get")
     if (myInfo && myInfo.data) {
