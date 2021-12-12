@@ -12,7 +12,7 @@ const headers = {
      cookie: ""
    }
 var aqcookie = "",nid=null
-var key = ["苹果","华为","百度","一个","暴风","王者"]
+var key = ["苹果","华为","百度","一个","百事","厚墨"]
 var popularSearchKey = []
 function rand(){
 let i = Math.floor((Math.random()*key.length))
