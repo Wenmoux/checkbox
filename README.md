@@ -82,6 +82,7 @@
  - [x] [立创](https://oshwhub.com)每日签到
  - [x] [捷配](https://www.jiepei.com/Member)每日签到
  - [x] [花火论坛](www.sayhuahuo.com)每日签到
+ - [x] [17K小说app]()每日签到
 </details>
  
 # 使用方法 (懂得自然懂 bushi  
