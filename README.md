@@ -111,7 +111,7 @@ termux可以使用crontab设置定时任务
 ## 青龙使用教程
   
 ```
-ql repo https://github.com/Wenmoux/checkbox.git "index|install" "node_modules|icon" "scripts|config|Template|sendmsg"
+ql repo https://github.com/Wenmoux/checkbox.git "index|install" "" "modules|scripts|config|Template|sendmsg"
 ```
  > 1 首先在青龙目录下config.sh设置里拉取sh后缀文件 大概这个自己找RepoFileExtensions="js py sh"    
  2 在面板内添加定时任务 (上面ql repo那条 定时看你)    
@@ -122,6 +122,7 @@ ql repo https://github.com/Wenmoux/checkbox.git "index|install" "node_modules|ic
 <details>
 <summary>更新日志</summary>
 
+- 2022-01-03 新增埋堆堆激励视频任务
 - 2021-11-15  [花火论坛](www.sayhuahuo.com)每日签到
 - 2021-10-24 
   - 修复绅士领域签到 更新青龙安装签到盒方式

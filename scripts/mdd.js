@@ -16,7 +16,7 @@ const Sign = function(action, param) {
     var arr = [];
     var data = {
         'os': 'iOS',
-        'version': '4.0.04',
+        'version': '4.0.92',
         'action': action,
         'time': new Date().getTime().toString(),
         'appToken': appToken,
@@ -44,7 +44,7 @@ const Sign = function(action, param) {
         deviceType: 1,
         appToken: appToken,
         data: param,
-        version: '4.0.04',
+        version: '4.0.92',
         sign
     }
     return bbody
@@ -161,7 +161,7 @@ async function mdd() {
         "uuidName": "",
         "uuidType": "1"
     })
-       let date = new Date();
+    let date = new Date();
     let msg = await axios.get("https://chp.shadiao.app/api.php");
     await task("日常发帖", "/api/post/post.action", {
         "atInfoList": "",
@@ -180,25 +180,25 @@ async function mdd() {
         "uuidType": "2"
     })
 
-
     await task("观影记录", "\/api\/watchHistory\/add.action", {
-        "duration": 2577,
-        "sactionUuid": "ff808081790d553801795e6b8c552953",
-        "time": 2576,
-        "vodUuid": "ff8080817825bd3701783a09c7230a1e"
+        "duration": 4157,
+        "sactionUuid": "ff808081617f1b20016183d4834404d0",
+        "time": 4157,
+        "vodUuid": "ff808081617f1b20016183d4834404cf"
     })
     
-    // 国语
     await task("上传观影时长", "\/missionApi\/action\/uploadAction", {
         "actionCode": "watch_vod",
-        "params": "{\"session_id\":\"4701617887966740\",\"vod_type\":0,\"vod_uuid\":\"ff80808176ad70cc01771482f6a230ca\",\"duration\":30000}"
+        "params": "{\"duration\":4157,\"session_id\":\"8251641137860105\",\"vod_type\":0,\"vod_uuid\":\"ff808081617f1b20016183d4834404cf\",\"watch_status\":0}"
     })
-    //粤语
-    await task("上传观影时长", "\/missionApi\/action\/uploadAction", {
-        "actionCode": "watch_vod",
-        "params": "{\"session_id\":\"4701617887966740\",\"vod_type\":0,\"vod_uuid\":\"ff8080817825bd3701783a09c7230a1e\",\"duration\":30000}"
-    })
-
+    
+    //激励视频x5
+    for (jl=0;jl<5;jl++){
+    await task("观看激励视频", "\/missionApi\/action\/uploadAction", {
+        "actionCode": "watch_reward_ad",
+        "params": "{\"mission_uuid\":\"436\",\"topon_ad_seat_uuid\":\"b615ffa7ee9c30\",\"watch_status\":1}"
+    })    
+   }
      await task("赠送礼物", "\/userLiveApi\/gift\/sendGiftEnd", {
         "batchUuid": "4a345dc9221541ee9ba403487bd1965d",
         "giftUuid": 4,
