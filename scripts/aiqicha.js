@@ -34,6 +34,9 @@ function get(api, method="get", data) {
             resolve(res.data)
         } catch (err) {
             console.log(err)
+            resolve({
+            status:404
+            }
         }
         resolve();
     });
@@ -161,7 +164,7 @@ async function dotask(taskList){
                 console.log("开始任务：" + oo[o.title])
                 nid = nid??"1851233986328193016"
                 let qCListres = await get(`smart/questionCommentListAjax?nid=${nid}`)
-                if(qCListres.status==0) {
+                if(qCListres && qCListres.status==0) {
                pList = qCListres.data.list
                randomkey = Math.floor((Math.random()*pList.length))
                pid = pList[randomkey].reply_id

@@ -1,6 +1,6 @@
 ids = [];
 const axios = require("axios");
-axios.defaults.timeout = 3000;
+//axios.defaults.timeout = 1000;
 const timeAsync =  ms => new Promise(resolve => setTimeout(resolve, ms));
 let result = "【多看阅读每日任务】：";
 //let number = 0;
