@@ -1,8 +1,9 @@
 const rules = {
     name: "【耽漫资源网】： ",
     url: "https://www.99fuman.com/dsu_paulsign-sign.html", //用于获取formhash的链接
+    crediturl: "https://www.99fuman.com/home.php?mod=spacecp&ac=credit&showcredit=1",
     cookie: config.fuman99.cookie,
-    formhash: 'formhash=(.+)\&', //formhash正则
+    formhash: 'formhash=(.+?)\&', //formhash正则
     verify: "后使用快捷导航", //验证cookie状态
     op: [{
         name: "签到",
@@ -12,7 +13,11 @@ const rules = {
         reg2: "已经签到", //重复签到判断
         reg3: "签到成功", //签到成功判断
         info: "恭喜你签到成功!获得随机奖励 金币 \\d+"
-    }]
+    }],
+      credit: [{
+        name: "金币",
+        value: "/<em> 金币: <\\/em>(.+) <\\/li>/"
+    }] 
 };
 
 async function fuman99() {
