@@ -36,7 +36,7 @@ function get(api, method="get", data) {
             console.log(err)
             resolve({
             status:404
-            })
+            }
         }
         resolve();
     });
