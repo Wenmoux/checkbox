@@ -17,17 +17,16 @@ if (QL) {
     console.log("当前是青龙面板,路径："+QL)
     cbList = process.env.cbList ? process.env.cbList.split("&") : []
     if (!fs.existsSync(`/${QL}/config/config.yml`)) {
-        console.log("您还没有填写cookies配置文件,请配置好再来运行8...\n配置文件路径ql/config/config.yml\n如没有文件复制一份config.yml.temple并改名为config.yml")
+        console.log("您还没有填写cookies配置文件,请配置好再来运行8...\n配置文件路径/ql/config/config.yml\n如没有文件复制一份config.yml.temple并改名为config.yml")
         return;
-    } else 
-    {
+    } else{
     if(yaml.load) config = yaml.load(fs.readFileSync(`/${QL}/config/config.yml`, 'utf8'))
-    else console.log("亲,您的依赖掉啦,但是没有完全掉 请重装依赖\npnpm install  axios crypto-js fs iconv-lite js-yaml yargs\n或者\nnpm install  axios crypto-js fs iconv-lite js-yaml yargs")
- }
+    else console.log("亲,您的依赖掉啦,但是没有完全掉 请重装依赖\npnpm install  axios crypto crypto-js fs iconv-lite js-yaml yargs\n或者\nnpm install  axios crypto crypto-js fs iconv-lite js-yaml yargs")
+     }
 }
 if(config) signlist = config.cbList.split("&")
 var signList = (argv._.length) > 0 ? argv._ : (cbList.length>0 ? cbList : signlist) 
-if (config) start(signList);
+if (config &&  process.env.TENCENTCLOUD_RUNENV!="SCF") start(signList);
 function start(taskList) {
     return new Promise(async (resolve) => {
         try {     
@@ -57,5 +56,4 @@ function start(taskList) {
 //云函数入口
 exports.main_handler = async () => {
   await start(signList);
-  await require("./sendmsg")(logs);
 };
