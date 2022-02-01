@@ -111,11 +111,11 @@ termux可以使用crontab设置定时任务
 ## 青龙使用教程
   
 ```
-ql repo https://github.com/Wenmoux/checkbox.git "index|install" "" "modules|scripts|config|Template|sendmsg"
+ql repo https://github.com/Wenmoux/checkbox.git "checkbox|install" "" "modules|scripts|config|Template|sendmsg"
 ```
- > 1 首先在青龙目录下config.sh设置里拉取sh后缀文件 大概这个自己找RepoFileExtensions="js py sh"    
+ > 1 首先在青龙目录下config.sh设置里拉取sh后缀文件 大概这个自己找RepoFileExtensions  = xxx这一行 里边加上sh就可以了    
  2 在面板内添加定时任务 (上面ql repo那条 定时看你)    
- 3 手动运行签到盒安装任务 成功后请禁用  
+ 3 手动运行签到盒安装任务 无需禁用  
  4 在`ql/config/config.yml`里填写cookie以及需要运行的任务列表(开头cbList)等信息    
 
 # other
