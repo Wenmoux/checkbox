@@ -60,8 +60,9 @@ if(UA){
             if (pickey.data.key) {
                 let b64img = await getb64(pickey.data.key)
                 verifycode = await upload(lzusername, lzpassword, b64img, typeid);
+                vres = null
                 if (verifycode) vres = await get("checkindentify", `codekey=${pickey.data.key}&cid=${yxid}&code=${verifycode}`)
-                if (vres.check_code_stat && vres.check_code_stat.success == 1) console.log("验证成功")
+                if (vres&&vres.check_code_stat && vres.check_code_stat.success == 1) console.log("验证成功")
                 else console.log("验证失败")
             }
         }}

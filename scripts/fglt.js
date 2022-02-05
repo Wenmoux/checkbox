@@ -9,7 +9,9 @@ const rules = {
     op: [{
         name: "签到",
         method: "get", //签到请求方式 get/post
-        url: "https://www.fglt.net/plugin.php?id=dsu_amupper&ppersubmit=true&formhash=@formhash&mobile=2"
+        url: "https://www.fglt.net/plugin.php?id=dsu_amupper&ppersubmit=true&formhash=@formhash&mobile=2",
+            reg3: "<p class=\"f_c\">(.+?)<\\/p>", //签到成功判断
+            info: "<p class=\"f_c\">(.+?)<\/p>", //签到成功返回信息         
     }]
 };
 

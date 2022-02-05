@@ -276,9 +276,10 @@ youlecheng:
 fishc:
   cookie: 
   
-#村花论坛
+#村花论坛 hz是域名后缀 如com
 cunhua: 
   cookie: 
+  hz: surf
 
 #帆软社区 脚本fanruan.js
 fanruan:
@@ -330,4 +331,7 @@ jiepei:
 #花火论坛
 huahuo: 
   cookie: 
-  
+
+#17k小说
+y7k:
+  cookie:   

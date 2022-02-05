@@ -1,6 +1,7 @@
 const axios = require("axios");
 var formhash = null
 var message = ""
+var canDo = true
 function sign(op, header, rules,formhash) {
     return new Promise(async (resolve) => {
         try {
@@ -22,7 +23,7 @@ function sign(op, header, rules,formhash) {
             } else {
                 res2data = res2
             }
-            res2data = "" + res2data
+            res2data = "" + res2data          
             if (res2data.match(/id=\"messagetext\".*?<p>(.+?)<\/p>/s)) { //dz论坛大多都是
                 msg = res2data.match(/id=\"messagetext\".*?<p>(.+?)</s)[1];
             } else if ((!(rules.url.match(/togamemod|sayhuahuo|99fuman/) )) && res2data.match(/<root><!\[CDATA\[/)) {
@@ -33,12 +34,14 @@ function sign(op, header, rules,formhash) {
                 console.log(msg)
             } else if (op.reg3 && res2data.match(op.reg3)) {
                 msg = res2data.match(op.info)[0];
+            } else if(res2data.match("请求出错")){
+            msg = res2data
             } else {
                 msg = op.name + "失败!原因未知";
                 console.log(res2data);
             }            
             resolve(msg)
-       //     console.log(msg)
+            console.log(msg)
         } catch (err) {
             console.log(err);
             message = "接口请求失败"
@@ -53,8 +56,7 @@ async function getcredit(rules){
                     regex = rules.credit[o].value.replace(/\"/g, "")
                     console.log(rules.credit[o].name)
                     regex = eval(regex)
-                    let credit = ccres.match(regex)
-                    
+                    let credit = ccres.match(regex)                    
                     return `   ${rules.credit[o].name} ${credit?credit[1]:"null"} `                   
                 }            
 }
@@ -69,8 +71,9 @@ function get(url, header, method = "get", data = null) {
             );
             resolve(res.data)
         } catch (err) {
-            console.log(err);
-            resolve( "接口请求出错")
+            console.log(err.message);            
+            resolve( "接口请求出错："+(err.message?err.message:err.code)       )   
+            canDo = false
         }
         resolve();
     });
@@ -88,17 +91,17 @@ async function Template(rules) {
     rules.header = header
     message = rules.credit ? "\n" : ""
     let checkres = await get(rules.url, header);
+    if(checkres.match("请求出错")) message += checkres
     if (checkres && !checkres.match(rules.verify)) {
         ckstatus = 1
         if (rules.formhash) formhash = checkres.match(rules.formhash)
         formhash = formhash ? formhash[1] : ""
-        for (i = 0; i < rules.op.length; i++) {
+        for (i = 0; i < rules.op.length &&canDo; i++) {
             msg = await sign(rules.op[i], header, rules,formhash)
             message += "    " + rules.op[i].name + "：" + msg + "\n"
             console.log(msg)
         }
-       if(rules.credit) message+= "    资产："+await getcredit(rules)
-        
+       if(rules.credit && canDo) message+= "    资产："+await getcredit(rules)        
     } else {
         ckstatus = 0
         message = "  cookie失效";

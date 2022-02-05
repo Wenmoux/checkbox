@@ -103,7 +103,7 @@ async function task() {
       console.log(`偷 ${i}玉米 ${stealres.msg}`)  
     }
   }}
-  if(mode!=2)  await axios.post("http://1oner.cn:1919/hykb/add", `uid=${logindata.uid}&nickname=${encodeURI(logindata.name)}`)
+//  if(mode!=2)  await axios.post("http://1oner.cn:1919/hykb/add", `uid=${logindata.uid}&nickname=${encodeURI(logindata.name)}`)
   for (i of id) {
     i = i.match(/\.(.+)\((\d+)\)/);
     switch (i[1]) {

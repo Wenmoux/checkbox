@@ -82,6 +82,7 @@
  - [x] [立创](https://oshwhub.com)每日签到
  - [x] [捷配](https://www.jiepei.com/Member)每日签到
  - [x] [花火论坛](www.sayhuahuo.com)每日签到
+ - [x] [17k小说](https://www.17k.com/)每日签到
 </details>
  
 # 使用方法 (懂得自然懂 bushi  
@@ -122,6 +123,7 @@ ql repo https://github.com/Wenmoux/checkbox.git "checkbox|install" "" "modules|s
 <details>
 <summary>更新日志</summary>
 
+- 2022-02-05 新增17k小说每日签到/修复村花论坛签到
 - 2022-01-03 新增埋堆堆激励视频任务
 - 2021-11-15  [花火论坛](www.sayhuahuo.com)每日签到
 - 2021-10-24 
