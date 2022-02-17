@@ -30,7 +30,7 @@ async function task() {
             for (t of taskList) {
                 console.log("去做任务："+t.name)
                 if (t.id == 4) await get(`${url2}/growthTask/share`, "post") //分享
-                else if (task.id == 23) { //点赞
+                else if (t.id == 23) { //点赞
                     await get(`${url2}/like/like`, "post", {
                         "like": false,
                         "requestId": "",
