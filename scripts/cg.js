@@ -115,7 +115,7 @@ async function cg() {
   console.log("橙光app每日签到开始...");
   await check();
   await loginreward();
-  await share();
+//await share();
   return result;
 }
 //cg()

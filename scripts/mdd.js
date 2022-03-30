@@ -196,7 +196,7 @@ async function mdd() {
     for (jl=0;jl<5;jl++){
     await task("观看激励视频", "\/missionApi\/action\/uploadAction", {
         "actionCode": "watch_reward_ad",
-        "params": "{\"mission_uuid\":\"436\",\"topon_ad_seat_uuid\":\"b615ffa7ee9c30\",\"watch_status\":1}"
+        "params": "{\"mission_uuid\":\"482\",\"topon_ad_seat_uuid\":\"b615ffa7ee9c30\",\"watch_status\":1}"
     })    
    }
      await task("赠送礼物", "\/userLiveApi\/gift\/sendGiftEnd", {
