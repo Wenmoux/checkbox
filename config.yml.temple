@@ -87,6 +87,7 @@ xiang5:
 #晋江小说 手机版网页端 m.jjwxc.net cookie中sid 最好抓签到的 填完整 sid=xxx
 jjwxc:
   cookie: sid=20070297_1234576798787
+  sign: 
 
 #什么值得买网页端 全部cookie
 smzdm:

@@ -127,6 +127,7 @@ async function task() {
                 hebi = result && result.info && result.info.hebi
             }
             //  await ddtob()
+            await get("invite-shareSuccess","",true) //盒子推荐官
             if (hebi) bbinfo = `盒币：${hebi}\n` + bbinfo
         }
         let userinfo = "【4399】:\n" + await getinfo() + "\n" + bbinfo

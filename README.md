@@ -100,12 +100,12 @@ termux可以使用crontab设置定时任务
       git clone https://github.com/Wenmoux/checkbox.git
       cd /sdcard/checkbox (这里还是要看你的路径)
       npm install
-      node index.js
+      node checkbox.js
    ```  
    
          
 如不想填任务列表,可在index.js后加上对应脚本名字    
-如`node index.js acfun csdn`  
+如`node checkbox.js acfun csdn`  
 多脚本间用空格  
 一般用于定时任务 
 
@@ -118,12 +118,13 @@ ql repo https://github.com/Wenmoux/checkbox.git "checkbox|install" "" "modules|s
  > 1 首先在青龙目录下config.sh设置里拉取sh后缀文件 大概这个自己找RepoFileExtensions  = xxx这一行 里边加上sh就可以了    
  2 在面板内添加定时任务 (上面ql repo那条 定时看你)    
  3 手动运行签到盒安装任务 无需禁用  
- 4 在`ql/config/config.yml`里填写cookie以及需要运行的任务列表(开头cbList)等信息    
+ 4 在`ql/data/config/config.yml`里填写cookie以及需要运行的任务列表(开头cbList)等信息    
 
 # other
 <details>
 <summary>更新日志</summary>
 
+-2022-04-03 新增晋江小说app福利中心任务
 - 2022-02-14 新增触站app每日任务
 - 2022-02-13 增加部分好游快爆每日任务
 - 2022-02-05 新增17k小说每日签到/修复村花论坛签到
