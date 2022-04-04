@@ -119,7 +119,7 @@ ql repo https://github.com/Wenmoux/checkbox.git "checkbox|install" "" "modules|s
  2 在面板内添加定时任务 (上面ql repo那条 定时看你)    
  3 手动运行签到盒安装任务 无需禁用  
  4 在`ql/data/config/config.yml`里填写cookie以及需要运行的任务列表(开头cbList)等信息    
-
+ 5 注意 必须最新版青龙 不然你就手动创建个配置文件吧
 # other
 <details>
 <summary>更新日志</summary>
