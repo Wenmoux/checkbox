@@ -128,6 +128,7 @@ async function task() {
             }
             //  await ddtob()
             await get("invite-shareSuccess","",true) //盒子推荐官
+            for(day of[3,7,15,20]){await get("getShareMedalPiece","day="+day,true)}
             if (hebi) bbinfo = `盒币：${hebi}\n` + bbinfo
         }
         let userinfo = "【4399】:\n" + await getinfo() + "\n" + bbinfo
