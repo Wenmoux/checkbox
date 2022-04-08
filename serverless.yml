@@ -1,5 +1,5 @@
 # serverless.yml
-
+#使用教程 https://github.com/llh1347/scf-checkbox
 #组件信息
 component: scf # (必选) 组件名称，在该实例中为scf
 name: checkbox # (必选) 组件实例名称。
