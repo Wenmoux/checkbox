@@ -342,3 +342,14 @@ y7k:
 #触站
 huashi6:
   cookie: 
+  
+#起点读书app
+qidian: 
+  cookie: 
+  UserId: 
+  deviceUid: 
+  BookId: 
+  TicketCount: 
+  roleId: 
+  version: 7.9.186
+  
