@@ -1,5 +1,4 @@
 //BookId TicketCount 用于投推荐票 不投不要填 TicketCount 投票数量 <=你的推荐票总数 roleId 是比心角色id 需要和BookId那本书一致 不支持多角色 (渣男必须死 划掉x
-//qdsign相关解密 https://www.jianshu.com/p/58ec69e04983
 const {
     cookie,
     UserId,
