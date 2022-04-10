@@ -15,9 +15,9 @@ if (fs.existsSync("./sendNotify.js")) notify = require('./sendNotify')
 let QL = process.env.QL_DIR
 if (QL) {
     console.log("当前是青龙面板,路径："+QL)
-    if(fs.existsSync(`/${QL}/data/config/config.sh`)) console.log("建议更新到最新版青龙再来运行哦,或者手动修改路径叭~")
+    if(fs.existsSync(`/${QL}/config/config.sh`)) console.log("建议更新到最新版青龙再来运行哦,或者手动修改路径叭~")
     cbList = process.env.cbList ? process.env.cbList.split("&") : []
-    if (!fs.existsSync(`/${QL}/data/config/config.yml`)) {
+    if (!fs.existsSync(`/${QL}/config/config.yml`)) {
         console.log("您还没有填写cookies配置文件,请配置好再来运行8...\n配置文件路径/ql/data/config/config.yml\n如没有文件复制一份config.yml.temple并改名为config.yml")
         return;
     } else{
