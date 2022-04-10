@@ -1,11 +1,11 @@
 # cron: 0 0 * * *
 # new Env('签到盒安装&&依赖安装');
-if [ ! -f "/ql/data/config/config.yml" ]; then
- echo "生成配置文件 路径ql/data/config/config.yml"
+if [ ! -f "/ql/config/config.yml" ]; then
+ echo "生成配置文件 路径ql/config/config.yml"
  cp /ql/data/repo/Wenmoux_checkbox/config.yml.temple /ql/data/config/config.yml
 else
  echo "已存在配置文件"
- echo "生成空白模板 /ql/data/config/config.yml.sample"
+ echo "生成空白模板 /ql/config/config.yml.sample"
  cp /ql/data/repo/Wenmoux_checkbox/config.yml.temple /ql/data/config/config.yml.sample
 fi
 
