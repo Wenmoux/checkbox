@@ -14,7 +14,7 @@ function ngaGet(lib, act, output = 11, other = null) {
                         "User-Agent":  nga.UA ? nga.UA : "xxxxxx Nga_Official/90306"
                     }
                 }
-            );
+            );            
             console.log("    " + (res.data && res.data.time || res.data.code))
             resolve(res.data)
         } catch (err) {
@@ -39,7 +39,8 @@ async function task() {
     }
     if (!msg.match(/登录|CLIENT/)) {
         await ngaGet("mission", "checkin_count_add", 11, "mid=2&get_success_repeat=1&no_compatible_fix=1")
-        await ngaGet("mission", "checkin_count_add", 11, "mid=30&get_success_repeat=1&no_compatible_fix=1")
+       await ngaGet("mission", "checkin_count_add", 11, "mid=131&get_success_repeat=1&no_compatible_fix=1")       
+         await ngaGet("mission", "checkin_count_add", 11, "mid=30&get_success_repeat=1&no_compatible_fix=1")
         console.log("看视频免广告")
         await ngaGet("mission", "video_view_task_counter_add_v2_for_adfree_sp1")
         for (c of new Array(4)) await ngaGet("mission", "video_view_task_counter_add_v2_for_adfree")

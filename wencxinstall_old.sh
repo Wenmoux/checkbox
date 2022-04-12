@@ -1,5 +1,5 @@
 # cron: 0 0 * * *
-# new Env('签到盒安装&&依赖安装');
+# new Env('签到盒安装 旧青龙 &&依赖安装');
 if [ ! -f "/ql/config/config.yml" ]; then
  echo "生成配置文件 路径ql/config/config.yml"
  cp /ql/repo/Wenmoux_checkbox/config.yml.temple /ql/config/config.yml

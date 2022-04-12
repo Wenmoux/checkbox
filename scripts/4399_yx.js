@@ -52,9 +52,29 @@ async function task() {
         //获取试玩软件id
         let res = await get("login", "", true)
         if(sckstatus){
+        //兑换加速卡
+        if(config.youlecheng.duihuanka) {
+       for (dd of new Array(6) ){
+        await get("accelerator")
+        await sleep(4000)
+        }
+        }
         let glist = res.config.gameinfo_list
         console.log(`共获取到${glist.length}个试玩软件`)
-        for (id of glist) {      
+        for (id of glist) {
+            /*      console.log(`软件名: ${conf.gameinfo.appname}\n已体验天数: ${conf.play_day}\n今日已体验: ${conf.play_day==1?"是":"否"}\n已验证: ${conf.check_code_stat.success==1?"是":"否"}`)               
+            if (conf.check_code_stat.success != 1) {
+                console.log("开始打码验证")
+                let pickey = await axios.get("https://www.mobayx.com/identifying_code/identifyCode.https.api.php?ac=pic&type=4&randkey=hd_playapp_lingqu&reflash=1")
+                if (pickey.data.key) {
+                    let b64img = await getb64(pickey.data.key)
+                    verifycode = await upload(lzusername, lzpassword, b64img, typeid);
+                    if (verifycode) vres = await get("checkindentify", `codekey=${pickey.data.key}&cid=${yxid}&code=${verifycode}`)
+                    if (vres.check_code_stat && vres.check_code_stat.success == 1) console.log("验证成功")
+                    else console.log("验证失败")
+                }
+            }
+           */ 
             yxid = id.gid
             console.log(id.title)
             console.log("去下载")
@@ -68,10 +88,10 @@ async function task() {
                 if (pinfo.mark) console.log("当前共" + pinfo.mark + "积分")
             }
             await sleep(5000)
-        }
+        }        
         console.log("\n\n")
         let ccres = await get("login", "", true)
-        if (res.key == "ok") yxinfo = `【4399签到卡】积分: ${ccres.config.mark}`
+        if (res.key == "ok") yxinfo = `【4399签到卡】积分: ${ccres.config.mark}   补签卡：${ccres.config.supplementary_card}  加速卡：${ccres.config.accelerator_card} 荣耀卡：${ccres.config.glory_card}`
         return yxinfo
 }
     } else console.log("请先填写你的User-Agent再运行脚本")

@@ -80,7 +80,7 @@ async function qidian() {
 }    
             //笔芯 
     urlbx = "/argus/api/v1/bookrole/setrolelikestatus"
-    let databx = `bookId=${BookId??"1033475139"}&roleId=${roleId??"61367713050100871"}&likeStatus=1`
+    let databx = `bookId=${BookId??"1033475139"}&roleId=${roleId??("61367713050100871")}&likeStatus=1`
     let likeRes = await QDGet(urlbx, databx)
     if (likeRes && likeRes.Message) Message += "\n  比心：" + likeRes.Message
     return "【起点读书：】\n" + Message
