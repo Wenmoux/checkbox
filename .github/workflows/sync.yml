@@ -21,7 +21,7 @@ jobs:
         uses: repo-sync/github-sync@v2
         if: env.PAT
         with:
-          source_repo: "https://github.com/wenmoux/checkbox.git"
+          source_repo: "https://github.com/llh1347/checkbox.git"
           source_branch: "master"
           destination_branch: "master"
           github_token: ${{ env.PAT }}
