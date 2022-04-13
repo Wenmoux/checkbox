@@ -23,7 +23,7 @@ jobs:
           npm install
           sudo npm install serverless -g
       - name: "将Secrets里面配置的变量添加到severless.yml里面作为环境变量"
-run: |
+       run: |
           if [ $JD_COOKIE ]; then sed -i "/variables/a\      JD_COOKIE: $JD_COOKIE" serverless.yml; fi;
           if [ $JD_USER_AGENT ]; then sed -i "/variables/a\      JD_USER_AGENT: $JD_USER_AGENT" serverless.yml; fi;
           if [ $JD_BEAN_STOP ]; then sed -i "/variables/a\      JD_BEAN_STOP: $JD_BEAN_STOP" serverless.yml; fi;
