@@ -32,7 +32,7 @@ jobs:
           ref: master
       
       - name: 触发部署到腾讯云函数
-        if: env.PAT && github.event_name == 'schedule'  #只有定时任务才触发部署
+        if: env.PAT 
         run: |
           curl \
             -X POST \
