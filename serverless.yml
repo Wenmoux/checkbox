@@ -24,4 +24,4 @@ inputs:
           argument: 
   environment: #  环境变量
     variables: #  环境变量对象
-    AAA :BBB  
+    AAA: BBB  
