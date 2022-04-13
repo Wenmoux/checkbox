@@ -14,7 +14,7 @@ inputs:
   region: ap-guangzhou # 函数所在区域
   description: This is a function in ${app} application.
   memorySize: 128 # 内存大小，单位MB
-  timeout: 1800 # 超时时间，单位秒
+  timeout: 900 # 超时时间，单位秒
   events: 
     - timer: #触发器
         parameters:
