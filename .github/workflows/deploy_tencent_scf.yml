@@ -22,8 +22,9 @@ jobs:
         run: |
           npm install
           sudo npm install serverless -g
+
       - name: "将Secrets里面配置的变量添加到severless.yml里面作为环境变量"
-       run: |
+        run: |
           if [ $JD_COOKIE ]; then sed -i "/variables/a\      JD_COOKIE: $JD_COOKIE" serverless.yml; fi;
           if [ $JD_USER_AGENT ]; then sed -i "/variables/a\      JD_USER_AGENT: $JD_USER_AGENT" serverless.yml; fi;
           if [ $JD_BEAN_STOP ]; then sed -i "/variables/a\      JD_BEAN_STOP: $JD_BEAN_STOP" serverless.yml; fi;
@@ -131,7 +132,6 @@ jobs:
           FACTORAY_WANTPRODUCT_NAME: ${{ secrets.FACTORAY_WANTPRODUCT_NAME}}
           WATCH_ACCEPTBODY: ${{ secrets.WATCH_ACCEPTBODY}}
           WATCH_DOBODY: ${{ secrets.WATCH_DOBODY}}
-
 
       - name: "部署到腾讯云函数"
         run: serverless deploy
