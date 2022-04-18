@@ -9,7 +9,8 @@ const {
     roleId,
     version
 } = config.qidian
-QDSign = ""; Message =""
+QDSign = "";
+Message = ""
 const cryptojs = require('crypto-js');
 const axios = require("axios")
 
@@ -24,6 +25,7 @@ function encrypt(data) {
     })
     return str.toString()
 }
+var sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 function QDGet(url, data, method = "post") {
     return new Promise(async (resolve) => {
@@ -36,18 +38,18 @@ function QDGet(url, data, method = "post") {
             qdsign = QD(data)
             headers.QDSign = qdsign
 
-            let res = await axios.post(
-                "https://druidv6.if.qidian.com" + url, data, {
-                    headers
-                }
-
-            );
-            console.log(res.data)
+            let res = await axios({
+                method,
+                url: "https://druidv6.if.qidian.com" + url,
+                data,
+                headers
+            })
+            console.log(JSON.stringify(res.data))
             resolve(res.data)
         } catch (err) {
-            console.log(err)        
-           if( err.response&&err.response.data) resolve(err.response.data)
-           else Message += err
+            console.log(err)
+            if (err.response && err.response.data) resolve(err.response.data)
+            else Message += err
         }
         resolve();
     });
@@ -69,20 +71,26 @@ async function qidian() {
     Message += "  签到："
     let QDSign = ""
     let signres = await QDGet("/argus/api/v2/checkin/checkin", "sessionKey=&banId=0&captchaTicket=&captchaRandStr=&challenge=&validate=&seccode=")
-    if (signres.Result != 0) Message += signres.Message
-    else Message += `签到成功！连签${signres.Data.NoBrokenTime}天`
-    if(TicketCount){
-     //投票
-    urltp = "/Atom.axd/Api/InterAction/VoteRecomTicket"
-    datatp = `bookId=${BookId}&bookName=&count=${TicketCount}&description=这本书写的太好了,犒劳一下希望后续更精彩!&isSendSina=0&isSendTX=0&clienttype=1400&sourceId=0&sourceType=0`
-    let VoteRecomTicketRes = await QDGet(urltp, datatp)
-    if (VoteRecomTicketRes && VoteRecomTicketRes.Message) Message += "\n  投推荐票：" + VoteRecomTicketRes.Message
-}    
-            //笔芯 
+    if (signres && (signres.Result == 0)) Message += `签到成功！连签${signres.Data.NoBrokenTime}天`
+    else if (signres && signres.Message) Message += signres.Message
+    if (TicketCount) {
+        //投票
+        urltp = "/Atom.axd/Api/InterAction/VoteRecomTicket"
+        datatp = `bookId=${BookId}&bookName=&count=${TicketCount}&description=这本书写的太好了,犒劳一下希望后续更精彩!&isSendSina=0&isSendTX=0&clienttype=1400&sourceId=0&sourceType=0`
+        let VoteRecomTicketRes = await QDGet(urltp, datatp)
+        if (VoteRecomTicketRes && VoteRecomTicketRes.Message) Message += "\n  投推荐票：" + VoteRecomTicketRes.Message
+    }
+    //笔芯 
     urlbx = "/argus/api/v1/bookrole/setrolelikestatus"
     let databx = `bookId=${BookId??"1033475139"}&roleId=${roleId??("61367713050100871")}&likeStatus=1`
     let likeRes = await QDGet(urlbx, databx)
     if (likeRes && likeRes.Message) Message += "\n  比心：" + likeRes.Message
+    //每日抽卡
+    urlck = "/argus/api/v2/bookrole/card/call?type=1&costType=1&cardpoolid=0"
+    datack = "type=1&costType=1&cardpoolid=0"
+    let ckres = await QDGet(urlck, datack, "get")
+    if (ckres && ckres.Result == 0) Message += "\n  抽卡：" + "恭喜你欧气爆棚！！获得：" + ckres.Data.Items[0].CardName
+    else Message += "\n  抽卡：" + ckres.Message
     return "【起点读书：】\n" + Message
 }
 module.exports = qidian

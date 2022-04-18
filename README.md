@@ -125,6 +125,10 @@ ql repo https://github.com/Wenmoux/checkbox.git "checkbox|install" "" "modules|s
 <details>
 <summary>更新日志</summary>
 
+- 2022-04-19
+  - 起点增加每日抽卡
+  - 增加4399页游签到
+  - 修改4399福利中心任务id获取方法
 - 2022-04-07 新增起点签到投票比心
 - 2022-04-05 修复nga app每日签到,增加每日任务
 - 2022-04-03 新增晋江小说app福利中心任务
