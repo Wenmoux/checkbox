@@ -6,6 +6,7 @@ const yaml = require("js-yaml");
 const fs = require('fs');
 const yargs = require('yargs');
 var argv = yargs.argv;
+const sendmsg = require("./sendmsg")
 config = null,notify = null,signlist = [],logs = ""
 
 //自行添加任务 名字看脚本里的文件名 比如csdn.js 就填"csdn"
@@ -25,7 +26,6 @@ if (QL) {
     else console.log("亲,您的依赖掉啦,但是没有完全掉 请重装依赖\npnpm install  axios crypto crypto-js fs iconv-lite js-yaml yargs\n或者\nnpm install  axios crypto crypto-js fs iconv-lite js-yaml yargs")
      }
 }
-const sendmsg = require("./sendmsg")
 if(config) signlist = config.cbList.split("&")
 var signList = (argv._.length) > 0 ? argv._ : (cbList.length>0 ? cbList : signlist) 
 if (config &&  process.env.TENCENTCLOUD_RUNENV!="SCF") start(signList);
@@ -33,7 +33,6 @@ function start(taskList) {
     return new Promise(async (resolve) => {
         try {     
             console.log("任务个数  " + signList.length)
-            
             console.log("------------开始签到任务------------");
             for (let i = 0; i < taskList.length; i++) {
                 console.log(`任务${i + 1}执行中`);
