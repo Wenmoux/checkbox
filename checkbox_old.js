@@ -26,6 +26,7 @@ if (QL) {
     else console.log("亲,您的依赖掉啦,但是没有完全掉 请重装依赖\npnpm install  axios crypto crypto-js fs iconv-lite js-yaml yargs\n或者\nnpm install  axios crypto crypto-js fs iconv-lite js-yaml yargs")
      }
 }
+const sendmsg = require("./sendmsg")
 if(config) signlist = config.cbList.split("&")
 var signList = (argv._.length) > 0 ? argv._ : (cbList.length>0 ? cbList : signlist) 
 if (config &&  process.env.TENCENTCLOUD_RUNENV!="SCF") start(signList);
