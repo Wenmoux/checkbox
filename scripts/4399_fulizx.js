@@ -40,12 +40,13 @@ async function dotask(code, cha) {
     if (code.match(/fulizhongxin2/)) p = 1
     let res = await get("do_init", p, true)
     if (res.key == 200) {
-        userinfo = `游戏:${gamename}  道具: ${res.suipian}\n`
+        userinfo = `${gamename}：  ${res.suipian}\n`
         if (!cha) {
             await get("do_share", p)
             for (i of [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13]) {
                 let gres = await get(`get_num&id=${i}`, p)
                 if (gres && gres.msg && !gres.msg.match(/没有此任务/)) await get("choujiang", p)
+                await sleep(1500)
             }
         } else console.log(userinfo)
     } else userinfo = res.msg
@@ -68,12 +69,14 @@ async function task() {
             if (res.data.result.more != 1) more = false
             else startKey = res.data.result.startKey
             for (game of res.data.result.data) {
-                gamename = game.title.match(/《(.+)》/)[1]
-                console.log(game.title)
+            if(game.id != 9199){         
+                gamename =game.title.match(/《(.+)》/)&& game.title.match(/《(.+)》/)[1]
+                console.log(gamename)
                 console.log("过期时间："+ new Date(parseInt(game.etime) * 1000).toLocaleString())                
                 yxinfo += await dotask(game.cli_url)
                 console.log("\n\n")
                 await sleep(5*1000)
+                }
             }
         }
     } else return "请先填写你的User-Agent再运行脚本"

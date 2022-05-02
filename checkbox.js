@@ -49,8 +49,8 @@ function start(taskList) {
                 }
             }
             console.log("------------任务执行完毕------------\n");
-            await sendmsg(logs);
-            if (notify) await notify.sendNotify("签到盒", `${logs}\n\n吹水群：https://t.me/wenmou_car`);
+            if(config.needPush) await sendmsg(logs);
+            if (config.needPush&&notify) await notify.sendNotify("签到盒", `${logs}\n\n吹水群：https://t.me/wenmou_car`);
         } catch (err) {
             console.log(err);
         }

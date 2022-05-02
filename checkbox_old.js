@@ -11,7 +11,6 @@ config = null,notify = null,signlist = [],logs = ""
 //自行添加任务 名字看脚本里的文件名 比如csdn.js 就填"csdn"
 var cbList = []
 if (fs.existsSync("./config.yml")) config = yaml.load(fs.readFileSync('./config.yml', 'utf8'));
-const sendmsg = require("./sendmsg")
 if (fs.existsSync("./sendNotify.js")) notify = require('./sendNotify')
 let QL = process.env.QL_DIR
 if (QL) {
@@ -49,8 +48,9 @@ function start(taskList) {
                 }
             }
             console.log("------------任务执行完毕------------\n");
-            await sendmsg(logs);            
-            if (notify) await notify.sendNotify("签到盒", `${logs}\n\n吹水群：https://t.me/wenmou_car`);
+            if(config.needPush) await sendmsg(logs);            
+            if (config.needPush&&notify) await notify.sendNotify("签到盒", `${logs}\n\n吹水群：https://t.me/wenmou_car`);                      
+            else console.log(logs)
         } catch (err) {
             console.log(err);
         }
