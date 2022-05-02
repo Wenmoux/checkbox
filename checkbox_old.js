@@ -11,6 +11,7 @@ config = null,notify = null,signlist = [],logs = ""
 //自行添加任务 名字看脚本里的文件名 比如csdn.js 就填"csdn"
 var cbList = []
 if (fs.existsSync("./config.yml")) config = yaml.load(fs.readFileSync('./config.yml', 'utf8'));
+const sendmsg = require("./sendmsg")
 if (fs.existsSync("./sendNotify.js")) notify = require('./sendNotify')
 let QL = process.env.QL_DIR
 if (QL) {
@@ -38,14 +39,16 @@ function start(taskList) {
                 let exists = fs.existsSync(`./scripts/${taskList[i]}.js`)
                 if (exists) {
                     const task = require(`./scripts/${taskList[i]}.js`);
-                    logs += await task() + "    \n\n";
+                    taskResult = await task()                    
+                    if(taskResult.match(/单独通知|登陆|cookie|失效|失败|账号/))  await sendmsg(taskResult)      
+                    else logs += taskResult + "    \n\n";              
                 } else {
                     logs += `${taskList[i]}  不存在该脚本文件,请确认输入是否有误\n\n`
                     console.log("不存在该脚本文件,请确认输入是否有误")
                 }
             }
             console.log("------------任务执行完毕------------\n");
-            await require("./sendmsg")(logs);
+            await sendmsg(logs);            
             if (notify) await notify.sendNotify("签到盒", `${logs}\n\n吹水群：https://t.me/wenmou_car`);
         } catch (err) {
             console.log(err);

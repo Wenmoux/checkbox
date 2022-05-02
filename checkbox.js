@@ -6,6 +6,7 @@ const yaml = require("js-yaml");
 const fs = require('fs');
 const yargs = require('yargs');
 var argv = yargs.argv;
+const sendmsg = require("./sendmsg")
 config = null,notify = null,signlist = [],logs = ""
 
 //自行添加任务 名字看脚本里的文件名 比如csdn.js 就填"csdn"
@@ -38,14 +39,16 @@ function start(taskList) {
                 let exists = fs.existsSync(`./scripts/${taskList[i]}.js`)
                 if (exists) {
                     const task = require(`./scripts/${taskList[i]}.js`);
-                    logs += await task() + "    \n\n";
+                    taskResult = await task()                    
+                    if(taskResult.match(/单独通知|登陆|cookie|失效|失败|账号|登录/))  await sendmsg(taskResult)      
+                    else logs += taskResult + "    \n\n";              
                 } else {
                     logs += `${taskList[i]}  不存在该脚本文件,请确认输入是否有误\n\n`
                     console.log("不存在该脚本文件,请确认输入是否有误")
                 }
             }
             console.log("------------任务执行完毕------------\n");
-            await require("./sendmsg")(logs);
+            await sendmsg(logs);
             if (notify) await notify.sendNotify("签到盒", `${logs}\n\n吹水群：https://t.me/wenmou_car`);
         } catch (err) {
             console.log(err);
