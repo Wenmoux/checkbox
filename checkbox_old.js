@@ -40,7 +40,7 @@ function start(taskList) {
                 if (exists) {
                     const task = require(`./scripts/${taskList[i]}.js`);
                     taskResult = await task()                    
-                    if(taskResult.match(/单独通知|登陆|cookie|失效|失败|账号/))  await sendmsg(taskResult)      
+                    if(taskResult&&taskResult.match(/单独通知|登陆|cookie|失效|失败|账号/))  await sendmsg(taskResult)      
                     else logs += taskResult + "    \n\n";              
                 } else {
                     logs += `${taskList[i]}  不存在该脚本文件,请确认输入是否有误\n\n`
