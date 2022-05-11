@@ -1,9 +1,10 @@
 // 云函数使用
+
 const yaml = require("js-yaml");
 const fs = require('fs');
 const yargs = require('yargs');
 var argv = yargs.argv;
-config = null,notify = null,signlist = [],logs = ""
+config = null,notify = null,signlist = [],logs = "",needPush = true
 
 //自行添加任务 名字看脚本里的文件名 比如csdn.js 就填"csdn"
 var cbList = []
@@ -23,6 +24,7 @@ if (QL) {
      }
 }
 if(config) signlist = config.cbList.split("&")
+if(config.needPush&&config.needPush==0) needPush = false
 var signList = (argv._.length) > 0 ? argv._ : (cbList.length>0 ? cbList : signlist) 
 function start(taskList) {
     return new Promise(async (resolve) => {
@@ -41,8 +43,8 @@ function start(taskList) {
                 }
             }
             console.log("------------任务执行完毕------------\n");
-            await require("./sendmsg")(logs);
-            if (notify) await notify.sendNotify("签到盒", `${logs}\n\n吹水群：https://t.me/wenmou_car`);
+            if(needPush)await require("./sendmsg")(logs);
+            if (needPush&&notify) await notify.sendNotify("签到盒", `${logs}\n\n吹水群：https://t.me/wenmou_car`);
         } catch (err) {
             console.log(err);
         }

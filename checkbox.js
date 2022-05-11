@@ -2,11 +2,12 @@
 cron: 28 8 * * *
 new Env('签到盒');
 */
+"nodejs";
 const yaml = require("js-yaml");
 const fs = require('fs');
 const yargs = require('yargs');
 var argv = yargs.argv;
-config = null,notify = null,signlist = [],logs = ""
+config = null,notify = null,signlist = [],logs = "", needPush = true
 
 //自行添加任务 名字看脚本里的文件名 比如csdn.js 就填"csdn"
 var cbList = []
@@ -27,7 +28,9 @@ if (QL) {
 }
 const sendmsg = require("./sendmsg")
 if(config) signlist = config.cbList.split("&")
+if(config.needPush&&config.needPush==0) needPush = false
 var signList = (argv._.length) > 0 ? argv._ : (cbList.length>0 ? cbList : signlist) 
+
 if (config &&  process.env.TENCENTCLOUD_RUNENV!="SCF") start(signList);
 function start(taskList) {
     return new Promise(async (resolve) => {
@@ -49,8 +52,8 @@ function start(taskList) {
                 }
             }
             console.log("------------任务执行完毕------------\n");
-            if(config.needPush) await sendmsg(logs);
-            if (config.needPush&&notify) await notify.sendNotify("签到盒", `${logs}\n\n吹水群：https://t.me/wenmou_car`);
+            if(needPush) await sendmsg(logs);
+            if (needPush&&notify) await notify.sendNotify("签到盒", `${logs}\n\n吹水群：https://t.me/wenmou_car`);
         } catch (err) {
             console.log(err);
         }

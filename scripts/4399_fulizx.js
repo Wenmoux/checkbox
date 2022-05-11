@@ -3,6 +3,7 @@ var strcode = ""
 var name = []
 const device = config.youlecheng.device
 const scookie = config.youlecheng.scookie
+cc = null
 const UA = config.youlecheng.UA ? config.youlecheng.UA : "..."
 var sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 function get(b, p, log) {
@@ -11,7 +12,8 @@ function get(b, p, log) {
             let path = "fulizhongxin"
             if (p) path = "fulizhongxin2"
             let url = `https://yxhhd2.5054399.com/comm/${path}/ajax.php?ac=${b}&strcode=${strcode}&scookie=${scookie}&device=${device}`
-            let res = await axios.get(url, {
+           if(b.match(/num/)) url += "&cccc="+cc
+             let res = await axios.get(url, {
                 headers: {
                     "User-Agent": UA,
                     "Referer": "https://yxhhd2.5054399.com/2019/fxyxtq2/"
@@ -34,13 +36,15 @@ function get(b, p, log) {
 }
 
 async function dotask(code, cha) {
-    strcode = code.match(/strcode=(.+)/)[1]
+    strcode = encodeURIComponent(code.match(/strcode=(.+)/)[1])
+    console.log(strcode)
     userinfo = ""
     p = null
     if (code.match(/fulizhongxin2/)) p = 1
-    let res = await get("do_init", p, true)
+    let res = await get("do_init", p, true)    
     if (res.key == 200) {
         userinfo = `${gamename}：  ${res.suipian}\n`
+        cc = res.cccccccc ? res.cccccccc : null
         if (!cha) {
             await get("do_share", p)
             for (i of [1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13]) {

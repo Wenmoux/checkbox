@@ -8,8 +8,8 @@
 #格式报错自行百度yaml格式在线校验进去测试下就行了...
 #任务列表 任务1&任务2
 cbList: ssly&ssly
-#是否需要推送结果 true推送 false不推送 (只推失败结果
-needPush: true
+#是否需要推送结果 1或者不填推送 1不推送 (只推失败结果
+needPush: 0
 #推送参数
 Push:
 #企业微信推送
@@ -124,7 +124,7 @@ mt:
 #sf轻小说 app
 sfacg:
   cookie: 
-  sfsecurity: 
+  ua: 
   authorization: 
 
 #猫耳fm 网页 全部cookie

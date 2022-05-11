@@ -2,10 +2,9 @@
 let result = "【SF轻小说】：";
 const headers = {
     headers: {
-        "user-agent": "boluobao/4.6.36(android;23)/BDFZH2",
+        "user-agent": config.sfacg.ua,
         authorization: config.sfacg.authorization,
         "content-type": "application/json; charset=UTF-8",
-        sfsecurity:config.sfacg.sfsecurity,       
         cookie:config.sfacg.cookie
     },
 };
