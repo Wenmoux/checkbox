@@ -114,7 +114,7 @@ termux可以使用crontab设置定时任务
 ## 青龙使用教程
   
 ```
-ql repo https://github.com/Wenmoux/checkbox.git "checkbox|install" "" "modules|scripts|config|Template|sendmsg"
+ql repo https://github.com/Wenmoux/checkbox.git "checkbox|install" "old" "modules|scripts|config|Template|sendmsg" "master"
 ```
  > 1 首先在青龙目录下config.sh设置里拉取sh后缀文件 大概这个自己找RepoFileExtensions  = xxx这一行 里边加上sh就可以了    
  2 在面板内添加定时任务 (上面ql repo那条 定时看你)    
