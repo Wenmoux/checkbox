@@ -2,7 +2,6 @@
 cron: 28 8 * * *
 new Env('签到盒');
 */
-"nodejs";
 const yaml = require("js-yaml");
 const fs = require('fs');
 const yargs = require('yargs');
