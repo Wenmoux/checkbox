@@ -6,10 +6,8 @@
  * @Other：加解密还有写法都抄的 @zsakvo
  */
 
-login_name = config.hbooker.login_name;
-passwd = config.hbooker.passwd;
-token = "";
-username = "";
+login_token = config.hbooker.token
+username = config.hbooker.username
 const CryptoJS = require("crypto-js");
 const axios = require("axios");
 const iv = CryptoJS.enc.Hex.parse('00000000000000000000000000000000')
@@ -32,7 +30,7 @@ const mixin = {
 };
 const para = {
   app_version: "2.3.922",
-  device_token: "ciweimao_dora.js_zsakvo",
+  device_token: "ciweimao_00000000000000000000000000000000",
 };
 
 function get(options) {
@@ -78,7 +76,7 @@ var shelfbook = async function (collect, id) {
   return await get({
     url: `/bookshelf/${collect}`,
     para: {
-      login_token: token,
+      login_token,
       account: username,
       shelf_id: "",
       book_id: id,
@@ -95,11 +93,11 @@ var sign = async function () {
     url: `/reader/get_task_bonus_with_sign_recommend`,
     para: {
       task_type: 1,
-      login_token: token,
+      login_token,
       account: username,
     },
   }).then((res) => {
-    //console.log(res);
+   // console.log(res);
     return res;
   });
 };
@@ -109,7 +107,7 @@ var record = async function (cid) {
     url: `/chapter/set_read_chapter_record`,
     para: {
       chapter_id: cid,
-      login_token: token,
+      login_token,
       account: username,
     },
   }).then((res) => {
@@ -121,7 +119,7 @@ var view = async function () {
   return await get({
     url: `/chapter/get_paragraph_tsukkomi_list_new`,
     para: {
-      login_token: token,
+      login_token,
       account: username,
       count: 1000,
       chapter_id: 105494781,
@@ -142,7 +140,7 @@ var addr = async function () {
       getTime: `${getNowFormatDate()} 00:25:06`,
       book_id: 100166786,
       chapter_id: 105495180,
-      login_token: token,
+      login_token,
       account: username,
     },
   }).then((res) => {
@@ -154,7 +152,7 @@ var gettask = async function () {
   return await get({
     url: `/task/get_all_task_list`,
     para: {
-      login_token: token,
+      login_token,
       account: username,
     },
   }).then((res) => {
@@ -180,21 +178,13 @@ function getNowFormatDate() {
 
 async function hbooker() {
   let result = "【刺猬猫小说】：";
-  a = await login();
-  if (a.tip == "密码不正确" || a.tip == "此用户不存在" || a.tip == "缺少参数") {
-    result += "账号或密码不正确";
-  } else if (a.code == 100000 && a.data) {
-    token = a.data.login_token;
-    username = a.data.reader_info.account;
-    console.log("%s 登陆成功", username);
-    //签到
-    await sign();
-    //加入书架两本书 删加
+  a = await sign();
+ if (a.code == 100000 || a.code == 340001 ) {
     await shelfbook("delete_shelf_book", 100180114);
     await shelfbook("favor", 100180114);
     await shelfbook("delete_shelf_book", 100148386);
     await shelfbook("favor", 100148386);
-    //阅读10章
+    //阅 读10章
     a = Math.ceil(Math.random() * 10000);
     for (i = a; i < a + 20; i++) {
       await record(i++);
@@ -214,7 +204,7 @@ async function hbooker() {
       result += `${taskname}：${status}  ||  `;
     }
   } else {
-    result = "未知错误";
+    result = a&&a.tip
     console.log(a);
   }
   console.log(result);

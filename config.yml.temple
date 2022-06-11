@@ -136,10 +136,10 @@ maoer:
 aihao:
   cookie:  
   
-#刺猬猫小说 账号密码
+#刺猬猫小说 login_token login_name
 hbooker:
   login_name: 
-  passwd: 
+  token: 
 
 #ACFun 手机号 密码
 acfun:

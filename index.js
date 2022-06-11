@@ -9,7 +9,6 @@ config = null,notify = null,signlist = [],logs = "",needPush = true
 //自行添加任务 名字看脚本里的文件名 比如csdn.js 就填"csdn"
 var cbList = []
 if (fs.existsSync("./config.yml")) config = yaml.load(fs.readFileSync('./config.yml', 'utf8'));
-if (fs.existsSync("./sendNotify.js")) notify = require('./sendNotify')
 let QL = process.env.QL_DIR
 if (QL) {
     console.log("当前是青龙面板,路径："+QL)
@@ -43,8 +42,7 @@ function start(taskList) {
                 }
             }
             console.log("------------任务执行完毕------------\n");
-            if(needPush)await require("./sendmsg")(logs);
-            if (needPush&&notify) await notify.sendNotify("签到盒", `${logs}\n\n吹水群：https://t.me/wenmou_car`);
+            if(needPush)await require("./sendmsg")(logs+"\n\n吹水群：https://t.me/wenmou_car");          
         } catch (err) {
             console.log(err);
         }

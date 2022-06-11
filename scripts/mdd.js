@@ -72,8 +72,7 @@ function task(name, action, param) {
                     } else if (action.match(/acceptAll/)) {
                         msg = `领取成功！获得${res.data.data.pointIncr}堆豆,${res.data.data.expIncr}经验 当前共${res.data.data.memberPoint}堆豆,${res.data.data.memberExp}经验值`
                     } else {
-
-                        msg = `${name}：${res.data.msg} || `
+                       msg = `${name}：${res.data.msg} || `
                     }
                 }
             } else {
@@ -100,17 +99,16 @@ async function mdd() {
      }) 一般用不到 群里有个憨批分身抓不了包
      */
     await task("每日签到", "\/missionApi\/signIn\/sign", {})
+    await task("VIP每日签到 ", "\/missionApi\/signIn\/vipsign", {"missionUuid": 537})    
     for (k = 0; k < 10; k++) {
         await task("点赞", "\/api\/post\/like.action", {
             "isLike": 1,
             "postUuid": "f2385fedab6470e8520c3329f40bd5c"
         })
     }
-    signdata += `点赞 ${i-1}/10 || `
-    await task("分享至外站", "\/missionApi\/action\/uploadAction", {
-        "actionCode": "share_vod_to_out",
-        "params": "{\"vod_uuid\":\"ff8080817825bd3701783a09c7230a1e\",\"vod_type\":0}"
-    })
+    
+    
+    signdata += `点赞 ${i-1}/10 || `    
     await task("查询关注状态", "/api/member/profile.action", {
         memberUuid: "e3f799b3eeac4f2eaa5ea70b0289c67a"
     }).then(async (res) => {
@@ -125,10 +123,6 @@ async function mdd() {
         "vodUuid": "ff8080817825bd3701783a09c7230a1e"
     })
 
-    await task("上传观看直播时长", "\/missionApi\/action\/uploadAction", {
-        "actionCode": "watch_live",
-        "params": "{\"member_uuid\":\"d9d7e516537a42a9b8986b0f8d4a39be\",\"session_id\":\"3231617888398794\",\"live_uuid\":\"1044223\",\"duration\":390}"
-    })
     await task("发送影视弹幕", "\/api\/barrage\/addBarrage396.action", {
         "barrageUuid": "1",
         "content": "好看",
@@ -161,6 +155,7 @@ async function mdd() {
         "uuidName": "",
         "uuidType": "1"
     })
+    /*
     let date = new Date();
     let msg = await axios.get("https://chp.shadiao.app/api.php");
     await task("日常发帖", "/api/post/post.action", {
@@ -179,7 +174,7 @@ async function mdd() {
         "uuidName": "埋堆吹水堂",
         "uuidType": "2"
     })
-
+*/
     await task("观影记录", "\/api\/watchHistory\/add.action", {
         "duration": 4157,
         "sactionUuid": "ff808081617f1b20016183d4834404d0",
@@ -199,6 +194,7 @@ async function mdd() {
         "params": "{\"mission_uuid\":\"482\",\"topon_ad_seat_uuid\":\"b615ffa7ee9c30\",\"watch_status\":1}"
     })    
    }
+   /*
      await task("赠送礼物", "\/userLiveApi\/gift\/sendGiftEnd", {
         "batchUuid": "4a345dc9221541ee9ba403487bd1965d",
         "giftUuid": 4,
@@ -211,6 +207,7 @@ async function mdd() {
         "liveUuid": "1044127",
         "num": 1
     })
+    */
     await task("一键领取奖励", "\/missionApi\/award\/acceptAll", {})
     return signdata
 }

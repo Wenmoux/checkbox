@@ -125,6 +125,9 @@ ql repo https://github.com/Wenmoux/checkbox.git "checkbox|install" "old" "module
 <details>
 <summary>更新日志</summary>
 
+- 2022-06-11 
+  - 修复刺猬猫签到,更换为token方式
+  - 增加埋堆堆vip每日签到,去除无奖励任务
 - 2022-04-19
   - 起点增加每日抽卡
   - 增加4399页游签到

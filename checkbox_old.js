@@ -6,7 +6,7 @@ const yaml = require("js-yaml");
 const fs = require('fs');
 const yargs = require('yargs');
 var argv = yargs.argv;
-config = null,notify = null,signlist = [],logs = "",needPush = true
+config = null,notify = null,sendmsg = null,,signlist = [],logs = "",needPush = true
 
 //自行添加任务 名字看脚本里的文件名 比如csdn.js 就填"csdn"
 var cbList = []
@@ -25,7 +25,7 @@ if (QL) {
     else console.log("亲,您的依赖掉啦,但是没有完全掉 请重装依赖\npnpm install  axios crypto crypto-js fs iconv-lite js-yaml yargs\n或者\nnpm install  axios crypto crypto-js fs iconv-lite js-yaml yargs")
      }
 }
-const sendmsg = require("./sendmsg")
+if(config)  sendmsg = require("./sendmsg")
 if(config) signlist = config.cbList.split("&")
 if(config.needPush&&config.needPush==0) needPush = false
 var signList = (argv._.length) > 0 ? argv._ : (cbList.length>0 ? cbList : signlist) 
@@ -49,7 +49,7 @@ function start(taskList) {
                 }
             }
             console.log("------------任务执行完毕------------\n");
-            if(needPush) await sendmsg(logs);            
+            if(needPush && sendmsg) await sendmsg(logs);            
             if (needPush&&notify) await notify.sendNotify("签到盒", `${logs}\n\n吹水群：https://t.me/wenmou_car`);                      
             else console.log(logs)
         } catch (err) {
