@@ -7,7 +7,7 @@
  */
 
 login_token = config.hbooker.token
-username = config.hbooker.username
+account = config.hbooker.account
 const CryptoJS = require("crypto-js");
 const axios = require("axios");
 const iv = CryptoJS.enc.Hex.parse('00000000000000000000000000000000')
@@ -29,8 +29,8 @@ const mixin = {
   withCredentials: false, //跨域请求是否使用凭证
 };
 const para = {
-  app_version: "2.3.922",
-  device_token: "ciweimao_00000000000000000000000000000000",
+  app_version: config.hbooker.app_version,
+  device_token: config.hbooker.device_token
 };
 
 function get(options) {
@@ -62,7 +62,7 @@ var login = async function () {
       login_name: login_name,
       passwd: passwd,
       login_token: "",
-      account: "",
+      account,
     },
   }).then((res) => {
     //  console.log(res)
@@ -77,7 +77,7 @@ var shelfbook = async function (collect, id) {
     url: `/bookshelf/${collect}`,
     para: {
       login_token,
-      account: username,
+      account,
       shelf_id: "",
       book_id: id,
     },
@@ -94,7 +94,7 @@ var sign = async function () {
     para: {
       task_type: 1,
       login_token,
-      account: username,
+      account,
     },
   }).then((res) => {
    // console.log(res);
@@ -108,7 +108,7 @@ var record = async function (cid) {
     para: {
       chapter_id: cid,
       login_token,
-      account: username,
+      account,
     },
   }).then((res) => {
     //  console.log(res)
@@ -120,7 +120,7 @@ var view = async function () {
     url: `/chapter/get_paragraph_tsukkomi_list_new`,
     para: {
       login_token,
-      account: username,
+      account,
       count: 1000,
       chapter_id: 105494781,
       paragraph_index: 5,
@@ -141,7 +141,7 @@ var addr = async function () {
       book_id: 100166786,
       chapter_id: 105495180,
       login_token,
-      account: username,
+      account,
     },
   }).then((res) => {
     //console.log(res)
@@ -153,7 +153,7 @@ var gettask = async function () {
     url: `/task/get_all_task_list`,
     para: {
       login_token,
-      account: username,
+      account,
     },
   }).then((res) => {
     //  console.log(res)

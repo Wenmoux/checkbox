@@ -136,10 +136,12 @@ maoer:
 aihao:
   cookie:  
   
-#刺猬猫小说 login_token login_name
+#刺猬猫小说 
 hbooker:
-  login_name: 
   token: 
+  account: 
+  device_token: ciweimao_00000000000000000000000000000000 
+  app_version: 2.9.273
 
 #ACFun 手机号 密码
 acfun:
