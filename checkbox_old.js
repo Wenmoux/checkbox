@@ -6,7 +6,7 @@ const yaml = require("js-yaml");
 const fs = require('fs');
 const yargs = require('yargs');
 var argv = yargs.argv;
-config = null,notify = null,sendmsg = null,,signlist = [],logs = "",needPush = true
+config = null,notify = null,sendmsg = null,signlist = [],logs = "",needPush = true
 
 //自行添加任务 名字看脚本里的文件名 比如csdn.js 就填"csdn"
 var cbList = []
