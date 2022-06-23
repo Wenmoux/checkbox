@@ -8,6 +8,7 @@ const axios = require("axios")
 const md5 =require("crypto-js").MD5
 const appToken = config.mdd.appToken
 const deviceNum = config.mdd.deviceNum ? config.mdd.deviceNum : "11b1384f0801478795ae2fab421fc413" 
+const taskVideoUuid = config.mdd.videoUuid ? config.mdd.videoUuid : "ff8080817f9bc716017fba925d412c4d";//18年后的终极告白
 var i = 1
 const date = new Date();
 signdata = "【埋堆堆每日任务】："
@@ -99,7 +100,28 @@ async function mdd() {
      }) 一般用不到 群里有个憨批分身抓不了包
      */
     await task("每日签到", "\/missionApi\/signIn\/sign", {})
-    await task("VIP每日签到 ", "\/missionApi\/signIn\/vipsign", {"missionUuid": 537})    
+
+    await task("获取VIP 签到页面任务", "\/api\/module/listTabModules.action", {
+        "maxModuleType" : 37,
+        "rows" : 10,
+        "startRow" : 0,
+        "tabUuid" : "ff8080817b3f1fd3017b70bcda34199d",
+    }).then(async (res) => {
+        var missionUuid = 0;
+        for(var index = 0 ;index < res.data.length; index++){
+            var item = res.data[index];
+            if (item.moduleType == 35 && item.moduleData.length > 0){
+                //找到类型是VIP签到的，并且模块不为空
+                //多从判断，防止以外报错
+                missionUuid = item.moduleData[0].continueSignInMission ? (item.moduleData[0].continueSignInMission.missionUuid || 0) : 0;
+            }
+        }
+        if(missionUuid){
+            console.log('成功获取到本周任务ID 是' + missionUuid);
+            await task("VIP每日签到 ", "\/missionApi\/signIn\/vipsign", {"missionUuid": missionUuid})    
+        }
+    })
+ 
     for (k = 0; k < 10; k++) {
         await task("点赞", "\/api\/post\/like.action", {
             "isLike": 1,
@@ -118,18 +140,8 @@ async function mdd() {
             })
         }
     })
-    await task("分享结果", "\/api\/vod\/shareVod.action", {
-        "isServiceShareNum": 1,
-        "vodUuid": "ff8080817825bd3701783a09c7230a1e"
-    })
 
-    await task("发送影视弹幕", "\/api\/barrage\/addBarrage396.action", {
-        "barrageUuid": "1",
-        "content": "好看",
-        "sactionUuid": "ff808081790d553801795e6b8c552953",
-        "times": 169,
-        "vodUuid": "ff8080817825bd3701783a09c7230a1e"
-    })
+
     await task("分享帖子", "\/api\/post\/share.action", {
         "postUuid": "52d6d8359a9947c48d59639afd7771ee"
     })
@@ -138,23 +150,64 @@ async function mdd() {
         "params": "{\"post_uuid\":\"52d6d8359a9947c48d59639afd7771ee\"}"
     }, )
     
-    let comment = ["666", "奥利给！！！", "好看滴很", "爱了爱了", "必须顶", "ヾ(๑╹ヮ╹๑)ﾉ", "路过ヾ(๑╹ヮ╹๑)ﾉ", "每日一踩", "重温经典(*ﾟ∀ﾟ*)", "资瓷"]
-    await task("评论剧集", "/api/post/post.action", {
-        "atInfoList": "",
-        "content": comment[Math.round(Math.random() * 10)],
-        "contentType": 0,
-        "faceUuid": 0,
-        "imageArrayStr": "",
-        "imageResolutionRatio": "",
-        "redirectTimes": 0,
-        "resourceId": "",
-        "thumbnail": "",
-        "title": "",
-        "topicName": "",
-        "uuid": "ff8080817825bd3701783a09c7230a1e",
-        "uuidName": "",
-        "uuidType": "1"
+    await task("分享结果", "\/api\/vod\/shareVod.action", {
+        "isServiceShareNum": 1,
+        "vodUuid": "ff8080817825bd3701783a09c7230a1e"
     })
+
+
+    await task("获取剧集信息", "\/api\/vod/listVodSactions.action", {
+        "hasIntroduction" : 0,
+        "vodUuid": taskVideoUuid,
+    }).then(async (res) => {
+        console.log(res);
+        if (res.data) {
+            let index = Math.floor(Math.random() * res.data.length);
+            let dramas = res.data[index];
+            if(dramas){
+                signdata += "本次观看的是：《"+dramas.name+"》\n";
+                //确保剧集在
+                await task("发送影视弹幕", "\/api\/barrage\/addBarrage396.action", {
+                    "barrageUuid" : "1",
+                    "content" : "打卡",
+                    "sactionUuid" : dramas.uuid,
+                    "times" : Math.round(Math.random() * 60),
+                    "vodUuid" : dramas.vodUuid,
+                })
+                await task("观影记录", "\/api\/watchHistory\/add.action", {
+                    "duration": 4157,
+                    "sactionUuid": dramas.uuid,
+                    "time": 4157,
+                    "vodUuid": dramas.vodUuid,
+                })
+                
+                await task("上传观影时长", "\/missionApi\/action\/uploadAction", {
+                    "actionCode": "watch_vod",
+                    "params": "{\"duration\":4157,\"session_id\":\"8251641137860105\",\"vod_type\":0,\"vod_uuid\":\""+dramas.vodUuid+"\",\"watch_status\":0}"
+                })
+                
+                let comment = ["666", "奥利给！！！", "好看滴很", "爱了爱了", "必须顶", "ヾ(๑╹ヮ╹๑)ﾉ", "路过ヾ(๑╹ヮ╹๑)ﾉ", "每日一踩", "重温经典(*ﾟ∀ﾟ*)", "资瓷"]
+                await task("评论剧集", "/api/post/post.action", {
+                    "atInfoList": "",
+                    "content": comment[Math.round(Math.random() * 10)],
+                    "contentType": 0,
+                    "faceUuid": 0,
+                    "imageArrayStr": "",
+                    "imageResolutionRatio": "",
+                    "redirectTimes": 0,
+                    "resourceId": "",
+                    "thumbnail": "",
+                    "title": "",
+                    "topicName": "",
+                    "uuid": dramas.vodUuid,
+                    "uuidName": "",
+                    "uuidType": "1"
+                })
+            }
+            
+        }
+    })
+    
     /*
     let date = new Date();
     let msg = await axios.get("https://chp.shadiao.app/api.php");
@@ -175,18 +228,6 @@ async function mdd() {
         "uuidType": "2"
     })
 */
-    await task("观影记录", "\/api\/watchHistory\/add.action", {
-        "duration": 4157,
-        "sactionUuid": "ff808081617f1b20016183d4834404d0",
-        "time": 4157,
-        "vodUuid": "ff808081617f1b20016183d4834404cf"
-    })
-    
-    await task("上传观影时长", "\/missionApi\/action\/uploadAction", {
-        "actionCode": "watch_vod",
-        "params": "{\"duration\":4157,\"session_id\":\"8251641137860105\",\"vod_type\":0,\"vod_uuid\":\"ff808081617f1b20016183d4834404cf\",\"watch_status\":0}"
-    })
-    
     //激励视频x5
     for (jl=0;jl<5;jl++){
     await task("观看激励视频", "\/missionApi\/action\/uploadAction", {
