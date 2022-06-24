@@ -186,7 +186,9 @@ async function mdd() {
         if (res.data) {
             let index = Math.floor(Math.random() * res.data.length);
             let dramas = res.data[index];
+            let session_id = Math.floor(Math.random() * 899 + 100).toString() + Math.floor(Date.now() / 1000).toString();//观看时长用的session_id
             if(dramas){
+                let watchTime = Math.floor(Math.random() * dramas.duration);//随机观看时间
                 signdata += "本次观看的是：《"+dramas.name+"》\n";
                 //确保剧集在
                 await task("发送影视弹幕", "\/api\/barrage\/addBarrage396.action", {
@@ -205,7 +207,7 @@ async function mdd() {
                 
                 await task("上传观影时长", "\/missionApi\/action\/uploadAction", {
                     "actionCode": "watch_vod",
-                    "params": "{\"duration\":4157,\"session_id\":\"8251641137860105\",\"vod_type\":0,\"vod_uuid\":\""+dramas.vodUuid+"\",\"watch_status\":0}"
+                    "params": "{\"duration\":" + watchTime + ",\"session_id\":\"" + session_id + "\",\"vod_type\":0,\"vod_uuid\":\"" + dramas.vodUuid + "\"}"
                 })
                 
                 let comment = ["666", "奥利给！！！", "好看滴很", "爱了爱了", "必须顶", "ヾ(๑╹ヮ╹๑)ﾉ", "路过ヾ(๑╹ヮ╹๑)ﾉ", "每日一踩", "重温经典(*ﾟ∀ﾟ*)", "资瓷"]
