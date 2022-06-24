@@ -121,16 +121,7 @@ async function mdd() {
             await task("VIP每日签到 ", "\/missionApi\/signIn\/vipsign", {"missionUuid": missionUuid})    
         }
     })
- 
-    for (k = 0; k < 10; k++) {
-        await task("点赞", "\/api\/post\/like.action", {
-            "isLike": 1,
-            "postUuid": "f2385fedab6470e8520c3329f40bd5c"
-        })
-    }
     
-    
-    signdata += `点赞 ${i-1}/10 || `    
     await task("查询关注状态", "/api/member/profile.action", {
         memberUuid: "e3f799b3eeac4f2eaa5ea70b0289c67a"
     }).then(async (res) => {
@@ -141,18 +132,49 @@ async function mdd() {
         }
     })
 
+//快速帖子评论
+    await task("获取【声生不息】板块帖子", "\/api/service/listPostOrderAndFilter.action", {
+        "postFilterType": 2,
+        "postOrderType" : 1,
+        "rows" : 20,
+        "serviceUuid" : "ff808081805a43c001805a7d31850119",//声生不息
+        "startRow" : 0
+    }).then(async (res) => {
+        if(res.data){
+            postUuid = res.data[0].uuid;
+            postComment = ["好听啊","真的好好听","听入迷了","🎵🎵🎵👍" ,"👍👍👍" ];
+            postComment.push(res.data[0].shareTitle);
+            console.log(postComment);
+            signdata += "评论了《"+res.data[0].title+"》";
+            await task("评论帖子", "\/api\/postComment\/replyComment.action", {
+                "atInfoList": "[]",
+                "content": postComment[Math.round(Math.random() * postComment.length)],
+                "contentType": 0,
+                "faceUuid": 0,
+                "imageArray": "",
+                "postUuid": postUuid,
+                "resourceId": "",
+            })
+            
+            await task("分享帖子", "\/api\/post\/share.action", {
+                "postUuid": postUuid
+            })
+            await task("分享帖子", "\/missionApi\/action\/uploadAction", {
+                "actionCode": "share_post",
+                "params": "{\"post_uuid\":\""+postUuid+"\"}"
+            })
+            
+            time = res.data.length > 10 ? 10 : res.data.length;
+            for (k = 0; k < time; k++) {
 
-    await task("分享帖子", "\/api\/post\/share.action", {
-        "postUuid": "52d6d8359a9947c48d59639afd7771ee"
-    })
-    await task("分享帖子", "\/missionApi\/action\/uploadAction", {
-        "actionCode": "share_post",
-        "params": "{\"post_uuid\":\"52d6d8359a9947c48d59639afd7771ee\"}"
-    }, )
-    
-    await task("分享结果", "\/api\/vod\/shareVod.action", {
-        "isServiceShareNum": 1,
-        "vodUuid": "ff8080817825bd3701783a09c7230a1e"
+                signdata += `点赞 ${k}/${time} \n `
+                await task("点赞", "\/api\/post\/like.action", {
+                    "isLike": 1,
+                    "postUuid":res.data[k].uuid
+                })
+            }
+        }
+        
     })
 
 
@@ -202,6 +224,11 @@ async function mdd() {
                     "uuid": dramas.vodUuid,
                     "uuidName": "",
                     "uuidType": "1"
+                })
+    
+                await task("分享结果", "\/api\/vod\/shareVod.action", {
+                    "isServiceShareNum": 1,
+                    "vodUuid": dramas.vodUuid
                 })
             }
             
