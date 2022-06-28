@@ -43,10 +43,15 @@ duokan:
   
 
 #橙光游戏app随便抓个包就有token
-cg:
+rpg66:
+  uid: 
   token: 
   skey: 
-  
+  sflag: 
+  folder: 
+  gameid: 1569844
+  did:   
+
 #绅士领域个人uid可抓签到包看到
 ssly:
   uid: 12487
