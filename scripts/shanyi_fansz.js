@@ -10,7 +10,7 @@ token = config.shanyi.token
 u = config.shanyi.u
 const gids= config.shanyi.gids.split("&")
 //const gids = [116993]
-urlpara = "&v=1.0.0&app_version=2.1.0&client=" + config.shanyi.client
+urlpara = "&v=1.0.0&app_version=2.4.5&client=" + config.shanyi.client
 datapara = "&u=" + encodeURIComponent(u) + "&token=" + encodeURIComponent(token)
 
 function post(options) {
