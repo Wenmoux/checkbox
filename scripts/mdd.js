@@ -69,7 +69,7 @@ function task(name, action, param) {
                     msg = ""
                 } else {
                     if (action.match(/signIn/)) {
-                        msg += `签到成功：获得${res.data.data.pointIncr}堆豆,${res.data.data.expIncr} || `
+                        msg = `签到成功：获得${res.data.data.pointIncr}堆豆,${res.data.data.expIncr} || `
                     } else if (action.match(/acceptAll/)) {
                         msg = `领取成功！获得${res.data.data.pointIncr}堆豆,${res.data.data.expIncr}经验 当前共${res.data.data.memberPoint}堆豆,${res.data.data.memberExp}经验值`
                     } else {

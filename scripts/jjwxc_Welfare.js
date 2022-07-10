@@ -1,11 +1,11 @@
 //晋江小说app福利中心 sign必须抓观看广告的sign 关键字 watchAdsAddLog
 const axios = require("axios");
-const sign = config.jjwxc.sign
+const sign = encodeURIComponent(config.jjwxc.sign)
 function get(op, other = "", method = "get" ) {
     return new Promise(async (resolve) => {
         try {
-            let data = `versionCode=232&sign=${sign}`
-            let url = `https://android.jjwxc.net/${op}?versionCode=232&sign=${sign}&${other}`
+            let data = `versionCode=236&sign=${sign}`
+            let url = `https://android.jjwxc.net/${op}?versionCode=236&sign=${sign}&${other}`
             if (method == "get") res = await axios.get(url);
             if (method == "post") res = await axios.post(url, data);
             console.log(res.data)
