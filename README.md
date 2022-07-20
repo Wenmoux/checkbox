@@ -85,6 +85,7 @@
  - [x] [17k小说](https://www.17k.com/)每日签到
  - [x] [触站](https://m.huashi6.com/app)每日签到任务
  - [x] [起点读书](https://m.qidian.com/) app每日签到+投推荐票+角色比心
+ - [x] [考试宝]()
 </details>
  
 # 使用方法 (懂得自然懂 bushi  
@@ -125,6 +126,9 @@ ql repo https://github.com/Wenmoux/checkbox.git "checkbox|install" "old" "module
 <details>
 <summary>更新日志</summary>
 
+- 2022-07-20 
+  - 新增考试宝每日任务
+  - 适配远程配置文件(待测试
 - 2022-06-16 橙光新增日常活跃任务以及信息查询
 - 2022-06-11 
   - 修复刺猬猫签到,更换为token方式

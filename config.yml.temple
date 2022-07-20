@@ -361,3 +361,9 @@ qidian:
   roleId: 
   version: 7.9.186
   
+  
+#考试宝  clientid为请求头中 client-identifier 
+kaoshibao: 
+  clientid: 
+  authorization:   
+    
