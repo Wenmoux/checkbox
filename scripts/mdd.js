@@ -142,7 +142,8 @@ async function mdd() {
     }).then(async (res) => {
         if(res.data){
             postUuid = res.data[0].uuid;
-            postComment = ["好听啊","真的好好听","听入迷了","🎵🎵🎵👍" ,"👍👍👍" ];
+            /**
+             * postComment = ["好听啊","真的好好听","听入迷了","🎵🎵🎵👍" ,"👍👍👍" ];
             postComment.push(res.data[0].shareTitle);
             console.log(postComment);
             signdata += "评论了《"+res.data[0].title+"》\n";
@@ -155,7 +156,7 @@ async function mdd() {
                 "postUuid": postUuid,
                 "resourceId": "",
             })
-            
+            */
             await task("分享帖子", "\/api\/post\/share.action", {
                 "postUuid": postUuid
             })
