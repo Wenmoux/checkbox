@@ -1,5 +1,6 @@
 const axios = require('axios')
 const md5 = require('crypto-js').MD5
+const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 function KsGet(url, method = "get", data = null) {
     return new Promise(async (resolve) => {
@@ -83,7 +84,8 @@ async function task() {
         } else {
             await getprize(task.id, task.point)
         } //领取奖励
-
+        await sleep(2000)
+        await getprize(task.id, task.point)
     }
     async function getprize(id, point) {
         let res = await KsGet("/user/PointCenter/getTaskReward", "post", {
