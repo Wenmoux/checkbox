@@ -1,21 +1,24 @@
 //游戏动力app*/
 const axios = require("axios");
+const code = config.gamepower.loginCode
+const headers = {
+    packagename: "com.vgn.gamepower",
+    "user-agent": "okhttp/3.12.0",
+    Host: "api.vgn.cn",
+    version: "1.3.7",
+    version_code: 47,
+    device_name: "",
+    device_id: "",
+    screen_resolution: "2400*1080",
+    device_type: "android",
+    //    "Content-Token": "",
+    "Content-Type": "application/json; charset=utf-8"
+}
+
 function get(task, method = "get", data = null) {
     return new Promise(async (resolve) => {
         try {
-            let headers = {
-                packagename: "com.vgn.gamepower",
-                "user-agent": "okhttp/3.12.0",
-                Host: "api.vgn.cn",
-                version: "1.3.7",
-                version_code: 47,
-                device_name: "",
-                device_id: "",
-                screen_resolution: "2400*1080",
-                device_type: "android",
-                "Content-Token": config.gamepower.contentoken,
-                "Content-Type": "application/json; charset=utf-8"  
-            }         
+
             let url = `https://api.vgn.cn/apiv2/${task}`;
             if (method == "get") res = await axios.get(url, {
                 headers
@@ -26,15 +29,18 @@ function get(task, method = "get", data = null) {
             if (method == "patch") res = await axios.patch(url, data, {
                 headers
             });
-            if (method == "delete") res = await axios.delete(url,  {
+            if (method == "delete") res = await axios.delete(url, {
                 headers
-            });            
+            });
             if (res.data.code == 200) console.log("    操作成功")
             else console.log("    " + res.data.msg)
             resolve(res.data)
         } catch (err) {
             console.log(err);
-            resolve({code:500,msg:"签到接口请求出错"})
+            resolve({
+                code: 500,
+                msg: "签到接口请求出错"
+            })
         }
         resolve();
     });
@@ -79,7 +85,7 @@ async function dotask(taskList) {
                     let cres = await get("v3/group/comment/22179", "post", {
                         "revert_id": "0",
                         "revert_user_id": "0",
-                        "content": "牛啊",
+                        "content": "牛啊牛啊牛啊牛",
                         "p_id": "0"
                     })
                     await get("comment/" + cres.data, "delete")
@@ -93,23 +99,30 @@ async function dotask(taskList) {
                 default:
                     break
             }
-          }
-            console.log(`  去领取奖励：经验值${task.exp} 瓶盖${task.reward_point}`)
-            await get("task/" + task.id, "post")              
+        }
+        console.log(`  去领取奖励：经验值${task.exp} 瓶盖${task.reward_point}`)
+        await get("task/" + task.id, "post")
     }
 }
 
 async function gamepower() {
     rinfo = ""
-    let taskList = await getaskList()
-    console.log(`当前还有${taskList.length}任务待完成`)
-    console.log("去签到")
-    await get("v3/mine/reward/point/daily", "post")
-    await dotask(taskList)
-    console.log("\n查询个人信息")
-    let uinfo = await get("v3/login/userinfo")
-    if (uinfo.code == 200) rinfo = `\n昵称：${uinfo.data.member_nickname}\n等级：${uinfo.data.level_info.level}\n瓶盖：${uinfo.data.reward_point}\n连签：${uinfo.data.reward_days}`
-    else rinfo = uinfo.msg
+    let loginRes = await get("v2/login/qq", "post", {
+        "code": code
+    })
+    if (loginRes.code == 200) {
+        console.log("登陆成功")
+        headers["Content-Token"] = loginRes.data.token
+        let taskList = await getaskList()
+        console.log(`当前还有${taskList.length}任务待完成`)
+        console.log("去签到")
+        await get("v3/mine/reward/point/daily", "post")
+        await dotask(taskList)
+        console.log("\n查询个人信息")
+        let uinfo = await get("v3/login/userinfo")
+        if (uinfo.code == 200) rinfo = `\n昵称：${uinfo.data.member_nickname}\n等级：${uinfo.data.level_info.level}\n瓶盖：${uinfo.data.reward_point}\n连签：${uinfo.data.reward_days}`
+        else rinfo = uinfo.msg
+    } else rinfo = loginRes.msg
     console.log(rinfo)
     return "【游戏动力】：" + rinfo
 }

@@ -325,11 +325,12 @@ Qoo:
 
 #轻之文库 linovel.js
 linovel:
-  cookie:   
+  username:  
+  password:  
  
 #游戏动力app
 gamepower:
-  contentoken:  
+  loginCode:  
   
   
 #立创

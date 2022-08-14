@@ -126,6 +126,7 @@ ql repo https://github.com/Wenmoux/checkbox.git "checkbox|install" "old" "module
 <details>
 <summary>更新日志</summary>
 
+- 2022-08-14 修改游戏动力 && 轻之文库 token获取方式
 - 2022-07-20 
   - 新增考试宝每日任务
   - 适配远程配置文件(待测试

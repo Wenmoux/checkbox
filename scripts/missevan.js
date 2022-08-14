@@ -75,8 +75,8 @@ function addcomment() {
   return new Promise(async (resolve) => {
     try {
       for (i = 0; i < 3; ) {
-        let msg = await $http.get("https://chp.shadiao.app/api.php");
-        let data = `type=1&eId=2154758&comment=${encodeURI(msg.data)}`;
+        let msg = await $http.get("https://v1.hitokoto.cn/");
+        let data = `type=1&eId=2154758&comment=${encodeURI(msg.hitokoto)}`;
         let ress = await $http.post(
           "https://www.missevan.com/site/addcomment",
           data,

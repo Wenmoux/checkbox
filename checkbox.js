@@ -34,9 +34,10 @@ async function go() {
     }
     if (config && config.Push) sendmsg = require("./sendmsg")
     if (config) signlist = config.cbList.split("&")
-    if (config.needPush && config.needPush == 0) needPush = false
+    if (config && config.needPush && config.needPush == 0) needPush = false
     var signList = (argv._.length) > 0 ? argv._ : (cbList.length > 0 ? cbList : signlist)
     if (config && process.env.TENCENTCLOUD_RUNENV != "SCF") start(signList);
+    else console.log("哈哈哈")
 }
 
 function start(taskList) {
