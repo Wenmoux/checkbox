@@ -367,4 +367,9 @@ qidian:
 kaoshibao: 
   clientid: 
   authorization:   
-    
+
+#玩吧
+wb:
+  ticket: 
+  deviceId: 
+  nsr:     
