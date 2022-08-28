@@ -373,3 +373,11 @@ wb:
   ticket: 
   deviceId: 
   nsr:     
+  
+#美团买菜 useid fingerprint token uuid
+MeiTuan:  
+  MTMC_userId: 
+  MTMC_fingerprint: 
+  MTMC_token: 
+  MTMC_uuid: 
+  
