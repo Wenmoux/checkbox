@@ -10,7 +10,8 @@ function ssly() {
       let timestamp = Math.floor((new Date()).getTime()/1000)+"";
       timestamp = timestamp.replace(/^\s+|\s+$/g,"");
       let mac = CryptoJS.MD5(CryptoJS.SHA1(CryptoJS.MD5(timestamp).toString()).toString()).toString();
-      let data = `time=${timestamp}&mac=${mac}&u_id=${uid}`;      let res = await axios.post(url, data);
+      let data = `time=${timestamp}&mac=${mac}&u_id=${uid}`;
+      let res = await axios.post(url, data);
       if (res.data.state == 0) {
         msg = res.data.erro;
       } else if (res.data.state == 1) {
