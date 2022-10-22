@@ -1,4 +1,5 @@
 const axios = require("axios");
+const CryptoJS = require("crypto-js");
 //绅士领域 注册时候推荐码填：2984317
 
 uid = config.ssly.uid; //抓包看,比如签到的post包里就有u_id,如120487
@@ -6,8 +7,10 @@ function ssly() {
   return new Promise(async (resolve) => {
     try {
       let url = `https://91ssly.xyz/mz_pbl/app_con/add_sign.php`;
-      let data = `time=1635039871&mac=09308021a9da3472e6095aa048c98327&u_id=${uid}`;
-      let res = await axios.post(url, data);
+      let timestamp = Math.floor((new Date()).getTime()/1000)+"";
+      timestamp = timestamp.replace(/^\s+|\s+$/g,"");
+      let mac = CryptoJS.MD5(CryptoJS.SHA1(CryptoJS.MD5(timestamp).toString()).toString()).toString();
+      let data = `time=${timestamp}&mac=${mac}&u_id=${uid}`;      let res = await axios.post(url, data);
       if (res.data.state == 0) {
         msg = res.data.erro;
       } else if (res.data.state == 1) {
