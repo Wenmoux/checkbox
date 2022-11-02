@@ -4,11 +4,20 @@ const iconv = require("iconv-lite");
 const axios = require("axios");
 let ck = null;
 let formhash = null;
+
+if (process.env.sxmd_host){
+	SXMD_HOST=process.env.sxmd_host;
+}else{
+    SXMD_HOST="www.txtnovel.pro"
+}
+
+
 let result = "【书香门第】：";
+console.log(`\n\n当前书香门第网址为：https://${SXMD_HOST}\n请自行核对，如果接下来报错或失败极有可能是网址变了。\n请百度一下最新网址，\n并手动在环境变量内新建sxmd_host，内容不带https://\n示例：www.txtnovel.pro\n\n`)
 var headers = {
-    Host: "www.txtnovel.top",
+    Host: `${SXMD_HOST}`,
     cookie: "  ",
-    referer: "http://www.txtnovel.top/member.php?mod=logging&action=login&mobile=2",
+    referer: `http://${SXMD_HOST}/member.php?mod=logging&action=login&mobile=2`,
     "Content-Type": "application/x-www-form-urlencoded",
     "User-Agent": "Mozilla/5.0 (Linux; Android 10; Redmi K30) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.83 Mobile Safari/537.36",
 }
@@ -17,8 +26,8 @@ function login() {
     return new Promise(async (resolve) => {
         try {
             let loginurl =
-                "http://www.txtnovel.top/member.php?mod=logging&action=login&loginsubmit=yes&loginhash=&mobile=2";;
-            let data = `formhash=&referer=http%3A%2F%2Fwww.txtnovel.top%2F&fastloginfield=username&cookietime=2592000&username=${account}&password=${password}&questionid=0&answer=&submit=true`;
+                `http://${SXMD_HOST}/member.php?mod=logging&action=login&loginsubmit=yes&loginhash=&mobile=2`;
+            let data = `formhash=&referer=http%3A%2F%2F${SXMD_HOST}%2F&fastloginfield=username&cookietime=2592000&username=${account}&password=${password}&questionid=0&answer=&submit=true`;
             let res = await axios.post(loginurl, data, {
                     headers
                 }
@@ -49,7 +58,7 @@ function login() {
 function getformhash() {
     return new Promise(async (resolve) => {
         try {
-            let url = `http://www.txtnovel.top/plugin.php?id=dsu_paulsign:sign&mobile=yes`;
+            let url = `http://${SXMD_HOST}/plugin.php?id=dsu_paulsign:sign&mobile=yes`;
             let res = await axios.get(url, {
                 headers
             });
@@ -66,7 +75,7 @@ function getformhash() {
 function sign() {
     return new Promise(async (resolve) => {
         try {
-            let url = `http://www.txtnovel.top/plugin.php?id=dsu_paulsign:sign&operation=qiandao&infloat=0&inajax=0&mobile=yes`;
+            let url = `http://${SXMD_HOST}/plugin.php?id=dsu_paulsign:sign&operation=qiandao&infloat=0&inajax=0&mobile=yes`;
             let data = `formhash=${formhash}&qdxq=kx`;
             let res = await axios.post(url, data, {
                 headers
@@ -87,7 +96,7 @@ function sign() {
 function info() {
     return new Promise(async (resolve) => {
         try {
-            let url = `http://www.txtnovel.top/home.php?mod=space&`;
+            let url = `http://${SXMD_HOST}/home.php?mod=space&`;
             let res = await axios.get(url, {
                 headers
             });
