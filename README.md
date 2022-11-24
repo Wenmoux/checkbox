@@ -87,6 +87,7 @@
  - [x] [起点读书](https://m.qidian.com/) app每日签到+投推荐票+角色比心
  - [x] [考试宝]()
  - [x] 美团买菜每日任务
+ - [x] 次元姬小说每日任务
 </details>
  
 # 使用方法 (懂得自然懂 bushi  
@@ -127,6 +128,7 @@ ql repo https://github.com/Wenmoux/checkbox.git "checkbox|install" "old" "module
 <details>
 <summary>更新日志</summary>
 
+- 2022-11-24 新增次元姬小说每日任务
 - 2022-08-28 新增美团买菜每日任务
 - 2022-08-14 修改游戏动力 && 轻之文库 token获取方式
 - 2022-07-20 
