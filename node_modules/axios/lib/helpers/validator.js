@@ -1,23 +1,26 @@
 'use strict';
 
-var VERSION = require('../env/data').version;
+import {VERSION} from '../env/data.js';
+import AxiosError from '../core/AxiosError.js';
 
-var validators = {};
+const validators = {};
 
 // eslint-disable-next-line func-names
-['object', 'boolean', 'number', 'function', 'string', 'symbol'].forEach(function(type, i) {
+['object', 'boolean', 'number', 'function', 'string', 'symbol'].forEach((type, i) => {
   validators[type] = function validator(thing) {
     return typeof thing === type || 'a' + (i < 1 ? 'n ' : ' ') + type;
   };
 });
 
-var deprecatedWarnings = {};
+const deprecatedWarnings = {};
 
 /**
  * Transitional option validator
+ *
  * @param {function|boolean?} validator - set to false if the transitional option has been removed
  * @param {string?} version - deprecated version / removed since version
  * @param {string?} message - some message with additional info
+ *
  * @returns {function}
  */
 validators.transitional = function transitional(validator, version, message) {
@@ -26,9 +29,12 @@ validators.transitional = function transitional(validator, version, message) {
   }
 
   // eslint-disable-next-line func-names
-  return function(value, opt, opts) {
+  return (value, opt, opts) => {
     if (validator === false) {
-      throw new Error(formatMessage(opt, ' has been removed' + (version ? ' in ' + version : '')));
+      throw new AxiosError(
+        formatMessage(opt, ' has been removed' + (version ? ' in ' + version : '')),
+        AxiosError.ERR_DEPRECATED
+      );
     }
 
     if (version && !deprecatedWarnings[opt]) {
@@ -48,35 +54,38 @@ validators.transitional = function transitional(validator, version, message) {
 
 /**
  * Assert object's properties type
+ *
  * @param {object} options
  * @param {object} schema
  * @param {boolean?} allowUnknown
+ *
+ * @returns {object}
  */
 
 function assertOptions(options, schema, allowUnknown) {
   if (typeof options !== 'object') {
-    throw new TypeError('options must be an object');
+    throw new AxiosError('options must be an object', AxiosError.ERR_BAD_OPTION_VALUE);
   }
-  var keys = Object.keys(options);
-  var i = keys.length;
+  const keys = Object.keys(options);
+  let i = keys.length;
   while (i-- > 0) {
-    var opt = keys[i];
-    var validator = schema[opt];
+    const opt = keys[i];
+    const validator = schema[opt];
     if (validator) {
-      var value = options[opt];
-      var result = value === undefined || validator(value, opt, options);
+      const value = options[opt];
+      const result = value === undefined || validator(value, opt, options);
       if (result !== true) {
-        throw new TypeError('option ' + opt + ' must be ' + result);
+        throw new AxiosError('option ' + opt + ' must be ' + result, AxiosError.ERR_BAD_OPTION_VALUE);
       }
       continue;
     }
     if (allowUnknown !== true) {
-      throw Error('Unknown option ' + opt);
+      throw new AxiosError('Unknown option ' + opt, AxiosError.ERR_BAD_OPTION);
     }
   }
 }
 
-module.exports = {
-  assertOptions: assertOptions,
-  validators: validators
+export default {
+  assertOptions,
+  validators
 };
