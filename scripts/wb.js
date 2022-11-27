@@ -4,7 +4,7 @@ const wbC = config.wb
 function get(op, data) {
     return new Promise(async (resolve) => {
         try {
-            data = `type=3002&plateType=4&ticket=${wbC.ticket}&appVersion=104302&appId=10002&channelId=17&deviceId=${wbC.deviceId}&deviceInfo=&__nsr=${wbC.nsr}&__cf=yes&${data}`
+            data = `type=3002&plateType=4&ticket=${wbC.ticket}&appVersion=105101&appId=10002&channelId=17&deviceId=${wbC.deviceId}&deviceInfo=&__nsr=${wbC.nsr}&__cf=yes&${data}`
             let url = `https://www.wodidashi.com/web/webApi/${op}`
             let headers = {
                 "content-type": "application/x-www-form-urlencoded",
@@ -12,6 +12,7 @@ function get(op, data) {
                 "x-requested-with": "com.wodi.who"
             }
             let res = await axios.post(url, data,{headers});
+            console.log(res.data)
             resolve(res.data)
         } catch (err) {
             console.log(err);

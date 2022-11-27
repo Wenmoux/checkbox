@@ -30,11 +30,13 @@ const mixin = {
 };
 const para = {
   app_version: config.hbooker.app_version,
-  device_token: config.hbooker.device_token
+  device_token: config.hbooker.device_token,
+//  "user-agent":"Android  com.kuangxiangciweimao.novel  2.9.293,meizu, MEIZU 18 Pro, 30, 11"
 };
 
 function get(options) {
   let params = Object.assign({}, para, options.para);
+  console.log(params)
   return new Promise((resolve, reject) => {
     axios
       .get(mixin.baseUrl + options.url, {

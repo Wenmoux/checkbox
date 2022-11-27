@@ -4,8 +4,8 @@ const sign = encodeURIComponent(config.jjwxc.sign)
 function get(op, other = "", method = "get" ) {
     return new Promise(async (resolve) => {
         try {
-            let data = `versionCode=244&sign=${sign}`
-            let url = `https://android.jjwxc.net/${op}?versionCode=244&sign=${sign}&${other}`
+            let data = `versionCode=264&sign=${sign}`
+            let url = `https://android.jjwxc.net/${op}?versionCode=264&sign=${sign}&${other}`
             if (method == "get") res = await axios.get(url);
             if (method == "post") res = await axios.post(url, data);
             console.log(res.data)

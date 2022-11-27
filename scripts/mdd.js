@@ -99,8 +99,8 @@ async function mdd() {
        "type": 0
      }) 一般用不到 群里有个憨批分身抓不了包
      */
-    await task("每日签到", "\/missionApi\/signIn\/sign", {})
-
+    let sres = await task("每日签到", "\/missionApi\/signIn\/sign", {})
+    if(sres.msg.match(/已下线/)) return signdata
     await task("获取VIP 签到页面任务", "\/api\/module/listTabModules.action", {
         "maxModuleType" : 37,
         "rows" : 10,
@@ -284,7 +284,8 @@ async function mdd() {
     }).then(async (res) => {
         var videoMissionUuid = 0;
         var iosToponAdSeatUuid;
-        for (var index = 0; index < res.data.missionGroupList.length; index++) {
+        var num= res.data? (res.data.missionGroupList?res.data.missionGroupList.length:0) :0
+        for (var index = 0; index < num; index++) {
             var missionList = res.data.missionGroupList[index].normalMissionList;//普通任务列
             if(!missionList){
                 //签到任务可能没有这个变量导致报错。所以跳过即可
