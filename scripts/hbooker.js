@@ -1,215 +1,202 @@
-/*
- * @Author: Wenmoux
- * @Date: 2020-04-03
- * @LastEditTime: 2020-09-12
- * @Description: 刺猬猫每日任务(除了订阅章节) 需要填写 login_name和passwd 也就是手机号和密码
- * @Other：加解密还有写法都抄的 @zsakvo
- */
-
 login_token = config.hbooker.token
 account = config.hbooker.account
+device_token = config.hbooker.device_token
+app_version = config.hbooker.app_version
+
 const CryptoJS = require("crypto-js");
 const axios = require("axios");
-const iv = CryptoJS.enc.Hex.parse('00000000000000000000000000000000')
-const decrypt = function (data, key) {
-  key = CryptoJS.SHA256(key ? key : 'zG2nSeEfSHfvTCHy5LCcqtBbQehKNLXn')
-  var decrypted = CryptoJS.AES.decrypt(data, key, {
-    mode: CryptoJS.mode.CBC,
-    iv: iv,
-    padding: CryptoJS.pad.Pkcs7,
-  })
-  return decrypted.toString(CryptoJS.enc.Utf8)
+
+const decrypt = function(data) {
+    let iv = CryptoJS.enc.Hex.parse('00000000000000000000000000000000')
+    let key = CryptoJS.SHA256('zG2nSeEfSHfvTCHy5LCcqtBbQehKNLXn')
+    let decrypted = CryptoJS.AES.decrypt(data, key, {
+        mode: CryptoJS.mode.CBC,
+        iv: iv,
+        padding: CryptoJS.pad.Pkcs7,
+    })
+    return decrypted.toString(CryptoJS.enc.Utf8)
 }
 
-//decrypt("6WafpH+G/+hDyIp4Xth47HuRUp3OWI/mxE8FJLj0OZGVAQDl9VcGF/amBrmvth9Hers7f8OE8b3zQTM+WN75DA==")
-const mixin = {
-  baseUrl: "https://app.hbooker.com", //url 前缀
-  standardFlag: true,
-  timeout: 15000,
-  withCredentials: false, //跨域请求是否使用凭证
-};
-const para = {
-  app_version: config.hbooker.app_version,
-  device_token: config.hbooker.device_token,
-//  "user-agent":"Android  com.kuangxiangciweimao.novel  2.9.293,meizu, MEIZU 18 Pro, 30, 11"
-};
-
-function get(options) {
-  let params = Object.assign({}, para, options.para);
-  console.log(params)
-  return new Promise((resolve, reject) => {
-    axios
-      .get(mixin.baseUrl + options.url, {
-        params: params,
-      })
-      .then((response) => {
-        let data = decrypt(response.data.trim());
-        var lastIndex = data.lastIndexOf("}");
-        data = data.substr(0, lastIndex + 1);
-        let json = JSON.parse(data);
-        resolve(json);
-      })
-      .catch((err) => {
-        resolve({
-          tip: err,
-        });
-      });
-  });
+function getNowFormatDate() {
+    let date = new Date();
+    let year = date.getFullYear();
+    let month = date.getMonth() + 1;
+    let aDate = date.getDate();
+    let hour = date.getHours();
+    let min = date.getMinutes();
+    let sec = date.getSeconds();
+    if (month >= 1 && month <= 9) {
+        month = "0" + month;
+    }
+    if (aDate >= 1 && aDate <= 9) {
+        aDate = "0" + aDate;
+    }
+    if (hour >= 0 && hour <= 9) {
+        hour = "0" + hour;
+    }
+    if (min >= 0 && min <= 9) {
+        min = "0" + min;
+    }
+    if (sec >= 0 && sec <= 9) {
+        sec = "0" + sec;
+    }
+    let currentdate = `${year}-${month}-${aDate} ${hour}:${min}:${sec}`
+    return currentdate;
 }
 
-var login = async function () {
-  return await get({
-    url: `/signup/login`,
-    para: {
-      login_name: login_name,
-      passwd: passwd,
-      login_token: "",
-      account,
-    },
-  }).then((res) => {
-    //  console.log(res)
-    return res;
-  });
-};
-//b=login()
-//console.log(b)
+function JsonToUrl(data) {
+    var tempArr = [];
+    for (var i in data) {
+        var key = encodeURIComponent(i);
+        var value = encodeURIComponent(data[i]);
+        tempArr.push(key + '=' + value);
+    }
+    var urlParamsStr = tempArr.join('&');
+    return urlParamsStr;
+}
+
+function post(options) {
+    let data = {
+        ...options.data,
+        app_version,
+        device_token,
+        login_token,
+        account
+    }
+    return new Promise((resolve, reject) => {
+        axios({
+                url: `https://app.happybooker.cn/${options.url}`,
+                method: "post",
+                data: JsonToUrl(data),
+                headers: {
+                    "user-agent": `Android  com.kuangxiangciweimao.novel  ${app_version},Xiaomi, Mi 12, 31, 12`
+                }
+            })
+            .then((response) => {
+                let res = decrypt(response.data)
+                resolve(JSON.parse(res))
+            })
+    })
+}
+
 //书架两本
-var shelfbook = async function (collect, id) {
-  return await get({
-    url: `/bookshelf/${collect}`,
-    para: {
-      login_token,
-      account,
-      shelf_id: "",
-      book_id: id,
-    },
-  }).then((res) => {
-    //  console.log(res)
-    return res;
-  });
+var shelfbook = async function(collect) {
+    return await post({
+        url: `/bookshelf/${collect}`,
+        data: {
+            shelf_id: "",
+            book_id: "100136011"
+        },
+    }).then((res) => {
+        return res;
+    });
 };
 
 //签到
-var sign = async function () {
-  return await get({
-    url: `/reader/get_task_bonus_with_sign_recommend`,
-    para: {
-      task_type: 1,
-      login_token,
-      account,
-    },
-  }).then((res) => {
-   // console.log(res);
-    return res;
-  });
+var sign = async function() {
+    return await post({
+        url: "reader/get_task_bonus_with_sign_recommend",
+        data: {
+            task_type: 1
+        },
+    }).then((res) => {
+        return res;
+    });
 };
+
 //阅读章节
-var record = async function (cid) {
-  return await get({
-    url: `/chapter/set_read_chapter_record`,
-    para: {
-      chapter_id: cid,
-      login_token,
-      account,
-    },
-  }).then((res) => {
-    //  console.log(res)
-    return res;
-  });
+var record = async function(cid) {
+    return await post({
+        url: "chapter/set_read_chapter_record",
+        data: {
+            chapter_id: cid
+        },
+    }).then((res) => {
+        return res;
+    });
 };
-var view = async function () {
-  return await get({
-    url: `/chapter/get_paragraph_tsukkomi_list_new`,
-    para: {
-      login_token,
-      account,
-      count: 1000,
-      chapter_id: 105494781,
-      paragraph_index: 5,
-      page: 0,
-    },
-  }).then((res) => {
-    //     console.log(res)
-    return res;
-  });
+
+var view = async function() {
+    return await post({
+        url: "chapter/get_paragraph_tsukkomi_list_new",
+        data: {
+            count: 1000,
+            chapter_id: 105494781,
+            paragraph_index: 5,
+            page: 0
+        },
+    }).then((res) => {
+        return res;
+    });
 };
+
 //阅读60min
-var addr = async function () {
-  return await get({
-    url: `/reader/add_readbook`,
-    para: {
-      readTimes: 1200,
-      getTime: `${getNowFormatDate()} 00:25:06`,
-      book_id: 100166786,
-      chapter_id: 105495180,
-      login_token,
-      account,
-    },
-  }).then((res) => {
-    //console.log(res)
-    return res;
-  });
+var addr = async function() {
+    return await post({
+        url: "reader/add_readbook",
+        data: {
+            readTimes: 1200,
+            getTime: getNowFormatDate(),
+            book_id: 100166786,
+            chapter_id: 105495180
+        },
+    }).then((res) => {
+        return res;
+    });
 };
-var gettask = async function () {
-  return await get({
-    url: `/task/get_all_task_list`,
-    para: {
-      login_token,
-      account,
-    },
-  }).then((res) => {
-    //  console.log(res)
-    return res;
-  });
+
+//浏览插画区5min
+var addb = async function() {
+    return await post({
+        url: "bbs/add_bbs_read_time",
+        data: {
+            readTimes: 300,
+            getTime: getNowFormatDate()
+        },
+    }).then((res) => {
+        return res;
+    });
 };
-function getNowFormatDate() {
-  var date = new Date();
-  var seperator1 = "-";
-  var year = date.getFullYear();
-  var month = date.getMonth() + 1;
-  var strDate = date.getDate();
-  if (month >= 1 && month <= 9) {
-    month = "0" + month;
-  }
-  if (strDate >= 0 && strDate <= 9) {
-    strDate = "0" + strDate;
-  }
-  var currentdate = year + seperator1 + month + seperator1 + strDate;
-  return currentdate;
-}
+
+//任务列表
+var gettask = async function() {
+    return await post({
+        url: "task/get_all_task_list",
+        data: {},
+    }).then((res) => {
+        return res;
+    });
+};
 
 async function hbooker() {
-  let result = "【刺猬猫小说】：";
-  a = await sign();
- if (a.code == 100000 || a.code == 340001 ) {
-    await shelfbook("delete_shelf_book", 100180114);
-    await shelfbook("favor", 100180114);
-    await shelfbook("delete_shelf_book", 100148386);
-    await shelfbook("favor", 100148386);
-    //阅 读10章
-    a = Math.ceil(Math.random() * 10000);
-    for (i = a; i < a + 20; i++) {
-      await record(i++);
+    let result = "【刺猬猫小说】：";
+    a = await sign();
+    if (a.code == 100000 || a.code == 340001) {
+        a = Math.ceil(Math.random() * 10000);
+        for (i = a; i < a + 20; i++) {
+            await record(i++); //阅读10章
+        }
+        //浏览20间贴
+        await view();
+        //阅读60min
+        await addr();
+        await addr();
+        await addr();
+        //浏览插画区5min
+        await addb();
+        let res = await gettask();
+        tasklist = res.data.daily_task_list;
+        for (i in tasklist) {
+            taskname = tasklist[i].name;
+            status = tasklist[i].is_finished == 1 ? "已完成" : "未完成";
+            result += `${taskname}：${status}  ||  `;
+        }
+    } else {
+        result = a && a.tip
+        console.log(a);
     }
-    //浏览20间贴
-    await view();
-    //阅读60min
-    await addr();
-    await addr();
-    await addr();
-    //阅读10章
-    let res = await gettask();
-    tasklist = res.data.daily_task_list;
-    for (i in tasklist) {
-      taskname = tasklist[i].name;
-      status = tasklist[i].is_finished == 1 ? "已完成" : "未完成";
-      result += `${taskname}：${status}  ||  `;
-    }
-  } else {
-    result = a&&a.tip
-    console.log(a);
-  }
-  console.log(result);
-  return result;
+    console.log(result);
+    return result;
 }
+
 module.exports = hbooker;
