@@ -13,7 +13,7 @@ config = null, notify = null, sendmsg = null, signlist = [], logs = "", needPush
 if (fs.existsSync("./sendNotify.js")) notify = require('./sendNotify')
 
 //自行添加任务 名字看脚本里的文件名 比如csdn.js 就填"csdn"
-var cbList = []
+var cbList = ["ssly"]
 async function go() {
     if (ycurl) await getCF(ycurl)
     else {
