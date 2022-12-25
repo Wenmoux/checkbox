@@ -102,8 +102,9 @@ termux可以使用crontab设置定时任务
 在`config.yml`文件里自行按照格式添加需要的任务,运行
    ```       
       git clone https://github.com/Wenmoux/checkbox.git
-      cd checkbox (这里还是要看你的路径)
-      npm install
+      cd checkbox
+      npm i pnpm -g
+      pnpm install
       node checkbox.js
    ```  
    
