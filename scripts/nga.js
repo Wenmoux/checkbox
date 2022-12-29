@@ -11,7 +11,7 @@ function ngaGet(lib, act, output = 11, other = null) {
           nga.accesstoken
         }&    app_id=1010&__act=${act}&__lib=${lib}&__output=${output}&${other}`, {
                     headers: {
-                        "User-Agent":  nga.UA ? nga.UA : "xxxxxx Nga_Official/90306"
+                        "User-Agent":  nga.UA ? nga.UA : "xxxxxx Nga_Official/90409"
                     }
                 }
             );            
