@@ -17,16 +17,16 @@ var cbList = []
 async function go() {
     if (ycurl) await getCF(ycurl)
     else {
-        if (fs.existsSync("./config.yml")) config = yaml.load(fs.readFileSync('./config.yml', 'utf8'));
+        if (fs.existsSync("./config.yaml")) config = yaml.load(fs.readFileSync('./config.yaml', 'utf8'));
         if (QL) {
             console.log("当前是青龙面板,路径：" + QL)
             if (fs.existsSync(`/${QL}/data/config/config.sh`)) console.log("建议更新到最新版青龙再来运行哦,或者手动修改路径叭~")
             cbList = process.env.cbList ? process.env.cbList.split("&") : []
-            if (!fs.existsSync(`/${QL}/data/config/config.yml`)) {
-                console.log("您还没有填写cookies配置文件,请配置好再来运行8...\n配置文件路径/ql/data/config/config.yml\n如没有文件复制一份config.yml.temple并改名为config.yml")
+            if (!fs.existsSync(`/${QL}/data/config/config.yaml`)) {
+                console.log("您还没有填写cookies配置文件,请配置好再来运行8...\n配置文件路径/ql/data/config/config.yaml\n如没有文件复制一份config.yaml.temple并改名为config.yaml")
                 return;
             } else {
-                if (yaml.load) config = yaml.load(fs.readFileSync(`/${QL}/data/config/config.yml`, 'utf8'))
+                if (yaml.load) config = yaml.load(fs.readFileSync(`/${QL}/data/config/config.yaml`, 'utf8'))
                 else console.log("亲,您的依赖掉啦,但是没有完全掉 请重装依赖\npnpm install  axios crypto crypto-js fs iconv-lite js-yaml yargs\n或者\nnpm install  axios crypto crypto-js fs iconv-lite js-yaml yargs")
             }
         }

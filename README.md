@@ -96,10 +96,10 @@ termux可以使用crontab设置定时任务
 写法参见crontab.list
 
 下载源码,安装依赖
-复制一份config.yml.temple文件并改名config.yml 
-在config.yml文件内填入对应cookies(不要更改原有格式
+复制一份config.yaml.temple文件并改名config.yaml 
+在config.yaml文件内填入对应cookies(不要更改原有格式
 > 注意每个冒号后面都有空格  
-在`config.yml`文件里自行按照格式添加需要的任务,运行
+在`config.yaml`文件里自行按照格式添加需要的任务,运行
    ```       
       git clone https://github.com/Wenmoux/checkbox.git
       cd checkbox
@@ -123,7 +123,7 @@ ql repo https://github.com/Wenmoux/checkbox.git "checkbox|install" "old" "module
  > 1 首先在青龙目录下config.sh设置里拉取sh后缀文件 大概这个自己找RepoFileExtensions  = xxx这一行 里边加上sh就可以了    
  2 在面板内添加定时任务 (上面ql repo那条 定时看你)    
  3 手动运行签到盒安装任务 无需禁用  
- 4 在`ql/data/config/config.yml`里填写cookie以及需要运行的任务列表(开头cbList)等信息    
+ 4 在`ql/data/config/config.yaml`里填写cookie以及需要运行的任务列表(开头cbList)等信息    
  5 注意 必须最新版青龙 不然你就手动创建个配置文件吧
 # other
 <details>
