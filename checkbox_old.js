@@ -22,7 +22,7 @@ if (QL) {
         return;
     } else{
     if(yaml.load) config = yaml.load(fs.readFileSync(`/${QL}/config/config.yaml`, 'utf8'))
-    else console.log("亲,您的依赖掉啦,但是没有完全掉 请重装依赖\npnpm install  axios crypto crypto-js fs iconv-lite js-yaml yargs\n或者\nnpm install  axios crypto crypto-js fs iconv-lite js-yaml yargs")
+    else console.log("亲,您的依赖掉啦,但是没有完全掉 请重装依赖\npnpm install  axios  crypto-js iconv-lite js-yaml yargs\n或者\nnpm install  axios  crypto-js iconv-lite js-yaml yargs")
      }
 }
 if(config)  sendmsg = require("./sendmsg")
