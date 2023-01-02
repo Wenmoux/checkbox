@@ -17,7 +17,7 @@
   "author": "Wenmoux",
   "license": "MIT",
   "dependencies": {
-    "axios": "^1.2.1",
+    "axios": "^1.2.2",
     "crypto-js": "^4.1.1",
     "iconv-lite": "^0.6.3",
     "js-yaml": "^4.1.0",
