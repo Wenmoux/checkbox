@@ -168,12 +168,11 @@ var record = async function(cid) {
 
 //浏览20间贴
 var view = async function() {
-    let cid = Math.ceil(Math.random() * 10000);
     return await post({
         url: "chapter/get_paragraph_tsukkomi_list_new",
         data: {
             count: 1000,
-            chapter_id: cid,
+            chapter_id: 105494781,
             paragraph_index: 5,
             page: 0
         }
@@ -274,6 +273,7 @@ async function hbooker() {
         await addr();
         await addr();
         await addr();
+        await view();
         await ce();
         let res = await gettask();
         tasklist = res.data.daily_task_list;
