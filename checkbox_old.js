@@ -18,6 +18,7 @@ if (QL) {
     console.log("当前是青龙面板,路径："+QL)
     if(fs.existsSync(`/${QL}/config/config.sh`)) console.log("建议更新到最新版青龙再来运行哦,或者手动修改路径叭~")
     cbList = process.env.cbList ? process.env.cbList.split("&") : []
+    if (fs.existsSync(`/${QL}/config/config.yaml`)) fs.renameSync(`/${QL}/config/config.yml`,`/${QL}/config/config.yaml`)
     if (!fs.existsSync(`/${QL}/config/config.yaml`)) {
         console.log("您还没有填写cookies配置文件,请配置好再来运行8...\n配置文件路径/ql/config/config.yaml\n如没有文件复制一份config.yaml.temple并改名为config.yaml")
         return;
