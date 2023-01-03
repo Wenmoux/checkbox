@@ -1,6 +1,7 @@
 node_modules
 .idea
 config.yaml
+config.yml
 pnpm-lock.yaml
 package-lock.json
 .vscode

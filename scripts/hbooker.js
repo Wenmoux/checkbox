@@ -1,7 +1,7 @@
-login_token = config.hbooker.token
-account = config.hbooker.account
-device_token = config.hbooker.device_token
-app_version = config.hbooker.app_version
+let login_token = config.hbooker.token
+let account = config.hbooker.account
+let device_token = "ciweimao_"
+let app_version = "2.9.298"
 
 const CryptoJS = require("crypto-js");
 const axios = require("axios");

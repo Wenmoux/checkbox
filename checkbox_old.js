@@ -7,6 +7,7 @@ const fs = require('fs');
 const yargs = require('yargs');
 var argv = yargs.argv;
 config = null,notify = null,sendmsg = null,signlist = [],logs = "",needPush = true
+if (fs.existsSync("./config.yml")) fs.renameSync("./config.yml","./config.yaml")
 
 //自行添加任务 名字看脚本里的文件名 比如csdn.js 就填"csdn"
 var cbList = []

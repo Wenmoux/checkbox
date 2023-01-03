@@ -145,8 +145,6 @@ aihao:
 hbooker:
   token: 
   account: 
-  device_token: ciweimao_
-  app_version: 2.9.297
 
 #ACFun 手机号 密码
 acfun:
