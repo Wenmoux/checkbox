@@ -128,6 +128,7 @@ ql repo https://github.com/Wenmoux/checkbox.git "checkbox|install" "old" "module
 <details>
 <summary>更新日志</summary>
 
+- 2023-01-21 新增Anime字幕论坛签到
 - 2022-11-27 新增次元姬小说每日任务
 - 2022-08-28 新增美团买菜每日任务
 - 2022-08-14 修改游戏动力 && 轻之文库 token获取方式

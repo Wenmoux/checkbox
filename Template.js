@@ -8,6 +8,7 @@ function sign(op, header, rules,formhash) {
             console.log("去" + op.name)
             header.headers["User-Agent"] = (op.ua == "pc") ? "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.105 Safari/537.36" : "Mozilla/5.0 (Linux; Android 10; Redmi K30) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.105 Mobile Safari/537.36"
             let signurl = op.url.replace(/@formhash/, formhash);
+            
             delete(header.responseType)
             if (op.charset) {
                 header.responseType = "arraybuffer"
@@ -94,7 +95,7 @@ async function Template(rules) {
     if(checkres.match("请求出错")) message += checkres
     if (checkres && !checkres.match(rules.verify)) {
         ckstatus = 1
-        if (rules.formhash) formhash = checkres.match(rules.formhash)
+        if (rules.formhash) formhash = checkres.match(rules.formhash)        
         formhash = formhash ? formhash[1] : ""
         for (i = 0; i < rules.op.length &&canDo; i++) {
             msg = await sign(rules.op[i], header, rules,formhash)

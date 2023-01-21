@@ -384,3 +384,7 @@ MeiTuan:
 #次元姬小说
 hwnovel:
   token: 
+  
+# Anime字幕论坛  
+Anime: 
+  cookie:   
