@@ -60,7 +60,7 @@ function start(taskList) {
             }
             console.log("------------任务执行完毕------------\n");
             if (needPush && sendmsg) await sendmsg(logs);
-            if (needPush && notify) await notify.sendNotify("签到盒", `${logs}\n\n吹水群：https://t.me/wenmou_car`);
+            if (needPush && notify) await notify.sendNotify("签到盒", `${logs}\n\n吹水群：https://t.me/htuoypa`);
         } catch (err) {
             console.log(err);
         }

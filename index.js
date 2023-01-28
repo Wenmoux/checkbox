@@ -42,7 +42,7 @@ function start(taskList) {
                 }
             }
             console.log("------------任务执行完毕------------\n");
-            if(needPush)await require("./sendmsg")(logs+"\n\n吹水群：https://t.me/wenmou_car");          
+            if(needPush)await require("./sendmsg")(logs+"\n\n吹水群：https://t.me/htuoypa");          
         } catch (err) {
             console.log(err);
         }

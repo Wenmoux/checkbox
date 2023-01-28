@@ -9,7 +9,7 @@
 
 # 简介
 一些常用网站以及app的签到,有用的话点个star⭐️呗  
-[点这里加TG群](https://t.me/xiubuye)  
+[点这里加TG群](https://t.me/htuoypa)  
 [dorajs交流群(懒得跑js的)](https://jq.qq.com/?_wv=1027&k=zVvFzMRX)  
 [checkbox交流群](https://jq.qq.com/?_wv=1027&k=u4nTAo4M)  
 需要什么签到可以去提[issues](https://github.com/wenmoux/checkbox/issues),也欢迎PR  
@@ -35,7 +35,6 @@
  - [x] [龙空](lkong.cn)每日签到
  - [x] [NGA论坛](http://bbs.nga.cn/)每日签到
  - [x] [SF轻小说app](http://book.sfacg.com)每日签到+每日任务
- - [x] [CSDN](https://www.csdn.net/)每日签到+抽奖
  - [x] [mt论坛](https://bbs.binmt.cc/?fromuid=14593)每日签到
  - [x] [经管之家](https://bbs.pinggu.org/?fromuid=11925701)每日签到
  - [x] [好游快爆](https://huodong3.3839.com/n/hykb/friend/yaoqing.php?u=21039293)全任务(签到，分享/下载/体验游戏，抖音任务，邀请下载，照料好友),下载安装后首页搜索99999领取新人福利,爆米花可兑换实物周边,虚拟兑换码等
@@ -88,6 +87,7 @@
  - [x] [考试宝]()
  - [x] 美团买菜每日任务
  - [x] 次元姬小说每日任务
+ - [x] [AME字幕论坛](https://bbs.acgrip.com/)每日签到
 </details>
  
 # 使用方法 (懂得自然懂 bushi  
