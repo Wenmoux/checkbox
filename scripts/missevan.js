@@ -11,11 +11,11 @@ tw = 0;
 k = 0;
 point = 0;
 let soundid = [2006321, 1891240, 1891238, 1850399, 1850337];
-const $http = require("axios");
+const axios = require("axios");
 function check() {
   return new Promise(async (resolve) => {
     try {
-      ress = await $http.get(
+      ress = await axios.get(
         "https://www.missevan.com/account/userinfo",
         header
       );
@@ -45,7 +45,7 @@ function check() {
 function task(url) {
   return new Promise(async (resolve) => {
     try {
-      let res = await $http.get(url, header);
+      let res = await axios.get(url, header);
       message = res.data.success;
       //  console.log(res.data)
       if (res.data.success && res.data.info && res.data.info.message) {
@@ -75,9 +75,9 @@ function addcomment() {
   return new Promise(async (resolve) => {
     try {
       for (i = 0; i < 3; ) {
-        let msg = await $http.get("https://v1.hitokoto.cn/");
-        let data = `type=1&eId=2154758&comment=${encodeURI(msg.hitokoto)}`;
-        let ress = await $http.post(
+        let msg = await axios.get("https://v1.hitokoto.cn/");
+        let data = `type=1&eId=2154758&comment=${encodeURI(msg.data.hitokoto)}`;
+        let ress = await axios.post(
           "https://www.missevan.com/site/addcomment",
           data,
           header
@@ -105,7 +105,7 @@ function ts() {
       while (tw < 4) {
         let data1 = `sound_id=${soundid[k++]}`;
 
-        let res = await $http.post(
+        let res = await axios.post(
           "https://www.missevan.com/sound/ts",
           data1,
           header
@@ -133,7 +133,7 @@ async function missevan() {
   let point1 = await check();
   let point2 = await check();
   console.log(`今日共获得${point2 - point1}小鱼干`);
-  return `【猫耳FM】：今日共获得${point2 - point1}小鱼干`;
+  return `【猫耳FM】：当前共${point2}小鱼干 `;
 }
 
 module.exports = missevan;
