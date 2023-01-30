@@ -9,7 +9,7 @@ const axios= require('axios');
 var argv = yargs.argv;
 ycurl = process.env.ycurl
 let QL = process.env.QL_DIR
-config = null, notify = null, sendmsg = null, signlist = [], logs = "", needPush = true, signList = []
+config = null, notify = null, sendmsg = null, signlist = [], logs = "", needPush = false, signList = []
 if (fs.existsSync("./sendNotify.js")) notify = require('./sendNotify')
 
 //自行添加任务 名字看脚本里的文件名 比如csdn.js 就填"csdn"
@@ -34,7 +34,7 @@ async function go() {
     }
     if (config && config.Push) sendmsg = require("./sendmsg")
     if (config) signlist = config.cbList.split("&")
-    if (config && config.needPush && config.needPush == 0) needPush = false
+    if (config && config.needPush) needPush = true   
     var signList = (argv._.length) > 0 ? argv._ : (cbList.length > 0 ? cbList : signlist)
     if (config && process.env.TENCENTCLOUD_RUNENV != "SCF") start(signList);
     else console.log("哈哈哈")
@@ -51,8 +51,8 @@ function start(taskList) {
                 if (exists) {
                     const task = require(`./scripts/${taskList[i]}.js`);
                     taskResult = await task()
-                    if (taskResult && taskResult.match(/单独通知|cookie|失效|失败|出错/)) await sendmsg(taskResult)
-                    else logs += taskResult + "    \n\n";
+                    if (taskResult && taskResult.match(/单独通知|cookie|失效|失败|出错|重新登录/)) await sendmsg(taskResult)
+                    logs += taskResult + "    \n\n";
                 } else {
                     logs += `${taskList[i]}  不存在该脚本文件,请确认输入是否有误\n\n`
                     console.log("不存在该脚本文件,请确认输入是否有误")

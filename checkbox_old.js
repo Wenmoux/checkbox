@@ -6,7 +6,7 @@ const yaml = require("js-yaml");
 const fs = require('fs');
 const yargs = require('yargs');
 var argv = yargs.argv;
-config = null,notify = null,sendmsg = null,signlist = [],logs = "",needPush = true
+config = null,notify = null,sendmsg = null,signlist = [],logs = "",needPush = false
 
 //自行添加任务 名字看脚本里的文件名 比如csdn.js 就填"csdn"
 var cbList = []
@@ -27,7 +27,7 @@ if (QL) {
 }
 if(config)  sendmsg = require("./sendmsg")
 if(config) signlist = config.cbList.split("&")
-if(config.needPush&&config.needPush==0) needPush = false
+if (config && config.needPush) needPush = true
 var signList = (argv._.length) > 0 ? argv._ : (cbList.length>0 ? cbList : signlist) 
 if (config &&  process.env.TENCENTCLOUD_RUNENV!="SCF") start(signList);
 function start(taskList) {

@@ -42,7 +42,8 @@ async function aoqi() {
        info = `积分：${infores.data.credit}  已累计签到：${infores.data.signInTotal}天`
 
     } else {
-       info = res.message
+       info =  res.message     
+       if((/请先登录/).test(info)) info +="单独通知"
     }
     console.log(info)
     return "【奥拉星】："+info

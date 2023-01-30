@@ -89,7 +89,7 @@ function tgpush(msg) {
         try {
          //   let url = "https://api.telegram.org/bot${tgbotoken}/sendMessage";
          //   let data=`parse_mode=Markdown&text=${msg.replace(/\n/g,"%0A").replace(/【|】/g,"*")}&chat_id=${chatid}`
-             let url=`https://telegram_proxy.lulafun.workers.dev/bot${tgbotoken}/sendMessage?parse_mode=Markdown&text=${encodeURI(msg.replace(/【|】/g,"*"))}&chat_id=${chatid}`
+             let url=`https://tg-bot.0x23.cf/bot${tgbotoken}/sendMessage?parse_mode=Markdown&text=${encodeURI(msg.replace(/【|】/g,"*"))}&chat_id=${chatid}`
            //   let res = await axios.post(url,data);
              let res = await axios.get(url);
             if (res.data.ok) {
