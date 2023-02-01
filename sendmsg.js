@@ -8,7 +8,7 @@ async function sendmsg(text) {
     if(qmsgkey) await qmsg(text);
     if(pushplustoken) await pushplus(text);
     if(corpsecret) await wx(text); 
-    if(tgbotoken)await tgpush(text)
+    if(tgbotoken) await tgpush(text)
 }
 
 function server(msg) {
@@ -72,8 +72,7 @@ function qmsg(msg) {
                 } else { 
                     console.log("qmsg酱:发送失败 "+res.data.resson);
                     
-                }nsole.log("qmsg酱:你还没有填写qmsg酱推送key呢，推送个鸡腿");
-            
+                }            
         } catch (err) {
             console.log("qmsg酱:发送接口调用失败");
             console.log(err);

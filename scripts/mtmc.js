@@ -150,7 +150,7 @@ async function meituanmc() {
     await view()
     await share()
     myInfo = await getmyb()
-    content = `        签到：${signMsg} ${myInfo}`
+    content = ` 【美团买菜】 签到：${signMsg} ${myInfo}`
     console.log(myInfo)
     return content
 }

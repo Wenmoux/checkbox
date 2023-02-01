@@ -52,7 +52,7 @@ function start(taskList) {
                     const task = require(`./scripts/${taskList[i]}.js`);
                     taskResult = await task()
                     if (taskResult && taskResult.match(/单独通知|cookie|失效|失败|出错|重新登录/)) await sendmsg(taskResult)
-                    logs += taskResult + "    \n\n";
+                    else logs += taskResult + "    \n\n";
                 } else {
                     logs += `${taskList[i]}  不存在该脚本文件,请确认输入是否有误\n\n`
                     console.log("不存在该脚本文件,请确认输入是否有误")
