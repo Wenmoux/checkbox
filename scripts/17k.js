@@ -41,7 +41,7 @@ async function y7k() {
         my = `昵称：${data.nickname}\nK币：${data.accountInfo.balance}\nVIP：Lv${data.vipLevel}\n代金券：${data.accountInfo.totalBalance}\n推荐票：${data.cardInfo.recommendTicketCount}\napp签到：${signResult2}\nweb签到：${signResult1}`
     } else my = info.status.msg
     console.log(my)
-    return my
+    return "【17k小说】："+my
 }
 
 //y7k()

@@ -30,7 +30,6 @@
  - [x] [吾爱破解](www.52pojie.com)签到
  - [x] [网易云游戏](https://cloudgame.webapp.163.com/newer.html?invite_code=R6522U)每日签到得免费时长
  - [x] [晋江小说网](https://m.jjwxc.com/invite/index?novelid=2911400&inviteid=11581969)每日签到,得月石
- - [x] [什么值得买](smzdm.com)网页端每日签到
  - [x] 橙光游戏app每日签到+登陆奖励领取
  - [x] [龙空](lkong.cn)每日签到
  - [x] [NGA论坛](http://bbs.nga.cn/)每日签到
@@ -245,6 +244,11 @@ ql repo https://github.com/Wenmoux/checkbox.git "checkbox|install" "old" "module
 [@zsakvo](https://github.com/zsakvo)  
 
 # 支持一下
-  ![支持一下](https://cdn.jsdelivr.net/gh/Wenmoux/wenpic/qrcode/wx_rewardqrcode.png)
+  ![支持一下](https://cdn.jsdelivr.net/gh/Wenmoux/wenpic/qrcode/wx_rewardqrcode.png)    
+
+
+  USDT TRC20:  TJtKtFuDB2mjKQbjxG6L79DVLKRNW2tM3g  
+  
+  
 # 免责申明
 该项目仅供学习使用，严禁用于商业用途，由此造成的一切后果，本人概不负责。
