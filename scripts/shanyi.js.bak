@@ -49,7 +49,7 @@ function jm(data) {
     str = cryptojs.AES.encrypt("" + data, cryptojs.enc.Utf8.parse(passwd), {
         iv: cryptojs.enc.Utf8.parse(iv),
         mode: cryptojs.mode.CBC,
-         padding: cryptojs.pad.ZeroPadding
+        // padding: cryptojs.pad.Pkcs7
     })
     return encodeURIComponent(str.toString())
 }
