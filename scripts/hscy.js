@@ -9,7 +9,7 @@ function sign() {
       let res = await axios.post(url, "", {headers});
       let credit = res.data.credit ? res.data.credit : res.data
       console.log("签到成功，获得：" + credit + "分");
-      msg = "签到成功，获得：" + res.data.credit + "分";
+      msg = "签到成功，获得：" + credit + "分";
     } catch (err) {
       console.log(err)
       msg = "签到失败,其它未知原因！！ ";
@@ -19,7 +19,7 @@ function sign() {
   });
 }
 async function hscy() {
-  await sign();
+  return await sign();
 }
 
 module.exports = hscy;
