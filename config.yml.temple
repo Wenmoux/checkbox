@@ -382,9 +382,13 @@ MeiTuan:
   MTMC_uuid: 
   
 #次元姬小说
-hwnovel:
+hwnovel: 
   token: 
   
 # Anime字幕论坛  
 Anime: 
-  cookie:   
+  cookie: 
+
+# 黑丝次元 
+hscy: 
+  authorization: 
