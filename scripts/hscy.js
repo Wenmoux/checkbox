@@ -1,5 +1,6 @@
 const headers = {
-  Authorization: config.hscy.authorization
+  Authorization: authorization,
+  Cookie: `b2_token=${authorization.slice(7)}`
 };
 const axios = require("axios")
 function sign() {
