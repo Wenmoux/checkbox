@@ -392,3 +392,6 @@ Anime:
 # 黑丝次元 
 hscy: 
   authorization: 
+# 克拉漫播
+kilamanbo:
+  authtoken: 

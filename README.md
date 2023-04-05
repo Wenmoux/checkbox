@@ -89,6 +89,9 @@
  - [x] [AME字幕论坛](https://bbs.acgrip.com/)每日签到
  - [x] [黑丝次元](https://heisi.moe/)每日签到
 </details>
+ - [x] [克拉漫播]()每日签到
+</details>
+
  
 # 使用方法 (懂得自然懂 bushi  
 [教程：关于如何使用termux运行签到盒那件事](https://blog.1oner.cn/posts/termux-checkbox/)  
@@ -128,6 +131,7 @@ ql repo https://github.com/Wenmoux/checkbox.git "checkbox|install" "old" "module
 <details>
 <summary>更新日志</summary>
 
+- 2023-04-05 新增克拉漫播每日签到 by chatgpt
 - 2023-03-29 新增黑丝次元论坛签到
 - 2023-01-21 新增Anime字幕论坛签到
 - 2022-11-27 新增次元姬小说每日任务
