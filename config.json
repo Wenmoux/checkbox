@@ -1,0 +1,302 @@
+{
+  "cbList": "ssly&ssly",
+  "needPush": true,
+  "Push": {
+    "qywx": {
+      "corpsecret": null,
+      "corpid": null,
+      "agentid": null,
+      "mediaid": 666
+    },
+    "tgpushkey": {
+      "tgbotoken": null,
+      "chatid": null
+    },
+    "sckey": null,
+    "qmsgkey": null,
+    "pushplustoken": null
+  },
+  "Lzong": {
+    "account": null,
+    "password": null
+  },
+  "duokan": {
+    "cookie": null
+  },
+  "rpg66": {
+    "uid": null,
+    "token": null,
+    "skey": null,
+    "sflag": null,
+    "folder": null,
+    "gameid": 1569844,
+    "did": null
+  },
+  "ssly": {
+    "uid": 12487
+  },
+  "everphoto": {
+    "phone": 8611012451110,
+    "password": null
+  },
+  "sxmd": {
+    "account": null,
+    "password": null
+  },
+  "ucloud": {
+    "token": null
+  },
+  "hykb": {
+    "scookie": null,
+    "UA": null,
+    "qq": null,
+    "gid": null,
+    "key": null
+  },
+  "du163": {
+    "xsrf": null,
+    "X-Auth-Token": null
+  },
+  "xiang5": {
+    "cookie": null
+  },
+  "jjwxc": {
+    "cookie": "sid=20070297_1234576798787",
+    "sign": null
+  },
+  "smzdm": {
+    "cookie": null
+  },
+  "cg163": {
+    "Authorization": null
+  },
+  "lkong": {
+    "cookie": null
+  },
+  "pinggu": {
+    "cookie": null
+  },
+  "nga": {
+    "uid": null,
+    "accesstoken": null,
+    "UA": "xxxxxx Nga_Official/90306"
+  },
+  "csdn": {
+    "cookie": null
+  },
+  "mt": {
+    "cookie": null,
+    "time": ""
+  },
+  "sfacg": {
+    "cookie": null,
+    "ua": null,
+    "authorization": null
+  },
+  "maoer": {
+    "cookie": null
+  },
+  "aihao": {
+    "cookie": null
+  },
+  "hbooker": {
+    "token": null,
+    "account": null,
+    "device_token": "ciweimao_",
+    "app_version": "2.9.297"
+  },
+  "acfun": {
+    "phone": null,
+    "password": null
+  },
+  "diygm": {
+    "cookie": null
+  },
+  "ym3fd": {
+    "username": null,
+    "password": null,
+    "lzusername": null,
+    "lzpassword": null
+  },
+  "acdog": {
+    "cookie": null
+  },
+  "lenovo": {
+    "account": null,
+    "password": null,
+    "baseinfo": null
+  },
+  "mydigit": {
+    "cookie": null
+  },
+  "ldygo": {
+    "cookie": null
+  },
+  "coolbuy": {
+    "type": "wx",
+    "authorization": null,
+    "xcsrftoken": null,
+    "cookie": null
+  },
+  "abooky": {
+    "cookie": null
+  },
+  "fglt": {
+    "cookie": null
+  },
+  "jlpzj": {
+    "cookie": null
+  },
+  "ugsnx": {
+    "cookie": null
+  },
+  "hsy": {
+    "cookie": null
+  },
+  "togamemod": {
+    "cookie": null
+  },
+  "meizu": {
+    "cookie": null
+  },
+  "sucai999": {
+    "cookie": null
+  },
+  "mdd": {
+    "appToken": null
+  },
+  "shanyi": {
+    "token": null,
+    "u": null,
+    "gids": null,
+    "client": "ios",
+    "UA": null
+  },
+  "xjvideo": {
+    "xxx_api_auth": null,
+    "baseurl": "https://7kp1t2vde8wt7p8tc0km.lagoapps.com"
+  },
+  "bl20166": {
+    "cookie": null
+  },
+  "bigfun": {
+    "cookie": null,
+    "token": null
+  },
+  "qmj": {
+    "cookie": null
+  },
+  "hifini": {
+    "cookie": null
+  },
+  "dsdlove": "cookie",
+  "aiqicha": {
+    "cookie": [
+      "cookie在这里 -不能取消 空格也要",
+      "多账号继续往下 不需要的请删除"
+    ]
+  },
+  "quqi": {
+    "cookie": null
+  },
+  "aoqi": {
+    "cookie": null
+  },
+  "youlecheng": {
+    "scookie": null,
+    "SMid": null,
+    "device": null,
+    "udid": null,
+    "UA": null
+  },
+  "fishc": {
+    "cookie": null
+  },
+  "cunhua": {
+    "cookie": null,
+    "hz": "surf"
+  },
+  "fanruan": {
+    "cookie": null
+  },
+  "yunys": {
+    "combo_token": "ai=x;ci=x;oi=xxxxxx;ct=xxxxxx;si=xxxxxx;bi=xxxxxx",
+    "type": null,
+    "app_version": null,
+    "sys_version": null,
+    "device_id": null,
+    "device_name": null,
+    "device_model": null,
+    "app_id": null
+  },
+  "zbwx": {
+    "cookie": "accessToken=xxxxxxxx"
+  },
+  "tsdm": {
+    "cookie": null
+  },
+  "fuman99": {
+    "cookie": null
+  },
+  "Qoo": {
+    "token": null
+  },
+  "linovel": {
+    "username": null,
+    "password": null
+  },
+  "gamepower": {
+    "loginCode": null
+  },
+  "oshwhub": {
+    "cookie": null
+  },
+  "jiepei": {
+    "MbId": null
+  },
+  "huahuo": {
+    "cookie": null
+  },
+  "y7k": {
+    "cookie": null
+  },
+  "huashi6": {
+    "cookie": null
+  },
+  "qidian": {
+    "cookie": null,
+    "UserId": null,
+    "deviceUid": null,
+    "BookId": null,
+    "TicketCount": null,
+    "roleId": null,
+    "version": "7.9.186"
+  },
+  "kaoshibao": {
+    "clientid": null,
+    "authorization": null
+  },
+  "wb": {
+    "ticket": null,
+    "deviceId": null,
+    "nsr": null
+  },
+  "MeiTuan": {
+    "MTMC_userId": null,
+    "MTMC_fingerprint": null,
+    "MTMC_token": null,
+    "MTMC_uuid": null
+  },
+  "hwnovel": {
+    "token": null
+  },
+  "Anime": {
+    "cookie": null
+  },
+  "hscy": {
+    "authorization": null
+  },
+  "kilamanbo": {
+    "authtoken": null
+  }
+}

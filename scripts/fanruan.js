@@ -22,7 +22,7 @@ const rules = {
             method: "post", //签到请求方式 get/post
             url: "https://bbs.fanruan.com/plugin.php?id=yinxingfei_zzza:yinxingfei_zzza_post",
             data: "formhash=@formhash",
-            reg2: "已经摇过奖", //重复签到判断
+            reg2: "已经摇过", //重复签到判断
             reg3: "摇出", //签到成功判断
             info: "摇出\\d+豆", //签到成功返回信息
         },
