@@ -395,3 +395,8 @@ hscy:
 # 克拉漫播
 kilamanbo:
   authtoken: 
+  
+#库街区
+kurobbs: 
+  token: 
+  devCode:   

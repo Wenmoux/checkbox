@@ -9,7 +9,7 @@ const axios = require("axios")
 token = config.shanyi.token
 u = config.shanyi.u
 urlpara = "&v=1.0.0&app_version=2.4.5&client=" + config.shanyi.client
-datapara = "&u=" + encodeURIComponent(u) + "&token=" + encodeURIComponent(token)
+datapara = "&u=" + jm(u)+ "&token=" + jm(token)
 function post(options) {
     //let params = Object.assign({}, para, options.para);
     return new Promise((resolve, reject) => {

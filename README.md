@@ -90,6 +90,7 @@
  - [x] [黑丝次元](https://heisi.moe/)每日签到
 </details>
  - [x] [克拉漫播]()每日签到
+ - [x] [库街区](https://www.kurobbs.com/download.html)每日任务
 </details>
 
  
@@ -131,6 +132,7 @@ ql repo https://github.com/Wenmoux/checkbox.git "checkbox|install" "old" "module
 <details>
 <summary>更新日志</summary>
 
+- 2023-04-07 新增库街区每日任务 by星落黎明
 - 2023-04-05 新增克拉漫播每日签到 by chatgpt
 - 2023-03-29 新增黑丝次元论坛签到
 - 2023-01-21 新增Anime字幕论坛签到
