@@ -140,6 +140,42 @@ var sign = async function() {
     });
 };
 
+//test获取用户背包
+var give = async function() {
+    return await post({
+        url: "reader/get_my_info",
+        data: {
+
+        }
+    }).then(async (res) => {
+        console.log(res.data.prop_info.rest_recommend);
+        msg = "";
+        if (0!=res.data.prop_info.rest_recommend){//推荐票
+            return await post({
+                url: "book/give_recommend",
+                data: {
+                    book_id: book_id,
+                    count:res.data.prop_info.rest_recommend
+                }
+            }).then((res) => {
+                msg += "给"+book_id+"投出"+res.data.prop_info.rest_recommend+"张推荐票";
+            });
+        }
+        // if (0!=res.data.prop_info.rest_yp){//月票、未完
+        //     return await post({
+        //         url: "book/give_recommend",
+        //         data: {
+        //             book_id: book_id,
+        //             count:res.data.prop_info.rest_recommend
+        //         }
+        //     }).then((res) => {
+        //         return res;
+        //     });
+        // }
+        return msg;
+    });
+};
+
 //分享插画区帖子
 var share_bbs = async function() {
     let random = Math.floor(Math.random() * 99);
@@ -287,6 +323,7 @@ async function hbooker() {
         console.log(a);
     }
     console.log(result);
+    b = await give();
     return result;
 }
 
