@@ -2,6 +2,8 @@ login_token = config.hbooker.token
 account = config.hbooker.account
 device_token = config.hbooker.device_token
 app_version = config.hbooker.app_version
+book_id = config.hbooker.book_id
+reader_id = config.hbooker.reader_id
 
 const CryptoJS = require("crypto-js");
 const axios = require("axios");
@@ -138,6 +140,41 @@ var sign = async function() {
     }).then((res) => {
         return res;
     });
+};
+
+//获取用户背包
+var give = async function () {
+    if (book_id) {
+        return await post({
+            url: "reader/get_my_info",
+            data: {
+                reader_id: reader_id
+            }
+        }).then(async (res) => {
+            prop_info=res.data.prop_info
+            msg = "";
+            if (0 != prop_info.rest_recommend) {//推荐票
+                return await post({
+                    url: "book/give_recommend",
+                    data: {
+                        book_id: book_id,
+                        count: prop_info.rest_recommend
+                    }
+                }).then((res) => {
+                    if(res.code==100000){
+                        msg += "投出" + prop_info.rest_recommend + "张推荐票";
+                        console.log(msg);
+                        return msg;
+                    }else{
+                        console.log(prop_info);
+                        msg += "投推荐票失败";
+                        return msg;
+                    }
+                });
+            }
+            return msg;
+        });
+    }
 };
 
 //分享插画区帖子
@@ -286,6 +323,8 @@ async function hbooker() {
         result = a && a.tip
         console.log(a);
     }
+    b = await give();
+    result += b
     console.log(result);
     return result;
 }
