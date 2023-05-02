@@ -45,6 +45,10 @@ duokan:
 aliyun:
   refresh_token: 
 
+#星穹铁轨活动
+mhy_xqtg:
+  cookie: 
+
 #橙光游戏app随便抓个包就有token
 rpg66:
   uid: 
