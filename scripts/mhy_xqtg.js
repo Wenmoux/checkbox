@@ -15,7 +15,7 @@ function mhy_xqtg() {
         if (res.data.retcode == 0){
             const obj = res.data.data.list
             // console.log(obj)
-            return task(obj)
+            await task(obj)
         }else{
             msg = "接口请求失败";
         }
