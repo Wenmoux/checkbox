@@ -23,7 +23,7 @@ function aliyun() {
             const name = res.data.nick_name
             token = res.data.access_token
             // console.log(name,token)
-            return sign(token, name)
+            await sign(token, name)
         }
 
     } catch (error) {
@@ -56,7 +56,7 @@ async function sign(token, name) {
             if (res.data.success) {
                 console.log(`${name}，已连续签到${res.data.result.signInCount}天!`)
                 const day = res.data.result.signInCount
-                return reward(day)
+                await reward(day)
             }
             else {
                 console.log(`${name}，签到失败，${res.data.message}!`)
