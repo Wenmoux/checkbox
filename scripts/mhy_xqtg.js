@@ -24,7 +24,7 @@ function mhy_xqtg() {
         console.log(error);
         msg = "接口请求失败";
     }
-        resolve("【星穹铁道活动】：" + msg);
+        resolve("【星穹铁道活动】：" + msg || "正常运行了");
     })
 }
 
@@ -48,12 +48,13 @@ function task(obj) {
         let res3 = await axios.get(url3, {headers});
         message += "我的积分：" + res3.data.data.user_score
         console.log(message);
+        msg = message
 
     } catch (error) {
         console.log(error);
         msg = "接口请求失败";
     }
-        resolve("【星穹铁道活动】：" + msg);
+        resolve("【星穹铁道活动】：" + msg || "正常运行了");
     })
 }
 

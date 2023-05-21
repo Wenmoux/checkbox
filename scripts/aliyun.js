@@ -30,7 +30,7 @@ function aliyun() {
         console.log(error);
         msg = "token接口请求失败";
     }
-        resolve("【阿里云盘】：" + msg);
+        resolve("【阿里云盘】：" + msg || "正常运行了");
     })
 }
 
@@ -57,6 +57,7 @@ async function sign(token, name) {
                 console.log(`${name}，已连续签到${res.data.result.signInCount}天!`)
                 const day = res.data.result.signInCount
                 await reward(day)
+                msg = `${name}，已连续签到${res.data.result.signInCount}天!`
             }
             else {
                 console.log(`${name}，签到失败，${res.data.message}!`)
@@ -67,7 +68,7 @@ async function sign(token, name) {
             console.log(error)
             msg = "签到接口请求失败"
         }
-            resolve("【阿里云盘】：" + msg)
+            resolve("【阿里云盘】：" + msg || "正常运行了")
     });
 }
 
@@ -84,6 +85,7 @@ async function reward(day){
             let res = await axios.post(url, data, {headers})
             if (res.data.success) {
                 console.log(`奖励:${res.data.result.name},${res.data.result.description},${res.data.result.notice}!`);
+                msg = `奖励:${res.data.result.name},${res.data.result.description},${res.data.result.notice}!`
             }
             else {
                 console.log(`奖励获取失败:${res.data.message}!`);
@@ -93,7 +95,7 @@ async function reward(day){
             console.log(error);
             msg = "奖励接口请求失败";
         }
-            resolve("【阿里云盘】：" + msg)
+            resolve("【阿里云盘】：" + msg || "正常运行了")
     })
 }
 
