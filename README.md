@@ -132,6 +132,8 @@ ql repo https://github.com/Wenmoux/checkbox.git "checkbox|install" "old" "module
 <details>
 <summary>更新日志</summary>
 
+- 2023-06-03 新增医生圈每日任务
+- 2023-04-30 新增阿里云盘签到 by yiyule10
 - 2023-04-07 新增库街区每日任务 by星落黎明
 - 2023-04-05 新增克拉漫播每日签到 by chatgpt
 - 2023-03-29 新增黑丝次元论坛签到
