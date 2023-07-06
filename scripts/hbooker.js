@@ -4,6 +4,7 @@ device_token = config.hbooker.device_token
 app_version = config.hbooker.app_version
 book_id = config.hbooker.book_id
 reader_id = config.hbooker.reader_id
+buy_list = config.hbooker.buy_list
 
 const CryptoJS = require("crypto-js");
 const axios = require("axios");
@@ -67,13 +68,13 @@ function post(options) {
     }
     return new Promise((resolve, reject) => {
         axios({
-                url: `https://app.happybooker.cn/${options.url}`,
-                method: "post",
-                data: JsonToUrl(data),
-                headers: {
-                    "user-agent": `Android  com.kuangxiangciweimao.novel  ${app_version},Xiaomi, Mi 12, 31, 12`
-                }
-            })
+            url: `https://app.happybooker.cn/${options.url}`,
+            method: "post",
+            data: JsonToUrl(data),
+            headers: {
+                "user-agent": `Android  com.kuangxiangciweimao.novel  ${app_version},Xiaomi, Mi 12, 31, 12`
+            }
+        })
             .then((response) => {
                 let res = decrypt(response.data)
                 resolve(JSON.parse(res))
@@ -85,26 +86,26 @@ const bid = ["100000261", "100346721", "100176787", "100249884", "100157527", "1
 
 const book = {
     data: [{
-            bid: "100346721",
-            list: ["109614912", "109589642", "109586662", "109589701", "109631032", "109631029", "109625745", "109626991", "109643147", "109638517"]
-        },
-        {
-            bid: "100293922",
-            list: ["108315620", "108284663", "108289456", "108294592", "108267077", "108272356", "108239560", "108248456", "108220236", "108215820"]
-        },
-        {
+        bid: "100346721",
+        list: ["109614912", "109589642", "109586662", "109589701", "109631032", "109631029", "109625745", "109626991", "109643147", "109638517"]
+    },
+    {
+        bid: "100293922",
+        list: ["108315620", "108284663", "108289456", "108294592", "108267077", "108272356", "108239560", "108248456", "108220236", "108215820"]
+    },
+    {
 
-            bid: "100323512",
-            list: ["109012824", "109013007", "108980293", "108989400", "108952587", "108942799", "108933344", "108927340", "108915351", "108904304"]
-        },
-        {
-            bid: "100338867",
-            list: ["109363038", "109360440", "109351751", "109340611", "109337642", "109321224", "109325405", "109326171", "109323353", "109319366"]
-        },
-        {
-            bid: "100343334",
-            list: ["109562898", "109563193", "109537168", "109541302", "109537184", "109502951", "109499567", "109482527", "109482930", "109476426"]
-        }
+        bid: "100323512",
+        list: ["109012824", "109013007", "108980293", "108989400", "108952587", "108942799", "108933344", "108927340", "108915351", "108904304"]
+    },
+    {
+        bid: "100338867",
+        list: ["109363038", "109360440", "109351751", "109340611", "109337642", "109321224", "109325405", "109326171", "109323353", "109319366"]
+    },
+    {
+        bid: "100343334",
+        list: ["109562898", "109563193", "109537168", "109541302", "109537184", "109502951", "109499567", "109482527", "109482930", "109476426"]
+    }
     ]
 }
 
@@ -142,7 +143,7 @@ var sign = async function() {
     });
 };
 
-//获取用户背包
+//投票
 var give = async function () {
     if (book_id) {
         return await post({
@@ -154,7 +155,7 @@ var give = async function () {
             prop_info=res.data.prop_info
             msg = "";
             if (0 != prop_info.rest_recommend) {//推荐票
-                return await post({
+                await post({
                     url: "book/give_recommend",
                     data: {
                         book_id: book_id,
@@ -162,13 +163,26 @@ var give = async function () {
                     }
                 }).then((res) => {
                     if(res.code==100000){
-                        msg += "投出" + prop_info.rest_recommend + "张推荐票";
-                        console.log(msg);
-                        return msg;
+                        msg += "投出" + prop_info.rest_recommend + "张推荐票||";
                     }else{
                         console.log(prop_info);
-                        msg += "投推荐票失败";
-                        return msg;
+                        msg += "投推荐票失败||";
+                    }
+                });
+            }
+            if (0 != prop_info.rest_month_blade) {//刀片
+                await post({
+                    url: "book/give_blade",
+                    data: {
+                        book_id: book_id,
+                        count: prop_info.rest_month_blade
+                    }
+                }).then((res) => {
+                    if(res.code==100000){
+                        msg += "投出" + prop_info.rest_month_blade + "张刀片||";
+                    }else{
+                        console.log(prop_info);
+                        msg += "投刀片失败||";
                     }
                 });
             }
@@ -176,6 +190,72 @@ var give = async function () {
         });
     }
 };
+
+//代币购买章节
+var buy = async function() {
+    if (buy_list) {
+        for (const book_id of buy_list) {
+            console.log("bookid"+book_id);
+            if (book_id) {
+                var chapterId,price,rest_gift_hlb
+                await post({
+                    url: "chapter/get_chapter_permission_list",
+                    data: {
+                        book_id: book_id,
+                    }
+                }).then((res) => {
+                    let firstUnpurchasedChapter = null;
+                    for (const chapter of res.data.chapter_permission_list) {
+                        if (chapter.auth_access === "0") {
+                            firstUnpurchasedChapter = chapter;
+                            break;
+                        }
+                    }
+
+                    if (firstUnpurchasedChapter) {
+                        chapterId = firstUnpurchasedChapter.chapter_id;
+                        price = firstUnpurchasedChapter.unit_hlb;
+                        console.log("第一个未购买的章节：");
+                        console.log("章节ID: ", chapterId);
+                        console.log("价格: ", price);
+                    } else {
+                        console.log("未找到未购买的章节。");
+                        chapterId = null;
+                    }
+                });
+                if(chapterId){
+                    await post({
+                        url: "reader/get_my_info",
+                        data: {
+                            reader_id: reader_id
+                        }
+                    }).then((res) => {
+                        rest_gift_hlb = res.data.prop_info.rest_gift_hlb
+                    });
+                    if (rest_gift_hlb>price){
+                        console.log("正在购买章节" + chapterId);
+                        return await post({
+                            url: "chapter/buy",
+                            data: {
+                                chapter_id: chapterId
+                            }
+                        }).then((res) => {
+                            if (res.code==100000){
+                                return "购买成功,bookid="+book_id+"chapterId="+chapterId+"花费"+price+"代币，剩余"+ (rest_gift_hlb-price) + "代币||"
+                            }else{
+                                return "购买失败,脚本可能失效||"
+                            }
+                        });
+                        break
+                    }else{
+                        console.log("代币不足,未购买章节");
+                        return ""
+                    }
+                }
+            }
+        }
+    }
+}
 
 //分享插画区帖子
 var share_bbs = async function() {
@@ -325,6 +405,8 @@ async function hbooker() {
     }
     b = await give();
     result += b
+    c = await buy();
+    result += c
     console.log(result);
     return result;
 }

@@ -148,7 +148,7 @@ maoer:
 aihao:
   cookie:  
   
-#刺猬猫小说 book_id与reader_id用于自动投推荐票，可不填
+#刺猬猫小说 book_id与reader_id用于自动投推荐票， reader_id与buy_list用于使用代币自动购买章节，buy_list格式为" [100287528,100352526,100357750] " 如不需要该功能则留空
 hbooker:
   token: 
   account: 
@@ -156,6 +156,7 @@ hbooker:
   app_version: 2.9.297
   book_id: 
   reader_id: 
+  buy_list: 
 
 #ACFun 手机号 密码
 acfun:
