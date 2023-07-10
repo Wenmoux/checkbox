@@ -232,7 +232,7 @@ var buy = async function() {
                     }).then((res) => {
                         rest_gift_hlb = res.data.prop_info.rest_gift_hlb
                     });
-                    if (rest_gift_hlb>price){
+                    if (parseInt(rest_gift_hlb) > parseInt(price)){
                         console.log("正在购买章节" + chapterId);
                         return await post({
                             url: "chapter/buy",
