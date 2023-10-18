@@ -95,7 +95,7 @@
 
  
 # 使用方法 (懂得自然懂 bushi  
-[教程：关于如何使用termux运行签到盒那件事](https://blog.1oner.cn/posts/termux-checkbox/)  
+[教程：关于如何使用termux运行签到盒那件事](https://blog.1oner.cn/p/termux-checkbox/)  
 termux可以使用crontab设置定时任务  
 写法参见crontab.list
 
