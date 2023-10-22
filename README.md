@@ -88,9 +88,9 @@
  - [x] 次元姬小说每日任务
  - [x] [AME字幕论坛](https://bbs.acgrip.com/)每日签到
  - [x] [黑丝次元](https://heisi.moe/)每日签到
-</details>
  - [x] [克拉漫播]()每日签到
  - [x] [库街区](https://www.kurobbs.com/download.html)每日任务
+ - [x] [linkai](https://chat.link-ai.tech/home?share=GBoWyH)每日签到 
 </details>
 
  
@@ -131,7 +131,7 @@ ql repo https://github.com/Wenmoux/checkbox.git "checkbox|install" "old" "module
 # other
 <details>
 <summary>更新日志</summary>
-
+- 2023-10-23 新增[linkai](https://chat.link-ai.tech/home?share=GBoWyH)每日签到 
 - 2023-06-03 新增医生圈每日任务
 - 2023-04-30 新增阿里云盘签到 by yiyule10
 - 2023-04-07 新增库街区每日任务 by星落黎明
