@@ -123,6 +123,8 @@ async function main() {
     for (let i = 1; i <= 5; i++) {
         let random = Math.floor(Math.random() * 20)
         let bbs = bbslist.data.postList[random]
+        await getBbs(bbs)
+        await getBbs(bbs)
         await like(1, bbs)
         await like(2, bbs)
     }
