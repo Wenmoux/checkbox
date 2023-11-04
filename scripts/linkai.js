@@ -18,7 +18,7 @@ function linkai() {
       msg = `签到失败，原因：${response.data.message}`;
     }
     console.log(msg)
-    } catch (err) {
+    } catch (error) {
       msg =`签到失败，原因：${error.message}`;
     }
     resolve("【linkai】：" + msg);
