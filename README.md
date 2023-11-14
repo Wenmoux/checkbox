@@ -73,7 +73,7 @@
  - [x] 瞻彼文学app每日签到
  - [x] 云原神每日签到
  - [x] Qoo app 每日签到
- - [x] [天使动漫](https://tsdm.live/forum.php?mobile=yes)每日签到and打工
+ - [x] [天使动漫](https://tsdm.live/forum.php?mobile=yes)每日签到and打工 `tsdmsign为单独的签到模块，tsdmwork为单独的打工模块`
  - [x] [耽漫](99fuman.com)每日签到
  - [x] [轻之文库](www.linovel.net)每日签到
  - [x] [游戏动力app]()每日任务
