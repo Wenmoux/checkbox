@@ -42,9 +42,9 @@ class PFJS {
         const url = this.host + 'client/api/v1/virtual_currency/sign_in_for_species';
         try {
             const res = await axios.post(url, this.body, {headers: this.headers});
-            console.log(`签到${res.data.data.info}`);
-            result += `签到${res.data.data.info} ||`
-            await this.check_gold(res.data.data.info)
+            console.log(`签到${res.data.info}`);
+            result += `签到${res.data.info} ||`
+            await this.check_gold(res.data.info)
         } catch (error) {
             console.log(`签到失败，原因是：${error.response.data.info}`);
             result += `签到失败，原因是：${error.response.data.info} ||`
@@ -52,6 +52,7 @@ class PFJS {
         }
     }
 
+    // 查询广告剩余次数
     async getAd() {
         const url = this.host + 'client/api/v1/virtual_currency/look_ad_count';
         try {
@@ -80,7 +81,7 @@ class PFJS {
         try {
             const res = await axios.post(url, this.body, {headers: this.headers});
             console.log(`看广告${res.data.info}`);
-            await this.check_gold(res.data.data.info)
+            await this.check_gold(res.data.info)
             result += `看广告${res.data.info} ||`
         } catch (error) {
             console.log(`看广告失败，原因是：${error.response.data.info}`);
