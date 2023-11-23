@@ -92,6 +92,7 @@
  - [x] [库街区](https://www.kurobbs.com/download.html)每日任务
  - [x] [linkai](https://chat.link-ai.tech/home?share=GBoWyH)每日签到 
  - [x] [泡芙加速器](https://paofujiasu.com/)每日签到+看广告+兑换（抓包vx小程序）
+ - [x] [海贼王论坛](https://bbs.talkop.com/)每日签到
 </details>
 
  
@@ -132,7 +133,8 @@ ql repo https://github.com/Wenmoux/checkbox.git "checkbox|install" "old" "module
 # other
 <details>
 <summary>更新日志</summary>
-- 2023-10-23 新增[泡芙加速器](https://paofujiasu.com/)每日签到+看广告+兑换 by LinYuanovo
+- 2023-11-23 新增[海贼王论坛](https://bbs.talkop.com/)每日签到 by LinYuanovo
+- 2023-11-22 新增[泡芙加速器](https://paofujiasu.com/)每日签到+看广告+兑换 by LinYuanovo
 - 2023-10-23 新增[linkai](https://chat.link-ai.tech/home?share=GBoWyH)每日签到 
 - 2023-06-03 新增医生圈每日任务
 - 2023-04-30 新增阿里云盘签到 by yiyule10
