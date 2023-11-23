@@ -417,3 +417,8 @@ linkai:
 # 泡芙加速器
 pfjsq:
   token:
+
+# 海贼王论坛
+hzw:
+  cookie:
+  formhash:
