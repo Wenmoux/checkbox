@@ -352,7 +352,7 @@ async function meizu() {
 						await favoriteTopics(arList)
 						break;
 					case '发布主题':
-						await createTopic("小鸟说早早早", "你为什么背上炸药包", 22, 534)
+						//await createTopic("小鸟说早早早", "你为什么背上炸药包", 22, 534)
 						break;									
 					default:
 						console.log(`没有定义任务 "${task.taskName}" 的执行操作，跳过`);
