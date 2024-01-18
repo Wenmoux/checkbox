@@ -224,8 +224,10 @@ togamemod:
   cookie:
 
 #魅族社区
-meizu:
-  cookie:
+meizu: 
+  remember: 
+  secret: 
+  clientid: 
 
 #菜鸟图库
 sucai999:
