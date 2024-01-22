@@ -12,7 +12,6 @@ async function checkIn() {
   const body = {
     "scene": "HOMEPAGE"
   };
-
   try {
     const response = await axios.post(url, body, { headers });
     if (response.data && response.data.code === "200") {

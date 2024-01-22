@@ -107,8 +107,8 @@ async function getCookie() {
     console.error('无法获取access_token');
     return null;
   }
-  sid = await getSid(accessToken);
-  if (!sid) {
+  cookie = await getSid(accessToken);
+  if (!cookie) {
     console.error('无法获取sid');
     return null;
   }
@@ -144,7 +144,6 @@ async function signInMzStore(uid, sid) {
 	const url = `https://app.store.res.meizu.com/mzstore/sign/add`;
 	const postData = `uid=${uid}&sid=${sid}`;
 	const response = await meizuGet(url, postData, "post");
-	//console.log(response.data)
 }
 
 // 发表主题函数
