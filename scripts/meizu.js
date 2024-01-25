@@ -15,6 +15,7 @@ async function meizuGet(url, data=null, method="get") {
 			Referer: "https://www.meizu.cn",
 			"local-time": Date.now(),
 			"android-app-channel": "meizu",
+			"app-mode":1,
 			"user-agent": "android_app_myplus",
 			"android-app-version_name": "6.5.9",
 			"android-app-version-code": 50000061,
@@ -152,7 +153,7 @@ async function createTopic(title, content, forumId, topicIds) {
 	const data = {
 		ats: [],
 		content: `[{\"c\":[{\"id\":\"${topicIds}\",\"n\":\"${title}\",\"c\":[{\"x\":\"\"}],\"t\":\"tc\"}],\"t\":\"p\"}]`,
-		deviceName: "M461Q", // 这里可以根据实际情况修改设备名称
+		deviceName: "meizu18pro", // 这里可以根据实际情况修改设备名称
 		enterId: 0,
 		format: 1,
 		forumId: forumId,
@@ -197,7 +198,7 @@ async function addComment(contentId, comment) {
 		content: await getreply(),
 		contentId: contentId,
 		createTime: Math.floor(Date.now() / 1000), // 当前时间的Unix时间戳
-		deviceName: "M461Q", // 这里可以根据实际情况修改设备名称
+		deviceName: "meizu18pro", // 这里可以根据实际情况修改设备名称
 		isChp: 0,
 		parentId: 0,
 		replyId: 0,
