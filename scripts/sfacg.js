@@ -5,7 +5,7 @@ const headers = {
         "user-agent": config.sfacg.ua,
         authorization: config.sfacg.authorization,
         "content-type": "application/json; charset=UTF-8",
-        cookie:config.sfacg.cookie
+        cookie: config.sfacg.cookie
     },
 };
 //上面的user-agent authorization sfsecurity 建议自行替换成自己的
@@ -23,9 +23,9 @@ function getask() {
                 headers
             );
             k = 0;
-            result = "";
+            //result = "";
             for (i of res.data.data) {
-                result += `${i.name}：${i.tips2}  ||  `;
+                result += `\n${i.name}：${i.tips2}  ||  `;
                 dailytasklist.push({
                     name: i.name,
                     id: i.taskId,
@@ -105,24 +105,42 @@ function rewardl(id) {
 //签到
 function Sign(id) {
     return new Promise(async (resolve) => {
-        try {
-            let res = await axios.put(
-                "https://api.sfacg.com/user/signInfo",
-                "",
-                headers
-            );
+        try { // 新版APP签到改用newsignInfo了
+            let date = formatDate(new Date());
+            let body = { signDate: date };
+
+            var res = null;
+
+            try {//修复响应代码非200会中断后续代码的BUG
+                res = await axios.put(
+                    'https://api.sfacg.com/user/newSignInfo',
+                    JSON.stringify(body),
+                    headers
+                )
+            } catch (error) {
+                res = error.response
+            }
+
             if (res.data.status.httpCode == 200) {
-                msg = "签到成功 || ";
+                msg = "签到成功 || " + `获得${res.data.data.num}代卷\n`;
             } else {
-                msg = "签到失败 || ";
+                msg = "签到失败 || " + res.data.status.msg + "\n";
             }
             result += msg;
             console.log(msg);
+
+            // money = requests.get('https://api.sfacg.com/user/money',headers = headers).json()
         } catch (err) {
             result += "签到失败" + err.response.data + " || ";
             console.log(err.response.data);
         }
         resolve();
+        function formatDate(date) {
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0'); // 月份需要加1，且保证两位数
+            const day = String(date.getDate()).padStart(2, '0'); // 日期保证两位数
+            return `${year}-${month}-${day}`;
+        }
     });
 }
 
@@ -150,7 +168,24 @@ function info(id) {
                 "https://api.sfacg.com/user/welfare/income",
                 headers
             );
-            msg = "共" + res.data.data.coinRemain + "金币  ";
+            var coin = res.data.data.coinRemain
+
+            res = await axios.get(
+                "https://api.sfacg.com/user?",
+                headers
+            );
+
+            var usename = res.data.data.nickName
+
+            res = await axios.get(
+                "https://api.sfacg.com/user/money",
+                headers
+            );
+            var huojuan = res.data.data.fireMoneyRemain
+            var daijuan = res.data.data.couponsRemain
+
+            msg = `\n 用户: ${usename} \n 火卷: ${huojuan} \n代卷: ${daijuan} \n金币: ${coin}`;
+
             result += msg;
             console.log(msg);
         } catch (err) {
@@ -160,7 +195,7 @@ function info(id) {
     });
 }
 async function task() {
-    await info();
+    // await info();
     await Sign();
     await getask();
     for (i of dailytasklist) {
