@@ -5,10 +5,10 @@ const axios = require("axios");
 let ck = null;
 let formhash = null;
 
-if (process.env.sxmd_host){
-	SXMD_HOST=process.env.sxmd_host;
+if (config.sxmd.sxmd_host){
+	SXMD_HOST=config.sxmd.sxmd_host;
 }else{
-    SXMD_HOST="www.txtnovel.pro"
+    SXMD_HOST="www.txtnovel.vip"
 }
 
 

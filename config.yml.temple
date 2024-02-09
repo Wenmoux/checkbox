@@ -72,6 +72,7 @@ everphoto:
 sxmd:
   account:
   password:
+  sxmd_host: www.txtnovel.vip
 
 #uclub这个签到失效了 在cookie里
 ucloud:
@@ -406,7 +407,8 @@ hscy:
   authorization:
 # 克拉漫播
 kilamanbo:
-  authtoken:
+  authtoken: 
+  ua: 
 
 #库街区
 kurobbs:
