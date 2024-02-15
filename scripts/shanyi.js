@@ -8,10 +8,9 @@ let sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 const axios = require("axios")
 token = config.shanyi.token
 u = config.shanyi.u
-urlpara = "&v=1.0.0&app_version=2.4.5&client=" + config.shanyi.client
-datapara = "&u=" + jm(u)+ "&token=" + jm(token)
+urlpara = "&v=1.0.0&app_version=2.4.9&client=" + config.shanyi.client
+datapara = `&app_name=cogtp4oTssfpdYweEMohGA%3D%3D&channel_id=5nXP9qADvw3bmKOnRJA5Xw%3D%3D&device_name=uURHx5OPWK2lV1ifRonAMQ%3D%3D&device_system_version=TPldVC12AsDuAix9Y89Jyg%3D%3D&is_rand=5nXP9qADvw3bmKOnRJA5Xw%3D%3D&token=${token}&u=${u}`
 function post(options) {
-    //let params = Object.assign({}, para, options.para);
     return new Promise((resolve, reject) => {
         axios.post(mixin.baseUrl + options.url + urlpara, options.data + datapara, {
                 headers: {
@@ -52,6 +51,24 @@ function jm(data) {
          padding: cryptojs.pad.ZeroPadding
     })
     return encodeURIComponent(str.toString())
+}
+
+function decryptJm(data) {
+    let algorithm = 'aes-128-cbc'
+    let passwd = 'WDF#$H*#SJN*&G$&'
+    let iv = 'JH&$GF$DR%*K@SC%'
+    let cryptojs = require('crypto-js');
+    let encrypted = decodeURIComponent(data);
+    let cipherText = cryptojs.enc.Base64.parse(encrypted);
+    let key = cryptojs.enc.Utf8.parse(passwd);
+    let ivHex = cryptojs.enc.Utf8.parse(iv);
+    let decrypted = cryptojs.AES.decrypt(
+        { ciphertext: cipherText },
+        key,
+        { iv: ivHex, mode: cryptojs.mode.CBC, padding: cryptojs.pad.ZeroPadding }
+    );
+    a= decrypted.toString(cryptojs.enc.Utf8);
+return a 
 }
 
 function ling(name, type, taskid) {

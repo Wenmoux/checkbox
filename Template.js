@@ -23,11 +23,10 @@ function sign(op, header, rules,formhash) {
                 res2data = require("iconv-lite").decode(res2, op.charset);
             } else {
                 res2data = res2
-            }
-            res2data = "" + res2data          
+            } 
             if (res2data.match(/id=\"messagetext\".*?<p>(.+?)<\/p>/s)) { //dz论坛大多都是
                 msg = res2data.match(/id=\"messagetext\".*?<p>(.+?)</s)[1];
-            } else if ((!(rules.url.match(/togamemod|sayhuahuo|99fuman/) )) && res2data.match(/<root><!\[CDATA\[/)) {
+            } else if ((!(rules.url.match(/togamemod|sayhuahuo|99fuman|mp4fan/) )) && res2data.match(/<root><!\[CDATA\[/)) {
                 msg = res2data.match(/<!\[CDATA\[(.+?)>/)[1].replace(/]/g, "").replace(/<script.+/, "")
               if (rules.name == "【Hires后花园】： " && res2.data.match(/签到成功/)) msg = res2data.match(/签到成功~随机奖励新币\d+/)[0]
              } else if (op.reg2 && res2data.match(op.reg2)) {
@@ -80,7 +79,6 @@ function get(url, header, method = "get", data = null) {
     });
 }
 
-
 async function Template(rules) {
     const header = {
         headers: {
@@ -99,11 +97,13 @@ async function Template(rules) {
         formhash = formhash ? formhash[1] : ""
         for (i = 0; i < rules.op.length &&canDo; i++) {
             msg = await sign(rules.op[i], header, rules,formhash)
+            
             message += "    " + rules.op[i].name + "：" + msg + "\n"
             console.log(msg)
         }
        if(rules.credit && canDo) message+= "    资产："+await getcredit(rules)        
     } else {
+ //   console.log(checkres)
         ckstatus = 0
         message = "  cookie失效";
     }

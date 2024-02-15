@@ -6,7 +6,7 @@ uid = config.ssly.uid; //抓包看,比如签到的post包里就有u_id,如120487
 function ssly() {
   return new Promise(async (resolve) => {
     try {
-      let url = `https://sslyapp.top/mz_pbl/app_con/add_sign.php`;
+      let url = `https://sslyapp.site/mz_pbl/app_con/add_sign.php`;
       let timestamp = Math.floor((new Date()).getTime()/1000)+"";
       timestamp = timestamp.replace(/^\s+|\s+$/g,"");
       let mac = CryptoJS.MD5(CryptoJS.SHA1(CryptoJS.MD5(timestamp).toString()).toString()).toString();

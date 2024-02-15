@@ -96,6 +96,9 @@
  - [x] [共创世界](https://www.ccw.site/)每日签到
  - [x] [月影别墅]()每日任务
  - [x] [科研通](https://www.ablesci.com)每日签到
+ - [x] [pdg2pdf](https://www.pdg2pdf.com/)每日签到
+ - [x] [高清mp4](https://mp4fan.org/)每日登录
+
 </details>
 
  
@@ -137,6 +140,9 @@ ql repo https://github.com/Wenmoux/checkbox.git "checkbox|install" "old" "module
 <details>
 <summary>更新日志</summary>
 
+- 2024-02-15
+   - 新增[pdg2pdf](https://www.pdg2pdf.com/)每日签到
+   - 新增[高清mp4](https://mp4fan.org/)每日登录
 - 2024-02-09 新增月影别墅签到
 - 2024-1-19 更新修复魅族社区每日任务  
 - 2024-01-01 
