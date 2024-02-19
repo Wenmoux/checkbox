@@ -415,6 +415,7 @@ kurobbs:
   token:
   devCode:
 
+# linkai
 linkai:
   Authorization:
 
@@ -430,15 +431,19 @@ hzw:
 # 共创世界
 ccw: 
   token: 
-  
+
+# 科研通  
 ablesci:
   cookie:   
 
+# 月影别墅
 simba: 
   refreshtoken:  
 
+# pdg2pdf
 pdg2pdf: 
   cookie:  
-  
+
+# 高清mp4 
 mp4fan: 
   cookie:   
