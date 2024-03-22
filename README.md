@@ -140,6 +140,7 @@ ql repo https://github.com/Wenmoux/checkbox.git "checkbox|install" "old" "module
 <details>
 <summary>更新日志</summary>
 
+- 2024-03-22 克拉漫播增加时长挂机任务
 - 2024-03-02 克拉漫播增加更多任务
 - 2024-02-15
    - 新增[pdg2pdf](https://www.pdg2pdf.com/)每日签到
