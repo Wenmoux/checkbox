@@ -19,7 +19,7 @@ function linkai() {
     }
     console.log(msg)
     } catch (err) {
-      msg =`签到失败，原因：${error.message}`;
+      msg =`签到失败，原因：${err.message}`;
     }
     resolve("【linkai】：" + msg);
   });
