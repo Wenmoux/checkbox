@@ -447,3 +447,8 @@ pdg2pdf:
 # 高清mp4 
 mp4fan: 
   cookie:   
+
+# Go柄(Gobing)
+gobing: 
+  account: 
+  password: 
