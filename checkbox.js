@@ -16,6 +16,7 @@ if (fs.existsSync("./sendNotify.js")) notify = require('./sendNotify')
 var cbList = []
 async function go() {
     if (ycurl) await getCF(ycurl)
+    else if(process.env.CONFIG_YAML) config = yaml.load(process.env.CONFIG_YAML);
     else {
         if (fs.existsSync("./config.yml")) config = yaml.load(fs.readFileSync('./config.yml', 'utf8'));
         if (QL) {

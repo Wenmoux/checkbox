@@ -1,0 +1,29 @@
+name: Run Checkbox
+on:
+  schedule:
+    - cron:  '0 21 * * *'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      CONFIG_YAML: ${{ secrets.CONFIG_YAML }}
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install Node.js
+      uses: actions/setup-node@v4
+      with:
+       node-version: 20
+    - name: Install pnpm
+      uses: pnpm/action-setup@v2
+      with:
+        version: 8
+        run_install: true
+
+    - name: Run Checkbox
+      run: |
+        node checkbox.js
