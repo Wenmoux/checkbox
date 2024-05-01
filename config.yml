@@ -7,7 +7,7 @@
 #注意休息 任务名不是在这个文件里看 去scripts看脚本文件名字 比如duokan.js 就是duokan 4399_ylc.js就是4399_ylc
 #格式报错自行百度yaml格式在线校验进去测试下就行了...
 #任务列表 任务1&任务2
-cbList: sfacg&hbooker&lenovo&qidian&acdog&quqi&Anime&pfjsq
+cbList: sfacg&hbooker&lenovo&qidian&acdog&quqi&pfjsq
 #是否需要推送结果 true全部推送  false以及不填只推送失败结果
 needPush: true
 #推送参数
