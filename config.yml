@@ -7,7 +7,7 @@
 #注意休息 任务名不是在这个文件里看 去scripts看脚本文件名字 比如duokan.js 就是duokan 4399_ylc.js就是4399_ylc
 #格式报错自行百度yaml格式在线校验进去测试下就行了...
 #任务列表 任务1&任务2
-cbList: sfacg&hbooker&lenovo&qidian&smzdm&acdog&quqi
+cbList: sfacg&hbooker&lenovo&qidian&acdog&quqi&Anime&smzdm
 #是否需要推送结果 true全部推送  false以及不填只推送失败结果
 needPush: true
 #推送参数
@@ -31,48 +31,6 @@ Push:
 
 
 
-#多看阅读 cookie为app里的全部cookie
-duokan:
-  cookie:
-
-#阿里云盘
-aliyun:
-  refresh_token:
-
-#星穹铁轨活动
-mhy_xqtg:
-  cookie:
-
-#橙光游戏app随便抓个包就有token
-rpg66:
-  uid:
-  token:
-  skey:
-  sflag:
-  folder:
-  gameid: 1569844
-  did:
-
-#绅士领域个人uid可抓签到包看到
-ssly:
-  uid: 12487
-
-#时光相册 手机号密码 请抓登陆包查看 手机号里包括区号 86啥的 密码为加密后的密码
-everphoto:
-  phone: 8611012451110
-  password:
-
-#书香门第 登陆账号密码(只支持字母+数字组合账号)
-sxmd:
-  account:
-  password:
-  sxmd_host: www.txtnovel.vip
-
-#uclub这个签到失效了 在cookie里
-ucloud:
-  token:
-
-
 #好游快爆 qq 留个用于兑换qb的q scookie 去我的-赚爆米花-任务里 随便抓一个post包 请求数据里有scookie 直接分享商品链接查看  gid 和 key 分享需要兑换的商品链接查看 例https://huodong3.3839.com/n/hykb/bmhstore2/inc/libao/index.php?gid=6237 比如上面这个 gid就是6237  key就是 libao 就是查看inc/后面的那个东西
 hykb:
   scookie: 1|0|107610508|5b+r54iG55So5oi3MTA3NjEwNTA4|kb17318F169574CB8AD768610093CC8C49|7W6xIRurIRSfIJeUGJZ0oJVnIT9r7WacpWDroR8wplI=%1|2ac757fb807c8f310b90c01c54f15098
@@ -80,52 +38,11 @@ hykb:
   gid: 14403
   key: virtual
 
-#网易蜗牛读书  都在cookie或者headers里 抓签到包最方便
-du163:
-  xsrf:
-  X-Auth-Token:
-
-
-
-# 香网小说网页端 全部cookie
-xiang5:
-  cookie:
-
-
-#晋江小说 手机版网页端 m.jjwxc.net cookie中sid 最好抓签到的 填完整 sid=xxx
-jjwxc:
-  cookie: sid=20070297_1234576798787
-  sign:
 
 #什么值得买网页端 全部cookie
 smzdm:
   cookie: __ckguid=F8LbVtlIX7uo7SYohHpOOt6; device_id=2130706433171447324454763457ba1c3f73e5b48d706868590aa7b424; homepage_sug=d; r_sort_type=score; Hm_lvt_9b7ac3d38f30fe89ff0b8a0546904e58=1714473247,1714532830; sess=BA-1y1%2Fq7rn17Tjdu5PcyssmW%2Fw0cQ87YUE41ry%2FkCd7%2FeIRJiN8O72OkjtZVnG8xTHK8Lwkb1FL3mQg9e34PKDCMbrLE8NKE3Ksy6afW7Nf4exPHDpwCxTs%2Fyn; user=user%3A4971240378%7C4971240378; smzdm_id=4971240378; _zdmA.uid=ZDMA.5N-zsRPJn.1714532895.2419200; smzdm_user_view=CF6A730F8E0AD4A24E3DF638F6C7A3E4; smzdm_user_source=224BA94F97B058F6CF2422D8A0AEFB5E; sensorsdata2015jssdkcross=%7B%22distinct_id%22%3A%224971240378%22%2C%22first_id%22%3A%2218f2e91a2fdc1-063b926499a889-26031151-1327104-18f2e91a2fec67%22%2C%22props%22%3A%7B%22%24latest_traffic_source_type%22%3A%22%E8%87%AA%E7%84%B6%E6%90%9C%E7%B4%A2%E6%B5%81%E9%87%8F%22%2C%22%24latest_search_keyword%22%3A%22%E6%9C%AA%E5%8F%96%E5%88%B0%E5%80%BC%22%2C%22%24latest_referrer%22%3A%22https%3A%2F%2Fwww.baidu.com%2Flink%22%7D%2C%22%24device_id%22%3A%2218f2e91a2fdc1-063b926499a889-26031151-1327104-18f2e91a2fec67%22%7D; Hm_lpvt_9b7ac3d38f30fe89ff0b8a0546904e58=1714532964
 
-#网易云游戏网页端  请求头里
-cg163:
-  Authorization:
-#龙空论坛 全部cookie
-lkong:
-  cookie:
-
-#经管之家 全部cookie
-pinggu:
-  cookie:
-
-#nga论坛 app端
-nga:
-  uid:
-  accesstoken:
-  UA: xxxxxx Nga_Official/90306
-
-#cdsn 网页 全部cookie
-csdn:
-  cookie:
-
-#mt论坛 全部cookie
-mt:
-  cookie:
-  time: ''
 
 #sf轻小说 app
 sfacg:
@@ -133,14 +50,6 @@ sfacg:
   ua: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36
   authorization: Basic YW5kcm9pZHVzZXI6MWEjJDUxLXl0Njk7KkFjdkBxeHE=
   
-#猫耳fm 网页 全部cookie
-maoer:
-  cookie:
-
-
-#爱好论坛 全部cookie
-aihao:
-  cookie:
 
 #刺猬猫小说 book_id与reader_id用于自动投推荐票， reader_id与buy_list用于使用代币自动购买章节，buy_list格式为" [100287528,100352526,100357750] " 如不需要该功能则留空
 hbooker:
@@ -152,21 +61,6 @@ hbooker:
   reader_id: 7553846
   buy_list:
 
-#ACFun 手机号 密码
-acfun:
-  phone:
-  password:
-
-#传奇gm论坛 全部cookie
-diygm:
-  cookie:
-
-#一亩三分地 登陆账号 密码 (不要设置登录问题) 联众打码平台 账号密码
-ym3fd:
-  username:
-  password:
-  lzusername:
-  lzpassword:
 
 #次元狗 全部cookie
 acdog:
@@ -178,185 +72,16 @@ lenovo:
   password: 2015xiaoXin.
   baseinfo:
 
-#数码之家全部cookie
-mydigit:
-  cookie:
-
-#联动云租车 全部cookie
-ldygo:
-  cookie:
-
-#玩物志好物商店 如果是小程序登陆的 type 默认为wx 如果是网页的就随便改比如 web 123等等,只要不是wx就行,小程序可不填cookie,网页需要
-coolbuy:
-  type: wx
-  authorization:
-  xcsrftoken:
-  cookie:
-
-#阅次元论坛:
-abooky:
-  cookie:
-
-#富贵论坛
-fglt:
-  cookie:
-
-#纪录片之家
-jlpzj:
-  cookie:
-
-#ug爱好者
-ugsnx:
-  cookie:
-
-#好书友论坛
-hsy:
-  cookie:
-
-#togamemod
-togamemod:
-  cookie:
-
-#魅族社区
-meizu: 
-  remember: 
-  secret: 
-  clientid: 
-
-#菜鸟图库
-sucai999:
-  cookie:
-
-#埋堆堆app
-mdd:
-  appToken:
-
-#闪艺app  都在app请求post数据里  client为ios或者android gids 需要每天做刷粉丝值的作品id 用&分割 建议少于12个
-shanyi:
-  token:
-  u:
-  gids:
-  client: ios
-  UA:
-
-
-#香蕉视频 xxx_api_auth记得加双引号
-xjvideo:
-  xxx_api_auth:
-  baseurl: https://7kp1t2vde8wt7p8tc0km.lagoapps.com
-
-
-#有分享论坛
-bl20166:
-  cookie:
-
-#BigFun网页版  token在请求头里 x-csrf-token
-bigfun:
-  cookie:
-  token:
-
-#阡陌居
-qmj:
-  cookie:
-
-#HiFiNi
-hifini:
-  cookie:
-
-#Hires后花园
-dsdlove:
-  cookie
-
-#百度爱企查  格式变动
-aiqicha:
-  cookie:
-    - cookie在这里 -不能取消 空格也要
-    - 多账号继续往下 不需要的请删除
 
 #曲奇云盘
 quqi:
   cookie: Hm_lvt_38b2b7c8c8fc8ca2896fb2e7a54fd92f=1714533186; Hm_lpvt_38b2b7c8c8fc8ca2896fb2e7a54fd92f=1714533186; forward=; passport_id=2546554; session_key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXNzcG9ydElkIjoiMjU0NjU1NCIsImlzcyI6IjZ0WldaTmxVUHdINTVNeFpUbGtJMTV4ZGdZc2l6VG1yIn0.L0DG0AaTNNghW9fZrU4g0f2vwTROKInUNdeR6SCndew; login_way=2; quqiid=1203552
 
-#奥拉星积分商城
-aoqi:
-  cookie:
-
-#4399游戏盒之疯狂游乐城 ua必填
-youlecheng:
-  scookie:
-  SMid:
-  device:
-  udid:
-  UA:
-
-#鱼C论坛
-fishc:
-  cookie:
-
-#村花论坛 hz是域名后缀 如com
-cunhua:
-  cookie:
-  hz: surf
-
-#帆软社区 脚本fanruan.js
-fanruan:
-  cookie:
-
-#云原神 需要在云原神里抓包x-rpc-combo_token
-yunys:
-  combo_token: ai=x;ci=x;oi=xxxxxx;ct=xxxxxx;si=xxxxxx;bi=xxxxxx
-  type:
-  app_version:
-  sys_version:
-  device_id:
-  device_name:
-  device_model:
-  app_id:
-
-#瞻彼文学 cookie为app里的全部cookie zbwx.js
-zbwx:
-  cookie: accessToken=xxxxxxxx
-
-#天使动漫  tsdm.js
-tsdm:
-  cookie:
-
-#耽漫资源网  fuman99.js
-fuman99:
-  cookie:
 
 #Qoo token  Qoo.js
 Qoo:
   token:
 
-#轻之文库 linovel.js
-linovel:
-  username:
-  password:
-
-#游戏动力app
-gamepower:
-  loginCode:
-
-
-#立创
-oshwhub:
-  cookie:
-
-#捷配 客编中的数字 如 J1845A id就是1845
-jiepei:
-  MbId:
-#花火论坛
-huahuo:
-  cookie:
-
-#17k小说
-y7k:
-  cookie:
-
-#触站
-huashi6:
-  cookie:
 
 #起点读书app
 qidian:
@@ -393,20 +118,8 @@ hwnovel:
 
 # Anime字幕论坛
 Anime:
-  cookie:
+  cookie: 3RQm_2132_saltkey=wWPa4Ay1; 3RQm_2132_lastvisit=1714529852; 3RQm_2132_sid=dL9fXc; Hm_lvt_7c3d97d881b85082f4dab3fc84125e17=1714533454; PHPSESSID=jodeoql0do9a33lelq7928nr7v; 3RQm_2132_ulastactivity=f57baQwEuV6kdTiKJTbb2wZOplX3gIHpOoyWkaIHE8QHGOItpVhg; 3RQm_2132_auth=3c1eA884JLKiHBwR9V7S1Z5on9Z9PlRAT%2BTcxHKQ73Jd8%2BTMq%2BviLYKg7VSboG5NgiesEJLK175SS5%2B2TbHKXJ44Jw; 3RQm_2132_resendemail=1714533500; 3RQm_2132_nofavfid=1; Hm_lpvt_7c3d97d881b85082f4dab3fc84125e17=1714533522; 3RQm_2132_secqaaqSdL9fXc=25.a42d97bb270dded165; 3RQm_2132_lastact=1714533521%09misc.php%09seccode; 3RQm_2132_seccodecSdL9fXc=26.fc0bb18866f98d0ec1
 
-# 黑丝次元
-hscy:
-  authorization:
-# 克拉漫播
-kilamanbo:
-  authtoken: 
-  ua: 
-
-#库街区
-kurobbs:
-  token:
-  devCode:
 
 # linkai
 linkai:
@@ -416,11 +129,7 @@ linkai:
 pfjsq:
   token:
 
-# 海贼王论坛
-hzw:
-  cookie:
-  formhash:
-  
+
 # 共创世界
 ccw: 
   token: 
@@ -429,19 +138,11 @@ ccw:
 ablesci:
   cookie:   
 
-# 月影别墅
-simba: 
-  refreshtoken:  
 
-# pdg2pdf
-pdg2pdf: 
-  cookie:  
+
 
 # 高清mp4 
 mp4fan: 
   cookie:   
 
-# Go柄(Gobing)
-gobing: 
-  account: 
-  password: 
+
