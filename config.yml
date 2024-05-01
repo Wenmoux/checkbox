@@ -7,7 +7,7 @@
 #注意休息 任务名不是在这个文件里看 去scripts看脚本文件名字 比如duokan.js 就是duokan 4399_ylc.js就是4399_ylc
 #格式报错自行百度yaml格式在线校验进去测试下就行了...
 #任务列表 任务1&任务2
-cbList: sfacg&hbooker&lenovo&qidian
+cbList: sfacg&hbooker&lenovo&qidian&smzdm
 #是否需要推送结果 true全部推送  false以及不填只推送失败结果
 needPush: true
 #推送参数
@@ -29,12 +29,6 @@ Push:
 #推送加
   pushplustoken: 322db9e4f4834325837f7a5390dc7cfa
 
-
-#联众打码账号密码https://www.jsdati.com/
-#无对应脚本 仅用于需要打码的时候
-Lzong:
-  account:
-  password:
 
 
 #多看阅读 cookie为app里的全部cookie
@@ -105,7 +99,7 @@ jjwxc:
 
 #什么值得买网页端 全部cookie
 smzdm:
-  cookie:
+  cookie: __ckguid=F8LbVtlIX7uo7SYohHpOOt6; device_id=2130706433171447324454763457ba1c3f73e5b48d706868590aa7b424; homepage_sug=d; r_sort_type=score; Hm_lvt_9b7ac3d38f30fe89ff0b8a0546904e58=1714473247,1714532830; sess=BA-1y1%2Fq7rn17Tjdu5PcyssmW%2Fw0cQ87YUE41ry%2FkCd7%2FeIRJiN8O72OkjtZVnG8xTHK8Lwkb1FL3mQg9e34PKDCMbrLE8NKE3Ksy6afW7Nf4exPHDpwCxTs%2Fyn; user=user%3A4971240378%7C4971240378; smzdm_id=4971240378; _zdmA.uid=ZDMA.5N-zsRPJn.1714532895.2419200; smzdm_user_view=CF6A730F8E0AD4A24E3DF638F6C7A3E4; smzdm_user_source=224BA94F97B058F6CF2422D8A0AEFB5E; sensorsdata2015jssdkcross=%7B%22distinct_id%22%3A%224971240378%22%2C%22first_id%22%3A%2218f2e91a2fdc1-063b926499a889-26031151-1327104-18f2e91a2fec67%22%2C%22props%22%3A%7B%22%24latest_traffic_source_type%22%3A%22%E8%87%AA%E7%84%B6%E6%90%9C%E7%B4%A2%E6%B5%81%E9%87%8F%22%2C%22%24latest_search_keyword%22%3A%22%E6%9C%AA%E5%8F%96%E5%88%B0%E5%80%BC%22%2C%22%24latest_referrer%22%3A%22https%3A%2F%2Fwww.baidu.com%2Flink%22%7D%2C%22%24device_id%22%3A%2218f2e91a2fdc1-063b926499a889-26031151-1327104-18f2e91a2fec67%22%7D; Hm_lpvt_9b7ac3d38f30fe89ff0b8a0546904e58=1714532964
 
 #网易云游戏网页端  请求头里
 cg163:
