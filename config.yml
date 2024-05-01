@@ -7,7 +7,7 @@
 #注意休息 任务名不是在这个文件里看 去scripts看脚本文件名字 比如duokan.js 就是duokan 4399_ylc.js就是4399_ylc
 #格式报错自行百度yaml格式在线校验进去测试下就行了...
 #任务列表 任务1&任务2
-cbList: sfacg&hbooker&lenovo&qidian&smzdm
+cbList: sfacg&hbooker&lenovo&qidian&smzdm&acdog&quqi
 #是否需要推送结果 true全部推送  false以及不填只推送失败结果
 needPush: true
 #推送参数
@@ -170,7 +170,7 @@ ym3fd:
 
 #次元狗 全部cookie
 acdog:
-  cookie:
+  cookie: wordpress_sec_66e58f888bdc2e3b653dd6569062c81d=c068bac4ec6beb7e2a484efacf97147d%7C1715669152%7CBwqSVCfC1c4hohV62q4e8TtG4SPYwV53XlK5AJmekna%7Ce46f9c2eae580941a5aa1a6b8d8c66d5b6f36e62b8c7d87babdbdeae5dc4b1eb; _gid=GA1.2.887675600.1714459476; wordpress_logged_in_66e58f888bdc2e3b653dd6569062c81d=c068bac4ec6beb7e2a484efacf97147d%7C1715669152%7CBwqSVCfC1c4hohV62q4e8TtG4SPYwV53XlK5AJmekna%7C4c772db57a3688ef00d5f2ad7be1f2e014c826a4dfb3afd759a9b83433088b40; Hm_lvt_3c9107131b7cd2b4566c4409fc9b3a81=1714459476,1714533069; _ga=GA1.2.1361763427.1714459476; _gat_gtag_UA_121814896_1=1; _ga_ZCQCZY76GC=GS1.1.1714533069.2.0.1714533076.53.0.0; Hm_lpvt_3c9107131b7cd2b4566c4409fc9b3a81=1714533077
 
 #登陆联想智选app的手机号密码以及请求头header中的baseinfo
 lenovo:
@@ -275,7 +275,7 @@ aiqicha:
 
 #曲奇云盘
 quqi:
-  cookie:
+  cookie: Hm_lvt_38b2b7c8c8fc8ca2896fb2e7a54fd92f=1714533186; Hm_lpvt_38b2b7c8c8fc8ca2896fb2e7a54fd92f=1714533186; forward=; passport_id=2546554; session_key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXNzcG9ydElkIjoiMjU0NjU1NCIsImlzcyI6IjZ0WldaTmxVUHdINTVNeFpUbGtJMTV4ZGdZc2l6VG1yIn0.L0DG0AaTNNghW9fZrU4g0f2vwTROKInUNdeR6SCndew; login_way=2; quqiid=1203552
 
 #奥拉星积分商城
 aoqi:
