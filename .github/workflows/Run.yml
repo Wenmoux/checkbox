@@ -2,6 +2,7 @@ name: Run Checkbox
 on:
   schedule:
     - cron:  '50 10 * * *'
+    - cron:  '50 21 * * *'
   workflow_dispatch:
 
 jobs:
