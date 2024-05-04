@@ -1,7 +1,7 @@
 name: Run Checkbox
 on:
   schedule:
-   - cron:  '59 8 * * *'  # 每天的UTC时间23:59执行，对应北京时间的次日7:00
+   - cron:  '59 8 * * *'  # 每天的UTC时间17 10执行，对应北京时间的次日7:00
 #   - cron:  '59 15 * * *'  # 每天的UTC时间15:59执行，对应北京时间的23:00
   workflow_dispatch:
 
