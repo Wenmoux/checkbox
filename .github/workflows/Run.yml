@@ -30,7 +30,7 @@ jobs:
         node checkbox.js
     - name: Run Checkbox
       run: |
-        node checkbox.js
-    - name: Run Checkbox pfjsq
+        node checkbox.js pfjsq
+    - name: Run Checkbox 
       run: |
         node checkbox.js pfjsq
