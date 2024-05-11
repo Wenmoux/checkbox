@@ -60,7 +60,6 @@ function qd() {
         },
         { headers, params }
       );
-      console.log(res.data);
       if (res.data.status == 200) {
         const sign = res.data.data;
         const number = sign.sign_daily_reward / 2048;
