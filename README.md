@@ -103,40 +103,27 @@
 </details>
 
  
-# 使用方法 (懂得自然懂 bushi  
-[教程：关于如何使用termux运行签到盒那件事](https://blog.1oner.cn/p/termux-checkbox/)  
-termux可以使用crontab设置定时任务  
-写法参见crontab.list
+# 使用
 
-下载源码,安装依赖
-复制一份config.yml.temple文件并改名config.yml 
-在config.yml文件内填入对应cookies(不要更改原有格式
-> 注意每个冒号后面都有空格  
-在`config.yml`文件里自行按照格式添加需要的任务,运行
-   ```       
-      git clone https://github.com/Wenmoux/checkbox.git
-      cd checkbox (这里还是要看你的路径)
-      npm install
-      node checkbox.js
-   ```  
-   
-         
-如不想填任务列表,可在index.js后加上对应脚本名字    
-如`node checkbox.js acfun csdn`  
-多脚本间用空格  
-一般用于定时任务 
+## Fork 项目  
 
- 
-## 青龙使用教程
-  
-```
-ql repo https://github.com/Wenmoux/checkbox.git "checkbox|install" "old" "modules|scripts|config|Template|sendmsg" "master"
-```
- > 1 首先在青龙目录下config.sh设置里拉取sh后缀文件 大概这个自己找RepoFileExtensions  = xxx这一行 里边加上sh就可以了    
- 2 在面板内添加定时任务 (上面ql repo那条 定时看你)    
- 3 手动运行签到盒安装任务 无需禁用  
- 4 在`ql/data/config/config.yml`里填写cookie以及需要运行的任务列表(开头cbList)等信息    
- 5 注意 必须最新版青龙 不然你就手动创建个配置文件吧
+点击本仓库右上角 `Fork` 到自己的账号下
+
+## 添加 config.yml 至 Secrets
+
+点击Settings -> 点击选项卡 Secrets and variables -> 点击Actions -> New repository secret
+
+建立名为 `CONFIG_YAML` 的 secret，值为你需要的config.yml内容，最后点击 Add secret
+
+## 启动 Github Action
+
+> Actions 默认为关闭状态，Fork 之后需要手动执行一次，若成功运行其才会激活。
+
+返回项目主页面，点击上方的`Actions`，再点击左侧的`Run Checkbox`，再点击`Run workflow`
+
+至此，部署完毕。
+
+> 注意：github actions 会对60天没有活动的仓库自动禁用，你可能要主动关注一下 github actions 的运行情况（一般会发邮件通知 actions 执行失败）
 # other
 <details>
 <summary>更新日志</summary>
