@@ -23,7 +23,7 @@ function quark() {
       let res = await axios.get(url, { headers, params });
       if (res.data.data.cap_sign.sign_daily) {
         const sign = res.data.data.cap_sign;
-        const number = sign.sign_daily_reward / (1024 * 1024);
+        const number = sign.sign_daily_reward / 1048576;
         const progress = Math.round(
           (sign.sign_progress / sign.sign_target) * 100
         );
@@ -62,9 +62,9 @@ function qd() {
       );
       if (res.data.status == 200) {
         const sign = res.data.data;
-        const number = sign.sign_daily_reward / 2048;
-        console.log(`今日已签到获取${number}MB`);
-        msg = `签到成功,今日领取${number}MB`;
+        const number = sign.sign_daily_reward / 1048576;
+        console.log(`签到成功,本次签到领取${number}MB`);
+        msg = `签到成功,本次签到领取${number}MB`;
       } else {
         console.log(`签到失败，${res.data.message}!`);
         msg = "签到失败";
