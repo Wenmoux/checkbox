@@ -1,16 +1,17 @@
 const axios = require("axios");
-const {qywx,tgpushkey,qmsgkey,sckey,pushplustoken}=config.Push
+const {qywx,tgpushkey,qmsgkey,sckey,pushplustoken,vocechat}=config.Push
 const {corpsecret,corpid,agentid,mediaid} = qywx
 const {tgbotoken,chatid} = tgpushkey
-async function sendmsg(text) {
+const {api,uid,key} = vocechat
+async function sendmsg(text, isMarkdown=false) {
     console.log(text)
     if(sckey) await server(text);
     if(qmsgkey) await qmsg(text);
     if(pushplustoken) await pushplus(text);
     if(corpsecret) await wx(text); 
     if(tgbotoken) await tgpush(text)
+     await vocechatP(text, true)
 }
-
 function server(msg) {
     return new Promise(async (resolve) => {
         try {
@@ -30,6 +31,35 @@ function server(msg) {
         resolve();
     });
 }
+
+
+
+ 
+function vocechatP(msg, isMarkdown=false) {
+    return new Promise(async (resolve) => {
+        try {
+            let url = `${api}/api/bot/send_to_user/${uid}`;
+            let headers = {
+                'x-api-key': key,
+                'Content-Type': isMarkdown ? 'text/markdown' : 'text/plain',
+            };
+            let res = await axios.post(url, msg.replace(/\n/g,`
+            
+`).replace(/【|】/g,"**"), { headers });
+            if (res.data) {
+                console.log("Vocechat: 发送成功");
+            } else {
+                console.log("Vocechat: 发送失败");
+                console.log(res.data);
+            }
+        } catch (err) {
+            console.log("Vocechat: 发送接口调用失败");
+            console.log(err);
+        }
+        resolve();
+    });
+}
+
 
 function pushplus(msg) {
     return new Promise(async (resolve) => {

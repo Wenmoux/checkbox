@@ -28,7 +28,11 @@ Push:
   qmsgkey:
 #推送加
   pushplustoken:
-
+#vocechat
+  vocechat: 
+    api: 
+    uid: 
+    key:
 
 #联众打码账号密码https://www.jsdati.com/
 #无对应脚本 仅用于需要打码的时候

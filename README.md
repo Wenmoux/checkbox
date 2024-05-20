@@ -141,6 +141,7 @@ ql repo https://github.com/Wenmoux/checkbox.git "checkbox|install" "old" "module
 <details>
 <summary>更新日志</summary>
 
+- 2024-05-20 新增vocechat bot推送
 - 2024-04-20 Go柄自动签到任务
 - 2024-03-22 克拉漫播增加时长挂机任务
 - 2024-03-02 克拉漫播增加更多任务
