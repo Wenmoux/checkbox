@@ -4,14 +4,21 @@ cookie = config.quark.cookie;
 
 const headers = {
   "Content-Type": "application/json",
-  Cookie: cookie,
+  Cookie: "",
 };
+
+function quark() {
+  for (let index = 0; index < cookie.length; index++) {
+    headers["Cookie"] = cookie[index];
+    qd_check();
+  }
+}
 
 /**
  *
  * @returns 签到情况
  */
-function quark() {
+async function qd_check() {
   return new Promise(async (resolve) => {
     try {
       const url = "https://drive-m.quark.cn/1/clouddrive/capacity/growth/info";
@@ -21,6 +28,7 @@ function quark() {
         uc_param_str: "",
       };
       let res = await axios.get(url, { headers, params });
+      console.log(res.data);
       if (res.data.data.cap_sign.sign_daily) {
         const sign = res.data.data.cap_sign;
         const number = sign.sign_daily_reward / 1048576;
