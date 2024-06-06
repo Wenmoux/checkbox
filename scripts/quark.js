@@ -7,10 +7,10 @@ const headers = {
   Cookie: "",
 };
 
-function quark() {
+async function quark() {
   for (let index = 0; index < cookie.length; index++) {
     headers["Cookie"] = cookie[index];
-    qd_check();
+    await qd_check();
   }
 }
 
@@ -28,7 +28,6 @@ async function qd_check() {
         uc_param_str: "",
       };
       let res = await axios.get(url, { headers, params });
-      console.log(res.data);
       if (res.data.data.cap_sign.sign_daily) {
         const sign = res.data.data.cap_sign;
         const number = sign.sign_daily_reward / 1048576;
@@ -41,7 +40,7 @@ async function qd_check() {
         await qd();
       }
     } catch (error) {
-      console.log(error);
+      console.log(error.data);
       msg = "签到接口请求失败";
     }
     resolve("【夸克网盘】：" + msg || "正常运行了");
@@ -78,7 +77,7 @@ function qd() {
         msg = "签到失败";
       }
     } catch (error) {
-      console.log(error);
+      console.log(error.data);
       msg = "签到接口请求失败";
     }
     resolve("【夸克网盘】：" + msg || "正常运行了");
