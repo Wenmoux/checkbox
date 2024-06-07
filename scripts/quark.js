@@ -4,14 +4,21 @@ cookie = config.quark.cookie;
 
 const headers = {
   "Content-Type": "application/json",
-  Cookie: cookie,
+  Cookie: "",
 };
+
+async function quark() {
+  for (let index = 0; index < cookie.length; index++) {
+    headers["Cookie"] = cookie[index];
+    await qd_check();
+  }
+}
 
 /**
  *
  * @returns 签到情况
  */
-function quark() {
+async function qd_check() {
   return new Promise(async (resolve) => {
     try {
       const url = "https://drive-m.quark.cn/1/clouddrive/capacity/growth/info";
@@ -33,7 +40,7 @@ function quark() {
         await qd();
       }
     } catch (error) {
-      console.log(error);
+      console.log(error.data);
       msg = "签到接口请求失败";
     }
     resolve("【夸克网盘】：" + msg || "正常运行了");
@@ -70,7 +77,7 @@ function qd() {
         msg = "签到失败";
       }
     } catch (error) {
-      console.log(error);
+      console.log(error.data);
       msg = "签到接口请求失败";
     }
     resolve("【夸克网盘】：" + msg || "正常运行了");
