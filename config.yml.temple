@@ -462,3 +462,10 @@ quark:
   cookie:
     - cookie在这里 -不能取消 空格也要
     - 多账号继续往下 不需要的请删除
+
+# 小白云盘(支持多账号)
+xiaobai:
+  - username: 13132601808
+    password: ly147258369159
+  - username: user2
+    password: password2

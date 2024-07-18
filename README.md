@@ -99,6 +99,7 @@
  - [x] [pdg2pdf](https://www.pdg2pdf.com/)每日签到
  - [x] [高清mp4](https://mp4fan.org/)每日登录
  - [x] [Go柄](https://gobing.cn/)每日签到
+ - [x] [小白云盘](https://xiaobai.mom/)每日签到
 
 </details>
 
@@ -141,6 +142,7 @@ ql repo https://github.com/Wenmoux/checkbox.git "checkbox|install" "old" "module
 <details>
 <summary>更新日志</summary>
 
+- 2024-07-18 新增[小白云盘](https://xiaobai.mom/)每日签到
 - 2024-05-20 新增vocechat bot推送
 - 2024-04-20 Go柄自动签到任务
 - 2024-03-22 克拉漫播增加时长挂机任务
