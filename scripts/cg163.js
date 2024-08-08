@@ -44,17 +44,15 @@ function sign() {
       const result = decrypt(res.data);
       const data = JSON.parse(result);
       if (data.hasOwnProperty("errmsgcn")) {
-        console.log("签到失败： " + data.errmsgcn);
-        msg = "签到失败： " + data.errmsgcn;
+        msg = "签到失败：" + data.errmsgcn;
       } else {
-        console.log("签到成功");
-        msg = "签到成功！！ ";
+        msg = "签到成功！！ \n" + data.map(item => item.sign_msg).join('\n');
       }
     } catch (err) {
       // console.log(err)
-      msg = "签到失败,已签到过或其它未知原因！！ ";
-      console.log(msg);
+      msg = "签到失败，未知原因！！ ";
     }
+    console.log(msg);
     resolve("【网易云游戏】：" + msg);
   });
 }
