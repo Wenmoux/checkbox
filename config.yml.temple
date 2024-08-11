@@ -420,7 +420,10 @@ kurobbs:
   devCode:
 
 # linkai
+# 填写Authorization后将不使用账号密码登录, 不填写则使用账号密码登录
 linkai:
+  username: 
+  password: 
   Authorization:
 
 # 泡芙加速器
