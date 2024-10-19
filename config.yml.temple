@@ -472,3 +472,8 @@ xiaobai:
     password: password
   - username: user2
     password: password2
+
+# 雨云
+yunyu:
+  token: 
+    - xxxxxx
