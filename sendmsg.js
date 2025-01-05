@@ -21,13 +21,13 @@ function server(msg) {
                 let data = `tags=CheckBox&title=${encodeURI("签到盒每日任务已完成")}&desp=${encodeURI(msg.replace(/\n/g,"\n\n"))}`
                 let res = await axios.post(url, data)
                 if (res.data.code == 0) {
-                    console.log("server酱³:发送成功");
+                    console.log("server酱:发送成功");
                 } else {
-                    console.log("server酱³:发送失败");
+                    console.log("server酱:发送失败");
                     console.log(res.data.info);
                 }
         } catch (err) {
-            console.log("server酱³：发送接口调用失败");
+            console.log("server酱：发送接口调用失败");
       //      console.log(err.response.data.message);
         }
         resolve();
