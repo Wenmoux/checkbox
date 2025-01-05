@@ -1,12 +1,13 @@
 const axios = require("axios");
-const {qywx,tgpushkey,qmsgkey,sckey,pushplustoken,vocechat}=config.Push
+const {qywx,tgpushkey,qmsgkey,sckey,sc3,pushplustoken,vocechat}=config.Push
+const {sc3key,sc3uid} = sc3
 const {corpsecret,corpid,agentid,mediaid} = qywx
 const {tgbotoken,chatid} = tgpushkey
 const {api,uid,key} = vocechat ||{}
 async function sendmsg(text, isMarkdown=false) {
     console.log(text)
     if(sckey) await server(text);
-    if(sc3key) await sc3(text);
+    if(sc3) await server3(text);
     if(qmsgkey) await qmsg(text);
     if(pushplustoken) await pushplus(text);
     if(corpsecret) await wx(text); 
@@ -34,10 +35,10 @@ function server(msg) {
     });
 }
 
-function sc3(msg) {
+function server3(msg) {
     return new Promise(async (resolve) => {
         try {
-                let url = `https://<sc3uid>.push.ft07.com/send/${sc3key}.send`
+                let url = `https://${sc3uid}.push.ft07.com/send/${sc3key}.send`
                 let data = `tags=CheckBox&title=${encodeURI("签到盒每日任务已完成")}&desp=${encodeURI(msg.replace(/\n/g,"\n\n"))}`
                 let res = await axios.post(url, data)
                 if (res.data.code == 0) {
