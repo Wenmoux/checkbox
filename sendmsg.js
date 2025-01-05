@@ -6,12 +6,14 @@ const {api,uid,key} = vocechat ||{}
 async function sendmsg(text, isMarkdown=false) {
     console.log(text)
     if(sckey) await server(text);
+    if(sc3key) await sc3(text);
     if(qmsgkey) await qmsg(text);
     if(pushplustoken) await pushplus(text);
     if(corpsecret) await wx(text); 
     if(tgbotoken) await tgpush(text)
     if(vocechat&&api)await vocechatP(text, true)
 }
+
 function server(msg) {
     return new Promise(async (resolve) => {
         try {
@@ -32,9 +34,27 @@ function server(msg) {
     });
 }
 
+function sc3(msg) {
+    return new Promise(async (resolve) => {
+        try {
+                let url = `https://<sc3uid>.push.ft07.com/send/${sc3key}.send`
+                let data = `title=${encodeURI("签到盒每日任务已完成")}&desp=${encodeURI(msg.replace(/\n/g,"\n\n"))}`
+                let res = await axios.post(url, data)
+                if (res.data.code == 0) {
+                    console.log("Server酱³:发送成功");
+                } else {
+                    console.log("Server酱³:发送失败");
+                    console.log(res.data.info);
+                }
+        } catch (err) {
+            console.log("Server酱³：发送接口调用失败");
+      //      console.log(err.response.data.message);
+        }
+        resolve();
+    });
+}
 
 
- 
 function vocechatP(msg, isMarkdown=false) {
     return new Promise(async (resolve) => {
         try {
