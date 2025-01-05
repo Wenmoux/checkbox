@@ -18,7 +18,7 @@ function server(msg) {
     return new Promise(async (resolve) => {
         try {
                 let url = `https://sctapi.ftqq.com/${sckey}.send`
-                let data = `title=${encodeURI("签到盒每日任务已完成")}&desp=${encodeURI(msg.replace(/\n/g,"\n\n"))}`
+                let data = `tags=CheckBox&title=${encodeURI("签到盒每日任务已完成")}&desp=${encodeURI(msg.replace(/\n/g,"\n\n"))}`
                 let res = await axios.post(url, data)
                 if (res.data.code == 0) {
                     console.log("server酱:发送成功");
