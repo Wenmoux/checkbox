@@ -4,9 +4,10 @@ new Env('签到盒');
 */
 const yaml = require("js-yaml");
 const fs = require('fs');
-const yargs = require('yargs');
+const yargs = require('yargs/yargs');
+const { hideBin } = require('yargs/helpers');
+var argv = yargs(hideBin(process.argv)).argv;
 const axios= require('axios');
-var argv = yargs.argv;
 ycurl = process.env.ycurl
 let QL = process.env.QL_DIR
 config = null, notify = null, sendmsg = null, signlist = [], logs = "", needPush = false, signList = []
