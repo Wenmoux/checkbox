@@ -473,7 +473,6 @@ xiaobai:
   - username: user2
     password: password2
 
-
 #公益站api https://demo.voapi.top F12 复制authorization参数
-voapi: 
+voapi:
   token: F12 复制authorization参数
