@@ -472,3 +472,8 @@ xiaobai:
     password: password
   - username: user2
     password: password2
+
+
+#公益站api https://demo.voapi.top F12 复制authorization参数
+voapi: 
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjU5MCwic2lnbiI6Ijc2N2Q3MzYzZDliNjFhMGE4NTE1MmNmODYxYTFlM2JiIiwicm9sZSI6InVzZXIiLCJleHAiOjE3NjI4NTMzMTQsIm5iZiI6MTc2MDE3NDkxNCwiaWF0IjoxNzYwMTc0OTE0fQ.ageKtyY03V_RBGePzd-OHN8UouaevLvr5mZEwNePb_E
