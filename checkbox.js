@@ -4,9 +4,10 @@ new Env('签到盒');
 */
 const yaml = require("js-yaml");
 const fs = require('fs');
-const yargs = require('yargs');
+const yargs = require('yargs/yargs');
+const { hideBin } = require('yargs/helpers');
+var argv = yargs(hideBin(process.argv)).argv;
 const axios= require('axios');
-var argv = yargs.argv;
 ycurl = process.env.ycurl
 let QL = process.env.QL_DIR
 config = null, notify = null, sendmsg = null, signlist = [], logs = "", needPush = false, signList = []
@@ -30,8 +31,8 @@ async function go() {
                 else console.log("亲,您的依赖掉啦,但是没有完全掉 请重装依赖\npnpm install  axios crypto crypto-js fs iconv-lite js-yaml yargs\n或者\nnpm install  axios crypto crypto-js fs iconv-lite js-yaml yargs")
             }
         }
-
     }
+    
     if (config && config.Push) sendmsg = require("./sendmsg")
     if (config) signlist = config.cbList.split("&")
     if (config && config.needPush) needPush = true   
@@ -59,8 +60,31 @@ function start(taskList) {
                 }
             }
             console.log("------------任务执行完毕------------\n");
-            if (needPush && sendmsg) await sendmsg(logs);
-            if (needPush && notify) await notify.sendNotify("签到盒", `${logs}\n\n吹水群：https://t.me/htuoypa`);
+            
+            // 判断是否有自定义推送渠道
+            let hasCustomPushChannel = false;
+            if (config && config.Push) {
+                hasCustomPushChannel = 
+                    config.Push.sckey || 
+                    (config.Push.qywx && config.Push.qywx.corpsecret) || 
+                    (config.Push.tgpushkey && config.Push.tgpushkey.tgbotoken) || 
+                    config.Push.qmsgkey || 
+                    config.Push.pushplustoken || 
+                    (config.Push.vocechat && config.Push.vocechat.key);
+            }
+
+            // 处理不同通知渠道
+            if (needPush) {
+                if (sendmsg) {
+                    let fullLogs = logs + "\n\n吹水群：https://t.me/htuoypa";
+                    await sendmsg(fullLogs);
+                }
+                
+                // 只有在没有自定义推送渠道时，才使用 notify 发送
+                if (!hasCustomPushChannel && notify) {
+                    await notify.sendNotify("签到盒", `${logs}\n\n吹水群：https://t.me/htuoypa`);
+                }
+            }
         } catch (err) {
             console.log(err);
         }
