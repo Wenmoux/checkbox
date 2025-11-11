@@ -476,3 +476,7 @@ xiaobai:
 #公益站api https://demo.voapi.top F12 复制authorization参数
 voapi:
   token: F12 复制authorization参数
+
+#一起看 https://docs.autooj.cn/download  邀请码 ZG8LT823
+togother:
+  authorization:  
