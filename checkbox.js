@@ -4,7 +4,9 @@ new Env('签到盒');
 */
 const yaml = require("js-yaml");
 const fs = require('fs');
-const yargs = require('yargs/yargs');
+// 兼容 yargs 17.x 和 18.x 版本
+const yargsModule = require('yargs/yargs');
+const yargs = yargsModule.default || yargsModule;
 const { hideBin } = require('yargs/helpers');
 var argv = yargs(hideBin(process.argv)).argv;
 const axios= require('axios');
