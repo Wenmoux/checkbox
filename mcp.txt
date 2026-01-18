@@ -1,0 +1,267 @@
+2. 快速开始
+下面介绍如何将 MCP Server 接入到 MCP Client 中，开始使用 MCP 功能。
+麦当劳提供了远程托管的 MCP Server，用户只需在 MCP Client 中配置接入地址和密钥即可使用。
+
+2.1 接入地址
+服务器接入地址：https://mcp.mcd.cn/mcp-servers/mcd-mcp
+
+2.2 传输协议与安全
+使用 Streamable HTTP 协议接入
+为了识别用户身份和权限，需要在请求头中携带 Authorization 字段，格式如下：
+
+Authorization: Bearer YOUR_MCP_TOKEN
+2.3 MCP 配置 JSON 示例：
+为了方便使用，我们提供了JSON 配置示例。
+复制下面的配置，替换 YOUR_MCP_TOKEN 为实际密钥，粘贴到 MCP Client 的 MCP Server 配置中即可。
+
+{
+  "mcpServers": {
+    "mcd-mcp": {
+      "type": "streamablehttp",
+      "url": "https://mcp.mcd.cn/mcp-servers/mcd-mcp",
+      "headers": {
+        "Authorization": "Bearer YOUR_MCP_TOKEN"
+      }
+    }
+  }
+}
+2.4 注意事项：
+⚠️当前 MCP Server 目前仅支持 MCP Version 2025-06-18及之前的版本。
+每个 Token 每分钟最多允许 600 次请求，超过限制会返回 429 错误码，请合理控制请求频率。
+请确保 MCP Client 支持 Streamable HTTP 协议。
+请妥善保管 MCP Token，避免泄露给他人。
+2.5 各平台接入教程：
+2.5.1 Cherry Studio
+前置条件：一定需要申请到麦当劳中国的 MCP Token，教程：申请 MCP Token
+参考 Cherry Studio 官方文档：https://docs.cherry-ai.com/advanced-basic/mcp
+
+1、 打开 Cherry Studio，进入设置页面
+2、 选择“MCP”选项卡
+3、 点击“添加”按钮
+4、 在弹出的下拉框中，选择“从 JSON 导入”
+
+
+从上面粘贴 JSON复制进去， 一定记得替换 “YOUR_MCP_TOKEN”，然后点击“确定”按钮
+
+
+添加完成后，请打开启用开关
+
+
+恭喜！你已经设置 MCP 成功啦！快去聊天窗口上开启使用吧！
+
+
+2.5.2 Cursor
+前置条件：一定需要申请到麦当劳中国的 MCP Token，教程：申请 MCP Token
+参考 Cursor 官方文档：https://cursor.com/cn/docs/context/mcp
+
+打开 Cursor，点击顶部菜单栏【设置】→【Tools & MCP】，在 Installed MCP Servers 中点击【Add Custom MCP】
+
+
+在打开的 mcp.json 文件中填入从上面复制的JSON内容，一定记得替换 YOUR_MCP_TOKEN 为实际密钥，点击【关闭】并选择【保存】
+
+
+回到设置页面中，此时应显示可用的麦当劳mcp工具，服务状态应显示为【已连接】
+
+
+按下 CTRL/CMD + L 打开右侧 Agent 对话框，接下来就可以直接在对话框中输入需求，让 AI 为我们调用工具了
+
+
+2.5.3 TRAE
+前置条件：一定需要申请到麦当劳中国的 MCP Token，教程：申请 MCP Token
+参考 TRAE 官方文档：https://docs.trae.cn/ide/model-context-protocol
+
+打开 Trae，点击【设置】→【MCP】→ 【手动添加】进行添加
+
+
+
+在打开的手动配置页面中填入从上面复制的JSON内容，一定记得替换YOUR_MCP_TOKEN 为实际密钥，点击【确认】
+
+
+回到MCP页面中，此时应显示可用的麦当劳mcp工具，服务状态应显示为【已连接】
+
+
+回到对话框中 ，选择【Builder with MCP】
+
+
+
+接下来就可以直接在对话框中输入需求，让 AI 为我们调用工具了
+
+
+3. 调试指南
+3.1 MCP Client 推荐
+Client	Link
+Cherry Studio	https://docs.cherry-ai.com/advanced-basic/mcp
+Cursor	https://cursor.com/cn/docs/context/mcp#protocol-support
+Kiro	https://kiro.dev/docs/mcp/
+Trae	https://docs.trae.ai/ide/model-context-protocol
+VSCode	https://code.visualstudio.com/docs/copilot/customization/mcp-servers
+3.2 LLM 推荐
+截止 2025 年 12 月 9 日
+
+厂商	型号
+Qwen	qwen-plus
+qwen3-max
+Doubao	Doubao-Seed-1.6
+Kimi	k2
+Zhipu	GLM-4.6
+Gemini	gemini-3-pro-preview
+Deepseek	DeepSeek-V3.2
+4. 工具
+MCP Server 目前所支持的 Tools
+
+4.1 工具列表
+Tool	Name	Description
+campaign-calender	活动日历查询工具	查询麦当劳中国当月的营销活动日历，返回进行中、往期和未来日期的活动
+available-coupons	麦麦省券列表查询	查询用户当前可领取的麦麦省的优惠券列表
+auto-bind-coupons	麦麦省一键领券	自动领取麦麦省所有当前可用的麦当劳优惠券。无需指定具体的优惠券和couponId，系统会自动领取用户可领的所有券
+my-coupons	我的优惠券查询	查询我有哪些可用的优惠券。就像打开麦当劳APP的"我的优惠券"页面，能看到所有可以用来点餐的优惠券列表
+now-time-info	获取当前时间信息	返回当前的完整时间信息，以便于 LLM 知道当前的时间和日期
+4.1.1 活动日历查询工具
+描述：
+
+查询麦当劳中国当月的营销活动日历，返回进行中、往期和未来日期的活动。适用于查看用户进行中和即将到来的可参与活动，还可查询用户对活动的订阅状态。
+
+入参：
+
+name	description
+specifiedDate	查询指定日期范围的活动(格式: yyyy-MM-dd)，返回该日期附近一共三天的活动，非必传，默认查询当前月的活动，查询今天的活动不需要入参
+响应内容：
+
+示例：
+
+### 当前时间：2025-12-09 14:48:42
+### 活动列表：
+#### 12月8日 往期回顾
+-   **活动标题**：小女警沙发！12月12日麦麦商城见！⏰\
+    **活动内容介绍**：❗️超萌酷小女警爱心沙发来袭
+		😍小女警+汉堡刺绣+粉嫩配色
+		✨满满英雄力和快乐能量！
+		💥12月12日14:00准时发售
+		👇提前预约，心动别错过！\
+    **活动图片介绍**：\
+    <img src="https://cms-cdn.mcd.cn/img/short-content/86a849ae4b9528e53ac595ffa1b39cf9.png" alt="" height="300" width="auto">
+#### 12月9日 今日
+-   **活动标题**：⏳倒计时！超人气「芝芝火腿扒堡」即将回归！\
+    **活动内容介绍**：🍔松软芝芝火腿扒堡搭配鲜萃咖啡
+		💥一堡+一咖啡！还是天天￥9.9！
+		☀一口下去给元气满满的早晨充能！
+		⏰12月15日起，超值低价闭眼冲！\
+    **活动图片介绍**：\
+    <img src="https://cms-cdn.mcd.cn/img/short-content/39bb241887869bca544b67a355cb616f.jpg" alt="" height="300" width="auto">
+4.1.2 麦麦省券列表查询
+描述：
+
+查询用户当前可领取的麦麦省的优惠券列表。返回券名称、图片、状态和促销标签。当用户询问有什么优惠、可以领什么券时使用此工具。
+
+入参：
+
+无需入参
+
+响应内容：
+
+示例：
+
+### 麦麦省优惠券列表：
+- 优惠券标题：11.9元麦乐鸡 \
+  状态：已领取 \
+  优惠券图片：\
+    <img src="https://img.mcd.cn/cms/images/077b86c9268d33a0.png" height="auto" width="300">
+- 优惠券标题：9.9元薯你最甜 \
+  状态：未领取 \
+  优惠券图片：\
+    <img src="https://img.mcd.cn/cms/images/0853e0f8882dc66e.png" height="auto" width="300">
+- 优惠券标题：北非蛋风味麦满分 \
+  状态：不可领取 \
+  优惠券图片：\
+    <img src="https://img.mcd.cn/cms/images/6714e5753b475d96.png" height="auto" width="300">
+4.1.3 麦麦省一键领券
+描述：
+
+自动领取麦麦省所有当前可用的麦当劳优惠券。无需指定具体的优惠券和couponId，系统会自动领取用户可领的所有券。当用户说"帮我领券"、"自动领取优惠券"、"一键领券"时使用此工具。
+
+入参：
+
+无需入参
+
+响应内容：
+
+示例：
+
+### 🎉 领券结果
+
+**总计**: 1 张优惠券
+**成功**: 1 张
+**失败**: 0 张
+
+---
+
+#### ✅ 成功领取的优惠券：
+
+- **9.9元薯你最甜**
+  - couponId：8ED8D8BEBEBDEF26B615682E92EFAC86
+  - couponCode：MCDD60T892ST5EV00N1090
+  - 图片：<img src="https://img.mcd.cn/cms/images/0853e0f8882dc66e.png" alt="9.9元薯你最甜" height="200" width="auto">
+4.1.4 我的优惠券查询
+描述：
+
+查询我有哪些可用的优惠券。就像打开麦当劳APP的"我的优惠券"页面，能看到所有可以用来点餐的优惠券列表。 包括但不限于使用场景： - 用户想知道自己有哪些优惠券可以用 - 检查优惠券的有效期和使用条件 - 查看优惠券数量和状态
+
+入参：
+
+无需入参
+
+响应内容：
+
+示例：
+
+# 您的优惠券列表
+
+共 1 张可用优惠券
+
+## 9.9元薯你最甜
+- **优惠**: ¥9.9 (用券价格)
+- **有效期**: 2025-12-09 00:00-2026-02-12 23:59
+- **领取时间**: 今日收到
+- **标签**: 到店专用、外送专用
+
+<img src="https://mcd-portal-prod-cos1-1300270282.cos.ap-shanghai.myqcloud.com/campaign/prod/campaign-offer/coupon/66f226e438714697b9f15d1a753d91ba/%E5%A4%A7%E8%96%AF%E6%9D%A1.jpg?sign=q-sign-algorithm%3Dsha1%26q-ak%3DAKIDCD6mEcX25tVrjNxiPvEICas0uXyBKIBs%26q-sign-time%3D1763363214%3B1921043214%26q-key-time%3D1763363214%3B1921043214%26q-header-list%3D%26q-url-param-list%3D%26q-signature%3D59b757fb6a863e8debfcdce8e595bf268d9c0cb9" alt="悟空加价特调免费券0411" height="300" width="auto">
+
+4.1.5 当前时间信息查询工具
+描述：
+
+获取当前时间信息 - 返回当前服务器的完整时间信息，包括： - 时间戳（毫秒级） - 格式化的日期时间 - 年月日信息 - 时区和UTC时间 在你不知道当前时间，并且用户需要指定日期查询活动日历的时候有用
+
+入参：
+
+无需入参
+
+响应内容：
+
+示例：
+
+{
+  "success": true,
+  "code": 200,
+  "message": "请求成功",
+  "datetime": "2025-12-11 17:57:05",
+  "traceId": "7b7255e6b4682f35dc0b4df39ffcf02d",
+  "data": {
+    "timestamp": 1765447025424,
+    "datetime": "2025-12-11T17:57:05.424",
+    "formatted": "2025-12-11 17:57:05",
+    "date": "2025-12-11",
+    "year": 2025,
+    "month": 12,
+    "day": 11,
+    "dayOfWeek": "THURSDAY",
+    "timezone": "GMT+08:00",
+    "offset": "+08:00",
+    "utc": "2025-12-11T09:57:05.425Z"
+  }
+}
+5. 版本日志
+Date	Version	Description
+2025-12-09	1.0.0	麦麦日历和麦麦省领券 MCP Server
+© 2020-2025 McDonald's. All Rights Reserved
+
+沪ICP备06017533号沪公网安备 31010402000846号

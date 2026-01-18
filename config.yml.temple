@@ -480,3 +480,7 @@ voapi:
 #一起看 https://docs.autooj.cn/download  邀请码 ZG8LT823
 togother:
   authorization:  
+
+#麦当劳MCP 申请token: https://open.mcd.cn/mcp/doc
+mcdonald:
+  token: YOUR_MCP_TOKEN
