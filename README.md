@@ -100,6 +100,7 @@
  - [x] [高清mp4](https://mp4fan.org/)每日登录
  - [x] [Go柄](https://gobing.cn/)每日签到
  - [x] [小白云盘](https://xiaobai.mom/)每日签到
+ - [x] [Sector0x Microtown](https://microtown.sector0x.com/)外派任务：检查 token、领取完成外派、创建每日外派，返回扇贝/物品/角色见闻笔记
 
 </details>
 
@@ -127,6 +128,33 @@ termux可以使用crontab设置定时任务
 多脚本间用空格  
 一般用于定时任务 
 
+## Sector0x 外派配置
+
+先完成官方登录获取 access_token / refresh_token，然后填到 `config.yml`，任务名填 `sector0x`：
+
+```
+cbList: sector0x
+
+sector0x:
+  access_token:
+  refresh_token:
+  id_token:
+  expires_at:
+  missions: 公园散步,大扫除,面包坊打工
+  limit: 3
+  slot_count: 1
+  dry_run: false
+  yes: true
+  log_limit: 1
+  note_limit: 1
+```
+
+`yes: true` 才会真实领取/创建；`dry_run: true` 只预览。运行：
+
+```
+node checkbox.js sector0x
+```
+
  
 ## 青龙使用教程
   
@@ -142,6 +170,7 @@ ql repo https://github.com/Wenmoux/checkbox.git "checkbox|install" "old" "module
 <details>
 <summary>更新日志</summary>
 
+- 2026-05-17 新增 Sector0x Microtown 外派任务，返回任务状态、外派奖励、扇贝、物品数量、角色见闻和笔记
 - 2024-07-18 新增[小白云盘](https://xiaobai.mom/)每日签到
 - 2024-05-20 新增vocechat bot推送
 - 2024-04-20 Go柄自动签到任务

@@ -86,6 +86,8 @@ function start(taskList) {
                 if (!hasCustomPushChannel && notify) {
                     await notify.sendNotify("签到盒", `${logs}\n\n吹水群：https://t.me/htuoypa`);
                 }
+            } else {
+                console.log(logs);
             }
         } catch (err) {
             console.log(err);

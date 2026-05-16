@@ -34,6 +34,22 @@ Push:
     uid: 
     key:
 
+#Sector0x Microtown 外派任务，任务名填 sector0x
+#把官方登录获取到的 access_token / refresh_token 填到这里；脚本刷新 token 后会回写 config.yml
+#yes: true 才会真实领取/创建；false 只预览，不提交
+sector0x:
+  access_token:
+  refresh_token:
+  id_token:
+  expires_at:
+  missions: 公园散步,大扫除,面包坊打工
+  limit: 3
+  slot_count: 1
+  dry_run: false
+  yes: true
+  log_limit: 1
+  note_limit: 1
+
 #联众打码账号密码https://www.jsdati.com/
 #无对应脚本 仅用于需要打码的时候
 Lzong:
