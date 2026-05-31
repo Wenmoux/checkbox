@@ -1,228 +1,866 @@
-/*
- * @Author: Wenmoux
- * @Date: 2020-12-03 08:48:00
- * @LastEditTime: 2022-06-15 09:13:14
- * @Description: 橙光游戏app每日签到+登陆奖励领取+每日任务+分享
- * @Other：X-sign生成 https://my.oschina.net/2devil/blog/2395909
- */
-
 const axios = require("axios");
-const md5 = require("crypto-js").MD5
-headers = {}
-let result = "【橙光游戏】: ";
-const {
-    uid,
-    token,
-    skey,
-    sflag,
-    folder,
-    gameid,
-    did
-} = config.rpg66
-const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+const qs = require("qs");
+const md5 = require("crypto-js").MD5;
 
-//签到
-function check() {
-    return new Promise(async (resolve) => {
-        try {
-            const url = "https://www.66rpg.com/Ajax/Home/new_sign_in.json";
-            let data = `token=${token}&mobile_uid=&client=2&android_cur_ver=268`;
-            const headers = {
-                "user-agent": "Mozilla/5.0 (Linux; Android 10; Redmi K30 Build/QKQ1.190825.002; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/85.0.4183.127 Mobile Safari/537.36",
-                "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
-            };
-            let res = await axios.post(url, data, {
-                headers,
-            });
-            if (res.data.status == 1) {
-                msg = `签到成功,获得：${res.data.data.today.award_name}明日继续签到🉑获得：${res.data.data.tomorrow.award_name}！！ ||  `;
-            } else {
-                msg = "签到失败⚠️⚠️⚠️ " + res.data.msg + " ||  ";
-            }
-            console.log("    签到结果：" + msg);
-            result += msg;
-        } catch (err) {
-            msg = "签到接口请求出错！！ ";
-            console.log(err);
-        }
-        resolve();
+const WWW = "https://www.66rpg.com";
+const IAPI = "https://iapi.66rpg.com";
+const COLLECT = "https://c.66rpg.com/collect/v1/index/runtime";
+const IAPI_SIGN_SALT = "a_bvvznajmyefox9ts";
+
+const APP_PARAMS = {
+  client: 2,
+  platform: 2,
+  android_cur_ver: "3.11.334.0424",
+  channel: "vivoDYD",
+};
+
+const UA =
+  "Mozilla/5.0 (Linux; Android 12; Redmi K30 Build/SKQ1.211006.001; wv) " +
+  "AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/120.0.0.0 Mobile Safari/537.36";
+
+const RUNTIME_PUBKEY =
+  "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDtsvsk/MIEI9YXvHzLfg+eEJkY3d7RmVynKBZY35T0xg3WwZgmC6GSPZqrMMcht6aiZYPJywhm9JiE6kBo/0Mvxklm5Wd35wIKeDXcq8Aqb4aQXalcwsD3f829OR1P2AqGilr14Rftv4ixyQATG/BqP2/kgft2rcq4e/E7bDWNLQIDAQAB";
+
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+function normalizeAccount(name, value) {
+  if (!value || !value.uid || !value.token) return null;
+  return { name: value.name || name, ...value };
+}
+
+function collectAccounts(source, defaultName) {
+  if (!source) return [];
+  if (Array.isArray(source)) {
+    return source
+      .map((value, index) => normalizeAccount(`${defaultName}${index + 1}`, value))
+      .filter(Boolean);
+  }
+  if (source.accounts) return collectAccounts(source.accounts, defaultName);
+  if (source.users) return collectAccounts(source.users, defaultName);
+
+  const direct = normalizeAccount(defaultName, source);
+  if (direct) return [direct];
+
+  return Object.entries(source)
+    .map(([name, value]) => normalizeAccount(name, value))
+    .filter(Boolean);
+}
+
+function loadAccounts() {
+  return collectAccounts(globalThis.config?.rpg66, "rpg66");
+}
+
+function params(account, extra = {}) {
+  return {
+    uid: account.uid,
+    token: account.token,
+    ...APP_PARAMS,
+    ...extra,
+  };
+}
+
+function signedIapiParams(account, extra = {}) {
+  return {
+    uid: account.uid,
+    token: account.token,
+    skey: account.skey || "",
+    client: 2,
+    platform: 2,
+    nt: "wifi",
+    ...extra,
+  };
+}
+
+function iapiSign(body) {
+  const text = Object.keys(body)
+    .sort()
+    .map((key) => `${key}=${body[key]}`)
+    .join("&");
+  return md5(text + IAPI_SIGN_SALT).toString();
+}
+
+async function iapiGet(account, apiPath, extra = {}) {
+  const body = signedIapiParams(account, extra);
+  const res = await axios.get(IAPI + apiPath, {
+    params: body,
+    headers: {
+      "user-agent": UA,
+      "x-sign": iapiSign(body),
+    },
+    timeout: 20000,
+    validateStatus: () => true,
+  });
+  return res.data;
+}
+
+async function iapiPost(account, apiPath, extra = {}) {
+  const body = signedIapiParams(account, extra);
+  const res = await axios.post(IAPI + apiPath, qs.stringify(body), {
+    headers: {
+      "content-type": "application/x-www-form-urlencoded",
+      "user-agent": UA,
+      "x-sign": iapiSign(body),
+    },
+    timeout: 20000,
+    validateStatus: () => true,
+  });
+  return res.data;
+}
+
+async function get(account, apiPath, extra = {}) {
+  const res = await axios.get(WWW + apiPath, {
+    params: params(account, extra),
+    headers: {
+      "user-agent": UA,
+      referer: "https://m3.66rpg.com/mini/orgshop/orgfarm",
+    },
+    timeout: 15000,
+    validateStatus: () => true,
+  });
+  return res.data;
+}
+
+async function postForm(account, apiPath, body = {}) {
+  const res = await axios.post(WWW + apiPath, qs.stringify(params(account, body)), {
+    headers: {
+      "content-type": "application/x-www-form-urlencoded",
+      "user-agent": UA,
+      referer: "https://m3.66rpg.com/mini/orgshop/orgfarm",
+    },
+    timeout: 15000,
+    validateStatus: () => true,
+  });
+  return res.data;
+}
+
+function webCookie(account) {
+  return [
+    `userid=${account.uid}`,
+    `token=${account.token}`,
+    "isLogin=true",
+    "loginStatus=1",
+  ].join("; ");
+}
+
+async function webGet(account, url, extra = {}, referer = "https://m3.66rpg.com/mini/orgshop/orgfarm") {
+  const res = await axios.get(url, {
+    params: params(account, extra),
+    headers: {
+      "user-agent": UA,
+      cookie: webCookie(account),
+      referer,
+    },
+    timeout: 15000,
+    validateStatus: () => true,
+  });
+  return res.data;
+}
+
+async function webPostForm(account, url, body = {}, referer = "https://m3.66rpg.com/mini/orgshop/orgfarm") {
+  const res = await axios.post(url, qs.stringify(params(account, body)), {
+    headers: {
+      "content-type": "application/x-www-form-urlencoded",
+      "user-agent": UA,
+      cookie: webCookie(account),
+      referer,
+    },
+    timeout: 15000,
+    validateStatus: () => true,
+  });
+  return res.data;
+}
+
+function flatTasks(treeTaskData) {
+  const groups = ["day", "week", "timed", "growth"];
+  return groups.flatMap((group) => {
+    const list = treeTaskData?.[group]?.list || [];
+    return list.map((task) => ({ ...task, group }));
+  });
+}
+
+function taskLine(task) {
+  return `${task.task_id} ${task.task_name} ${task.progress_bar_current}/${task.progress_bar_max} status=${task.task_status} claim=${task.claim_status}`;
+}
+
+function taskProgress(task) {
+  return {
+    current: Number(task.progress_bar_current || 0),
+    max: Number(task.progress_bar_max || 0),
+  };
+}
+
+function isTaskDone(task) {
+  const progress = taskProgress(task);
+  return progress.max > 0 && progress.current >= progress.max;
+}
+
+function isTaskReady(task) {
+  return Number(task.task_status) === 1 && Number(task.claim_status) === 0;
+}
+
+function isTaskPending(task) {
+  return !isTaskDone(task) && !isTaskReady(task);
+}
+
+function normalizeTaskText(value) {
+  return String(value || "").replace(/\s+/g, "").toLowerCase();
+}
+
+function taskMatches(task, aliases) {
+  const text = normalizeTaskText(`${task.task_name || ""} ${task.desc || ""} ${task.description || ""}`);
+  return aliases.some((alias) => text.includes(normalizeTaskText(alias)));
+}
+
+async function getTreeTasks(account) {
+  const data = await get(account, "/ActiveSystem/ptree/get_user_task_list");
+  if (data.status !== 1) throw new Error(`tree task list failed: ${data.msg || data.status}`);
+  return data.data;
+}
+
+async function getTreeTask(account, taskId) {
+  return flatTasks(await getTreeTasks(account)).find((task) => Number(task.task_id) === Number(taskId));
+}
+
+async function signIn(account) {
+  const res = await axios.post(
+    `${WWW}/Ajax/Home/new_sign_in.json`,
+    qs.stringify({
+      token: account.token,
+      mobile_uid: "",
+      client: 2,
+      android_cur_ver: APP_PARAMS.android_cur_ver,
+    }),
+    {
+      headers: {
+        "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+        "user-agent": UA,
+      },
+      timeout: 15000,
+      validateStatus: () => true,
+    },
+  );
+  const data = res.data;
+  if (data.status === 1) {
+    const today = data.data?.today?.award_name || "ok";
+    const fov = data.data?.today?.active_signin_award?.award_fov_name || "";
+    return `sign ok: ${today}${fov ? `, ${fov}` : ""}`;
+  }
+  return `sign skip/fail: ${data.msg || data.status}`;
+}
+
+async function uploadRuntime(account, minutes = 30) {
+  const seconds = minutes * 60;
+  const gameIds = Array.from(
+    new Set([account.readGameId, account.read_gameid, account.gameid, 1593227, 1603466].filter(Boolean)),
+  );
+  const logs = [];
+  for (const gameId of gameIds) {
+    const ts = Math.floor(Date.now() / 1000);
+    const data = JSON.stringify({ run: { [gameId]: seconds } });
+    const check = md5(data + account.uid + ts + RUNTIME_PUBKEY).toString();
+    const body = qs.stringify({
+      data,
+      uid: account.uid,
+      ts,
+      check,
+      platform: 3,
+      channel_id: 0,
+      online_plat: seconds,
+      nonce: "b613b114-b3a8-4bb6-a444-7096b2abc5fe",
+      timestamp: ts,
     });
-}
-
-
-
-function get(url, method = "get", data = null, xsign) {
-    return new Promise(async (resolve) => {
-        try {
-            if (xsign) headers["x-sign"] = xsign
-
-            if (method == "get") res = await axios.get(url, {
-                headers
-            });
-            //      headers ["content-type"] = "application/json;charset=utf-8"
-            headers["user-agent"] == "axios/0.19.0"
-            if (method == "post") res = await axios.post(url, data, {
-                headers
-            })
-            headers = {}
-            if (res.data && res.data.data && (res.data.data.msg || res.data.msg)) console.log("    " + (res.data.data.msg || res.data.msg))
-            resolve(res.data)
-        } catch (err) {
-            console.log(err);
-            resolve({
-                msg: "签到接口请求出错"
-            })
-        }
-        resolve();
+    const res = await axios.post(COLLECT, body, {
+      headers: {
+        "content-type": "application/x-www-form-urlencoded",
+        "user-agent": UA,
+      },
+      timeout: 15000,
+      validateStatus: () => true,
     });
+    logs.push(`${gameId}:${res.data?.msg || res.data?.status}`);
+    await sleep(300);
+  }
+  return `runtime ${minutes}min: ${logs.join(", ")}`;
 }
 
-//获取活跃任务列表
-async function getaskList() {
-    let url = `https://www.66rpg.com/ActiveSystem/index/get_today_task_lists?jsonCallBack=&uid=&token=${token}&client=2&_=`
-    let res = await get(url)
-    if (res && res.status == 1) taskList = res.data
-    else taskList = []
-    return taskList
+async function fillRuntimeTasks(account, tasks) {
+  const needMinutes = tasks
+    .filter((task) => findPassiveTaskCoverage(task)?.handler === "fillRuntimeTasks")
+    .map((task) => Math.max(0, Number(task.progress_bar_max) - Number(task.progress_bar_current)))
+    .reduce((max, remain) => Math.max(max, remain), 0);
+
+  if (!needMinutes) return "runtime tasks already done";
+  return uploadRuntime(account, Math.max(30, needMinutes));
 }
 
-
-//登陆奖励
-function loginreward() {
-    return new Promise(async (resolve) => {
-        try {
-            var url = `http://iapi.66rpg.com/user/v2/sso/launch_remind?pack_name=com.sixrpg.opalyer&sv=QKQ1.190825.002testkeys&android_cur_ver=2.25.268.1027&nt=4g&device_code=RedmiK30&channel=LYyingyongbao&skey=&device_unique_id=${did}&token=${token}`;
-            let res = await get(url, "get", null, getsign(url))
-            if (res.status == 1) {
-                if (!res.data.integral.hidden) {
-                    msg =
-                        "    登陆成功,获得：" +
-                        res.data.integral.msg +
-                        "," +
-                        res.data.flower.msg;
-                } else {
-                    msg = "今日已经领取过登陆奖励了";
-                }
-            } else {
-                msg = "领取登陆奖励失败：" + res.msg;
-            }
-            result += msg;
-            console.log("    领取结果：" + msg);
-        } catch (err) {
-            console.log(err);
-        }
-        resolve();
-    });
+async function getRecommendedGame(account, action = "") {
+  const data = await get(account, "/ActiveSystem/FeedDog/get_recommended_game_info", {
+    c_action: action,
+  });
+  if (data.status !== 1 || !data.data?.gameInfo) {
+    throw new Error(`recommended game failed: ${data.msg || data.status}`);
+  }
+  return data.data.gameInfo;
 }
 
-// x-sign生成
-function getsign(url) {
-    data = url.split("?")[1]
-    var str = data
-        .split("&")
-        .sort(function(a, b) {
-            return a.localeCompare(b);
-        })
-        .join("&");
-    return md5(str + "a_744022879dc25b40").toString()
+async function doDogNext(account, task) {
+  const remain = Math.max(0, Number(task.progress_bar_max) - Number(task.progress_bar_current));
+  if (!remain) return "dog next already done";
+
+  for (let i = 0; i < remain; i++) {
+    await getRecommendedGame(account, i === 0 && Number(task.progress_bar_current) === 0 ? "" : "next");
+    await sleep(500);
+  }
+  return `dog next requested ${remain}`;
 }
 
-//评论任务
-function favor() {
-    return new Promise(async (resolve) => {
-        try {
-            //先取消收藏
-            var url0 = `http://iapi.66rpg.com/Favorite/v1/Favorite/editor_game_folders?device_code=MEIZU18Pro&sv=Flyme9.0.1.3A&nt=4g&token=${token}&skey=${skey}&action=editor_game_folders&ts=&android_cur_ver=2.32.288.0119`
-            let data0 = `pack_name=com.sixrpg.opalyer&folder=&sv=Flyme9.0.1.3A&gindex=242004&android_cur_ver=2.32.288.0119&nt=4g&device_code=MEIZU18Pro&channel=XiaoMiReaderDYD&skey=${skey}&device_unique_id=${did}&token=${token}`
-            let res0 = await get(url0 + "&sign=" + getsign(url0), "post", data0, getsign(url0))
-            console.log("    取消收藏：" + res0.msg);
-            //收藏
-            var url1 = `https://www.66rpg.com/api/client?pack_name=com.sixrpg.opalyer&sv=Flyme9.0.1.3A&android_cur_ver=2.32.288.0119&nt=4g&channel=XiaoMiReaderDYD&platform=2&token=${token}&folder=${folder}%2C&gindex=242004&device_code=&action=fav_game&skey=${skey}&device_unique_id=${did}&fav_type=1`
-            let res = await get(url1, "get", null, getsign(url1))
-            console.log("    收藏结果：" + res.msg);
-        } catch (err) {
-            console.log(err);
-        }
-        resolve();
-    });
+async function createFavorite(account, gindex, favSource) {
+  const res = await axios.post(
+    `${WWW}/ajax/favorite/create.json`,
+    qs.stringify({
+      gindex,
+      android_uid: account.uid,
+      platform: 2,
+      fav_source: favSource,
+      uid: account.uid,
+      token: account.token,
+      client: 2,
+    }),
+    {
+      headers: {
+        "content-type": "application/x-www-form-urlencoded",
+        "user-agent": UA,
+        referer: "https://m3.66rpg.com/mini/orgshop/orgdog?share_mode=1",
+      },
+      timeout: 15000,
+      validateStatus: () => true,
+    },
+  );
+  return res.data;
 }
 
+async function doDogFavorite(account, task) {
+  if (Number(task.progress_bar_current) >= Number(task.progress_bar_max) || task.task_status === 1) {
+    return "dog favorite already done";
+  }
 
+  let last;
+  for (let i = 0; i < 5; i++) {
+    last = await getRecommendedGame(account, i === 0 ? "" : "next");
+    if (!last.is_fav) break;
+  }
+  if (!last?.gindex) return "dog favorite no game";
 
-
-async function uploadtime(id) {
-    timm = 30 * 60
-    let url = "https://c.66rpg.com/collect/v1/index/runtime"
-    time = parseInt(new Date().getTime().toString() / 1000)
-    let datas = `{"run":{"${id}":${timm}}}${uid}${time}MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDtsvsk/MIEI9YXvHzLfg+eEJkY3d7RmVynKBZY35T0xg3WwZgmC6GSPZqrMMcht6aiZYPJywhm9JiE6kBo/0Mvxklm5Wd35wIKeDXcq8Aqb4aQXalcwsD3f829OR1P2AqGilr14Rftv4ixyQATG/BqP2/kgft2rcq4e/E7bDWNLQIDAQAB`
-    let check = md5(datas).toString()
-    let str = `data=%7B%22run%22%3A%7B%22${id}%22%3A${timm}%7D%7D&uid=${uid}&ts=${time}&check=${check}&platform=3&channel_id=0&online_plat=${timm}&nonce=b613b114-b3a8-4bb6-a444-7096b2abc5fe&timestamp=${time}`
-    let res = await get(url, "post", str)
-    console.log("    上传结果：" + res.msg)
+  const data = await createFavorite(account, last.gindex, "1");
+  return `dog favorite ${last.gindex}: ${data.msg || data.status}`;
 }
-async function cg() {
-    console.log("橙光app每日签到开始...");
-    //获取任务列表
-    let taskList = await getaskList()
 
-    //送花
-    //   gid = 1510209
-    // ssurl =`https://www.66rpg.com/api/client?pack_name=com.sixrpg.opalyer&flower_place=4&sv=Flyme9.0.1.3A&android_cur_ver=2.32.288.0119&nt=network_unknown&num=1&channel=XiaoMiReaderDYD&token=${token}&gindex=${gid}&group_id=&device_code=MEIZU18Pro&action=send_flower&skey=${skey}&device_unique_id=${did}`
-    //   let aa =       await get(ssurl, "get", null, getsign(ssurl))
-    //     console.log(aa)
-    for (task of taskList) {
-        console.log("去做任务：" + task.task_name)
-        if (task.max_claim <= task.play_count) {} else {
-            switch (task.task_type) {
-                case 0: //每日登陆
-                    await loginreward();
-                    break
-                case 1: //阅读5min
-                    await uploadtime(1593227)
-                    await sleep(12 * 1000)
-                    await uploadtime(1593227)
-                    break
-                case 2: //分享作品
-                    surl = `http://www.66rpg.com/api/newClient?pack_name=com.sixrpg.opalyer&sv=QKQ1.190825.002testkeys&android_cur_ver=2.27.273.1229&nt=4g&channel=vivoDYD&platform=2&token=${token}&gindex=${gameid}&share_msg_id=&device_code=RedmiK30&action=share_game&skey=${skey}&device_unique_id=${did}&share_channel=3`;
-                    await get(surl, "get", null, getsign(surl))
-                    break
-                case 3: //分享别人看
-                    for (c of new Array(5)) {
-                        await get(`https://m.66rpg.com/main/ajax/game/add_game_share.json?token=&client=0&stype=1&starget=${gameid}&sflag=${sflag}&platform=2&share_msg_id=&um_chnnl=share&um_from_appkey=60ab3e2453b67264990bf849`)
-                        await sleep(1000)
-                    }
-                    break
-                case 4: //发表评论
-                    datac = `pack_name=com.avgorange.dating&sv=Flyme9.0.1.3A&auth=eyJhY3Rpb24iOiJjb21tZW50X3Bvc3QiLCJnaW5kZXgiOiIxNTY5ODQ0IiwicGFyZW50X2NpZCI6IiIsImNvbnRlbnQiOiLmiZPljaHmiZPljaHmiZPljaHmiZPljaHmiZPljaEiLCJkZXZpY2VfdHlwZSI6Ik1FSVpVMThQcm8iLCJyIjoiNTZGIn0%253D&android_cur_ver=2.32.292.0530&parent_cid=&nt=wifi&channel=talkingdata202106&device_type=MEIZU18Pro&content=%E6%89%93%E5%8D%A1%E6%89%93%E5%8D%A1%E6%89%93%E5%8D%A1%E6%89%93%E5%8D%A1%E6%89%93%E5%8D%A1&gindex=1569844&device_code=MEIZU18Pro&skey=${skey}&device_unique_id=${did}&call_source=game`
-                    surl = `http://www.66rpg.com/api/client?device_code=MEIZU18Pro&sv=Flyme9.0.1.3A&nt=wifi&token=${token}&skey=${skey}&action=comment_post&ts=1656227475&android_cur_ver=2.32.292.0530`
-                    aa = await get(surl + "&sign=" + getsign(surl), "post", datac, getsign(surl))
-                    break
-                default:
-                    break
-            }
-        }
-        await get(`https://www.66rpg.com/ActiveSystem/index/claimReward?task_type=${task.task_type}&uid=${uid}&token=${token}&client=2&_=`)
+async function doGenericFavorite(account, task) {
+  if (Number(task.progress_bar_current) >= Number(task.progress_bar_max) || task.task_status === 1) {
+    return "favorite already done";
+  }
+  const gindex = account.gameid || 1603466;
+  const data = await createFavorite(account, gindex, "script");
+  return `favorite ${gindex}: ${data.msg || data.status}`;
+}
+
+async function doDynamicLike(account, task) {
+  if (Number(task.progress_bar_current) >= Number(task.progress_bar_max) || task.task_status === 1) {
+    return "dynamic like already done";
+  }
+
+  let listRes;
+  let list = [];
+  for (let page = 1; page <= 3 && !list.length; page++) {
+    listRes = await iapiGet(account, "/dynamic/v1/dynamic/get_dynamic", { page, type: 0 });
+    list = listRes.data?.list || [];
+  }
+  const dynamic = list.find((item) => Number(item.star_status) === 0 && String(item.user?.uid) !== String(account.uid));
+  if (!dynamic?.did) return `dynamic like no target: ${listRes?.msg || listRes?.status}`;
+
+  const likeRes = await iapiPost(account, "/dynamic/v1/dynamic/star", { did: dynamic.did });
+  return `dynamic like ${dynamic.did}: ${likeRes.msg || likeRes.status}`;
+}
+
+function appBackUrl() {
+  return "https://m3.66rpg.com/mini/orgshop/orgfarm";
+}
+
+async function recordBoxRunTimes(account, extra = {}) {
+  const data = await iapiGet(account, "/box/v1/index/record_box_run_times.json", {
+    run_time: 15,
+    count_timer: 15,
+    ...extra,
+  });
+  return `record box run times: ${data.msg || data.status || JSON.stringify(data)}`;
+}
+
+async function doSharePageBrowse(account, task) {
+  if (Number(task.progress_bar_current) >= Number(task.progress_bar_max) || task.task_status === 1) {
+    return "share page browse already done";
+  }
+
+  const backUrl = appBackUrl();
+  await webGet(
+    account,
+    "https://m.66rpg.com/mini/home",
+    {
+      box: "box_tab",
+      pushvalue: 3,
+      type: 1,
+      count_timer: 15,
+      count_timer_url: "box/v1/index/record_box_run_times.json",
+      url: backUrl,
+    },
+    backUrl,
+  );
+  const recordResult = await recordBoxRunTimes(account, {
+    box: "box_tab",
+    pushvalue: 3,
+    type: 1,
+  });
+  await iapiGet(account, "/dynamic/v1/dynamic/get_dynamic", { page: 1, type: 1 });
+  await sleep(16000);
+
+  const latest = await getTreeTask(account, task.task_id);
+  return `share page browse attempted: ${latest?.progress_bar_current ?? "?"}/${latest?.progress_bar_max ?? "?"} status=${latest?.task_status ?? "?"}; ${recordResult}`;
+}
+
+async function doChannelPageBrowse(account, task) {
+  if (Number(task.progress_bar_current) >= Number(task.progress_bar_max) || task.task_status === 1) {
+    return "channel page browse already done";
+  }
+
+  const tid = Number(task.tid || 0);
+  if (!tid) return `channel page browse no tid: ${taskLine(task)}`;
+
+  const backUrl = appBackUrl();
+  await webGet(
+    account,
+    "https://m.66rpg.com/mini/home",
+    {
+      box: "box_tid",
+      pushvalue: tid,
+      count_timer: 15,
+      count_timer_url: "box/v1/index/record_box_run_times.json",
+      url: backUrl,
+    },
+    backUrl,
+  );
+  const recordResult = await recordBoxRunTimes(account, {
+    box: "box_tid",
+    pushvalue: tid,
+    tid,
+  });
+  await webPostForm(account, `${WWW}/ajax/index/statistics_first_screen_cat_content`, {
+    position: tid,
+    id: tid,
+  }, "https://m.66rpg.com/mini/home");
+
+  const channelParams = {
+    tid,
+    page: 1,
+    pageNum: 1,
+    works_pub_time: 0,
+    flag: "orgbox",
+  };
+  const endpoints = [
+    "/ajax/channel/tag_screen_list",
+    "/ajax/channel/tag_screen",
+    "/ajax/Channel/third_tag_screen_list",
+    "/ajax/channel/third_tag_screen",
+    "/cgMini/ajax/channel/tag_screen_list",
+    "/cgMini/ajax/channel/tag_screen",
+  ];
+  for (const endpoint of endpoints) {
+    try {
+      await webGet(account, `${WWW}${endpoint}`, channelParams, "https://m.66rpg.com/mini/home");
+    } catch (err) {
+      // Some channel endpoints are only valid for specific tag families; try the next one.
     }
-    console.log("去签到")
-    await check();
-    console.log("每日分享")
-    surl = `http://www.66rpg.com/api/newClient?pack_name=com.sixrpg.opalyer&sv=QKQ1.190825.002testkeys&android_cur_ver=2.27.273.1229&nt=4g&channel=vivoDYD&platform=2&token=${token}&gindex=${gameid}&share_msg_id=&device_code=RedmiK30&action=share_game&skey=${skey}&device_unique_id=${did}&share_channel=3`;
-    await get(surl, "get", null, getsign(surl))
-    Info = ""
-    urlyy = `https://www.66rpg.com/propShop/interapi/game/v1/game/get_user_gift_game?pack_name=com.sixrpg.opalyer&sv=Flyme9.0.1.3A&android_cur_ver=2.32.288.0119&nt=4g&device_code=MEIZU18Pro&channel=XiaoMiReaderDYD&skey=${skey}&page=1&sort=1&device_unique_id=${did}&token=${token}`
-    let ri = await get(urlyy, "get", null, getsign(urlyy))
-    count = ri && ri.data ? ri.data.count : "未知"
-    var iurl = `http://iapi.66rpg.com/user/v2/user/user_info?uid=${uid}&pack_name=com.sixrpg.opalyer&sv=Flyme9.0.1.3A&android_cur_ver=2.32.288.0119&nt=network_unknown&device_code=&channel=XiaoMiReaderDYD&action=user_info&skey=${skey}&device_unique_id=${did}&token=${token}`
-    let ires = await get(iurl, "get", null, getsign(iurl))
-    if (ires.status == 1) {
-        info = ires.data[uid]
-        if (info.last_available_time != 0) hl = `\n    花篮：至${info.last_available_time_str.replace("花篮领取有效期 ","")}`
-        else hl = ""
-        Info = `   昵称：${info.uname}\n    等级：${info.user_level}\n    鲜花：${info.rest_flower}\n    积分：${info.coin3}\n    橙子：${info.user_orange}${hl}\n    拥有：${count}部`
-    }
-    console.log(Info)
-    return "【橙光】：\n " + Info
+    await sleep(300);
+  }
+  await sleep(16000);
+
+  const latest = await getTreeTask(account, task.task_id);
+  return `channel page browse attempted tid=${tid}: ${latest?.progress_bar_current ?? "?"}/${latest?.progress_bar_max ?? "?"} status=${latest?.task_status ?? "?"}; ${recordResult}`;
 }
 
-//cg()
-module.exports = cg;
+async function tryShare(account, task) {
+  if (Number(task.progress_bar_current) >= Number(task.progress_bar_max) || task.task_status === 1) {
+    return "share already done";
+  }
+  const gindex = account.gameid || 1603466;
+  const data = await iapiPost(account, "/share/v1/share/share_game", {
+    gindex,
+    share_msg_id: "",
+    share_channel: 3,
+  });
+  return `share game ${gindex}: ${data.msg || data.status}`;
+}
+
+async function doSendFlowers(account, task) {
+  if (Number(task.progress_bar_current) >= Number(task.progress_bar_max) || task.task_status === 1) {
+    return "send flowers already done";
+  }
+  if (!account.allowSendFlowers && !account.allow_send_flowers && !account.sendFlowers) {
+    return "send flowers skipped: set allowSendFlowers: true to enable";
+  }
+  const remain = Math.max(0, Number(task.progress_bar_max) - Number(task.progress_bar_current));
+  const gindex = account.flowerTarget || account.flower_target || account.gameid || 1603466;
+  const data = await iapiPost(account, "/game/v1/pay/send_flower", {
+    gindex,
+    num: remain,
+    flower_place: 4,
+    group_id: "",
+  });
+  return `send flowers ${gindex} x${remain}: ${data.msg || data.status}`;
+}
+
+async function doCreateCollections(account, task) {
+  if (Number(task.progress_bar_current) >= Number(task.progress_bar_max) || task.task_status === 1) {
+    return "collections already done";
+  }
+  const remain = Math.max(0, Number(task.progress_bar_max) - Number(task.progress_bar_current));
+  const logs = [];
+  for (let i = 0; i < remain; i++) {
+    const data = await iapiPost(account, "/Favorite/v1/Favorite/create_edit_fav_folder", {
+      folder_name: `每日任务${Date.now().toString().slice(-6)}${i}`,
+      folder_id: 0,
+      folder_cover: "",
+      folder_desc: "",
+      is_public: 1,
+      source: 1,
+    });
+    logs.push(data.msg || data.status);
+    await sleep(300);
+  }
+  return `create collections: ${logs.join(", ")}`;
+}
+
+async function doReplyBountyShare(account, task) {
+  if (Number(task.progress_bar_current) >= Number(task.progress_bar_max) || task.task_status === 1) {
+    return "bounty reply already done";
+  }
+  const list = await iapiGet(account, "/topicPlaza/v1/home/topic_list", {
+    page: 1,
+    limit: 10,
+    type: 0,
+  });
+  const topic = (list.data?.list || []).find(
+    (item) => Number(item.reward_status) === 1 && String(item.uid) !== String(account.uid),
+  );
+  if (!topic?.topic_id) return `bounty reply no target: ${list.msg || list.status}`;
+
+  const data = await iapiPost(account, "/topicPlaza/v1/info/reply", {
+    topic_id: topic.topic_id,
+    content: "mark",
+    reply_id: 0,
+    parent_id: 0,
+  });
+  return `bounty reply ${topic.topic_id}: ${data.msg || data.status}`;
+}
+
+async function doConfession(account, task) {
+  if (Number(task.progress_bar_current) >= Number(task.progress_bar_max) || task.task_status === 1) {
+    return "confession already done";
+  }
+  const gindex = account.confessionGameId || account.confession_gameid || account.gameid || 1603466;
+  const roles = await iapiGet(account, "/bestman/bestman/v2/role/bestman_all_role_list", {
+    gindex,
+    page: 1,
+    limit: 10,
+  });
+  const role = roles.data?.role?.[0];
+  if (!role?.role_id) return `confession no role: ${roles.msg || roles.status}`;
+
+  const data = await iapiPost(account, "/bestman/bestman/v1/vote/bestman_express_words", {
+    gindex,
+    role_id: role.role_id,
+    role_words: 1,
+  });
+  return `confession ${role.role_id}: ${data.msg || data.status}`;
+}
+
+const TASK_ACTIONS = [
+  {
+    ids: [3],
+    aliases: ["浏览频道页15s", "频道页15s", "频道页"],
+    action: doChannelPageBrowse,
+    note: "best-effort app timer task",
+  },
+  {
+    ids: [12],
+    aliases: ["浏览share页面15s", "浏览share页面", "share页面15s", "share页面"],
+    action: doSharePageBrowse,
+    note: "best-effort app timer task",
+  },
+  {
+    ids: [13],
+    aliases: ["狗橙推荐模式点击下一个", "推荐模式点击下一个", "浏览3次"],
+    action: doDogNext,
+  },
+  {
+    ids: [14],
+    aliases: ["狗橙推荐模式收藏", "推荐模式收藏"],
+    action: doDogFavorite,
+  },
+  {
+    ids: [2],
+    aliases: ["浏览动态页面并点赞", "动态页面并点赞", "点赞1次"],
+    action: doDynamicLike,
+  },
+  {
+    ids: [6],
+    aliases: ["收藏任意一部作品", "收藏任意作品"],
+    action: doGenericFavorite,
+  },
+  {
+    ids: [5],
+    aliases: ["分享任意一部作品", "分享任意作品"],
+    action: tryShare,
+  },
+  {
+    ids: [4],
+    aliases: ["为任意作品送鲜花", "送鲜花"],
+    action: doSendFlowers,
+    note: "will spend real flowers",
+  },
+  {
+    ids: [10],
+    aliases: ["悬赏", "回帖"],
+    action: doReplyBountyShare,
+  },
+  {
+    ids: [7],
+    aliases: ["告白", "表白"],
+    action: doConfession,
+  },
+  {
+    ids: [101],
+    aliases: ["创建收藏夹", "创建合集"],
+    action: doCreateCollections,
+  },
+];
+
+const PASSIVE_TASK_COVERAGE = [
+  {
+    key: "runtime_read",
+    ids: [1, 100],
+    aliases: [
+      "阅读任意作品满10min",
+      "阅读任意作品满10分钟",
+      "阅读任意作品10min",
+      "阅读任意作品10分钟",
+      "阅读任意作品",
+      "阅读作品10min",
+      "阅读作品10分钟",
+      "阅读10min",
+      "阅读10分钟",
+    ],
+    handler: "fillRuntimeTasks",
+    detail: "handled before action loop by fillRuntimeTasks",
+  },
+];
+
+const MANUAL_TASK_GUIDES = [
+  {
+    aliases: ["获得1朵鲜花", "获得鲜花"],
+    guide: "claim a real login/activity flower first; this task is updated by server-side flower income",
+  },
+];
+
+function findTaskRule(task, rules) {
+  const id = Number(task.task_id);
+  return rules.find((item) => (item.ids || []).includes(id) || taskMatches(task, item.aliases || []));
+}
+
+function findTaskAction(task) {
+  return findTaskRule(task, TASK_ACTIONS);
+}
+
+function findPassiveTaskCoverage(task) {
+  return findTaskRule(task, PASSIVE_TASK_COVERAGE);
+}
+
+function findManualTaskGuide(task) {
+  return findTaskRule(task, MANUAL_TASK_GUIDES);
+}
+
+function printTaskSummary(tasks) {
+  console.log("task coverage:");
+  for (const task of tasks) {
+    const action = findTaskAction(task);
+    const passive = findPassiveTaskCoverage(task);
+    const guide = findManualTaskGuide(task);
+    let type = "unknown";
+    let detail = "no rule";
+    if (action) {
+      type = "auto";
+      detail = action.action.name;
+      if (action.note) detail += ` (${action.note})`;
+    } else if (passive) {
+      type = "auto";
+      detail = passive.detail;
+    } else if (guide) {
+      type = "manual";
+      detail = guide.guide;
+    }
+    console.log(`  [${type}] ${taskLine(task)} -> ${detail}`);
+  }
+}
+
+async function claimTreeAwards(account) {
+  const taskData = await getTreeTasks(account);
+  const ready = flatTasks(taskData).filter(
+    (task) => Number(task.task_status) === 1 && Number(task.claim_status) === 0,
+  );
+  const logs = [];
+  for (const task of ready) {
+    const data = await postForm(account, "/ActiveSystem/ptree/claim_task_award", {
+      task_id: task.task_id,
+      noVer: true,
+    });
+    logs.push(`${task.task_id} ${task.task_name}: ${data.msg || data.status}`);
+    await sleep(300);
+  }
+  return logs.length ? logs : ["no tree award to claim"];
+}
+
+async function claimOldActiveAwards(account) {
+  const oldParams = {
+    jsonCallBack: "",
+    uid: account.uid,
+    token: account.token,
+    client: 2,
+    _: Date.now(),
+  };
+  const listRes = await axios.get(`${WWW}/ActiveSystem/api/v1/active/get_today_task_lists`, {
+    params: oldParams,
+    headers: { "user-agent": UA },
+    timeout: 15000,
+    validateStatus: () => true,
+  });
+  const list = listRes.data;
+  if (list.status !== 1 || !Array.isArray(list.data)) return [`old active list: ${list.msg || list.status}`];
+
+  const ready = list.data.filter((task) => Number(task.status) === 1 && Number(task.unclaimed) > 0);
+  const logs = [];
+  for (const task of ready) {
+    const claimRes = await axios.get(`${WWW}/ActiveSystem/api/v1/active/claimReward`, {
+      params: {
+        uid: account.uid,
+        token: account.token,
+        client: 2,
+        task_type: task.task_type,
+        _: Date.now(),
+      },
+      headers: { "user-agent": UA },
+      timeout: 15000,
+      validateStatus: () => true,
+    });
+    const data = claimRes.data;
+    logs.push(`old ${task.task_type} ${task.task_name}: ${data.msg || data.status}`);
+    await sleep(300);
+  }
+  return logs.length ? logs : ["no old active award to claim"];
+}
+
+async function runAccount(account) {
+  console.log(`\n# ${account.name} uid=${account.uid}`);
+  const summary = [];
+
+  try {
+    const money = await get(account, "/ActiveSystem/PtreeShop/get_user_account_money");
+    console.log(`fresh orange: ${money.data?.fov_value ?? "unknown"}`);
+    summary.push(`${account.name}: fresh orange ${money.data?.fov_value ?? "unknown"}`);
+  } catch (err) {
+    console.log(`fresh orange failed: ${err.message}`);
+    summary.push(`${account.name}: fresh orange failed`);
+  }
+
+  try {
+    console.log(await signIn(account));
+  } catch (err) {
+    console.log(`signIn failed: ${err.message}`);
+  }
+
+  let tasks = flatTasks(await getTreeTasks(account));
+
+  try {
+    console.log(await fillRuntimeTasks(account, tasks));
+  } catch (err) {
+    console.log(`fillRuntimeTasks failed: ${err.message}`);
+  }
+
+  tasks = flatTasks(await getTreeTasks(account));
+  for (const task of tasks) console.log(`task ${taskLine(task)}`);
+  printTaskSummary(tasks);
+
+  for (const task of tasks) {
+    if (!isTaskPending(task)) continue;
+    const action = findTaskAction(task);
+    if (!action) continue;
+    try {
+      console.log(`run ${action.action.name}: ${taskLine(task)}`);
+      console.log(await action.action(account, task));
+    } catch (err) {
+      console.log(`${action.action.name} failed: ${err.message}`);
+    }
+    await sleep(800);
+    tasks = flatTasks(await getTreeTasks(account));
+  }
+
+  const remaining = tasks.filter(isTaskPending);
+  const manual = remaining
+    .map((task) => ({ task, guide: findManualTaskGuide(task) }))
+    .filter((item) => item.guide);
+  if (manual.length) {
+    console.log("manual web tasks:");
+    for (const item of manual) console.log(`  ${taskLine(item.task)} -> ${item.guide.guide}`);
+  }
+
+  console.log("claim tree awards:");
+  for (const line of await claimTreeAwards(account)) console.log(`  ${line}`);
+
+  console.log("claim old active awards:");
+  for (const line of await claimOldActiveAwards(account)) console.log(`  ${line}`);
+
+  try {
+    const after = await get(account, "/ActiveSystem/PtreeShop/get_user_account_money");
+    const afterValue = after.data?.fov_value ?? "unknown";
+    console.log(`fresh orange after: ${afterValue}`);
+    summary.push(`${account.name}: fresh orange after ${afterValue}`);
+  } catch (err) {
+    console.log(`fresh orange after failed: ${err.message}`);
+    summary.push(`${account.name}: fresh orange after failed`);
+  }
+
+  return summary.join("\n");
+}
+
+async function main() {
+  const accounts = loadAccounts();
+  if (!accounts.length) return "【橙光】：未配置 config.rpg66";
+  const summaries = [];
+  for (const account of accounts) {
+    try {
+      summaries.push(await runAccount(account));
+    } catch (err) {
+      console.log(`account ${account.name} failed: ${err.message}`);
+      summaries.push(`${account.name}: failed ${err.message}`);
+    }
+  }
+  return `【橙光】\n${summaries.filter(Boolean).join("\n")}`;
+}
+
+if (require.main === module) {
+  main().catch((err) => {
+    console.error(err);
+    process.exitCode = 1;
+  });
+}
+
+module.exports = main;
