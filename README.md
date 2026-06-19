@@ -101,6 +101,7 @@
  - [x] [Go柄](https://gobing.cn/)每日签到
  - [x] [小白云盘](https://xiaobai.mom/)每日签到
  - [x] [Sector0x Microtown](https://microtown.sector0x.com/)外派任务：检查 token、领取完成外派、创建每日外派，返回扇贝/物品/角色见闻笔记
+ - [x] [AI风月](https://aisearches.xyz?ref_id=ec5cb40a-3027-4352-918b-482cc53060f3/)每日签到
 
 </details>
 

@@ -500,3 +500,12 @@ togother:
 #麦当劳MCP 申请token: https://open.mcd.cn/mcp/doc
 mcdonald:
   token: YOUR_MCP_TOKEN
+
+
+# AI风月 只填账号密码也可以
+aifengyue:
+  email: 
+  password: 
+  authorization: 
+  target: 
+  cookie: 
